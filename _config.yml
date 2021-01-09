@@ -6,10 +6,10 @@
 title: 科A图书馆（暂定）
 subtitle: ''
 description: 一个致力于科学ADV相关作品文本收集的网站
-keywords: 
+keywords: 科学ADV 命运石之门 混沌之子 混沌之脑 机器人笔记 超自然9人组
 author: 碧朋学园技术部
 language: zh-CN
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
@@ -18,8 +18,8 @@ root: /
 permalink: archive/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
