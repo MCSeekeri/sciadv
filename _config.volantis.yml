@@ -24,31 +24,58 @@ navbar:
     icon:
     title:
   menu:
-    - name: 博客
-      icon: fas fa-rss
-      url: /
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
-    - name: 归档
-      icon: fas fa-archive
-      url: archives/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
+    - name: 导航
+      icon: fal fa-cube
+      rows:
+        - name: 分类
+          icon: fal fa-folder-open
+          url: categories/
+        - name: 标签
+          icon: fal fa-hashtag
+          url: tags/
+        - name: 归档
+          icon: fal fa-list
+          url: archives/
     - name: 关于
-      icon: fas fa-info-circle
-      url: about/
+      icon: fal fa-info
+      rows:
+        - name: 本站
+          icon: fal fa-user-circle
+          url: about/
+        - name: 时间机器
+          icon: fal fa-comment-alt-smile
+          url: time-machine/
+        - name: 留言
+          icon: fal fa-comment-dots
+          url: comment/
+    - name: 管理
+      icon: fal fa-shield
+      rows:
+        - name: 可用性检测
+          icon: fal fa-telescope
+          url: https://status.mcseekeri.top
+        - name: 评论管理
+          icon: fal fa-comment-alt-edit
+          url: https://sciadvwaline.now.sh/
+        - name: 在线编辑
+          icon: fal fa-code
+          url: https://mcseekeri.cloudstudio.net/
+    - name: 更多
+      icon: fal fa-ellipsis-v
+      rows:
+        - name: RSS订阅
+          icon: fal fa-rss
+          url: atom.xml
+        - name: 站点地图
+          icon: fal fa-sitemap
+          url: sitemap.xml
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
 
 ############################### Cover ############################### > start
 cover:
-  height_scheme: full # full, half
+  height_scheme: half # full, half
   layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
@@ -56,9 +83,9 @@ cover:
     others: false # can be written in front-matter 'cover: true'
   background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: 'Volantis'
+  title: '科学ADV系列图书馆'
   subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
+  search: '' # search bar placeholder
   features:
     - name: 文档
       icon: #
@@ -80,16 +107,12 @@ cover:
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
       url: /archives/
-    - name: 源码
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
-      url: https://github.com/volantis-x/hexo-theme-volantis/
-############################### Cover ############################### > end
+      ############################### Cover ############################### > end
 
 pages:
   # 友链页面配置
   friends:
-    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
+    layout_scheme: sites # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
 
 ############################### Article Layout ############################### > start
 # 文章布局
@@ -106,7 +129,7 @@ article:
     # show split line or not
     line_style: solid # hidden, solid, dashed, dotted
     # show author
-    author: false # true, false
+    author: true # true, false
     # show readmore button
     readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案
@@ -160,40 +183,40 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar:
-        name: 请设置文章作者
-        url: /
+        avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/custom/MCSeekeri.jpg
+        name: MC探索者i
+        url: https://mcseekeri.top
       # 文章创建日期
       date:
-        icon: fas fa-calendar-alt
+        icon: fal fa-calendar-alt
         title: '发布于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章更新日期
       updated:
-        icon: fas fa-edit
+        icon: fal fa-edit
         title: '更新于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
       category:
-        icon: fas fa-folder-open
+        icon: fa fa-folder-open
       # 文章浏览计数
       counter:
-        icon: fas fa-eye
+        icon: fal fa-eye
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
-        icon: fas fa-comment-dots
+        icon: fal fa-comment-dots
         desc: '' # 条评论
       walinecount:
-        icon: fas fa-comment-dots
+        icon: fal fa-comment-dots
         desc: '' # 条评论        
       # 文章字数和阅读时长
       wordcount:
-        icon_wordcount: fas fa-keyboard
-        icon_duration: fas fa-hourglass-half
+        icon_wordcount: fal fa-keyboard
+        icon_duration: fal fa-hourglass-half
       # 文章标签
       tags:
-        icon: fas fa-hashtag
+        icon: fal fa-hashtag
       # 分享
       share:
         - id: qq
@@ -202,10 +225,10 @@ article:
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
         - id: weibo
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
-        - id: # qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
-        - id: # telegram
-          img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
+        - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+        - id: telegram
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -213,7 +236,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
+  service: minivaline # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
   # Valine
   # https://valine.js.org/
   valine:
@@ -238,12 +261,28 @@ comments:
   minivaline:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
-    placeholder: 快来评论吧~  # 全局评论占位提示
+    placeholder: 欢迎评论，会自动显示Gravatar头像  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
-    serverURL: https://waline.vercel.app
+    serverURL: https://sciadvwaline.now.sh
+    mode: xCss
+    md: true
+    RecordIP: true
+    visitor: true
+    enableFlag: true
+    enableUA: true
+    tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
+      - 站长
+      - 作者
+      - 访客
+    master: # The MD5 String Array of master Email to show master Flag.[ Just Only xCss Style mode]
+      - 2fe1b9f7d79c288f4d7b8bc15b0227a4
+    friends: # The MD5 String Array of friends Email to show friends Flag. [ Just Only xCss Style mode]
+      - 19f2f82559c52e9d5ed1c7eba89b55b0
+      - 0ec123bd8833f0bfda32879a8c13b074
+
   # Disqus
   # https://disqus.com
   disqus:
@@ -318,17 +357,17 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/amadeus.jpg
       shape: rectangle # circle, rectangle
       url: /about/
       title:
       subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fas fa-rss
           url: /atom.xml
         - icon: fas fa-envelope
-          url: mailto:me@xxx.com
+          url: mailto:mcseekeri@outlook.com
         - icon: fab fa-github
           url: https://github.com/volantis-x/
         - icon: fas fa-headphones-alt
@@ -352,7 +391,7 @@ sidebar:
       header:
         icon: fas fa-folder-open
         title: 文章分类
-        url: /blog/categories/
+        url: /categories/
     # ---------------------------------------
     # tagcloud widget
     tagcloud:
@@ -361,7 +400,7 @@ sidebar:
       header:
         icon: fas fa-tags
         title: 热门标签
-        url: /blog/tags/
+        url: tags/
       min_font: 14
       max_font: 24
       color: true
@@ -424,7 +463,7 @@ tag_plugins:
   note: # style for default note:
     icon: '\f054'
     color: ''
-    iconfont: 'Font Awesome 5 Free'
+    iconfont: 'Font Awesome 5 Pro'
   # {% checkbox %}
   checkbox:
     interactive: false # enable interactive for user
@@ -507,19 +546,19 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
 
   # npm i hexo-wordcount
   wordcount:
-    enable: #true
+    enable: true
 
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
-    enable: #true
+    enable: true
     css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
 
@@ -648,7 +687,7 @@ plugins:
 ############################### Rightmenu ############################### > start
 # 自定义右键菜单
 rightmenu:
-  enable: #true
+  enable: true
   # hr: 分割线, music: 音乐控制器
   layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
   # 可选功能项
