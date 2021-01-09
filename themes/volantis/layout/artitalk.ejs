@@ -1,0 +1,13 @@
+<%- partial('_pre') %>
+<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+    <%- partial('_partial/article', {post: page, index: false}) %>
+</div>
+<%- partial('_partial/side') %>
+<%- js(theme.plugins.jquery) %>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>
+<script>
+    new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
+</script>
+<style>
+#artitalk_main #lazy{background: transparent !important}
+</style>

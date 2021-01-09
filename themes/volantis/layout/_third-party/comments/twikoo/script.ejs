@@ -1,0 +1,27 @@
+<script>
+  function load_twikoo() {
+	setTimeout(function() {
+	<% if (theme.comments.twikoo.js) { %>
+	  loadScript('<%- theme.comments.twikoo.js %>', pjax_twikoo)
+	<% } else { %>
+	  loadScript('https://cdn.jsdelivr.net/npm/twikoo@latest', pjax_twikoo)
+	<% } %>
+	}, 1);
+  }
+  function pjax_twikoo() {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.twikoo.path %>';
+      path = defaultPath || "decodeURI(window.location.pathname)"; //神奇的pathname
+    }
+    twikoo.init(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
+	  el: '#twikoo_container',
+	  path: path,
+    }))
+  }
+  $(function () {
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    load_twikoo();
+  });
+</script>

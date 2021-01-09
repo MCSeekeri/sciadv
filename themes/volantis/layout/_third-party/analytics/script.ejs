@@ -1,0 +1,24 @@
+<% if (config.google_analytics_key) { %>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- https://github.com/volantis-x/hexo-theme-volantis/issues/63 -->
+<script>
+	setTimeout(function() {
+	  loadScript("https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>");
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', '<%- config.google_analytics_key %>');
+	}, 5000);
+</script>
+<% } %>
+<% if (config.baidu_analytics_key) { %>
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  setTimeout(function() {
+    loadScript("https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>")
+  }, 5000);
+})();
+</script>
+<% } %>

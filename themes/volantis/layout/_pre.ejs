@@ -1,0 +1,45 @@
+<%
+if (page.cover == undefined && theme.cover) {
+  if (is_home() && page.prev == 0) {
+    page.cover = theme.cover.display.home;
+  } else if (is_archive()) {
+    page.cover = theme.cover.display.archive;
+  } else {
+    page.cover = theme.cover.display.others;
+  }
+}
+if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
+  if (page.sidebar == undefined) {
+    if (theme.sidebar.for_page.length == 0) {
+      page.sidebar = [];
+    } else {
+      page.sidebar = theme.sidebar.for_page;
+    }
+  }
+} else {
+  if (page.sidebar == undefined) {
+    if (theme.sidebar.for_post.length == 0) {
+      page.sidebar = [];
+    } else {
+      page.sidebar = theme.sidebar.for_post;
+    }
+  }
+}
+if (page.sidebar == false) {
+  page.sidebar = [];
+}
+
+if (config.theme_config && config.theme_config.style) {
+  let style = config.theme_config.style;
+  if (style.navbar && style.navbar.effect) {
+    theme.custom_css.navbar.effect = style.navbar.effect;
+  }
+  if (style.sidebar && style.sidebar.effect) {
+    theme.custom_css.sidebar.effect = style.sidebar.effect;
+  }
+  if (style.body && style.body.effect) {
+    theme.custom_css.body.effect = style.body.effect;
+  }
+}
+
+%>

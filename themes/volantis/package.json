@@ -1,0 +1,28 @@
+{
+  "name": "hexo-theme-volantis",
+  "version": "4.2.0",
+  "description": "Elegant and powerful theme for Hexo.",
+  "main": "package.json",
+  "scripts": {
+    "eslint": "eslint scripts/ source/js --fix",
+    "test": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volantis-x/hexo-theme-volantis.git"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "volantis"
+  ],
+  "author": "Volantis X (https://github.com/volantis-x/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volantis-x/hexo-theme-volantis/issues"
+  },
+  "homepage": "https://volantis.js.org",
+  "devDependencies": {
+    "eslint": "^7.16.0"
+  }
+}

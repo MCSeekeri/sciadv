@@ -1,0 +1,52 @@
+<%
+var topMetas = theme.article.body.top_meta || [];
+if (post.top_meta == false) {
+  topMetas = [];
+}
+var bottomMetas = theme.article.body.bottom_meta || [];
+if (post.bottom_meta == false) {
+  bottomMetas = [];
+}
+%>
+
+<% if (position == 'top') { %>
+  <% if (post.headimg) { %>
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='<%- post.headimg %>'/>
+      </a>
+    </div>
+  <% } %>
+  <div class="article-meta" id="top">
+    <% if (post.music && post.music.enable != false) { %>
+      <%- partial('../_third-party/aplayer/layout', {post: post, where: 'meta'}) %>
+    <% } %>
+    <% if (post.thumbnail && post.thumbnail.length){ %>
+      <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+        <img class='thumbnail' src='<%- post.thumbnail %>'>
+      </a>
+    <% } %>
+    <% if (post.title) { %>
+      <h1 class="title">
+        <%- post.title %>
+      </h1>
+      <div class='new-meta-box'>
+        <% (topMetas).forEach(function(meta) { %>
+          <% if (meta in theme.article.body.meta_library){ %>
+            <%- partial('../_meta/' + meta, {post: post}) %>
+          <% } %>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+<% } else if (position == 'bottom') { %>
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      <% (bottomMetas).forEach(function(meta){ %>
+        <% if (meta in theme.article.body.meta_library) { %>
+          <%- partial('../_meta/' + meta, {post: post}) %>
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+<% } %>
