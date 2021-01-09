@@ -100,7 +100,66 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: volantis
 
+feed:
+  type: atom
+  path: atom.xml
+  limit: 400
+
+# hexo-neat
+# md博文压缩
+neat_enable: true
+# 压缩html（ejs，swig等也属于html格式片段）
+neat_html:
+  enable: true
+  exclude:
+# 压缩css  
+neat_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+    - '**/*.min.css'
+    - 'jquery.fancybox.min.css'
+    - '**/live2d-widget/waifu.css'
+# 压缩js
+neat_js:
+  enable: true
+  mangle: true #打印日志
+  output:
+  compress:
+  exclude: #排除文件
+    - '*.min.js'
+    - '**/*.min.js'
+    - 'jquery.fancybox.min.js'
+    - '**/live2d-widget/*.js'
+    - '**/live2d-widget/*.min.js'
+
+service_worker:
+  maximumFileSizeToCacheInBytes: 52428800
+  staticFileGlobs:
+  - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
+  stripPrefix: public
+  verbose: true
+  runtimeCaching:
+    - urlPattern: /*   # 子路径（接受通配符）
+      handler: cacheFirst
+      options:
+        origin: cdn.jsdelivr.net  # 域名
+    - urlPattern: /*
+       handler: cacheFirst
+       options:
+         origin: fonts.google.com
+
+
+
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  - type: git
+    repository: 
+      github: git@github.com:MCSeekeri/sciadv.mcseekeri.github.io
+    branch: master
+  - type: cjh_bing_url_submitter
+  - type: cjh_baidu_url_submitter
+  - type: cjh_google_url_submitter
