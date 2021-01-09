@@ -145,10 +145,25 @@ service_worker:
       options:
         origin: cdn.jsdelivr.net  # 域名
     - urlPattern: /*
-       handler: cacheFirst
-       options:
-         origin: fonts.google.com
+      handler: cacheFirst
+      options:
+        origin: fonts.google.com
 
+
+hexo_submit_urls_to_search_engine:
+  submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
+  count: 10 # 提交最新的10个链接
+  period: 1600 # 提交修改时间在 1600 秒内的链接
+  google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
+  bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
+  baidu: 1 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
+  txt_path: submit_urls.txt ## 文本文档名， 需要推送的链接会保存在此文本文档里
+  baidu_host: https://sciadv.mcseekeri.top 
+  baidu_token: 
+  bing_host: https://sciadv.mcseekeri.top 
+  bing_token: 
+  google_host: https://sciadv.mcseekeri.top 
+  google_key_file: push.json
 
 
 
