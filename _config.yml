@@ -154,9 +154,9 @@ hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
   count: 10 # 提交最新的10个链接
   period: 1600 # 提交修改时间在 1600 秒内的链接
-  google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
-  bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
-  baidu: 1 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
+  google: 0 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
+  bing: 0 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
+  baidu: 0 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
   txt_path: submit_urls.txt ## 文本文档名， 需要推送的链接会保存在此文本文档里
   baidu_host: https://sciadv.mcseekeri.top 
   baidu_token: 
@@ -165,6 +165,9 @@ hexo_submit_urls_to_search_engine:
   google_host: https://sciadv.mcseekeri.top 
   google_key_file: push.json
 
+import:
+    link:
+      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 
 
