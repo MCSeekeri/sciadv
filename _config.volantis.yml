@@ -144,7 +144,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fas fa-quote-left
+        icon: fal fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
@@ -156,7 +156,7 @@ article:
       related_posts:
         enable: false
         title: 相关文章
-        icon: fas fa-bookmark
+        icon: fal fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: data:image/png;base64,666
@@ -347,7 +347,7 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, qrcode]
+  for_page: [blogger, category, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -364,21 +364,21 @@ sidebar:
       subtitle:
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
+        - icon: fal fa-rss
           url: /atom.xml
-        - icon: fas fa-envelope
+        - icon: fal fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fab fa-github
-          url: https://github.com/volantis-x/
-        - icon: fas fa-headphones-alt
-          url: /
+        - icon: fal fa-github
+          url: https://github.com/mcseekeri/sciadv
+        #- icon: fas fa-headphones-alt
+        #  url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-list
+        icon: fal fa-list
         title: 本文目录
       list_number: false
       min_depth: 2
@@ -387,9 +387,9 @@ sidebar:
     # category widget
     category:
       class: category
-      display: [desktop] # [desktop, mobile]
+      display: [desktop, mobile]
       header:
-        icon: fas fa-folder-open
+        icon: fal fa-folder-open
         title: 文章分类
         url: /categories/
     # ---------------------------------------
@@ -398,7 +398,7 @@ sidebar:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-tags
+        icon: fal fa-tags
         title: 热门标签
         url: tags/
       min_font: 14
@@ -422,7 +422,7 @@ sidebar:
       class: webinfo
       display: [desktop]
       header:
-        icon: fas fa-award
+        icon: fal fa-award
         title: 站点信息
       type:
         article:
@@ -431,7 +431,7 @@ sidebar:
           unit: '篇'
         runtime:
           enable: true
-          data: '2020/01/01'    # 填写建站日期
+          data: '2021/01/05'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
@@ -488,13 +488,13 @@ site_footer:
     - avatar:
       url:
   # site source
-  source: https://github.com/volantis-x/volantis-docs/
+  source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
   analytics: >
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
-  copyright: '[Copyright © 2017-2020 XXX](/)'
+  copyright: '[本站内容来源自网络 所有权归作者所有](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 ############################### Site Footer ############################### > end
@@ -530,14 +530,14 @@ plugins:
 
   # highlight.js
   highlightjs:
-    enable: #true # Please set hexo.config.highlight.enable = false !!!
+    enable: true # Please set hexo.config.highlight.enable = false !!!
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js
     css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
@@ -574,34 +574,26 @@ plugins:
 
   # Slide Background
   backstretch:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover1.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover2.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover3.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover4.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover5.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover6.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover7.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover8.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover9.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover10.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover11.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover12.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover13.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -629,7 +621,7 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - /artitalk/     # artitalk 不支持 pjax
+       - /time-machine/     # artitalk 不支持 pjax
       # - /bb/           # bbtalk 不支持 pjax
 
 
@@ -674,7 +666,7 @@ plugins:
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
   darkmodejs:
-    enable: #true
+    enable: true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://support.dmeng.net/kill-old-versions-of-ie.html
@@ -689,7 +681,7 @@ plugins:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [home, hr, source_docs, source_theme, hr, print, hr, music]
   # 可选功能项
   print:
     name: 打印页面
@@ -711,7 +703,7 @@ rightmenu:
   source_docs:
     name: 本站源码
     icon: fa fa-code-branch
-    url: https://github.com/volantis-x/volantis-docs/
+    url: https://github.com/mcseekeri/sciadv
   source_theme:
     name: 主题源码
     icon: fa fa-code-branch
@@ -839,14 +831,14 @@ color_scheme:
 custom_css:
   toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
-    enable: #true
-    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
+    enable: true
+    text: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/text.cur
+    pointer: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/link.cur
+    default: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/pointer.cur
+    not-allowed: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/unavailiable.cur
+    zoom-out: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/alternate.cur
+    zoom-in: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/alternate.cur
+    grab: https://cdn.jsdelivr.net/gh/Linhk1606/blog-cdn@0.0.7.4/cursors/move.cur
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
