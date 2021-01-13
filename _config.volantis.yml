@@ -273,16 +273,8 @@ comments:
     visitor: true
     enableFlag: true
     enableUA: true
-    tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
-      - 站长
-      - 作者
-      - 访客
-    master: # The MD5 String Array of master Email to show master Flag.[ Just Only xCss Style mode]
-      - 2fe1b9f7d79c288f4d7b8bc15b0227a4
-    friends: # The MD5 String Array of friends Email to show friends Flag. [ Just Only xCss Style mode]
-      - 19f2f82559c52e9d5ed1c7eba89b55b0
-      - 0ec123bd8833f0bfda32879a8c13b074
-
+    cloudflag: true
+   
   # Disqus
   # https://disqus.com
   disqus:
