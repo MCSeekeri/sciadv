@@ -20,7 +20,7 @@ info:
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: favicon.ico
+    img: /favicon.ico
     icon:
     title:
   menu:
@@ -165,7 +165,7 @@ article:
       related_posts:
         enable: false
         title: 相关文章
-        icon: fal fa-bookmark
+        icon: fad fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: data:image/png;base64,666
@@ -197,12 +197,12 @@ article:
         url: https://mcseekeri.top
       # 文章创建日期
       date:
-        icon: fal fa-calendar-alt
+        icon: fad fa-calendar-alt
         title: '发布于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章更新日期
       updated:
-        icon: fal fa-edit
+        icon: fad fa-edit
         title: '更新于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
@@ -210,22 +210,22 @@ article:
         icon: fa fa-folder-open
       # 文章浏览计数
       counter:
-        icon: fal fa-eye
+        icon: fad fa-eye
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
-        icon: fal fa-comment-dots
+        icon: fad fa-comment-dots
         desc: '' # 条评论
       walinecount:
-        icon: fal fa-comment-dots
+        icon: fad fa-comment-dots
         desc: '' # 条评论        
       # 文章字数和阅读时长
       wordcount:
-        icon_wordcount: fal fa-keyboard
-        icon_duration: fal fa-hourglass-half
+        icon_wordcount: fad fa-keyboard
+        icon_duration: fad fa-hourglass-half
       # 文章标签
       tags:
-        icon: fal fa-hashtag
+        icon: fad fa-hashtag
       # 分享
       share:
         - id: qq
@@ -365,11 +365,11 @@ sidebar:
       subtitle:
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fal fa-rss
+        - icon: fad fa-rss
           url: /atom.xml
-        - icon: fal fa-envelope
+        - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fal fa-github
+        - icon: fad fa-github
           url: https://github.com/mcseekeri/sciadv
         #- icon: fas fa-headphones-alt
         #  url: /
@@ -379,7 +379,7 @@ sidebar:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fal fa-list
+        icon: fad fa-list
         title: 本文目录
       list_number: false
       min_depth: 2
@@ -390,7 +390,7 @@ sidebar:
       class: category
       display: [desktop, mobile]
       header:
-        icon: fal fa-folder-open
+        icon: fad fa-folder-open
         title: 文章分类
         url: /categories/
     # ---------------------------------------
@@ -399,7 +399,7 @@ sidebar:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fal fa-tags
+        icon: fad fa-tags
         title: 热门标签
         url: tags/
       min_font: 14
@@ -423,7 +423,7 @@ sidebar:
       class: webinfo
       display: [desktop]
       header:
-        icon: fal fa-award
+        icon: fad fa-award
         title: 站点信息
       type:
         article:
@@ -668,6 +668,14 @@ plugins:
   #   toggle: darkmode
   darkmodejs:
     enable: true
+    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
+    button: # button 使用默认或自行开发
+      enable: true
+      left: '16px'
+      bottom: '32px'
+      buttonDark: '#333'
+      buttonLight: '#ddd'
+    compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 
   # 旧版 Internet Explorer 淘汰行动
   # https://support.dmeng.net/kill-old-versions-of-ie.html
