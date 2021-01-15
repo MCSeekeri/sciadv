@@ -20,54 +20,63 @@ info:
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: favicon.ico
     icon:
     title:
   menu:
     - name: 导航
-      icon: fal fa-cube
+      icon: fad fa-cube
       rows:
         - name: 分类
-          icon: fal fa-folder-open
+          icon: fad fa-folder-open
           url: categories/
         - name: 标签
-          icon: fal fa-hashtag
+          icon: fad fa-hashtag
           url: tags/
         - name: 归档
-          icon: fal fa-list
+          icon: fad fa-list
           url: archives/
     - name: 关于
-      icon: fal fa-info
+      icon: fad fa-info
       rows:
         - name: 本站
-          icon: fal fa-user-circle
+          icon: fad fa-user-circle
           url: about/
         - name: 时间机器
-          icon: fal fa-comment-alt-smile
+          icon: fad fa-comment-alt-smile
           url: time-machine/
         - name: 留言
-          icon: fal fa-comment-dots
+          icon: fad fa-comment-dots
           url: comment/
-    - name: 管理
-      icon: fal fa-shield
+    - name: 科A作品
+      icon: fad fa-brain
       rows:
-        - name: 可用性检测
-          icon: fal fa-telescope
-          url: https://status.mcseekeri.top
-        - name: 评论管理
-          icon: fal fa-comment-alt-edit
-          url: https://sciadvwaline.now.sh/
-        - name: 在线编辑
-          icon: fal fa-code
-          url: https://mcseekeri.cloudstudio.net/
+        - name: 混沌之脑
+          icon: fad fa-mind-share
+          url: categories/混沌之脑
+        - name: 命运石之门
+          icon: fad fa-cog
+          url: categories/命运石之门
+        - name: 机器人笔记
+          icon: fad fa-robot
+          url: categories/命运石之门
+        - name: 混沌之子
+          icon: fad fa-eye
+          url: categories/混沌之子
+        - name: 超自然9人组
+          icon: fad fa-star-of-david
+          url: categories/超自然9人组
+        - name: 匿名者代码
+          icon: fad fa-code
+          url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
     - name: 更多
-      icon: fal fa-ellipsis-v
+      icon: fad fa-ellipsis-v
       rows:
         - name: RSS订阅
-          icon: fal fa-rss
+          icon: fad fa-rss
           url: atom.xml
         - name: 站点地图
-          icon: fal fa-sitemap
+          icon: fad fa-sitemap
           url: sitemap.xml
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
@@ -91,15 +100,15 @@ cover:
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
       url: archive/
-    - name: 游戏文本
+    - name: 文本
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
       url: tags/游戏文本
-    - name: 相关著作
+    - name: 石学
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
       url: tags/相关著作
-    - name: 关于我们
+    - name: 关于
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
       url: about/
@@ -144,7 +153,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fal fa-quote-left
+        icon: fad fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
