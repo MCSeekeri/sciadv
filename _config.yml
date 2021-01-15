@@ -15,7 +15,7 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: https://sciadv.mcseekeri.top
 root: /
-permalink: archive/:abbrlink/
+permalink: archives/:abbrlink/
 permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
@@ -148,6 +148,11 @@ service_worker:
       handler: cacheFirst
       options:
         origin: fonts.google.com
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: 7.dusays.com
+
 
 
 hexo_submit_urls_to_search_engine:
