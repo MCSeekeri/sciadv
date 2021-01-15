@@ -85,7 +85,7 @@ navbar:
 ############################### Cover ############################### > start
 cover:
   height_scheme: half # full, half
-  layout_scheme: focus # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout_scheme: featured # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
@@ -633,8 +633,8 @@ plugins:
   artitalk:
     # Set `layout: artitalk` to enable in page
     # 配置项按照yml格式继续填写即可
-    appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
-    appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
+    appId: yLJqP23EFBQHvlJ0hN1HtWAk-MdYXbMMI # your appID
+    appKey: t0qqYVAWCPqLE3VfpXY9ri0k # your appKEY
     # serverURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
     # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # pageSize: #每页说说的显示数量
@@ -924,8 +924,8 @@ custom_css:
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
-    app_key: jfHtEKVE24j0IVCGHbvuFClp
+    app_id: HA3D7xjxQ7u3lMz2g9xbxWmq-MdYXbMMI
+    app_key: lAM7wDCNTAq7rHvOIf3DhqCC
     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
