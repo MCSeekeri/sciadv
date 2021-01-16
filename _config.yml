@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 科A图书馆（暂定）
+title: 科学ADV图书馆（暂定）
 subtitle: ''
 description: 一个致力于科学ADV相关作品文本收集的网站
 keywords: 科学ADV 命运石之门 混沌之子 混沌之脑 机器人笔记 超自然9人组
@@ -153,8 +153,6 @@ service_worker:
       options:
         origin: 7.dusays.com
 
-
-
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
   count: 10 # 提交最新的10个链接
@@ -179,7 +177,7 @@ nofollow:
 	exclude:
   
 abbrlink:
-  alg: crc16      #support crc16(default) and crc32
+  alg: crc32      #support crc16(default) and crc32
   rep: hex        #support dec(default) and hex
   drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
   # Generate categories from directory-tree
