@@ -1,17 +1,24 @@
 ---
 title: SG:开始与终结的序章
 date: 2010-07-28
-author: MAGES.
+author: mages
 categories: 
 - 命运石之门
 tags: 
 - 游戏文本
-description: 
+description: 「呐呐，你在嘟囔些什么啊～？ 」
 keywords: 
 headimg: 
 copyright: false
 abbrlink: SG1
 ---
+
+<html>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?bvid=BV1Fs411R7Bp"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+</html>
+
 
 「呐呐，你在嘟囔些什么啊～？ 」
  手机靠在右耳上。听筒里什么声音也听不到。连噪音都没有。完全无声。 夏天强烈的太阳光照在身上。 一滴汗从我下颚落下，在柏油路上留下印子。
@@ -298,11 +305,11 @@ abbrlink: SG1
 「消失了…… 」
  暑假。 正午。 秋叶原。 从车站步行1分钟的中央大道。 在这里—— 一瞬间—— 数千个行人—— 从我的视野里—— 一起—— 消失了。 这是梦？还是看到幻觉了？ 我不知道。 但是真的消失了。 我的确目睹了那个瞬间。 我哑口无言。 愕然地面对无人秋叶原 呆呆地一个人， 站在原地一动不动。 在混乱中，我无意识的抬头仰望 广播馆的大楼上—— 我们刚才待的8楼的位置—— 正扎着那颗人造卫星。 ﻿
 
-
-
-
-
-
+<html>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?bvid=BV1uW411z7y6"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+</html>
 
 
 「喂，那边的人。你看得见我们吗？ 」
