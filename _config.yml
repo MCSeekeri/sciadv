@@ -134,7 +134,7 @@ neat_js:
     - '**/live2d-widget/*.min.js'
 
 service_worker:
-  maximumFileSizeToCacheInBytes: 52428800
+  maximumFileSizeToCacheInBytes: 10485760
   staticFileGlobs:
   - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
   stripPrefix: public
@@ -144,14 +144,6 @@ service_worker:
       handler: cacheFirst
       options:
         origin: cdn.jsdelivr.net  # 域名
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: fonts.google.com
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: 7.dusays.com
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
