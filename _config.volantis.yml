@@ -72,12 +72,18 @@ navbar:
     - name: 更多
       icon: fad fa-ellipsis-v
       rows:
+        - name: 暗黑模式 # 可自定义
+          icon: fad fa-moon # 可自定义
+          toggle: darkmode
         - name: RSS订阅
           icon: fad fa-rss
           url: atom.xml
-        - name: 站点地图
-          icon: fad fa-sitemap
-          url: sitemap.xml
+        - name: 科A资源站
+          icon: fad fa-server
+          url: https://sg.mcseekeri.top
+        - name: 可用性检测
+          icon: fad fa-telescope
+          url: https://status.mcseekeri.top
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
@@ -192,9 +198,9 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/custom/MCSeekeri.jpg
-        name: MC探索者i
-        url: https://mcseekeri.top
+        avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/avatar/mp.jpg
+        name: Anonymous
+        url: /
       # 文章创建日期
       date:
         icon: fad fa-calendar-alt
@@ -668,15 +674,8 @@ plugins:
   #   toggle: darkmode
   darkmodejs:
     enable: true
-    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
-    button: # button 使用默认或自行开发
-      enable: true
-      left: '16px'
-      bottom: '32px'
-      buttonDark: '#333'
-      buttonLight: '#ddd'
-    compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
-
+    js: https://cdn.jsdelivr.net/npm/darkmode-js@latest/lib/darkmode-js.min.js
+ 
   # 旧版 Internet Explorer 淘汰行动
   # https://support.dmeng.net/kill-old-versions-of-ie.html
   # 本主题不支持Internet Explorer的任何版本!!!
