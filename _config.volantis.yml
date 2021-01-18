@@ -53,19 +53,19 @@ navbar:
       rows:
         - name: 混沌之脑
           icon: fad fa-mind-share
-          url: categories/混沌之脑
+          url: tags/混沌之脑
         - name: 命运石之门
           icon: fad fa-cog
-          url: categories/命运石之门
+          url: tags/命运石之门
         - name: 机器人笔记
           icon: fad fa-robot
-          url: categories/命运石之门
+          url: tags/机器人笔记
         - name: 混沌之子
           icon: fad fa-eye
-          url: categories/混沌之子
+          url: tags/混沌之子
         - name: 超自然9人组
           icon: fad fa-star-of-david
-          url: categories/超自然9人组
+          url: tags/超自然9人组
         - name: 匿名者代码
           icon: fad fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
@@ -109,11 +109,11 @@ cover:
     - name: 文本
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: tags/游戏文本
+      url: categories/游戏文本
     - name: 石学
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: tags/相关著作
+      url: categories/相关著作
     - name: 关于
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
@@ -216,7 +216,7 @@ article:
         icon: fa fa-folder-open
       # 文章浏览计数
       counter:
-        icon: fad fa-eye
+        icon: fas fa-eye
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
@@ -367,8 +367,8 @@ sidebar:
       avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/amadeus.jpg
       shape: rectangle # circle, rectangle
       url: /about/
-      title:
-      subtitle:
+      title: 科学ADV图书馆
+      subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fad fa-rss
@@ -438,7 +438,7 @@ sidebar:
           unit: '篇'
         runtime:
           enable: true
-          data: '2021/01/05'    # 填写建站日期
+          data: '2021/01/09'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
@@ -544,7 +544,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
@@ -565,7 +565,7 @@ plugins:
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
-    enable: true
+    enable: false
     css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
 
@@ -680,7 +680,7 @@ plugins:
   # https://support.dmeng.net/kill-old-versions-of-ie.html
   # 本主题不支持Internet Explorer的任何版本!!!
   killOldVersionsOfIE:
-    enable: true
+    enable: false
     action: alert # jump: 升级提示跳转 alert: 升级提示弹窗
 ############################### Plugins ############################### > end
 
@@ -882,7 +882,7 @@ custom_css:
     searchbar: 8px
     button: 4px
   fontsize:
-    root: 16px
+    root: 14px
     h1: 1.5rem # 不推荐用在文章中
     h2: 1.5rem
     h3: 1.25rem
