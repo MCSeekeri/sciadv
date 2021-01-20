@@ -375,7 +375,7 @@ sidebar:
           url: /atom.xml
         - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fad fa-github
+        - icon: fal fa-github
           url: https://github.com/mcseekeri/sciadv
         - icon: fad fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
