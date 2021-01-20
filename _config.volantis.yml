@@ -2,10 +2,10 @@
 # 仅限/source/js/中的JS文件
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 use_cdn 设置为 false
-use_cdn: true
+use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '4.2.0' # This is theme's version.
+  theme_version: '4.3.0' # This is theme's version.
   theme_docs: https://volantis-x.github.io/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
@@ -377,8 +377,8 @@ sidebar:
           url: mailto:mcseekeri@outlook.com
         - icon: fad fa-github
           url: https://github.com/mcseekeri/sciadv
-        #- icon: fas fa-headphones-alt
-        #  url: /
+        - icon: fad fa-headphones-alt
+          url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -512,7 +512,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@master/css/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
@@ -528,7 +528,7 @@ plugins:
   # https://www.npmjs.com/package/vanilla-lazyload
   lazyload:
     enable: true
-    js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
+    js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js
     onlypost: false
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -588,19 +588,19 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover1.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover2.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover3.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover4.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover5.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover6.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover7.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover8.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover9.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover10.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover11.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover12.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@latest/img/cover/cover13.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover1.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover2.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover3.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover4.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover5.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover6.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover7.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover8.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover9.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover10.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover11.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover12.jpg
+      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover13.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
