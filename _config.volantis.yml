@@ -43,13 +43,13 @@ navbar:
           icon: fad fa-user-circle
           url: about/
         - name: 时间机器
-          icon: fad fa-comment-alt-smile
+          icon: fad fa-microwave
           url: time-machine/
         - name: 留言
           icon: fad fa-comment-dots
           url: comment/
     - name: 科A作品
-      icon: fad fa-brain
+      icon: fad fa-head-side-brain
       rows:
         - name: 混沌之脑
           icon: fad fa-mind-share
@@ -75,6 +75,7 @@ navbar:
         - name: 暗黑模式 # 可自定义
           icon: fad fa-moon # 可自定义
           toggle: darkmode
+        - name: hr
         - name: RSS订阅
           icon: fad fa-rss
           url: atom.xml
@@ -96,32 +97,32 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+  background: ''
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
   subtitle: ''
   search: '' # search bar placeholder
   features:
     - name: 归档
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
+      icon: fad fa-archive
+      img: 
       url: archive/
     - name: 文本
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
+      icon: fad fa-file-alt
+      img: 
       url: categories/游戏文本
-    - name: 石学
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: categories/相关著作
-    - name: 关于
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
+    - name: 讨论探究
+      icon: fad fs-books
+      img: 
+      url: categories/讨论探究
+    - name: 关于本站
+      icon: fad fa-user-circle
+      img: 
       url: about/
-    #- name: 博客
-    #  icon: #
-    #  img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
-    #  url: /archives/
+    - name: 评论留言
+      icon: fad fa-comment
+      img: 
+      url: comments/
       ############################### Cover ############################### > end
 
 pages:
@@ -198,7 +199,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/avatar/mp.jpg
+        avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/mp.jpg
         name: Anonymous
         url: /
       # 文章创建日期
@@ -375,7 +376,7 @@ sidebar:
           url: /atom.xml
         - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fal fa-github
+        - icon: fas fa-github
           url: https://github.com/mcseekeri/sciadv
         - icon: fad fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
@@ -588,19 +589,19 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover1.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover2.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover3.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover4.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover5.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover6.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover7.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover8.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover9.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover10.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover11.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover12.jpg
-      - https://cdn.jsdelivr.net/gh/MCSeekeri/cdn@2.1.0/img/cover/cover13.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover1.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover2.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover3.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover4.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover5.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover6.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover7.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover8.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover9.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover10.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover11.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover12.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover13.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
