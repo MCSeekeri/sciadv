@@ -166,7 +166,8 @@ hexo_submit_urls_to_search_engine:
 
 import:
     link:
-      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+      - <link rel="preconnect" href="https://fonts.gstatic.com">
+      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Dosis&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:
 	enable: true
@@ -185,6 +186,9 @@ abbrlink:
   auto_title: false #enable auto title, it can auto fill the title by path
   auto_date: false #enable auto date, it can auto fill the date by time today
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
+
+baidu_analytics_key: 633c3b07ea8711cceacf3394bcae9687
+google_analytics_key: G-619675E8HR
 
 
 # Deployment
