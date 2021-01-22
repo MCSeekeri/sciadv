@@ -106,7 +106,7 @@ cover:
     - name: 归档
       icon: fas fa-archive
       img: 
-      url: archive/
+      url: archives/
     - name: 文本
       icon: fas fa-file-alt
       img: 
@@ -122,7 +122,7 @@ cover:
     - name: 评论
       icon: fas fa-comment
       img: 
-      url: comments/
+      url: comment/
       ############################### Cover ############################### > end
 
 pages:
@@ -897,10 +897,6 @@ custom_css:
   fontfamily:
     logofont:
       fontfamily: '"Dosis", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
-      name: 'Dosis'
-      url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf
-      weight: normal
-      style: normal
       #name: 'Varela Round'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       #weight: normal
