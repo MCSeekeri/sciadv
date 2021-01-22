@@ -92,7 +92,7 @@ navbar:
 ############################### Cover ############################### > start
 cover:
   height_scheme: half # full, half
-  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout_scheme: focus # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
@@ -112,7 +112,7 @@ cover:
       img: 
       url: categories/游戏文本
     - name: 讨论探究
-      icon: fad fs-books
+      icon: fad fa-books
       img: 
       url: categories/讨论探究
     - name: 关于本站
