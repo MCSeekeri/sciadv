@@ -1,16 +1,16 @@
 MCSeekeri:
   name: MC探索者i
-  avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/custom/MCSeekeri.jpg
+  avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/MCSeekeri.jpg
   url: https://mcseekeri.top
 tgy:
   name: 天光逸
-  avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/avatar/tgy.jpg
+  avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/tgy.jpg
   url: https://tieba.baidu.com/home/main/?un=%E5%A4%A9%E5%85%89%E9%80%B8&
 serika:
   name: 尾上世莉架
-  avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/avatar/serika.png
+  avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/serika.png
   url: https://tieba.baidu.com/home/main?un=_%E5%B0%BE%E4%B8%8A%E4%B8%96%E8%8E%89%E6%9E%B6_
 mages:
   name: MAGES.
-  avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/avatar/mages.png
+  avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/mages.png
   url: https://5pb.jp/
