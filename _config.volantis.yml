@@ -18,7 +18,7 @@ info:
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
-  visiable: auto # always, auto
+  visiable: always # always, auto
   logo: # choose [img] or [icon + title]
     img: /favicon.ico
     icon:
@@ -92,7 +92,7 @@ navbar:
 ############################### Cover ############################### > start
 cover:
   height_scheme: half # full, half
-  layout_scheme: focus # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
@@ -104,23 +104,23 @@ cover:
   search: '' # search bar placeholder
   features:
     - name: 归档
-      icon: fad fa-archive
+      icon: fas fa-archive
       img: 
       url: archive/
     - name: 文本
-      icon: fad fa-file-alt
+      icon: fas fa-file-alt
       img: 
       url: categories/游戏文本
-    - name: 讨论探究
-      icon: fad fa-books
+    - name: 石学
+      icon: fas fa-books
       img: 
       url: categories/讨论探究
-    - name: 关于本站
-      icon: fad fa-user-circle
+    - name: 关于
+      icon: fas fa-user-circle
       img: 
       url: about/
-    - name: 评论留言
-      icon: fad fa-comment
+    - name: 评论
+      icon: fas fa-comment
       img: 
       url: comments/
       ############################### Cover ############################### > end
