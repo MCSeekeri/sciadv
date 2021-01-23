@@ -3,8 +3,9 @@ title: SG:时间跳跃的妄想
 date: 2010-07-29
 author: mages
 categories: 
-- 游戏文本
+- 官方原作
 tags: 
+- 游戏文本
 - 命运石之门
 description: 「这台电话烤箱（暂定）是——时间机器……！ 」
 keywords: 
