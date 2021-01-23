@@ -107,10 +107,10 @@ cover:
       icon: fas fa-archive
       img: 
       url: archives/
-    - name: 文本
+    - name: 官方
       icon: fas fa-file-alt
       img: 
-      url: categories/游戏文本
+      url: categories/官方原作
     - name: 石学
       icon: fas fa-books
       img: 
@@ -883,7 +883,7 @@ custom_css:
     searchbar: 8px
     button: 4px
   fontsize:
-    root: 14px
+    root: 16px
     h1: 1.5rem # 不推荐用在文章中
     h2: 1.5rem
     h3: 1.25rem
