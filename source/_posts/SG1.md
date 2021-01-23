@@ -3,8 +3,9 @@ title: SG:开始与终结的序章
 date: 2010-07-28
 author: mages
 categories: 
-- 游戏文本
+- 官方原作
 tags: 
+- 游戏文本
 - 命运石之门
 description: 「呐呐，你在嘟囔些什么啊～？ 」
 keywords: 
