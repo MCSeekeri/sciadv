@@ -105,20 +105,10 @@ feed:
   path: atom.xml
   limit: 400
 service_worker:
-  maximumFileSizeToCacheInBytes: 104857600
+  maximumFileSizeToCacheInBytes: 10485
   staticFileGlobs:
-  - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
   stripPrefix: public
   verbose: true
-  runtimeCaching:
-    - urlPattern: /*   # 子路径（接受通配符）
-      handler: cacheFirst
-      options:
-        origin: cdn.jsdelivr.net  # 域名
-    - urlPattern: /*   # 子路径（接受通配符）
-      handler: cacheFirst
-      options:
-        origin: fonts.googleapis.com  # 域名
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
