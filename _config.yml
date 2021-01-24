@@ -104,11 +104,6 @@ feed:
   type: atom
   path: atom.xml
   limit: 400
-service_worker:
-  maximumFileSizeToCacheInBytes: 10485
-  staticFileGlobs:
-  stripPrefix: public
-  verbose: true
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
