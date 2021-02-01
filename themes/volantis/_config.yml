@@ -1,18 +1,18 @@
 ############################### Volantis ###############################
-# 仅限/source/js/中的JS文件
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 use_cdn 设置为 false
 use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '4.2.0' # This is theme's version.
-  theme_docs: https://volantis-x.github.io/ # This is theme's URL.
+  theme_version: '4.3.1' # This is theme's version.
+  theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
-    js:
+    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
     css:
-      first:
-      style:
+      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
+      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -54,7 +54,8 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+  background: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
+  # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: 'Volantis'
   subtitle: ''
@@ -136,7 +137,7 @@ article:
         icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
-        placeholder_img: data:image/png;base64,666
+        placeholder_img: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
@@ -186,7 +187,7 @@ article:
         desc: '' # 条评论
       walinecount:
         icon: fas fa-comment-dots
-        desc: '' # 条评论        
+        desc: '' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fas fa-keyboard
@@ -213,12 +214,12 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
+  service: valine # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
   # Valine
   # https://valine.js.org/
   valine:
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    path: # 全局评论地址
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是valine的问题
     placeholder: 快来评论吧~  # 评论占位提示
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
     appId: # your appId
@@ -231,7 +232,6 @@ comments:
     pageSize: 10 # comment list page size
     lang: zh-cn
     highlight: true
-    visitor: true
     mathJax: false
   # MiniValine
   # https://github.com/MiniValine/MiniValine
@@ -239,7 +239,7 @@ comments:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 全局评论占位提示
-    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
+    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
@@ -251,6 +251,16 @@ comments:
     # optional
     autoload: false
     path: # 全局评论地址
+  # DisqusJS
+  # https://github.com/SukkaW/DisqusJS
+  disqusjs:
+    path: # 全局评论地址
+    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
+    #shortname:
+    #api:
+    #apikey:
+    #admin:
+    #nesting:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
@@ -261,23 +271,23 @@ comments:
     owner:
     admin: # []
     path: # 全局评论地址
-  # Vssue
+  # Vssue 暂不支持Pjax
   # https://vssue.js.org/zh/
   vssue:
     owner:
     repo:
     clientId:
     clientSecret:
-  # LiveRe
+  # LiveRe 暂不支持Pjax
   # https://www.livere.com
   livere:
     uid:
-  # Isso
+  # Isso 暂不支持Pjax
   # https://posativ.org/isso/
   isso:
     url: https://example.com/(path/)
     src: https://example.com/(path/)js/embed.min.js
-  # HashOver
+  # HashOver 暂不支持Pjax
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
@@ -292,7 +302,7 @@ comments:
   # https://waline.js.org/
   waline:
     js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
-    path: # 全局评论地址
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
     placeholder: 快来评论吧~  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
@@ -586,13 +596,40 @@ plugins:
     list_folded: true
   pjax:
     enable: true
+    cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - /artitalk/     # artitalk 不支持 pjax
-      # - /bb/           # bbtalk 不支持 pjax
+      # - '/artitalk/'     # artitalk 不支持 pjax
+      # - '/bb/'           # bbtalk 不支持 pjax
 
+  # 从 issues 加载动态数据
+  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
+  # 例如：
+  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
+
+
+  # 暗黑模式 darkmode
+  # 样式：source/css/_plugins/dark.styl
+  # 开关按钮：在 navbar.menu 中添加：
+  # - name: 暗黑模式 # 可自定义
+  #   icon: fas fa-moon # 可自定义
+  #   toggle: darkmode
+  darkmodejs:
+    enable: true
+
+  # 旧版 Internet Explorer 淘汰行动
+  # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
+  # 本主题不支持Internet Explorer的任何版本!!!
+  killOldVersionsOfIE:
+    enable: true
+
+  # 禁用JavaScript提示
+  # 本页面需要浏览器支持（启用）JavaScript
+  # 主题中的某些插件必须启用JavaScript才能正常工作，例如开启scrollreveal如果禁用JavaScript会导致卡片消失
+  killNoScript:
+    enable: true
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
@@ -622,27 +659,12 @@ plugins:
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
 
-  # 从 issues 加载动态数据
-  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
-  # 例如：
-  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
-
-
-  # 暗黑模式 darkmode
-  # 样式：source/css/_plugins/dark.styl
-  # 开关按钮：在 navbar.menu 中添加：
-  # - name: 暗黑模式 # 可自定义
-  #   icon: fas fa-moon # 可自定义
-  #   toggle: darkmode
-  darkmodejs:
+  # Tidio聊天功能
+  # https://www.tidio.com/
+  tidio:
     enable: #true
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  # 旧版 Internet Explorer 淘汰行动
-  # https://support.dmeng.net/kill-old-versions-of-ie.html
-  # 本主题不支持Internet Explorer的任何版本!!!
-  killOldVersionsOfIE:
-    enable: true
-    action: alert # jump: 升级提示跳转 alert: 升级提示弹窗
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -650,7 +672,7 @@ plugins:
 rightmenu:
   enable: #true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, dark_mode, hr, music]
   # 可选功能项
   print:
     name: 打印页面
@@ -677,6 +699,10 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
+  dark_mode:
+    name: Dark mode
+    icon: fas fa-moon
+    toggle: darkmode
 ############################### Rightmenu ############################### > end
 
 
