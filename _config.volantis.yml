@@ -175,7 +175,7 @@ article:
         icon: fad fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
-        placeholder_img: 
+        placeholder_img: /favicon.ico
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
