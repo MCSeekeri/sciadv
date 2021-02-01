@@ -5,8 +5,8 @@
 use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '4.3.0' # This is theme's version.
-  theme_docs: https://volantis-x.github.io/ # This is theme's URL.
+  theme_version: '4.3.1' # This is theme's version.
+  theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
     js:
@@ -252,7 +252,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: minivaline # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
+  service: minivaline # valine, twikoo, waline, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
   # Valine
   # https://valine.js.org/
   valine:
@@ -298,6 +298,16 @@ comments:
     # optional
     autoload: false
     path: # 全局评论地址
+  # DisqusJS
+  # https://github.com/SukkaW/DisqusJS
+  disqusjs:
+    path: # 全局评论地址
+    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
+    #shortname:
+    #api:
+    #apikey:
+    #admin:
+    #nesting:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
@@ -625,6 +635,7 @@ plugins:
     list_folded: true
   pjax:
     enable: true
+    cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
@@ -632,6 +643,32 @@ plugins:
        - /time-machine/     # artitalk 不支持 pjax
       # - /bb/           # bbtalk 不支持 pjax
 
+  # 从 issues 加载动态数据
+  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
+  # 例如：
+  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
+
+
+  # 暗黑模式 darkmode
+  # 样式：source/css/_plugins/dark.styl
+  # 开关按钮：在 navbar.menu 中添加：
+  # - name: 暗黑模式 # 可自定义
+  #   icon: fas fa-moon # 可自定义
+  #   toggle: darkmode
+  darkmodejs:
+    enable: true
+
+  # 旧版 Internet Explorer 淘汰行动
+  # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
+  # 本主题不支持Internet Explorer的任何版本!!!
+  killOldVersionsOfIE:
+    enable: true
+
+  # 禁用JavaScript提示
+  # 本页面需要浏览器支持（启用）JavaScript
+  # 主题中的某些插件必须启用JavaScript才能正常工作，例如开启scrollreveal如果禁用JavaScript会导致卡片消失
+  killNoScript:
+    enable: true
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
@@ -660,29 +697,13 @@ plugins:
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
+# Tidio聊天功能
+  # https://www.tidio.com/
+  tidio:
+    enable: #true
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  # 从 issues 加载动态数据
-  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
-  # 例如：
-  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
 
-
-  # 暗黑模式 darkmode
-  # 样式：source/css/_plugins/dark.styl
-  # 开关按钮：在 navbar.menu 中添加：
-  # - name: 暗黑模式 # 可自定义
-  #   icon: fas fa-moon # 可自定义
-  #   toggle: darkmode
-  darkmodejs:
-    enable: true
-    js: https://cdn.jsdelivr.net/npm/darkmode-js@latest/lib/darkmode-js.min.js
- 
-  # 旧版 Internet Explorer 淘汰行动
-  # https://support.dmeng.net/kill-old-versions-of-ie.html
-  # 本主题不支持Internet Explorer的任何版本!!!
-  killOldVersionsOfIE:
-    enable: false
-    action: alert # jump: 升级提示跳转 alert: 升级提示弹窗
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -690,7 +711,7 @@ plugins:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [home, hr, source_docs, source_theme, hr, print, dark_mode, hr, music]
   # 可选功能项
   print:
     name: 打印页面
@@ -717,6 +738,10 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
+  dark_mode:
+    name: Dark mode
+    icon: fas fa-moon
+    toggle: darkmode
 ############################### Rightmenu ############################### > end
 
 
