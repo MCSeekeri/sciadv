@@ -199,7 +199,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/avatar/mp.jpg
+        avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/avatar/mp.webp
         name: Anonymous
         url: /
       # 文章创建日期
@@ -290,6 +290,21 @@ comments:
     enableFlag: true
     enableUA: true
     cloudflag: true
+    emoticonUrl:
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/alus
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/bilibili2233
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/bilibiliHotKey
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Bilibilis
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Coolapk
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/funny
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Heybox
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Menhera-chan
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/qq
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/tieba
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/twemoji
+    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/weibo
+    
+    
    
   # Disqus
   # https://disqus.com
@@ -375,7 +390,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/gh/mcseekeri/cdn@master/img/amadeus.jpg
+      avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/avatar/amadeus.webp
       shape: rectangle # circle, rectangle
       url: /about/
       title: 科学ADV图书馆
@@ -599,19 +614,19 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover1.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover2.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover3.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover4.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover5.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover6.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover7.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover8.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover9.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover10.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover11.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover12.jpg
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.0.0/img/cover/cover13.jpg
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover1.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover2.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover3.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover4.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover5.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover6.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover7.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover8.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover9.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover10.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover11.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover12.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover13.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
