@@ -147,7 +147,11 @@ abbrlink:
 baidu_analytics_key: 633c3b07ea8711cceacf3394bcae9687
 google_analytics_key: G-619675E8HR
 
-
+algolia:
+  applicationID: NZUPA1KZ8D
+  apiKey: 88c852dba6c38d051f025b32915f797a
+  indexName: Sciadv
+  chunkSize: 5000
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
