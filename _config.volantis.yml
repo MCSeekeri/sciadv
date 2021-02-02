@@ -547,8 +547,8 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/instant_page.js
-    flying_pages: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/flying-pages.min.js
+    instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+    flying_pages: https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -564,8 +564,8 @@ plugins:
   # highlight.js
   highlightjs:
     enable: true # Please set hexo.config.highlight.enable = false !!!
-    js: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/highlight.min.js
-    css: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/solarized-light.min.css
+    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js
+    css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
