@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "14.x"
         # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
-      - name: 缓存Node模块内容
+      - name: Node模块内容
         uses: actions/cache@v1 # 使用 GitHub 官方的缓存 Action。
         env:
           cache-name: hexo-node-modules
@@ -49,4 +49,4 @@ jobs:
         run: |
           # publish
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> /home/runner/work/sciadv/sciadv/push.json
-          hexo-algolia && hexo generate && hexo deploy # 执行部署程序
+          hexo algolia && hexo generate && hexo deploy # 执行部署程序
