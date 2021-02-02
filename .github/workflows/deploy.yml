@@ -1,22 +1,22 @@
-name: Deploy My Blog
+name: 部署图书馆内容
 on: push
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 载入文件
         uses: actions/checkout@v2
         with:
         # 令 GitHub 在 git clone 和 git checkout 后「忘记」使用的 credentials。
         # 如果之后需要以另外的身份（如你的 GitHub Bot）执行 git push 操作时（如部署到 GitHub Pages），必须设置为 false。
           persist-credentials: false
-      - name: Use Node.js 14.x 
+      - name: 使用Node14.x 
         uses: actions/setup-node@v1 
         with:
           node-version: "14.x"
         # 缓存 node_modules，缓存机制参见 GitHub 文档：https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
-      - name: Cache node_modules
+      - name: 缓存Node模块内容
         uses: actions/cache@v1 # 使用 GitHub 官方的缓存 Action。
         env:
           cache-name: hexo-node-modules
@@ -24,7 +24,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
     
-      - name: Setup Hexo env
+      - name: 设置Hexo环境
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
         run: |
@@ -40,7 +40,7 @@ jobs:
           npm i -g hexo-cli yarn # 安装hexo
           yarn
   
-      - name: Deploy
+      - name: 部署页面并提交搜索引擎
         env:
           BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
           BING_TOKEN: ${{ secrets.BING_TOKEN }}
@@ -49,4 +49,4 @@ jobs:
         run: |
           # publish
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> /home/runner/work/sciadv/sciadv/push.json
-          hexo generate && hexo deploy # 执行部署程序
+          hexo-algolia && hexo generate && hexo deploy # 执行部署程序
