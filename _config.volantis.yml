@@ -137,7 +137,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/pin.svg
+    pin_icon: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/pin.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -199,7 +199,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/avatar/mp.webp
+        avatar: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/avatar/mp.webp
         name: Anonymous
         url: /
       # 文章创建日期
@@ -236,15 +236,15 @@ article:
       # 分享
       share:
         - id: qq
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/png/qq.png
+          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/qq.png
         - id: qzone
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/png/qzone.png
+          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/qzone.png
         - id: weibo
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/png/weibo.png
+          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/weibo.png
         - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/png/wechat.png
+          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/wechat.png
         - id: telegram
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/png/telegram.png
+          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -390,7 +390,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/avatar/amadeus.webp
+      avatar: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/avatar/amadeus.webp
       shape: rectangle # circle, rectangle
       url: /about/
       title: 科学ADV图书馆
@@ -503,7 +503,7 @@ tag_plugins:
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
-    placeholder: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/safari.svg
+    placeholder: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/safari.svg
 ############################### Tag Plugins ############################### > end
 
 
@@ -538,7 +538,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
@@ -547,8 +547,8 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/instant_page.js
-    flying_pages: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/flying-pages.min.js
+    instant_page: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/instant_page.js
+    flying_pages: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -564,8 +564,8 @@ plugins:
   # highlight.js
   highlightjs:
     enable: true # Please set hexo.config.highlight.enable = false !!!
-    js: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/highlight.min.js
-    css: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/solarized-light.min.css
+    js: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/highlight.min.js
+    css: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
@@ -614,19 +614,19 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover1.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover2.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover3.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover4.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover5.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover6.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover7.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover8.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover9.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover10.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover11.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover12.webp
-      - https://cdn.jsdelivr.net/npm/mcseekeri@1.1.0/img/cover/cover13.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover1.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover2.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover3.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover4.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover5.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover6.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover7.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover8.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover9.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover10.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover11.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover12.webp
+      - https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/img/cover/cover13.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -881,13 +881,13 @@ custom_css:
   toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: true
-    text: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/text.cur
-    pointer: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/link.cur
-    default: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/pointer.cur
-    not-allowed: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/unavailiable.cur
-    zoom-out: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/alternate.cur
-    zoom-in: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/alternate.cur
-    grab: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.0/cursors/move.cur
+    text: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/text.cur
+    pointer: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/link.cur
+    default: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/pointer.cur
+    not-allowed: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/unavailiable.cur
+    zoom-out: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/alternate.cur
+    zoom-in: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/alternate.cur
+    grab: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/move.cur
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
