@@ -291,18 +291,18 @@ comments:
     enableUA: true
     cloudflag: true
     emoticonUrl:
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/alus
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/bilibili2233
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/bilibiliHotKey
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Bilibilis
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Coolapk
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/funny
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Heybox
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/Menhera-chan
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/qq
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/tieba
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/twemoji
-    - https://cdn.jsdelivr.net/npm/mcemoji@1.0.0/weibo
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/alus
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibili2233
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibiliHotKey
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Bilibilis
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/funny
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Menhera-chan
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/qq
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/tieba
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/twemoji
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
     
     
    
@@ -401,7 +401,7 @@ sidebar:
           url: /atom.xml
         - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fas fa-github
+        - icon: fa fa-github
           url: https://github.com/mcseekeri/sciadv
         - icon: fad fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
