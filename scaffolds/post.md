@@ -1,11 +1,11 @@
 ---
 title: {{ title }}
-date: {{ date }}
-author:
-categories: 
-tags: 
-description: 
-keywords: 
-headimg: 
+author: 
+categories:
+tags:
 copyright: false
+date: {{ date }}
+description:
+keywords:
+headimg:
 ---
