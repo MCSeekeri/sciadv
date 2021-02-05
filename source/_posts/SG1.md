@@ -1,13 +1,12 @@
 ---
 title: SG:开始与终结的序章
-date: 2010-07-28
+date: 2009-10-15
 author: mages
 categories:
 - 命运石之门
 tags:
 - 游戏文本
 description: 访问https://sciadv.mcseekeri.top/onlineadv 进入主页
-keywords:
 headimg:
 copyright: false
 hide: true

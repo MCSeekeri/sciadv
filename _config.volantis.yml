@@ -726,7 +726,7 @@ plugins:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, source_docs, source_theme, hr, print, dark_mode, hr, music]
+  layout: [home, source_docs, source_theme, hr, print, dark_mode, hr, music]
   # 可选功能项
   print:
     name: 打印页面
@@ -765,7 +765,7 @@ rightmenu:
 # npm i hexo-generator-search hexo-generator-json-content
 search:
   enable: true
-  service: algolia  # hexo, google, algolia, azure, baidu
+  service: hexo  # hexo, google, algolia, azure, baidu
   js:
   google:
     apiKey:
