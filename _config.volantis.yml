@@ -726,25 +726,8 @@ plugins:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, open_new, copy_text, copy_src, copy_href, source_docs, source_theme, hr, print, dark_mode]
+  layout: [home, source_docs, source_theme, hr, print, dark_mode]
   # 可选功能项
-  open_new:
-    name: 在新标签页打开
-    icon: fal fa-external-link-square-alt
-    id: menu-open-new
-  copy_text:
-    name: 复制文本
-    icon: fal fa-copy
-    id: menu-copy-text
-    onclick: document.execCommand('copy')
-  copy_src:
-    name: 复制图片地址
-    icon: fal fa-image
-    id: menu-copy-src
-  copy_href:
-    name: 复制链接
-    icon: fal fa-link
-    id: menu-copy-href
   print:
     name: 打印页面
     icon: fa fa-print
