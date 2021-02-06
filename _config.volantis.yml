@@ -529,7 +529,7 @@ site_footer:
   # site copyright
   copyright: '[本站内容来源自网络 所有权归作者所有](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '<br>'
+  br: '下北泽ICP备 114514号'
 ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
@@ -653,7 +653,7 @@ plugins:
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: false # false, nprogress, circle
+    animation: nprogress # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
        - /time-machine/     # artitalk 不支持 pjax
       # - /bb/           # bbtalk 不支持 pjax
