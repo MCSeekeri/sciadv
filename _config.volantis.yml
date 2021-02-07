@@ -75,14 +75,7 @@ navbar:
         - name: 暗黑模式 # 可自定义
           icon: fad fa-moon # 可自定义
           toggle: darkmode
-        - name: hr
-        - name: RSS订阅
-          icon: fad fa-rss
-          url: atom.xml
-        - name: 科A资源站
-          icon: fad fa-server
-          url: https://sg.mcseekeri.top
-        - name: 可用性检测
+        - name: 服务器检测
           icon: fad fa-telescope
           url: https://status.mcseekeri.top
   search: Search...   # Search bar placeholder
@@ -529,7 +522,7 @@ site_footer:
   # site copyright
   copyright: '[本站内容来源自网络 所有权归作者所有](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '下北泽ICP备 114514号'
+  br: <br>
 ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
@@ -652,7 +645,7 @@ plugins:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
+    cacheBust: true     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
        - /time-machine/     # artitalk 不支持 pjax
@@ -754,7 +747,7 @@ rightmenu:
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
   dark_mode:
-    name: Dark mode
+    name: 夜间模式
     icon: fas fa-moon
     toggle: darkmode
 ############################### Rightmenu ############################### > end
