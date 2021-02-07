@@ -9,7 +9,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "代码品质检查"
+name: "CodeQL"
 
 on:
   push:
@@ -18,11 +18,11 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ master ]
   schedule:
-    - cron: '31 13 * * 0'
+    - cron: '26 22 * * 4'
 
 jobs:
   analyze:
-    name: 分析
+    name: Analyze
     runs-on: ubuntu-latest
 
     strategy:
@@ -34,11 +34,11 @@ jobs:
         # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
 
     steps:
-    - name: 加载Repo
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     # Initializes the CodeQL tools for scanning.
-    - name: 初始化CodeQL
+    - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
@@ -49,7 +49,7 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: 自动构建
+    - name: Autobuild
       uses: github/codeql-action/autobuild@v1
 
     # ℹ️ Command-line programs to run using the OS shell.
@@ -63,5 +63,5 @@ jobs:
     #   make bootstrap
     #   make release
 
-    - name: 进行CodeQL分析
+    - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
