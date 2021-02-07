@@ -175,7 +175,7 @@ article:
         enable: true
         permalink: '本文永久链接是：'
         content:
-          - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+          - '本站内容收集自网络,原作者版权所有'
           - permalink
       # ----------------
       # 打赏组件 (for layout: post)
@@ -394,7 +394,7 @@ sidebar:
           url: /atom.xml
         - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fa fa-github
+        - icon: fas fa-github
           url: https://github.com/mcseekeri/sciadv
         - icon: fad fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
@@ -446,7 +446,7 @@ sidebar:
     # webinfo widget
     webinfo:
       class: webinfo
-      display: [desktop]
+      display: [desktop, mobile]
       header:
         icon: fad fa-award
         title: 站点信息
@@ -492,7 +492,7 @@ tag_plugins:
     iconfont: 'Font Awesome 5 Pro'
   # {% checkbox %}
   checkbox:
-    interactive: false # enable interactive for user
+    interactive: true # enable interactive for user
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
@@ -503,7 +503,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, analytics, info, copyright]
+  layout: [aplayer, social, analytics, info, copyright]
   social:
     - icon: #fas fa-rss
       url:
@@ -602,7 +602,7 @@ plugins:
   backstretch:
     enable: true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
-    position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
@@ -644,8 +644,8 @@ plugins:
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
-    timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: true     # When set to true, Pjax appends a timestamp  to skip the browser cache.
+    timeout: 0        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
+    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
        - /time-machine/     # artitalk 不支持 pjax
@@ -873,7 +873,7 @@ color_scheme:
 custom_css:
   toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
-    enable: true
+    enable: false
     text: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/text.cur
     pointer: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/link.cur
     default: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/pointer.cur
@@ -889,15 +889,15 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   body:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       copy_btn: true
-      grayscale: false # Enable grayscale effect
+      grayscale: true # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
