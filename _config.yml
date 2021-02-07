@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -127,8 +127,8 @@ import:
       - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Dosis&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:
-	enable: true
-	exclude:
+  enable: true
+  exclude:
   
 abbrlink:
   alg: crc32      #support crc16(default) and crc32
@@ -152,6 +152,7 @@ algolia:
   apiKey: 88c852dba6c38d051f025b32915f797a
   indexName: Sciadv
   chunkSize: 5000
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
