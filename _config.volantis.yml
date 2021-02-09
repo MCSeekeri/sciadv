@@ -394,7 +394,7 @@ sidebar:
           url: /atom.xml
         - icon: fad fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fas fa-github
+        - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
         - icon: fad fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
@@ -602,7 +602,7 @@ plugins:
   backstretch:
     enable: true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
-    position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
@@ -889,11 +889,11 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, blur] # [shadow, floatable, blur]
   body:
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, blur] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       copy_btn: true
@@ -929,13 +929,13 @@ custom_css:
     footnote: .78125rem
   fontfamily:
     logofont:
-      fontfamily: '"Dosis", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
+      fontfamily: '"Dosis", "Noto Serif SC", "Microsoft Yahei UI", sans-serif'
       #name: 'Varela Round'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       #weight: normal
       #style: normal
     bodyfont:
-      fontfamily: 'Dosis, "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
+      fontfamily: 'Dosis, "Noto Serif SC", "Microsoft Yahei UI", sans-serif'
       #name: 'UbuntuMono'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       #weight: normal
