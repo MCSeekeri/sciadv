@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 科学ADV整合站（暂定）
+title: 科学ADV图书馆（暂定）
 subtitle: ''
 description: 一个致力于科学ADV相关作品内容收集的网站
 keywords: 科学ADV 命运石之门 混沌之子 混沌之脑 机器人笔记 超自然9人组
@@ -108,7 +108,7 @@ feed:
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
-  count: 10 # 提交最新的10个链接
+  count: 500 # 提交最新的10个链接
   period: 1600 # 提交修改时间在 1600 秒内的链接
   google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
   bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
@@ -124,7 +124,7 @@ hexo_submit_urls_to_search_engine:
 import:
     link:
       - <link rel="preconnect" href="https://fonts.gstatic.com">
-      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Dosis&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+      - <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:
   enable: true

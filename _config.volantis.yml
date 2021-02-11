@@ -1,6 +1,6 @@
 ############################### Volantis ###############################
-# 仅限/source/js/中的JS文件
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 use_cdn 设置为 false
 use_cdn: true
 info:
@@ -9,10 +9,10 @@ info:
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
-    js:
+    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
     css:
-      first:
-      style:
+      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
+      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -245,7 +245,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: minivaline # valine, twikoo, waline, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
+  service: minivaline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover, twikoo, waline
   # Valine
   # https://valine.js.org/
   valine:
@@ -386,7 +386,7 @@ sidebar:
       avatar: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/avatar/amadeus.webp
       shape: rectangle # circle, rectangle
       url: /about/
-      title: 科学ADV整合站
+      title: 科学ADV图书馆
       subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
@@ -492,7 +492,7 @@ tag_plugins:
     iconfont: 'Font Awesome 5 Pro'
   # {% checkbox %}
   checkbox:
-    interactive: true # enable interactive for user
+    interactive: false # enable interactive for user
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
@@ -556,14 +556,14 @@ plugins:
 
   # highlight.js
   highlightjs:
-    enable: true # Please set hexo.config.highlight.enable = false !!!
+    enable: #true # Please set hexo.config.highlight.enable = false !!!
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js
     css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: false
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
@@ -584,7 +584,7 @@ plugins:
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
-    enable: false
+    enable: #true
     css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
 
@@ -705,6 +705,7 @@ plugins:
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
+
 # Tidio聊天功能
   # https://www.tidio.com/
   tidio:
@@ -891,13 +892,13 @@ custom_css:
     width: auto # auto, max
     effect: [shadow, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow] # [shadow, floatable, blur]
   body:
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       copy_btn: true
-      grayscale: true # Enable grayscale effect
+      grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
