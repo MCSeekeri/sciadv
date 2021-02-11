@@ -516,7 +516,7 @@ site_footer:
   # site source
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
-  analytics: >
+  analytics:
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fad fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fad fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
@@ -572,7 +572,7 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: true
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
@@ -633,7 +633,7 @@ plugins:
     type: playlist    # song, playlist, album, search, artist
     id: 6608242431    # song id / playlist id / album id / search keyword
     # Optional
-    fixed: true      #enable fixed mode
+    fixed: true       #enable fixed mode
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
@@ -930,19 +930,19 @@ custom_css:
     footnote: .78125rem
   fontfamily:
     logofont:
-      fontfamily: '"Dosis", "Noto Serif SC", "Microsoft Yahei UI", sans-serif'
+      fontfamily: 'Noto Serif SC", "Microsoft Yahei UI", sans-serif'
       #name: 'Varela Round'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       #weight: normal
       #style: normal
     bodyfont:
-      fontfamily: 'Dosis, "Noto Serif SC", "Microsoft Yahei UI", sans-serif'
+      fontfamily: '"Noto Serif SC", "Microsoft Yahei UI", sans-serif'
       #name: 'UbuntuMono'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       #weight: normal
       #style: normal
     codefont:
-      fontfamily: 'Dosis, "Microsoft Yahei UI"'
+      fontfamily: '"Noto Serif SC", "Microsoft Yahei UI"'
       # name: 'Monaco'
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
