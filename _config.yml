@@ -121,10 +121,10 @@ hexo_submit_urls_to_search_engine:
   google_host: https://sciadv.mcseekeri.top 
   google_key_file: push.json
 
-# import:
-#     link:
-#       - <link rel="preconnect" href="https://fonts.gstatic.com">
-#       - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+import:
+    link:
+      - <link rel="preconnect" href="https://fonts.gstatic.com">
+      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:
   enable: true
