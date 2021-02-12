@@ -898,7 +898,7 @@ custom_css:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
+      copy_btn: false
       grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
@@ -968,9 +968,9 @@ seo:
   use_excerpt_as_description: true
   robots:
     home_first_page: index,follow
-    home_other_pages: noindex,follow
-    archive: noindex,follow
-    category: noindex,follow
-    tag: noindex,follow
+    home_other_pages: index,follow
+    archive: index,follow
+    category: index,follow
+    tag: index,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
