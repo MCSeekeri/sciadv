@@ -63,9 +63,9 @@ navbar:
         - name: 混沌之子
           icon: fas fa-eye
           url: categories/混沌之子
-        - name: 超自然9人组
-          icon: fas fa-star-of-david
-          url: categories/超自然9人组
+        # - name: 超自然9人组
+        #   icon: fas fa-star-of-david
+        #   url: categories/超自然9人组
         - name: 匿名者代码
           icon: fas fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
@@ -136,7 +136,7 @@ article:
     # auto generate excerpt if not exist
     auto_excerpt: true # false, true
     # show split line or not
-    line_style: solid # hidden, solid, dashed, dotted
+    line_style: dashed # hidden, solid, dashed, dotted
     # show author
     author: true # true, false
     # show readmore button
@@ -234,10 +234,10 @@ article:
           img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/qzone.png
         - id: weibo
           img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/weibo.png
-        - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/wechat.png
-        - id: telegram
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/telegram.png
+        # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+        #   img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/wechat.png
+        # - id: telegram
+        #   img: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/png/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -279,10 +279,10 @@ comments:
     mode: xCss
     md: true
     RecordIP: true
-    visitor: true
     enableFlag: true
     enableUA: true
     cloudflag: true
+    avatarD: mp
     emoticonUrl:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/alus
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibili2233
@@ -425,8 +425,8 @@ sidebar:
         icon: fas fa-tags
         title: 热门标签
         url: tags/
-      min_font: 14
-      max_font: 24
+      min_font: 18
+      max_font: 26
       color: true
       start_color: '#999'
       end_color: '#555'
@@ -501,7 +501,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, analytics, info, copyright]
+  layout: [aplayer, analytics, info, copyright]
   social:
     - icon: #fas fa-rss
       url:
@@ -871,7 +871,7 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
-  toc_smooth: true # TOC 目录平滑滚动效果
+  toc_smooth: false # TOC 目录平滑滚动效果
   cursor:
     enable: false
     text: https://cdn.jsdelivr.net/npm/mcseekeri@2.0.1/cursors/text.cur
@@ -889,7 +889,7 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow] # [shadow, floatable, blur]
   sidebar:
     effect: [shadow] # [shadow, floatable, blur]
   body:
@@ -929,19 +929,19 @@ custom_css:
     footnote: .78125rem
   fontfamily:
     logofont:
-      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
+      fontfamily: '"Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       #name: 'Varela Round'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       #weight: normal
       #style: normal
     bodyfont:
-      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
+      fontfamily: '"Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       #name: 'UbuntuMono'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       #weight: normal
       #style: normal
     codefont:
-      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
+      fontfamily: '"Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       # name: 'Monaco'
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
