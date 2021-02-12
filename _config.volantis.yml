@@ -25,58 +25,58 @@ navbar:
     title:
   menu:
     - name: 导航
-      icon: fad fa-cube
+      icon: fas fa-cube
       rows:
         - name: 分类
-          icon: fad fa-folder-open
+          icon: fas fa-folder-open
           url: categories/
         - name: 标签
-          icon: fad fa-hashtag
+          icon: fas fa-hashtag
           url: tags/
         - name: 归档
-          icon: fad fa-list
+          icon: fas fa-list
           url: archives/
     - name: 关于
-      icon: fad fa-info
+      icon: fas fa-info
       rows:
         - name: 本站
-          icon: fad fa-user-circle
+          icon: fas fa-user-circle
           url: about/
         - name: 时间机器
-          icon: fad fa-microwave
+          icon: fas fa-microwave
           url: time-machine/
         - name: 留言
-          icon: fad fa-comment-dots
+          icon: fas fa-comment-dots
           url: comment/
     - name: 科A作品
-      icon: fad fa-head-side-brain
+      icon: fas fa-head-side-brain
       rows:
         - name: 混沌之脑
-          icon: fad fa-mind-share
+          icon: fas fa-mind-share
           url: categories/混沌之脑
         - name: 命运石之门
-          icon: fad fa-cog
+          icon: fas fa-cog
           url: categories/命运石之门
         - name: 机器人笔记
-          icon: fad fa-robot
+          icon: fas fa-robot
           url: categories/机器人笔记
         - name: 混沌之子
-          icon: fad fa-eye
+          icon: fas fa-eye
           url: categories/混沌之子
         - name: 超自然9人组
-          icon: fad fa-star-of-david
+          icon: fas fa-star-of-david
           url: categories/超自然9人组
         - name: 匿名者代码
-          icon: fad fa-code
+          icon: fas fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
     - name: 更多
-      icon: fad fa-ellipsis-v
+      icon: fas fa-ellipsis-v
       rows:
         - name: 暗黑模式 # 可自定义
-          icon: fad fa-moon # 可自定义
+          icon: fas fa-moon # 可自定义
           toggle: darkmode
         - name: 服务器检测
-          icon: fad fa-telescope
+          icon: fas fa-telescope
           url: https://status.mcseekeri.top
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
@@ -153,7 +153,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fad fa-quote-left
+        icon: fas fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
@@ -165,7 +165,7 @@ article:
       related_posts:
         enable: true
         title: 相关文章
-        icon: fad fa-bookmark
+        icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: /favicon.ico
@@ -197,12 +197,12 @@ article:
         url: /
       # 文章创建日期
       date:
-        icon: fad fa-calendar-alt
+        icon: fas fa-calendar-alt
         title: '发布于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章更新日期
       updated:
-        icon: fad fa-edit
+        icon: fas fa-edit
         title: '更新于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
@@ -214,18 +214,18 @@ article:
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
-        icon: fad fa-comment-dots
+        icon: fas fa-comment-dots
         desc: '' # 条评论
       walinecount:
-        icon: fad fa-comment-dots
+        icon: fas fa-comment-dots
         desc: '' # 条评论        
       # 文章字数和阅读时长
       wordcount:
-        icon_wordcount: fad fa-keyboard
-        icon_duration: fad fa-hourglass-half
+        icon_wordcount: fas fa-keyboard
+        icon_duration: fas fa-hourglass-half
       # 文章标签
       tags:
-        icon: fad fa-hashtag
+        icon: fas fa-hashtag
       # 分享
       share:
         - id: qq
@@ -390,13 +390,11 @@ sidebar:
       subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fad fa-rss
+        - icon: fas fa-rss
           url: /atom.xml
-        - icon: fad fa-envelope
+        - icon: fas fa-envelope
           url: mailto:mcseekeri@outlook.com
-        - icon: fab fa-github
-          url: https://github.com/mcseekeri/sciadv
-        - icon: fad fa-headphones-alt
+        - icon: fas fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
     # toc widget (valid only in articles)
@@ -404,7 +402,7 @@ sidebar:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fad fa-list
+        icon: fas fa-list
         title: 本文目录
       list_number: false
       min_depth: 2
@@ -415,7 +413,7 @@ sidebar:
       class: category
       display: [desktop, mobile]
       header:
-        icon: fad fa-folder-open
+        icon: fas fa-folder-open
         title: 文章分类
         url: /categories/
     # ---------------------------------------
@@ -424,7 +422,7 @@ sidebar:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fad fa-tags
+        icon: fas fa-tags
         title: 热门标签
         url: tags/
       min_font: 14
@@ -448,7 +446,7 @@ sidebar:
       class: webinfo
       display: [desktop, mobile]
       header:
-        icon: fad fa-award
+        icon: fas fa-award
         title: 站点信息
       type:
         article:
@@ -517,8 +515,8 @@ site_footer:
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
   analytics:
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fad fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fad fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '[本站内容来源自网络 所有权归作者所有](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -931,19 +929,19 @@ custom_css:
     footnote: .78125rem
   fontfamily:
     logofont:
-      fontfamily: 'Noto Serif SC", "Microsoft Yahei UI", sans-serif'
+      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       #name: 'Varela Round'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       #weight: normal
       #style: normal
     bodyfont:
-      fontfamily: '"Noto Serif SC", "Microsoft Yahei UI", sans-serif'
+      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       #name: 'UbuntuMono'
       #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       #weight: normal
       #style: normal
     codefont:
-      fontfamily: '"Noto Serif SC", "Microsoft Yahei UI"'
+      fontfamily: '"PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       # name: 'Monaco'
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
