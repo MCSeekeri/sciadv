@@ -5,7 +5,7 @@ Allow: /categories/
 Allow: /archives/
 Allow: /about/
 Allow: /tags/
-Allow: /*
+
 
 Sitemap: https://sciadv.mcseekeri.top/sitemap.xml
 Sitemap: https://sciadv.mcseekeri.top/baidusitemap.xml
