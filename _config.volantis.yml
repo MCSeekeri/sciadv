@@ -285,7 +285,6 @@ comments:
     cloudflag: true
     avatarD: mp
     emoticonUrl:
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/alu
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibiliHotKey
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibilitv
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
@@ -295,7 +294,6 @@ comments:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba-New
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/dingtalk
     
     
    
