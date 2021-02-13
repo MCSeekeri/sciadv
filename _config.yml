@@ -132,6 +132,8 @@ nofollow:
   exclude:
     - 'sciadv.mcseekeri.top'
     - 'mcseekeri.top'
+    - 'tieba.baidu.com'
+    - 'www.douban.com'
   
 abbrlink:
   alg: crc32      #support crc16(default) and crc32
