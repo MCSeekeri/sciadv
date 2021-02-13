@@ -128,7 +128,10 @@ import:
 
 nofollow:
   enable: true
+  field: site
   exclude:
+    - 'sciadv.mcseekeri.top'
+    - 'mcseekeri.top'
   
 abbrlink:
   alg: crc32      #support crc16(default) and crc32
