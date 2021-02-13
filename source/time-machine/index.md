@@ -1,8 +1,5 @@
 ---
-title: 小型时间机器
+title: 一般普通评论区
+author: MCSeekeri
 layout: artitalk
-mathjax: false
-meta:
-  header: [title]
-  footer: []
 ---
