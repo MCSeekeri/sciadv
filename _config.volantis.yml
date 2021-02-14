@@ -24,30 +24,6 @@ navbar:
     icon:
     title:
   menu:
-    - name: 导航
-      icon: fas fa-cube
-      rows:
-        - name: 分类
-          icon: fas fa-folder-open
-          url: categories/
-        - name: 标签
-          icon: fas fa-hashtag
-          url: tags/
-        - name: 归档
-          icon: fas fa-list
-          url: archives/
-    - name: 关于
-      icon: fas fa-info
-      rows:
-        - name: 本站
-          icon: fas fa-user-circle
-          url: about/
-        - name: 时间机器
-          icon: fas fa-microwave
-          url: time-machine/
-        - name: 留言
-          icon: fas fa-comment-dots
-          url: comment/
     - name: 科A作品
       icon: fas fa-head-side-brain
       rows:
@@ -69,6 +45,18 @@ navbar:
         - name: 匿名者代码
           icon: fas fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
+    - name: 关于
+      icon: fas fa-info
+      rows:
+        - name: 本站
+          icon: fas fa-user-circle
+          url: about/
+        - name: 时间机器
+          icon: fas fa-microwave
+          url: time-machine/
+        - name: 留言
+          icon: fas fa-comment-dots
+          url: comments/
     - name: 更多
       icon: fas fa-ellipsis-v
       rows:
@@ -794,7 +782,7 @@ color_scheme:
   # 亮色主题（默认）
   light:
     # 网站背景色
-    site_bg: '#f4f4f4'
+    site_bg: '#248,243,233'
     # 网站背景上的文字
     site_inner: '#dfdfdf'
     # 网站页脚文字
