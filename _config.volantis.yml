@@ -376,10 +376,8 @@ sidebar:
       subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
-          url: /atom.xml
         - icon: fas fa-envelope
-          url: mailto:mcseekeri@outlook.com
+          url: mailto:hiyajo.maho@outlook.com
         - icon: fas fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------

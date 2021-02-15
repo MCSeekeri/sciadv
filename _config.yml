@@ -101,11 +101,6 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: volantis
 
-feed:
-  type: atom
-  path: atom.xml
-  limit: 400
-
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
   count: 500 # 提交最新的10个链接
