@@ -42,7 +42,7 @@ navbar:
         # - name: 超自然9人组
         #   icon: fas fa-star-of-david
         #   url: categories/超自然9人组
-        - name: 匿名者代码
+        - name: 匿名代码
           icon: fas fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
     - name: 关于
@@ -57,15 +57,13 @@ navbar:
         - name: 留言
           icon: fas fa-comment-dots
           url: comments/
-    - name: 更多
-      icon: fas fa-ellipsis-v
-      rows:
-        - name: 暗黑模式 # 可自定义
-          icon: fas fa-moon # 可自定义
-          toggle: darkmode
-        - name: 服务器检测
-          icon: fas fa-telescope
-          url: https://status.mcseekeri.top
+    - name: 暗黑模式 # 可自定义
+      icon: fas fa-moon # 可自定义
+      toggle: darkmode
+    - name: 开往
+      icon: fas fa-subway
+      url: https://travellings.now.sh
+      target: _blank
   search: 搜索...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
