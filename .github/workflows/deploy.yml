@@ -32,7 +32,7 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa # 配置秘钥
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com e.coding.net >> ~/.ssh/known_hosts
+          ssh-keyscan github.com e.coding.net gitee.com >> ~/.ssh/known_hosts
           # set git infomation
           git config --global user.name 'MCSeekeri' # 换成你自己的邮箱和名字
           git config --global user.email 'mcseekeri@github.com'
