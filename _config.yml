@@ -161,7 +161,9 @@ baidusitemap:
 deploy:
   - type: git
     repository: 
-      github: git@github.com:MCSeekeri/sciadv.mcseekeri.github.io
+      github: git@github.com:MCSeekeri/sciadv-site
+      coding: git@e.coding.net:mcseekeri/sciadv/sciadv-site
+      gitee: git@gitee.com:mcseekeri/sciadv-site
     branch: master
   - type: cjh_bing_url_submitter
   - type: cjh_baidu_url_submitter
