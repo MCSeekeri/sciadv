@@ -370,7 +370,7 @@ sidebar:
       avatar: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/avatar/amadeus.webp
       shape: rectangle # circle, rectangle
       url: /about/
-      title: 科学ADV整合站
+      title: 科学ADV图书馆
       subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
