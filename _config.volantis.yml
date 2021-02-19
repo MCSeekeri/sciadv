@@ -866,8 +866,8 @@ custom_css:
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
-    size: 4px
-    border: 2px
+    size: 12px
+    border: 4px
   navbar:
     height: 64px
     width: auto # auto, max
