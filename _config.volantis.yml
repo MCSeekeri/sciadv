@@ -376,6 +376,8 @@ sidebar:
       social:
         - icon: fas fa-envelope
           url: mailto:hiyajo.maho@outlook.com
+        - icon: fab fa-github
+          url: https://github.com/mcseekeri/sciadv
         - icon: fas fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
