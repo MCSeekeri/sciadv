@@ -1,0 +1,20 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hawk:20160119':
+    - hexo-related-popular-posts > ga-analytics > googleapis > request > hawk:
+        patched: '2021-02-19T23:55:16.302Z'
+  'npm:http-signature:20150122':
+    - hexo-related-popular-posts > ga-analytics > googleapis > request > http-signature:
+        patched: '2021-02-19T23:55:16.302Z'
+  SNYK-JS-LODASH-567746:
+    - hexo-generator-seo-friendly-sitemap > lodash:
+        patched: '2021-02-19T23:55:16.302Z'
+  'npm:request:20160119':
+    - hexo-related-popular-posts > ga-analytics > googleapis > request:
+        patched: '2021-02-19T23:55:16.302Z'
+  'npm:tunnel-agent:20170305':
+    - hexo-related-popular-posts > ga-analytics > googleapis > request > tunnel-agent:
+        patched: '2021-02-19T23:55:16.302Z'
