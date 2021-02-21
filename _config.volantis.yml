@@ -57,9 +57,13 @@ navbar:
         - name: 留言
           icon: fas fa-comment-dots
           url: comments/
-    - name: 暗黑模式 # 可自定义
+    - name: 夜间模式 # 可自定义
       icon: fas fa-moon # 可自定义
       toggle: darkmode
+    - name: 服务稳定性监测
+      icon: fas fa-telescope
+      url: https://status.mcseekeri.top
+      target: _blank
     - name: 开往
       icon: fas fa-subway
       url: https://travellings.now.sh
