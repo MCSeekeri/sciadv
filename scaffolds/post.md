@@ -5,7 +5,7 @@ categories:
 tags:
 copyright: false
 date: {{ date }}
-updated:
+updated: {{ date }}
 description:
 headimg:
 ---
