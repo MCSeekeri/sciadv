@@ -90,10 +90,10 @@ cover:
       icon: fas fa-archive
       img: 
       url: archives/
-    - name: 文本
+    - name: 小说
       icon: fas fa-file-alt
       img: 
-      url: tags/游戏文本
+      url: tags/小说
     - name: 石学
       icon: fas fa-books
       img: 

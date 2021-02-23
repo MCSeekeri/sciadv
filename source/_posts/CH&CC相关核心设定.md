@@ -10,14 +10,13 @@ copyright: false
 abbrlink: 61c7828f
 author: Kariya_Misaki
 date: 2017-06-17 12:51:00
-description:
+description: CC贴吧吧主"刈屋美沙希"撰写的CC核心设定说明
 headimg:
 updated: 2021-02-23 08:50:00
 references:
   - title: 贴吧原帖
     url: https://tieba.baidu.com/p/5167471053
 ---
-{% note warning, 以下来源于Chaos;Child贴吧吧主"刈屋美沙希" 本站暂未获得授权 %}
 <!-- more -->
 ★2009.11.06涩谷地震&CC症候群形成
 在地理特性的因素和一系列阴谋的背后下，2009.11.06这天涩谷的GEレート值奇高。而noah2的第三次启动实验サードメルト也在这天执行了。Noah2放出的能波使涩谷地下矿质共振，导致了大地震的发生，当然能波的目的并不是为了地震，地震只是副产物。
