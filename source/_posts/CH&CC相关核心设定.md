@@ -10,7 +10,7 @@ copyright: false
 abbrlink: 61c7828f
 author: Kariya_Misaki
 date: 2017-06-17 12:51:00
-description: CC贴吧吧主"刈屋美沙希"撰写的CC核心设定说明
+description: CC贴吧吧主刈屋美沙希撰写的CC核心设定说明
 headimg:
 updated: 2021-02-23 08:50:00
 references:
