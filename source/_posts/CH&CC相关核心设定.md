@@ -13,6 +13,9 @@ date: 2017-06-17 12:51:00
 description:
 headimg:
 updated: 2021-02-23 08:50:00
+references:
+  - title: 贴吧原帖
+    url: https://tieba.baidu.com/p/5167471053
 ---
 {% note warning, 以下来源于Chaos;Child贴吧吧主"刈屋美沙希" 本站暂未获得授权 %}
 <!-- more -->
