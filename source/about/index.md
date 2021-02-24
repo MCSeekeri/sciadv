@@ -11,5 +11,4 @@ minivaline:
 本站致力于搜集和整理科学ADV系列作品的相关内容。
 如果你想帮助我建设站点,欢迎发送邮件到[我的邮箱](mailto:hiyajo.maho@outlook.com)或者给项目[提交issue](https://github.com/MCSeekeri/sciadv/issues)。
 
-## 特别致谢
 <!-- more -->
