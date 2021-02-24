@@ -1,0 +1,51 @@
+- group:  <i class="fas fa-handshake fa-fw" aria-hidden="true"></i> 特别致谢
+  description: '本博客是在以下框架技术和开源服务的支持下搭建起来的:'
+  items:
+  - title: Nodejs
+    avatar: https://nodejs.org/static/images/favicons/favicon.ico
+    url: https://nodejs.org
+    backgroundColor: '#70A85B'
+    textColor: '#fff' 
+    description: Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+  - title: Hexo
+    avatar: https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/Hexo.png
+    url: https://hexo.io
+    backgroundColor: '#0e83cd'
+    textColor: '#fff'
+    description: 快速、简洁且高效的博客框架
+  - title: Volantis
+    avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/favicon-32x32.png
+    url: https://volantis.js.org
+    backgroundColor: '#2196f3'
+    textColor: '#fff'
+    description: A Wonderful Theme for Hexo
+  - title: Github
+    avatar: https://github.githubassets.com/pinned-octocat.svg
+    url: https://github.com/about
+    backgroundColor: '#000'
+    textColor: '#fff'
+    description: How People Build Software
+  - title: jsDelivr
+    avatar: https://cdn.jsdelivr.net/gh/MHuiG/imgbed/data/jsdelivr.png
+    url: https://www.jsdelivr.com
+    backgroundColor: '#ff5627'
+    textColor: '#fff'
+    description: Free & Fast Open Source CDN
+  - title: Vercel
+    avatar: https://assets.vercel.com/image/upload/q_auto/front/favicon/vercel/57x57.png
+    url: https://vercel.com
+    backgroundColor: '#000'
+    textColor: '#fff'
+    description: Develop. Preview. Ship.
+  - title: Cloudflare
+    avatar: https://www.cloudflare.com/favicon.ico
+    url: https://www.cloudflare.com
+    backgroundColor: '#f48120'
+    textColor: '#fff'
+    description: 网络安全性、性能和可靠性提供完整的解决方案
+  - title: Visual Studio Code
+    avatar: https://code.visualstudio.com/favicon.ico
+    url: https://code.visualstudio.com
+    backgroundColor: '#21A1E9'
+    textColor: '#fff' 
+    description: Code editing.Redefined.
