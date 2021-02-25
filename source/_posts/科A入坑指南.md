@@ -178,6 +178,9 @@ ANONYMOUS;CODE
 > El·Psy·Kongroo
 > Okey-Dokey
 > Reading·Steiner
+
 另外,MayQueen要用HTML语法写成`MayQueen·喵<sup>2</sup>`。
 
 在此向原译者道个歉……我这属于未经授权引用并修改他人作品啊……不过我会好好的写明来源的。
+
+如果还有什么好奇的,那么欢迎访问本站[关于](about/)页面！
