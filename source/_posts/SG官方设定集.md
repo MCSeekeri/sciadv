@@ -6,6 +6,8 @@ categories:
   - 命运石之门
 tags:
   - 设定
+icons: [fas fa-cog blue]
+thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/cog.svg
 description: '来自SG公式设定集,30条设定相关QA'
 references:
   - title: 豆瓣原内容

@@ -8,4 +8,6 @@ date: {{ date }}
 updated: {{ date }}
 description:
 headimg:
+icons:
+thumbnail:
 ---
