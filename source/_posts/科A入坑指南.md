@@ -6,6 +6,8 @@ tags:
 description: 本文将帮助你了解科学ADV系列,并提供稳定可靠的资源下载
 pin: true
 abbrlink: sciadv
+icons: [fas fa-cog blue, far fa-compass theme]
+thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
 date: 2021-02-15 12:49:56
 categories:
 headimg:
