@@ -10,6 +10,8 @@ copyright: false
 abbrlink: 61c7828f
 author: Kariya_Misaki
 date: 2017-06-17 12:51:00
+icons: [fas fa-eye red, far fa-compass theme]
+thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
 description: CC贴吧吧主刈屋美沙希撰写的CC核心设定说明
 headimg:
 updated: 2021-02-23 08:50:00

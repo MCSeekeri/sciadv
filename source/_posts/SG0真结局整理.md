@@ -8,6 +8,8 @@ tags:
   - 讨论探究
   - β世界线
 abbrlink: e4e2f72f
+icons: [fas fa-cog blue, far fa-compass theme]
+thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
 date: 2018-07-11 23:07:00
 updated: 2021-02-24 20:43:11
 description:
