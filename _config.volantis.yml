@@ -233,28 +233,7 @@ article:
 
 ############################### Comments ############################### > start
 comments:
-  title: <i class='fas fa-comments'></i> 评论
-  subtitle:
   service: minivaline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover, twikoo, waline
-  # Valine
-  # https://valine.js.org/
-  valine:
-    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    path: # 全局评论地址
-    placeholder: 快来评论吧~  # 评论占位提示
-    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
-    appId: # your appId
-    appKey: # your appKey
-    meta: [nick,mail,link] # valine comment header info
-    requiredFields: [nick,mail]
-    enableQQ: true # Unstable avatar link
-    recordIP: false # Record commenter IP
-    avatar: robohash # gravatar style https://valine.js.org/avatar
-    pageSize: 10 # comment list page size
-    lang: zh-cn
-    highlight: true
-    visitor: true
-    mathJax: false
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
@@ -283,58 +262,13 @@ comments:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba-New
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
-    
-    
-   
-  # Disqus
-  # https://disqus.com
-  disqus:
-    shortname:
-    # optional
-    autoload: false
-    path: # 全局评论地址
-  # DisqusJS
-  # https://github.com/SukkaW/DisqusJS
-  disqusjs:
-    path: # 全局评论地址
-    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
-    #shortname:
-    #api:
-    #apikey:
-    #admin:
-    #nesting:
-  # Gitalk
-  # https://gitalk.github.io/
-  gitalk:
-    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
-    clientID:
-    clientSecret:
-    repo:
-    owner:
-    admin: # []
-    path: # 全局评论地址
-  # Vssue
-  # https://vssue.js.org/zh/
-  vssue:
-    owner:
-    repo:
-    clientId:
-    clientSecret:
-  # LiveRe
-  # https://www.livere.com
-  livere:
-    uid:
-  # Isso
-  # https://posativ.org/isso/
-  isso:
-    url: https://example.com/(path/)
-    src: https://example.com/(path/)js/embed.min.js
-  # HashOver
-  # https://www.barkdull.org/software/hashover
-  hashover:
-    src: https://example.com/(path/)comments.php
-  # Twikoo
-  # https://twikoo.js.org/
+  tagMeta:
+      - 站长
+      - 石学家
+      - 访客
+  master:
+      - 2fe1b9f7d79c288f4d7b8bc15b0227a4
+  friends: 
   twikoo:
     js: https://cdn.jsdelivr.net/npm/twikoo@latest # 建议锁定版本
     path: # 全局评论地址
@@ -360,7 +294,7 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, tagcloud, webinfo]
+  for_page: [blogger, notice, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -464,6 +398,17 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+
+    notice: 
+      class: text
+      display: [desktop, mobile] # [desktop, mobile]
+      header:
+        icon: fad fa-siren-on
+        title: 站点公告
+      content:
+        - '因为站长是位中学生~~而且最近正在沉迷MC开服~~所以本站更新速度极为缓慢'
+        - '本站建设进度可在[这里](https://github.com/MCSeekeri/sciadv/projects/1)查看，别忘了顺手点个Star'
+        - '另外，目前本站关于石学方面的内容仍然较少，欢迎诸位为本站提供内容，'
 ############################### Sidebar ############################### > end
 
 
