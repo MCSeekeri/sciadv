@@ -74,7 +74,7 @@ navbar:
         - name: hr
         - name: 科学ADV中文Wiki
           icon: fas fa-book
-          url: https://sci-adv.cc/wiki/%E9%A6%96%E9%A1%B5/
+          url: https://sci-adv.cc/wiki/%E9%A6%96%E9%A1%B5
           target: _blank
         - name: devil的广播剧整理
           icon: fas fa-compact-disc
