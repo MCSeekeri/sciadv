@@ -187,7 +187,7 @@ SG里的桶子也有登场,毕竟是联动作品嘛。
 
 #### ANONYMOUS;CODE
 匿名代码,简称AC。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/AC.webp)
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.8/Intro/AC.webp)
 科A顶尖作品！志仓生涯极限！SG联动！独创世界层理论！2036年的未来世界！黑客们的故事！
 除了从2015年跳票至今仍未发布之外一切都好（抹泪
 我尽量不把志仓的全家问候一遍,尽量。
