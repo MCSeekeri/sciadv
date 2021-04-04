@@ -58,7 +58,7 @@ navbar:
           icon: fas fa-microwave
           url: time-machine/
     - name: 友链
-      icon: fas fa-ellipsis-v
+      icon: fas fa-user-friends
       rows:
         - name: 科学ADV中文Wiki
           icon: fas fa-book
