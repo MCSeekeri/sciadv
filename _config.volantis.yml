@@ -54,6 +54,9 @@ navbar:
         - name: 时间机器
           icon: fas fa-microwave
           url: time-machine/
+        - name: 留言
+          icon: fas fa-comment-dots
+          url: comments/
     - name: 友链
       icon: fas fa-user-friends
       rows:

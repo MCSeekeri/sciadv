@@ -36,20 +36,21 @@ updated: 2021-02-23 22:10:00
 
 > fun<sup>10</sup>×int<sup>40</sup>=Ir2
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CH.webp)
-Chäos;HEAd
+
+#### Chäos;HEAd
 混沌之脑,简称CH。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CH.webp)
 系列开山之作,但由于各种原因...不建议游玩。
 基本就是个半成品...设定不完整,线路不全,现在这部的资源都不好找了。
 {% note info, 官方登陆平台: PC %}
 
-Chäos;HEAd NoAH
+#### Chäos;HEAd NoAH
 混沌之脑:诺亚,简称CHN。
 是CH的补完版本,完善了设定并添加了{% psw 充满了志仓社长恶意的 %}个人线。出色的奠定了科A系列基础,游玩体验一般,结局略显仓促,但确实是一部优秀的作品。
 独特的妄想机制很有新意,依靠男主的妄想来决定故事发展,比其他文字冒险游戏的点按钮高端多了（
 {% note info, 官方登陆平台: PC Xbox PSP PS3 PSV iOS Android %}
 
-Chäos;HEAd Love chu☆chu
+#### Chäos;HEAd Love chu☆chu
 混沌之脑:恋爱亲亲,简称CHLCC。
 看这不对劲的名字就知道...这是个主打恋爱剧情的官方FD,为了赚那些只想要恋爱剧情的肥宅的钱（
 剧情有且仅有恋爱日常,完全没有了CHN的剧情高度。
@@ -57,10 +58,10 @@ Chäos;HEAd Love chu☆chu
 有贴吧老哥制作的RenPy全平台版本。
 {% note info, 官方登陆平台: Xbox PSP PS3 PSV %}
 
+#### Chäos;Child
+混沌之子,简称CC。
 ![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC1.webp)
 ![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC2.webp)
-Chäos;Child
-混沌之子,简称CC。
 可以说是系列集大成之作,但因为社长放飞自我所以销量暴死（叹
 在人物塑造,世界观,剧情反转和悬疑设计方面基本是科A天花板。
 已上架Steam,有民间汉化(而且效果非常不错)
@@ -69,7 +70,7 @@ Chäos;Child
 {% note info, 官方登陆平台: PC Xbox PS3 PS4 PSV iOS Android %}
 <iframe src="https://store.steampowered.com/widget/970570/" frameborder="0" width="646" height="190"></iframe>
 
-Chäos;Child Love chu☆chu
+#### Chäos;Child Love chu☆chu
 混沌之子:恋爱亲亲,简称CCLCC。
 依旧是正统恋爱FD,但极度不建议游玩。
 设定与本篇冲突,看似发糖实则喂屎,志仓的恶意贯穿其中...
@@ -80,9 +81,9 @@ Chäos;Child Love chu☆chu
 ### 想定科学ADV
 {% note success, 本系列血腥恐怖内容含量极低 %}
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG.webp)
-Steins;Gate
+#### Steins;Gate
 命运石之门,简称SG,石头门。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG.webp)
 已上架Steam,有官方中文和民间汉化
 全科A系列最出名的作品,MyAnimeList排名第3的神作,凭借着扎实的设定和精妙的剧情转折斩获无数赞誉。
 选择了受众更广的时间穿越题材,并独创世界线收束范围理论(AF理论),给了这部作品巨大的讨论空间。
@@ -94,7 +95,7 @@ Steins;Gate
 {% note info, 官方登陆平台: PC Xbox PSP PS3 PS4 PSV NS iOS Android %}
 <iframe src="https://store.steampowered.com/widget/412830/" frameborder="0" width="646" height="190"></iframe>
 
-Steins;Gate:My Darling's Embrace
+#### Steins;Gate:My Darling's Embrace
 命运石之门:比翼恋理的爱人,简称比翼。
 嗯,官方FD,恋爱日常。
 似乎SG太成功让志仓收敛了不少,这部作品纯粹发糖,没有神反转之类。
@@ -104,7 +105,7 @@ Steins;Gate:My Darling's Embrace
 {% note info, 官方登陆平台: PC Xbox PSP PS3 PS4 PSV NS %}
 <iframe src="https://store.steampowered.com/widget/970560/" frameborder="0" width="646" height="190"></iframe>
 
-Steins;Gate:Linear Bounded Phenogram
+#### Steins;Gate:Linear Bounded Phenogram
 命运石之门:线性拘束的树状图,简称树状图。
 官方FD,原创故事,可以看作短篇小合集。
 没有像本篇一样使用主角单一视角,而是多人物叙事,完善了本篇略显单薄的人设。
@@ -112,15 +113,15 @@ Steins;Gate:Linear Bounded Phenogram
 有贴吧老哥制作的RenPy全平台版本。
 {% note info, 官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
 
-Steins;Gate:Variant Space Octet
+#### Steins;Gate:Variant Space Octet
 命运石之门:变移空间的8Bit,简称8Bit。
 还不错的小外传,全部采用8Bit风格,剧情相对独立,与隔壁CH有角色上的联动。
 总之是部能几个小时通关的休闲作品,值得一玩。
 {% note info, 官方登陆平台: PC %}
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG0E.webp)
-Steins;Gate 0
+#### Steins;Gate 0
 命运石之门0,简称SG0。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG0E.webp)
 这可是个好东西......
 介绍这部作品必定会剧透本篇,所以我就不介绍了（
 就我个人观感而言,0的质量远超本篇,完善了很多本篇的不足。
@@ -128,9 +129,9 @@ Steins;Gate 0
 {% note info, 官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
 <iframe src="https://store.steampowered.com/widget/825630/" frameborder="0" width="646" height="190"></iframe>
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SGE.webp)
-Steins;Gate Elite
+#### Steins;Gate ELITE
 命运石之门:精英,简称精英版。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SGE.webp)
 就是SG的冷饭版本,把之前做的动画塞进本篇游戏卖,没啥可说的。
 已上架Steam,有官方中文。
 {% note info, 官方登陆平台: PC Xbox PS4 PSV NS iOS %}
@@ -142,9 +143,9 @@ Steins;Gate Elite
 反正石头门是一部人物涵盖常见萌点但出了本子都让人冲不起来的剧情向神作（有端
 ### 扩张科学ADV
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/RN.webp)
-Robotics;Notes
+#### Robotics;Notes
 机器人笔记,简称RN,萝卜本。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/RN.webp)
 好罢……不是机战的机器人作品……
 设定是世界线变动率1.048596%的世界线,即SG世界线。
 与之前所有作品不同,RN的风格更加主流,属于一般普通高中生拯救世界的故事,轻松愉快的氛围和各种Otaku日常事件……
@@ -156,14 +157,14 @@ Robotics;Notes
 ~~不过动画化不错,推荐观看~~
 {% note info, 官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
 
-ROBOTICS;NOTES ELITE
+#### ROBOTICS;NOTES ELITE
 RN的精英版,没什么可说的。
 已上架Steam。
 <iframe src="https://store.steampowered.com/widget/1111380/" frameborder="0" width="646" height="190"></iframe>
 
-ROBOTICS;NOTES DaSH
+#### ROBOTICS;NOTES DaSH
 RN续作,讲述长大了的高中生拯救世界的故事（无端
-SG里的桶子也有登场,毕竟是联动作品嘛
+SG里的桶子也有登场,毕竟是联动作品嘛。
 顺带一提,DaSH的意思是 Daru·the·Super·Hacker（
 {% note info, 官方登陆平台: PC PS4 %}
 <iframe src="https://store.steampowered.com/widget/1111390/" frameborder="0" width="646" height="190"></iframe>
@@ -172,9 +173,9 @@ SG里的桶子也有登场,毕竟是联动作品嘛
 但如果你不是很关心设定啦反转啦,只想开开心心看番,那RN出色的剧情水准绝对不会让你失望。
 ### 超常科学NVL
 
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/ON.webp)
-Occultic;Nine
+#### Occultic;Nine
 超自然9人组,简称ON。
+![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/ON.webp)
 哼啊啊啊啊啊啊啊啊啊啊啊啊啊（怒吼
 全科A系列除了SG我最爱的作品,又是被志仓玩死了……
 与其他所有作品不同,这部是先有轻小说后有动画再有游戏。
@@ -184,7 +185,7 @@ Occultic;Nine
 动画和漫画走向的结局不同,所以我个人推荐是都去看,让游戏自生自灭罢（暴怒
 {% note info, 官方登陆平台: Xbox PS4 PSV %}
 
-ANONYMOUS;CODE
+#### ANONYMOUS;CODE
 匿名代码,简称AC。
 科A顶尖作品！志仓生涯极限！SG联动！独创世界层理论！2036年的未来世界！黑客们的故事！
 除了从2015年跳票至今仍未发布之外一切都好（抹泪
