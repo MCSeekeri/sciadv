@@ -3,7 +3,7 @@ title: 科A入坑指南
 author: MCSeekeri
 tags:
   - 指南
-description: 本文将帮助你了解科学ADV系列,并提供稳定可靠的资源下载
+description: 本文将帮助你更好的了解科学ADV系列作品,并提供入坑建议及资源下载
 pin: true
 abbrlink: sciadv
 icons: [fas fa-cog blue, far fa-compass theme]
