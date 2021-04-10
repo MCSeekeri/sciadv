@@ -277,6 +277,7 @@ comments:
     enableUA: true
     cloudflag: true
     avatarD: mp
+    avatarUrl: https://cdn.v2ex.com/gravatar/
     emoticonUrl:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibilitv
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
@@ -286,13 +287,14 @@ comments:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba-New
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
-  tagMeta:
-      - 站长
-      - 石学家
-      - 访客
-  master:
-      - 2fe1b9f7d79c288f4d7b8bc15b0227a4
-  friends: 
+    tagMeta:
+    - 站长
+    - 石学家
+    - 访客
+    master:
+    - 2fe1b9f7d79c288f4d7b8bc15b0227a4
+    friends: 
+
   twikoo:
     js: https://cdn.jsdelivr.net/npm/twikoo@latest # 建议锁定版本
     path: # 全局评论地址

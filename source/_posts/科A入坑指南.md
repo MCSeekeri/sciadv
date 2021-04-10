@@ -60,12 +60,12 @@ updated: 2021-02-23 22:10:00
 
 #### Chäos;Child
 混沌之子,简称CC。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC1.webp)
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC2.webp)
+![图片选择的艺术（确信](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC1.webp)
 可以说是系列集大成之作,但因为社长放飞自我所以销量暴死（叹
 在人物塑造,世界观,剧情反转和悬疑设计方面基本是科A天花板。
+不过要是指望这部作品拳打EVER17脚踢命运石之门是非常不现实的w
+风格较为电波,能接受的认为是神作,不能接受的认为是莫名其妙的作品（摊手
 已上架Steam,有民间汉化(而且效果非常不错)
-~~我没找错图！真没有！~~
 {% psw 礼物盒简直令人疯狂掉SAN啊... %}
 {% note info, 官方登陆平台: PC Xbox PS3 PS4 PSV iOS Android %}
 <iframe src="https://store.steampowered.com/widget/970570/" frameborder="0" width="646" height="190"></iframe>
@@ -121,7 +121,7 @@ updated: 2021-02-23 22:10:00
 
 #### Steins;Gate 0
 命运石之门0,简称SG0。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG0E.webp)
+![用SG0E的图片没问题罢](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG0E.webp)
 这可是个好东西......
 介绍这部作品必定会剧透本篇,所以我就不介绍了（
 就我个人观感而言,0的质量远超本篇,完善了很多本篇的不足。
@@ -205,8 +205,10 @@ SG里的桶子也有登场,毕竟是联动作品嘛。
 {% btn center large, 科A资源站, https://sg.mcseekeri.top, fas fa-download %}
 如果你对科A一无所知可以先去看SG的动画,如果能接受就继续,如果不能……就去看科A其他作品（
 本站收录的内容大多数都剧透了,所以最好是在完整了解作品之前不要看本站收录的内容。
-但也有例外,比如[助手视点的SG本篇故事](/archives/20949fec/),如果动画没时间看看看那个也能凑合理解石头门剧情。
-如果SG入坑完毕……之后就可以来这里看小说了,SG的小说绝大多数都是不错的（
+资源站也是我搞的项目,欢迎访问…资源可能比你想的要多w
+这部[助手视点的SG本篇故事](/archives/20949fec/)就是很棒的入坑作,如果动画没时间看看看那个也能凑合理解石头门剧情。
+如果SG入坑完毕……之后就可以来这里看小说力w
+
 ## 本站特色?
 我建立本站的目的……就是为了整合**所有**科A相关的小说漫画。
 漫画暂且不谈,先讨论小说。
