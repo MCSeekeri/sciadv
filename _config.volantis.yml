@@ -84,6 +84,10 @@ navbar:
           icon: fas fa-user-edit
           url: https://space.bilibili.com/7348022/
           target: _blank
+        - name: 合成大石膏
+          icon: fas fa-gamepad
+          url: https://fingal.vercel.app
+          target: _blank
     - name: 开往
       icon: fas fa-subway
       url: https://travellings.now.sh
@@ -185,7 +189,7 @@ article:
         enable: true
         permalink: '本文永久链接是：'
         content:
-          - '本站内容收集自网络,原作者版权所有'
+          - '本文遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议公开'
           - permalink
       # ----------------
       # 打赏组件 (for layout: post)
@@ -259,7 +263,7 @@ comments:
   minivaline:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
-    placeholder: 欢迎评论，会自动显示Gravatar头像  # 全局评论占位提示
+    placeholder: 欢迎在此发表您对本文的看法,本站评论区无需登录,只需填写昵称和接受回复用的邮箱即可  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
