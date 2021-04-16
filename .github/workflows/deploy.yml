@@ -50,3 +50,8 @@ jobs:
           # publish
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> /home/runner/work/sciadv/sciadv/push.json
           hexo algolia && hexo generate && hexo deploy # 执行部署程序
+
+      - name: 部署到Cloudflare Workers
+        uses: cloudflare/wrangler-action@1.3.0
+        with:
+          apiToken: ${{ secrets.CF_WORKERS_TOKEN }}

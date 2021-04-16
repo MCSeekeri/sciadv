@@ -86,7 +86,7 @@ navbar:
           target: _blank
         - name: 合成大石膏
           icon: fas fa-gamepad
-          url: https://fingal.vercel.app
+          url: https://sg.vercel.app
           target: _blank
     - name: 开往
       icon: fas fa-subway
@@ -263,36 +263,35 @@ comments:
   minivaline:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
-    placeholder: 欢迎在此发表您对本文的看法,本站评论区无需登录,只需填写昵称和接受回复用的邮箱即可  # 全局评论占位提示
+    placeholder: 
+    - 欢迎在此发表您对本文的看法
+    - 本站评论只需填写昵称和接受回复用的邮箱  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
     serverURL: https://sciadvwaline.now.sh
     mode: xCss
-    md: true
-    RecordIP: false
     visitor: false
     enableFlag: true
     enableUA: true
-    cloudflag: true
     avatarD: mp
     avatarUrl: https://gravatar.loli.net/avatar/
     emoticonUrl:
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibilitv
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox
-    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Menhera-chan
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba-New
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibili2233/
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Menhera-chan
     tagMeta:
-    - 站长
-    - 石学家
-    - 访客
+      - 站长
+      - 石学家
+      - 访客
     master:
-    - 2fe1b9f7d79c288f4d7b8bc15b0227a4
+      - 2fe1b9f7d79c288f4d7b8bc15b0227a4
     friends: 
 
   twikoo:
@@ -341,6 +340,8 @@ sidebar:
           url: mailto:hiyajo.maho@outlook.com
         - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
+        - icon: fas fa-rss
+          url: /atom.xml
         - icon: fas fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
