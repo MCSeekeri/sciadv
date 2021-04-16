@@ -7,7 +7,7 @@ title: 科学ADV图书馆（暂定）
 subtitle: ''
 description: 一个致力于科学ADV相关作品内容收集的网站
 keywords: '科A,科学ADV,命运石之门,混沌之子,混沌之脑,机器人笔记,超自然9人组'
-author: 碧朋学园技术部
+author: MCSeekeri
 language: zh-CN
 timezone: Asia/Shanghai
 
@@ -29,7 +29,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: "ByteDanceVerify.html"
+skip_render: 
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -119,7 +119,7 @@ hexo_submit_urls_to_search_engine:
 import:
     link:
       - <link rel="preconnect" href="https://fonts.gstatic.com">
-      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+      - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;900&family=Roboto:wght@300;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:
   enable: true
@@ -144,6 +144,11 @@ abbrlink:
 
 baidu_analytics_key: 633c3b07ea8711cceacf3394bcae9687
 google_analytics_key: G-619675E8HR
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: false
 
 algolia:
   applicationID: NZUPA1KZ8D
