@@ -25,17 +25,6 @@ async function handleEvent(event) {
             });
         }
 
-        // 手动提高 RSS 页面的缓存 TTL
-        if (path === '/atom.xml') {
-            return getAssetFromKV(event, {
-                cacheControl: {
-                    edgeTtl: 6 * 60 * 60,
-                    browserTtl: 12 * 60 * 60,
-                    cacheEverything: true,
-                },
-            });
-        }
-
         // CSS 文件超长时间缓存
         if (path.startsWith('/css/')) {
             const response = await getAssetFromKV(event, {

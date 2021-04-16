@@ -340,8 +340,6 @@ sidebar:
           url: mailto:hiyajo.maho@outlook.com
         - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
-        - icon: fas fa-rss
-          url: /atom.xml
         - icon: fas fa-headphones-alt
           url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
@@ -685,18 +683,6 @@ rightmenu:
     icon: fa fa-print
     onclick: document.execCommand('print')
   # 自定义菜单的格式如下
-  help:
-    name: 常见问题
-    icon: fa fa-question
-    url: https://volantis.js.org/faqs/
-  examples:
-    name: 示例博客
-    icon: fa fa-rss
-    url: https://volantis.js.org/examples/
-  contributors:
-    name: 加入社区
-    icon: fa fa-fan fa-spin
-    url: https://volantis.js.org/contributors/
   source_docs:
     name: 本站源码
     icon: fa fa-code-branch
