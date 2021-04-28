@@ -458,7 +458,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, analytics, info, copyright]
+  layout: [analytics, info, copyright]
   social:
     - icon: #fas fa-rss
       url:
@@ -486,7 +486,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
@@ -676,7 +676,7 @@ plugins:
 rightmenu:
   enable: true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, source_docs, source_theme, hr, print, dark_mode, hr, music]
+  layout: [home, source_docs, source_theme, hr, print, dark_mode]
   # 可选功能项
   print:
     name: 打印页面

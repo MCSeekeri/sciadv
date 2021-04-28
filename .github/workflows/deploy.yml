@@ -1,5 +1,7 @@
 name: 部署图书馆内容
-on: push
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -28,16 +30,14 @@ jobs:
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
         run: |
-          # set up private key for deploy
           mkdir -p ~/.ssh/
-          echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa # 配置秘钥
+          echo "$ACTION_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com e.coding.net gitee.com >> ~/.ssh/known_hosts
           # set git infomation
-          git config --global user.name 'MCSeekeri' # 换成你自己的邮箱和名字
+          git config --global user.name 'MCSeekeri' 
           git config --global user.email 'mcseekeri@github.com'
-          # install dependencies
-          npm i -g hexo-cli yarn # 安装hexo
+          npm i -g hexo-cli yarn
           yarn
   
       - name: 部署页面并提交搜索引擎
@@ -45,11 +45,10 @@ jobs:
           BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
           BING_TOKEN: ${{ secrets.BING_TOKEN }}
           GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
-          HEXO_ALGOLIA_INDEXING_KEY: ${{ secrets.HEXO_ALGOLIA_INDEXING_KEY }}
+          YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
         run: |
-          # publish
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> /home/runner/work/sciadv/sciadv/push.json
-          hexo algolia && hexo generate && hexo deploy # 执行部署程序
+          yuque-hexo sync && hexo generate && hexo deploy # 执行部署程序
 
       - name: 部署到Cloudflare Workers
         uses: cloudflare/wrangler-action@1.3.0
