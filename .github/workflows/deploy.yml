@@ -37,7 +37,7 @@ jobs:
           # set git infomation
           git config --global user.name 'MCSeekeri' 
           git config --global user.email 'mcseekeri@github.com'
-          npm i -g hexo-cli yarn
+          npm i -g hexo-cli yarn yuque-hexo
           yarn
   
       - name: 部署页面并提交搜索引擎
