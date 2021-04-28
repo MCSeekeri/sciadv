@@ -1,7 +1,5 @@
 name: 部署图书馆内容
-on: 
-  push:
-  workflow_dispatch:
+on: [push, repository_dispatch]
 
 jobs:
   deploy:
