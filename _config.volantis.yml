@@ -112,23 +112,21 @@ cover:
   features:
     - name: 归档
       icon: fas fa-archive
-      img: 
       url: archives/
     - name: 小说
       icon: fas fa-file-alt
-      img: 
       url: tags/小说
+    - name: 同人
+      icon: fas fa-user-edit
+      url: tags/同人
     - name: 石学
       icon: fas fa-books
-      img: 
       url: tags/讨论探究
     - name: 关于
       icon: fas fa-user-circle
-      img: 
       url: about/
     - name: 评论
       icon: fas fa-comment
-      img: 
       url: comments/
       ############################### Cover ############################### > end
 
@@ -486,7 +484,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
+  fontawesome: ttps://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
