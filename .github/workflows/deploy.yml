@@ -48,7 +48,8 @@ jobs:
           YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
         run: |
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> /home/runner/work/sciadv/sciadv/push.json
-          yuque-hexo sync && hexo generate && hexo deploy # 执行部署程序
+          yuque-hexo sync 
+          hexo generate && hexo deploy
 
       - name: 部署到Cloudflare Workers
         uses: cloudflare/wrangler-action@1.3.0
