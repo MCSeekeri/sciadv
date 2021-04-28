@@ -261,7 +261,7 @@ comments:
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
-    js: https://cdn.jsdelivr.net/npm/minivaline@latest
+    js: https://cdn.jsdelivr.net/npm/minivaline@5.x
     path: # 全局评论地址
     placeholder: 
     - 欢迎在此发表您对本文的看法
