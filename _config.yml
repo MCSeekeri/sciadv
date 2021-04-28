@@ -122,6 +122,7 @@ import:
       - <link rel="preconnect" href="https://ha3d7xjx.api.lncldglobal.com">
       - <link rel="preconnect" href="https://api.i-meto.com">
       - <link rel="preconnect" href="https://fonts.gstatic.com">
+      - <link rel="preconnect" href="https://fonts.googleapis.com">
       - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&family=Roboto:wght@300;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 nofollow:

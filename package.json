@@ -36,7 +36,8 @@
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
-    "hexo-wordcount": "^6.0.1"
+    "hexo-wordcount": "^6.0.1",
+    "yuque-hexo": "^1.7.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
@@ -45,5 +46,17 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-terser": "^2.0.1"
+  },
+  "yuqueConfig": {
+    "postPath": "source/_posts/yuque",
+    "cachePath": "yuque.json",
+    "mdNameFormat": "title",
+    "adapter": "hexo",
+    "concurrency": 5,
+    "baseUrl": "https://www.yuque.com/api/v2",
+    "login": "mcseekeri",
+    "repo": "sciadv",
+    "onlyPublished": true,
+    "onlyPublic": false
   }
 }
