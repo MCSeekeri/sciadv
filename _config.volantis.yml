@@ -484,7 +484,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: ttps://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
