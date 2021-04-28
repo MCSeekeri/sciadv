@@ -36,8 +36,7 @@
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
-    "hexo-wordcount": "^6.0.1",
-    "yuque-hexo": "^1.7.0"
+    "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
@@ -45,7 +44,8 @@
     "gulp-htmlclean": "^2.7.22",
     "gulp-htmlmin": "^5.0.1",
     "gulp-minify-css": "^1.2.4",
-    "gulp-terser": "^2.0.1"
+    "gulp-terser": "^2.0.1",
+    "yuque-hexo": "^1.7.0"
   },
   "yuqueConfig": {
     "postPath": "source/_posts/yuque",
