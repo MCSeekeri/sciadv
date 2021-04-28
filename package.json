@@ -6,7 +6,9 @@
     "build": "hexo generate && gulp",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "hexo": {
     "version": "5.3.0"
@@ -36,7 +38,8 @@
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
-    "hexo-wordcount": "^6.0.1"
+    "hexo-wordcount": "^6.0.1",
+    "snyk": "^1.571.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
@@ -57,5 +60,6 @@
     "repo": "sciadv",
     "onlyPublished": true,
     "onlyPublic": false
-  }
+  },
+  "snyk": true
 }
