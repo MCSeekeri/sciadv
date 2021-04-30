@@ -54,7 +54,7 @@
     "cachePath": "yuque.json",
     "mdNameFormat": "title",
     "adapter": "markdown",
-    "concurrency": 5,
+    "concurrency": 10,
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "mcseekeri",
     "repo": "sciadv",
