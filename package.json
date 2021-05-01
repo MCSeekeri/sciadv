@@ -49,17 +49,5 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-terser": "^2.0.1"
   },
-  "yuqueConfig": {
-    "postPath": "source/_posts/yuque",
-    "cachePath": "yuque.json",
-    "mdNameFormat": "title",
-    "adapter": "markdown",
-    "concurrency": 1,
-    "baseUrl": "https://www.yuque.com/api/v2",
-    "login": "mcseekeri",
-    "repo": "sciadv",
-    "onlyPublished": true,
-    "onlyPublic": false
-  },
   "snyk": true
 }
