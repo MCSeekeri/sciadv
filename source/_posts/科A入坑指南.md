@@ -236,67 +236,9 @@ SG里的桶子也有登场,毕竟是联动作品嘛。
 在此向诸位原译者道个歉……我这属于未经授权引用并修改他人作品啊……不过我会好好的写明来源的。
 ## 在本站发布文章
 目前我基本已经收集了现有的汉化资源…但这仅仅是个开始……
-接下来我打算收录一堆同人文,并且用语雀实现半自动化写作后台…
-
-如果阁下想为本站提供同人文…那么请先注册个语雀账户,可以用我的[邀请链接](https://www.yuque.com/login?platform=wechat&inviteToken=f44225123bcab02038f11cc0a7ab720c471e7ad270bdafa0ed3d4bd3ef0172de)注册。
-然后呢……加入[科A图书馆](https://www.yuque.com/g/mcseekeri/sciadv/collaborator/join?token=yccyaIsVen078GC6#)这个知识库
-接下来写文就行了,语雀的可视化编辑器还不错。
-
-写完之后请手动点击发布按钮下的"文档有较大更新，推送给关注者",然后语雀就会唤醒部署服务…然后慢悠悠的开始生成站点文件,整个过程大约5分钟。
-也就是说假如你发布一篇文章5分钟后还没在网站里看到它…要么是操作或者文档格式没写对,要么是我部署服务调用次数太多被限制了（悲
-因为本站架构问题,所以在文件头需要手动写一些标明文章内容的东西…这货被叫做Front-matter
-
-所有#都是注释,请自行删除
-```yaml
----
-title:   #这里写文章名
-copyright: false   #这里表示不显示底下的本文遵循啥啥啥公开
-author:   #写作者,未来同人研究所是FDL,其他人删除此行
-categories:
-  - - 混沌之脑
-  - - 命运石之门   #这里是分类,一般情况下只保留石头门就行了
-  - - 机器人笔记   #之所以要写两个-是防止分类嵌套
-tags:
-  - 同人   #标签
-  - SG世界线   #标签没有嵌套问题,可以写一个-就行
-icons:
-  - fas fa-cog blue   #在归档页面里显示的图标
-  - fas fa-user-edit    #一般的SG同人不用动
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/user-edit.svg #文章点开后标题处的图标,一般不用动
-references:  #在页面下方显示的原帖地址
-  - title: 贴吧原帖    #链接文字
-    url: 'https://tieba.baidu.com/p/5795599091'  #链接
-date: 2018-07-14 06:24:00 #发布时间,精确到秒……
-description: #对本文的描述,不建议使用英文字符
-headimg: #头图,可以去7bu.top上传图片然后把链接丢在这里
-updated: 2021-02-09 08:30:00 #更新时间,每次只会向搜索引擎推送最新的10篇,所以建议随手改了。
----
-```
-
-另附不带注释的版本,可以直接复制到语雀。
-
-```yaml
----
-title: 
-copyright: false
-author: FDL
-categories:
-  - 命运石之门
-tags:
-  - 同人
-icons:
-  - fas fa-cog blue   
-  - fas fa-user-edit    
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/user-edit.svg
-references:
-  - title: 贴吧原帖
-    url: 'https://tieba.baidu.com/p/5795599091'
-date: 2018-07-14 06:24:00
-description:
-headimg:
-updated: 2021-02-09 08:30:00
----
-```
+~~接下来我打算收录一堆同人文,并且用语雀实现半自动化写作后台…~~
+没有语雀了,我伤心了。
+这货说文章违规…
 
 另外,我其实希望诸位大佬能让自己的作品遵守CC BY-NC-SA 4.0协议公开。
 > 什么是CC协议?
@@ -311,7 +253,7 @@ CC BY-NC-SA 4.0指"署名-非商业性使用-相同方式共享 4.0 国际"
 而且别人基于你的作品创作的内容也必须遵守同样的协议公开（
 如果有人想合法的拿着文章去盈利…那么必须征得原作者的特殊授权。
 虽然在国内的大环境下CC协议有点"君子协定"的意思…不过有总比没有好（摊手
-如果阁下统一使用CC协议公开你的作品…直接删掉Front-matter里`copyright: false`这行就OK啦。
+
 
 
 如果还有什么好奇的,那么欢迎访问本站[关于](/about/)页面！
