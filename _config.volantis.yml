@@ -157,7 +157,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter] #启用评论数量需在此添加
+    top_meta: [author, category, date, wordcount, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -473,7 +473,7 @@ site_footer:
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
-  copyright: '[本站内容来源自网络 所有权归作者所有](/)'
+  copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: <br>
 ############################### Site Footer ############################### > end
@@ -509,14 +509,14 @@ plugins:
 
   # highlight.js
   highlightjs:
-    enable: true # Please set hexo.config.highlight.enable = false !!!
+    enable: #true # Please set hexo.config.highlight.enable = false !!!
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js
     css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
@@ -525,7 +525,7 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
@@ -832,14 +832,14 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable] # [shadow, floatable, blur]
   body:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
+      copy_btn: false
       grayscale: true # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
@@ -911,7 +911,7 @@ seo:
     home_first_page: index,follow
     home_other_pages: index,follow
     archive: index,follow
-    category: index,follow
+    category: noindex,follow
     tag: index,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
