@@ -268,7 +268,7 @@ comments:
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
-    serverURL: https://sciadvwaline.vercel.app
+    serverURL: https://comments.sciadv.mcseekeri.top
     mode: xCss
     visitor: false
     enableFlag: true
