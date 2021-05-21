@@ -1,40 +1,18 @@
-
-
-default:
-  avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-  link: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-  cover: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
-  image: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
-
-
-#
-# 上面的是 v5 新版通用配置，可兼容 Stellar 主题，请放心使用
-#
-# xxxxxxxx
-#
-# 下面的是 v4 旧版配置，将逐步迁移至通用配置中
-#
-
 ############################### Volantis ###############################
+# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# 开发者注意 use_cdn 设置为 false
+use_cdn: true
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0.alpha.0' # This is theme's version.
+  theme_version: '4.3.1' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-
-############################### CDN ###############################
-# 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 cdn.enable 设置为 false
-cdn:
-  enable: false
-  prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
-  set:
-    js:
-      app: #/js/app.js
+  cdn:
+    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
     css:
-      style: #/css/style.css # (异步加载样式)
+      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
+      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -45,6 +23,76 @@ navbar:
     img: /favicon.ico
     icon:
     title:
+  menu:
+    - name: 科A作品
+      icon: fas fa-head-side-brain
+      rows:
+        - name: 混沌之脑
+          icon: fas fa-mind-share
+          url: categories/混沌之脑
+        - name: 命运石之门
+          icon: fas fa-cog
+          url: categories/命运石之门
+        - name: 机器人笔记
+          icon: fas fa-robot
+          url: categories/机器人笔记
+        - name: 混沌之子
+          icon: fas fa-eye
+          url: categories/混沌之子
+        # - name: 超自然9人组
+        #   icon: fas fa-star-of-david
+        #   url: categories/超自然9人组
+        - name: 匿名代码
+          icon: fas fa-code
+          url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
+    - name: 关于
+      icon: fas fa-info
+      rows:
+        - name: 本站
+          icon: fas fa-user-circle
+          url: about/
+        - name: 时间机器
+          icon: fas fa-microwave
+          url: time-machine/
+        - name: 留言
+          icon: fas fa-comment-dots
+          url: comments/
+    - name: 更多
+      icon: fas fa-ellipsis-v
+      rows:
+        - name: 夜间模式 # 可自定义
+          icon: fas fa-moon # 可自定义
+          toggle: darkmode
+        - name: 服务稳定性监测
+          icon: fas fa-telescope
+          url: https://status.mcseekeri.top
+          target: _blank
+        - name: 本站源代码
+          icon: fas fa-code
+          url: https://github.com/MCSeekeri/sciadv
+          target: _blank
+        - name: hr
+        - name: 科学ADV中文Wiki
+          icon: fas fa-book
+          url: https://sci-adv.cc/wiki/%E9%A6%96%E9%A1%B5
+          target: _blank
+        - name: devil的广播剧整理
+          icon: fas fa-compact-disc
+          url: https://shimo.im/docs/XjCxcDkPxQwQXXXy/
+          target: _blank
+        - name: 未来同人研究所
+          icon: fas fa-user-edit
+          url: https://space.bilibili.com/7348022/
+          target: _blank
+        - name: 合成大石膏
+          icon: fas fa-gamepad
+          url: https://sg.vercel.app
+          target: _blank
+    - name: 开往
+      icon: fas fa-subway
+      url: https://travellings.now.sh
+      target: _blank
+  search: 搜索...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
 
@@ -57,7 +105,6 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   background: ''
-    # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
   subtitle: ''
@@ -81,7 +128,7 @@ cover:
     - name: 评论
       icon: fas fa-comment
       url: comments/
-############################### Cover ############################### > end
+      ############################### Cover ############################### > end
 
 pages:
   # 友链页面配置
@@ -110,7 +157,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, wordcount, counter, walinecount] #启用评论数量需在此添加
+    top_meta: [author, category, date, wordcount, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -140,7 +187,7 @@ article:
         enable: true
         permalink: '本文永久链接是：'
         content:
-          - '本文遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+          - '本文遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议公开'
           - permalink
       # ----------------
       # 打赏组件 (for layout: post)
@@ -172,7 +219,7 @@ article:
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
       category:
-        icon: fas fa-folder-open
+        icon: fa fa-folder-open
       # 文章浏览计数
       counter:
         icon: fas fa-eye
@@ -183,7 +230,7 @@ article:
         desc: '' # 条评论
       walinecount:
         icon: fas fa-comment-dots
-        desc: '' # 条评论
+        desc: '' # 条评论        
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fas fa-keyboard
@@ -199,56 +246,25 @@ article:
           img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/qzone.png
         - id: weibo
           img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/weibo.png
-        - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/wechat.png
-        - id: telegram
-          img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/telegram.png
+        # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+        #   img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/wechat.png
+        # - id: telegram
+        #   img: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/png/telegram.png
 ############################### Article Layout ############################### > end
 
 
 ############################### Comments ############################### > start
 comments:
-  title: <i class='fas fa-comments'></i> 评论
-  subtitle:
-  service: minivaline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
-  # utterances
-  # https://utteranc.es/
-  utterances:
-    repo: xxx/xxx
-    issue-term: pathname
-    issue-number:
-    theme:
-      light: github-light
-      dark: github-dark
-    label: ✨💬✨
-    crossorigin: anonymous
-  # Valine
-  # https://valine.js.org/
-  valine:
-    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是valine的问题
-    placeholder: 快来评论吧~  # 评论占位提示
-    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
-    appId: # your appId
-    appKey: # your appKey
-    meta: [nick,mail,link] # valine comment header info
-    requiredFields: [nick,mail]
-    enableQQ: true # Unstable avatar link
-    recordIP: false # Record commenter IP
-    avatar: robohash # gravatar style https://valine.js.org/avatar
-    pageSize: 10 # comment list page size
-    lang: zh-cn
-    highlight: true
-    mathJax: false
+  service: minivaline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover, twikoo, waline
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
-    js: https://cdn.jsdelivr.net/npm/minivaline@5
+    js: https://cdn.jsdelivr.net/npm/minivaline@5.x
     path: # 全局评论地址
     placeholder: 
     - 欢迎在此发表您对本文的看法
     - 本站评论只需填写昵称和接受回复用的邮箱  # 全局评论占位提示
-    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
+    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
@@ -258,7 +274,7 @@ comments:
     enableFlag: true
     enableUA: true
     avatarD: mp
-    avatarUrl: https://sdn.geekzu.org/avatar/
+    avatarUrl: https://gravatar.loli.net/avatar/
     emoticonUrl:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
@@ -276,55 +292,6 @@ comments:
       - 2fe1b9f7d79c288f4d7b8bc15b0227a4
     friends: 
 
-  # Disqus
-  # https://disqus.com
-  disqus:
-    shortname:
-    # optional
-    autoload: false
-    path: # 全局评论地址
-  # DisqusJS
-  # https://github.com/SukkaW/DisqusJS
-  disqusjs:
-    path: # 全局评论地址
-    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
-    #shortname:
-    #api:
-    #apikey:
-    #admin:
-    #nesting:
-  # Gitalk
-  # https://gitalk.github.io/
-  gitalk:
-    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
-    clientID:
-    clientSecret:
-    repo:
-    owner:
-    admin: # []
-    path: # 全局评论地址
-  # Vssue 暂不支持Pjax
-  # https://vssue.js.org/zh/
-  vssue:
-    owner:
-    repo:
-    clientId:
-    clientSecret:
-  # LiveRe 暂不支持Pjax
-  # https://www.livere.com
-  livere:
-    uid:
-  # Isso 暂不支持Pjax
-  # https://posativ.org/isso/
-  isso:
-    url: https://example.com/(path/)
-    src: https://example.com/(path/)js/embed.min.js
-  # HashOver 暂不支持Pjax
-  # https://www.barkdull.org/software/hashover
-  hashover:
-    src: https://example.com/(path/)comments.php
-  # Twikoo
-  # https://twikoo.js.org/
   twikoo:
     js: https://cdn.jsdelivr.net/npm/twikoo@latest # 建议锁定版本
     path: # 全局评论地址
@@ -334,25 +301,21 @@ comments:
   # https://waline.js.org/
   waline:
     js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
-    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
+    path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
-    serverURL: https://sciadvwaline.now.sh # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
-    avatar: mp # gravatar style https://waline.js.org/client/basic.html#avatar
-    avatarCDN: https://sdn.geekzu.org/avatar/
+    serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
+    avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
-    visitor: true
-
 
 ############################### Comments ############################### > end
 
 ############################### Sidebar ############################### > start
 sidebar:
-  position: right # left right
   # 主页、分类、归档等独立页面
   for_page: [blogger, notice, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
@@ -414,7 +377,7 @@ sidebar:
 
     # ---------------------------------------
     # qrcode widget
-    qrcode:
+    donate:
       class: qrcode
       display: [desktop, mobile] # [desktop, mobile]
       height: 64px  # Automatic height if not set
@@ -458,6 +421,7 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+
     notice: 
       class: text
       display: [desktop, mobile] # [desktop, mobile]
@@ -505,31 +469,23 @@ site_footer:
   # site source
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
-  analytics: >
+  analytics:
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '<br>'
+  br: <br>
 ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
 plugins:
   ################ required plugins ################
   # jquery
-  globalJquery: false # 全局引入 jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
   ################ optional plugins ################
-  # issues api
-  sitesjs:
-    enable: false
-  friendsjs:
-    enable: false
-  contributorsjs:
-    enable: false
 
   ######## Plugins to improve loading speed:
 
@@ -544,7 +500,7 @@ plugins:
   # https://www.npmjs.com/package/vanilla-lazyload
   lazyload:
     enable: true
-    js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
+    js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js
     onlypost: false
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -569,7 +525,7 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: #true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
@@ -618,43 +574,13 @@ plugins:
       - https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/img/cover/cover12.webp
       - https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/img/cover/cover13.webp
 
-  # 视差滚动效果
-  # https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
-  # parallax 与 backstretch.position:cover 只能选择一个
-  # 由于插件过度封装，且pixelcog/parallax.js已不在维护，请务必保证所有图片尺寸一致！！！【暂无兼容方案，欢迎PR】
-  parallax:
-    enable: #true
-    shuffle: true         # shuffle playlist
-    images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
-
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
-    enable: #true
-    js:
-      aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
-      meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+    enable: true
+    # js:
+    #   aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
+    #   meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -665,10 +591,10 @@ plugins:
     autoplay: false   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    volume: 1.0       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
-    message: true    # 音乐通知
+    
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -676,8 +602,14 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      - /time-machine/     # artitalk 不支持 pjax
-      # - '/bb/'           # bbtalk 不支持 pjax
+       - /time-machine/     # artitalk 不支持 pjax
+      # - /bb/           # bbtalk 不支持 pjax
+
+  # 从 issues 加载动态数据
+  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
+  # 例如：
+  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
+
 
   # 暗黑模式 darkmode
   # 样式：source/css/_plugins/dark.styl
@@ -709,7 +641,7 @@ plugins:
     # 配置项按照yml格式继续填写即可
     appId: yLJqP23EFBQHvlJ0hN1HtWAk-MdYXbMMI # your appID
     appKey: t0qqYVAWCPqLE3VfpXY9ri0k # your appKEY
-    # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
+    # serverURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
     # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # pageSize: #每页说说的显示数量
     # shuoPla: #在编辑说说的输入框中的占位符
@@ -728,28 +660,12 @@ plugins:
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
 
-  # Tidio聊天功能
+# Tidio聊天功能
   # https://www.tidio.com/
   tidio:
     enable: #true
     id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  # HexoPlusPlus
-  # https://github.com/HexoPlusPlus/HexoPlusPlus
-  # https://hexoplusplus.js.org/
-  # 无服务器Hexo后端,支持文章编辑,自带图床功能.目标:解决静态博客所有痛点[文章编辑、图片上传、博主活跃信息统计、博主说说、Twikoo加强版、阅读量统计等
-  hpp:
-    # 说说功能
-    # Set `hpptalk:true` to enable in page
-    hpp_talk:
-      css: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css # 建议锁定版本
-      js: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk_user.js # 建议锁定版本
-      limit: 10
-      start: 0
-      # 配置项按照yml格式继续填写即可
-      # domain:
-      # themecss:
-    # HexoPlusPlus其他功能暂未集成
 
 ############################### Plugins ############################### > end
 
@@ -757,23 +673,13 @@ plugins:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  faicon: fa
   # hr: 分割线, music: 音乐控制器
-  layout: [home, source_docs, source_theme, hr, print, darkmode]
+  layout: [home, source_docs, source_theme, hr, print, dark_mode]
   # 可选功能项
-  print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
-    name: 打印页面        #       👆 class = article.post 的页面
+  print:
+    name: 打印页面
     icon: fa fa-print
-    defaultStyles: true   # 是否使用预制的打印样式
-    # js:                 # 自定义 js ，可用于修改样式~
-    #  - '$("article#comments").remove();'
-    #  - '$(".backstretch").remove();'
-    #  - '$("article").css({"boxShadow": "none"});'
-    #  - '$("body").css({"backgroundColor": "#fff"});'
-  darkmode: # 需开启plugins.darkmodejs
-    name: 暗黑模式
-    white: fa fa-sun
-    dark: fa fa-moon
+    onclick: document.execCommand('print')
   # 自定义菜单的格式如下
   source_docs:
     name: 本站源码
@@ -783,6 +689,10 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
+  dark_mode:
+    name: 夜间模式
+    icon: fas fa-moon
+    toggle: darkmode
 ############################### Rightmenu ############################### > end
 
 
@@ -829,9 +739,9 @@ color_scheme:
   # 亮色主题（默认）
   light:
     # 网站背景色
-    site_bg: '#f4f4f4'
+    site_bg: '#248,243,233'
     # 网站背景上的文字
-    site_inner: '#fff'
+    site_inner: '#dfdfdf'
     # 网站页脚文字
     site_footer: '#666'
 
@@ -906,31 +816,31 @@ color_scheme:
 custom_css:
   toc_smooth: false # TOC 目录平滑滚动效果
   cursor:
-    enable: #true
-    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
+    enable: false
+    text: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/text.cur
+    pointer: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/link.cur
+    default: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/pointer.cur
+    not-allowed: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/unavailiable.cur
+    zoom-out: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/alternate.cur
+    zoom-in: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/alternate.cur
+    grab: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.0/cursors/move.cur
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 12px
-    border: 2px
+    border: 4px
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable] # [shadow, floatable, blur]
   body:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
-      grayscale: false # Enable grayscale effect
+      copy_btn: false
+      grayscale: true # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -999,9 +909,9 @@ seo:
   use_excerpt_as_description: true
   robots:
     home_first_page: index,follow
-    home_other_pages: noindex,follow
-    archive: noindex,follow
+    home_other_pages: index,follow
+    archive: index,follow
     category: noindex,follow
-    tag: noindex,follow
+    tag: index,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
