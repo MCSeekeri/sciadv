@@ -1,0 +1,23 @@
+<script>
+  volantis.message = (title, message, type, autoClose, time = 3000) => { // 此处依赖JQ
+    volantis.import.jQuery().then(()=>{
+      if (typeof $.message == "undefined") {
+        volantis.css('<%- theme.cdn.map.css.message %>')
+        volantis.js('<%- theme.cdn.map.js.message %>', () => {
+          start(title, message, type, autoClose, time);
+        });
+      } else {
+        start(title, message, type, autoClose, time);
+      }
+    })
+    function start(title, message, type, autoClose, time) {
+      $.message({
+        title: title,
+        message: message,
+        type: type,
+        autoClose: autoClose,
+        time: time,
+      });
+    }
+  };
+</script>

@@ -28,11 +28,8 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
-  <link rel="preload" href="<%- theme.info.cdn.css.first %>" as="style">
-  <% } else { %>
-  <link rel="preload" href="<%- url_for("/css/first.css") %>" as="style">
-  <% } %>
+  <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
+
 
   <!-- 页面元数据 -->
   <%
@@ -109,21 +106,23 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
-    <%- css(theme.info.cdn.css.first) %>
-  <% } else { %>
-    <%- css('/css/first.css') %>
+  <style>
+    /* 
+      source/css/first.styl
+      scripts/first-style/index.js
+     */
+    <%- getFirstCSS() %>
+  </style>
+
+  <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
+  <% if (theme.plugins.darkmodejs.enable) { %>
+    <script>
+      var userColorScheme=localStorage.getItem("user-color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
+      }
+    </script>
   <% } %>
-
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
-  <link rel="stylesheet" href="<%- theme.info.cdn.css.style %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
-  <% } else { %>
-  <link rel="stylesheet" href="<%- url_for("/css/style.css") %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- url_for("/css/style.css") %>"></noscript>
-  <% } %>
-
-  <script id="loadcss"></script>
-
   <%- partial('../_third-party/end-of-support/script') %>
 </head>

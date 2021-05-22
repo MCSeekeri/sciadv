@@ -1,0 +1,111 @@
+<% 
+  // 这里存放全局 CDN 资源控制变量 此处是硬编码
+  // theme.cdn.addJS("search","search/"+theme.search.service,theme.search.js)  => theme.cdn.map.js.search
+  // theme.cdn.addCSS("first","first",theme.cdn.set.css.first)  => theme.cdn.map.css.first
+
+  theme.cdnCtrl={}
+  if (theme.cdn.enable&&theme.cdn.prefix) {
+    theme.cdnCtrl.prefix=theme.cdn.prefix.replace(/\/$/g, "")
+  } else {
+    theme.cdnCtrl.prefix="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  }
+  theme.cdn.map={}
+  theme.cdn.map.js={}
+  theme.cdn.map.css={}
+  theme.cdn.addJS=(name,source,force)=>{
+    if(force){
+      theme.cdn.map.js[name]=force
+    }else{
+      if(!source){
+        source=name
+      }
+      source = source.replace(/^\//g, "")
+      if (theme.cdn.enable) {
+        let suffix=theme.cdn.prefix&&theme.cdn.prefix.match(/jsdelivr/g)?'.min.js':'.js'
+        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
+        theme.cdn.map.js[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix
+      } else {
+        theme.cdn.map.js[name]=url_for('/js/')+ source + '.js'
+      }
+    }
+    return theme.cdn.map.js[name]
+  }
+  theme.cdn.addCSS=(name,source,force)=>{
+    if(force){
+      theme.cdn.map.css[name]=force
+    }else{
+      if(!source){
+        source=name
+      }
+      source = source.replace(/^\//g, "")
+      if (theme.cdn.enable&&theme.cdn.prefix) {
+        let suffix=theme.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css'
+        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
+        theme.cdn.map.css[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix
+      } else {
+        theme.cdn.map.css[name]=url_for('/css/')+ source + '.css'
+      }
+    }
+    return theme.cdn.map.css[name]
+  }
+  dfs = (n,path) => {
+    for (const key in n) {
+      const element = n[key];
+      if(element && typeof element !="string"){
+        dfs(element,path.concat(key))
+      }else{
+        let op=path.concat(key)
+        let source=""
+        for (let index = 1; index < op.length; index++) {
+          const element = op[index];
+          source+=element
+          if (index!=op.length-1) {
+            source+="/"
+          }
+        }
+        if(op[0]=="js"){
+          theme.cdn.addJS(op[op.length-1],source,element)
+        }
+        if(op[0]=="css"){
+          theme.cdn.addCSS(op[op.length-1],source,element)
+        }
+      }
+    }
+  }
+
+
+  // 默认配置
+  theme.cdn.addCSS("style")
+  theme.cdn.addCSS("message")
+
+  theme.cdn.addJS("rightMenu")
+  theme.cdn.addJS("app")
+  theme.cdn.addJS("parallax","jquery.parallax.min")
+  theme.cdn.addJS("message")
+  theme.cdn.addJS("sites","plugins/sites")
+  theme.cdn.addJS("friends","plugins/friends")
+  theme.cdn.addJS("contributors","plugins/contributors")
+  theme.cdn.addJS("valine","valine",theme.comments.valine.js)
+  theme.cdn.addJS("search","search/"+theme.search.service,theme.search.js)
+
+  // 以下用于配置项 cdn.set 覆盖配置,下面是覆盖配置的方法
+  // cdn:
+  // enable: true
+  // # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
+  // set:
+  //   js:
+  //     app: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/app.js
+  //     rightMenu: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/rightMenu.js
+  //     parallax: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/jquery.parallax.min.js
+  //     plugins:
+  //       contributors: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/plugins/contributors.js
+  //       friends: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/plugins/friends.js
+  //       sites: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/js/plugins/sites.js
+  //   css:
+  //     style: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/css/style.css
+  //     message: https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page/css/message.css
+  dfs(theme.cdn.set,[])
+%>
+
+
+

@@ -1,18 +1,40 @@
+
+
+default:
+  avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+
+
+#
+# 上面的是 v5 新版通用配置，可兼容 Stellar 主题，请放心使用
+#
+# xxxxxxxx
+#
+# 下面的是 v4 旧版配置，将逐步迁移至通用配置中
+#
+
 ############################### Volantis ###############################
-# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 use_cdn 设置为 false
-use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '4.3.1' # This is theme's version.
+  theme_version: '5.0.0.alpha.0' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-  cdn:
-    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
+
+############################### CDN ###############################
+# 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# 开发者注意 cdn.enable 设置为 false
+cdn:
+  enable: false
+  prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
+  set:
+    js:
+      app: #/js/app.js
     css:
-      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
-      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
+      style: #/css/style.css # (异步加载样式)
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -214,7 +236,18 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: utterances # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  # utterances
+  # https://utteranc.es/
+  utterances:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+    crossorigin: anonymous
   # Valine
   # https://valine.js.org/
   valine:
@@ -236,14 +269,13 @@ comments:
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
-    js: https://cdn.jsdelivr.net/npm/minivaline@latest
+    js: https://cdn.jsdelivr.net/npm/minivaline@5
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
-    backend: waline
-    serverURL: https://waline.vercel.app
+    serverURL: https://hello.com
   # Disqus
   # https://disqus.com
   disqus:
@@ -310,15 +342,19 @@ comments:
     requiredFields: [nick,mail]
     serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
+    avatarCDN: #https://sdn.geekzu.org/avatar/
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
+    visitor: true
+
 
 ############################### Comments ############################### > end
 
 ############################### Sidebar ############################### > start
 sidebar:
+  position: right # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate]
+  for_page: [blogger, category, tagcloud, qrcode]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -380,7 +416,7 @@ sidebar:
 
     # ---------------------------------------
     # qrcode widget
-    donate:
+    qrcode:
       class: qrcode
       display: [desktop, mobile] # [desktop, mobile]
       height: 64px  # Automatic height if not set
@@ -474,10 +510,18 @@ site_footer:
 plugins:
   ################ required plugins ################
   # jquery
+  globalJquery: false # 全局引入 jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
   ################ optional plugins ################
+  # issues api
+  sitesjs:
+    enable: true
+  friendsjs:
+    enable: true
+  contributorsjs:
+    enable: true
 
   ######## Plugins to improve loading speed:
 
@@ -574,6 +618,36 @@ plugins:
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
 
+  # 视差滚动效果
+  # https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
+  # parallax 与 backstretch.position:cover 只能选择一个
+  # 由于插件过度封装，且pixelcog/parallax.js已不在维护，请务必保证所有图片尺寸一致！！！【暂无兼容方案，欢迎PR】
+  parallax:
+    enable: #true
+    shuffle: true         # shuffle playlist
+    images:               # For personal use only. At your own risk if used for commercial purposes !!!
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
+
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
@@ -594,6 +668,7 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
+    message: false    # 音乐通知
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -604,12 +679,6 @@ plugins:
       # - '/artitalk/'     # artitalk 不支持 pjax
       # - '/bb/'           # bbtalk 不支持 pjax
 
-  # 从 issues 加载动态数据
-  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
-  # 例如：
-  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
-
-
   # 暗黑模式 darkmode
   # 样式：source/css/_plugins/dark.styl
   # 开关按钮：在 navbar.menu 中添加：
@@ -617,7 +686,7 @@ plugins:
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
   darkmodejs:
-    enable: true
+    enable: #true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
@@ -640,7 +709,7 @@ plugins:
     # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
-    # serverURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
+    # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
     # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # pageSize: #每页说说的显示数量
     # shuoPla: #在编辑说说的输入框中的占位符
@@ -665,19 +734,46 @@ plugins:
     enable: #true
     id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+  # HexoPlusPlus
+  # https://github.com/HexoPlusPlus/HexoPlusPlus
+  # https://hexoplusplus.js.org/
+  # 无服务器Hexo后端,支持文章编辑,自带图床功能.目标:解决静态博客所有痛点[文章编辑、图片上传、博主活跃信息统计、博主说说、Twikoo加强版、阅读量统计等
+  hpp:
+    # 说说功能
+    # Set `hpptalk:true` to enable in page
+    hpp_talk:
+      css: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css # 建议锁定版本
+      js: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk_user.js # 建议锁定版本
+      limit: 10
+      start: 0
+      # 配置项按照yml格式继续填写即可
+      # domain:
+      # themecss:
+    # HexoPlusPlus其他功能暂未集成
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
 # 自定义右键菜单
 rightmenu:
-  enable: #true
+  enable: true
+  faicon: fa
   # hr: 分割线, music: 音乐控制器
-  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, dark_mode, hr, music]
+  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, hr, music]
   # 可选功能项
-  print:
-    name: 打印页面
+  print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
+    name: 打印页面        #       👆 class = article.post 的页面
     icon: fa fa-print
-    onclick: document.execCommand('print')
+    defaultStyles: true   # 是否使用预制的打印样式
+    # js:                 # 自定义 js ，可用于修改样式~
+    #  - '$("article#comments").remove();'
+    #  - '$(".backstretch").remove();'
+    #  - '$("article").css({"boxShadow": "none"});'
+    #  - '$("body").css({"backgroundColor": "#fff"});'
+  darkmode: # 需开启plugins.darkmodejs
+    name: 暗黑模式
+    white: fa fa-sun
+    dark: fa fa-moon
   # 自定义菜单的格式如下
   help:
     name: 常见问题
@@ -699,10 +795,6 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
-  dark_mode:
-    name: Dark mode
-    icon: fas fa-moon
-    toggle: darkmode
 ############################### Rightmenu ############################### > end
 
 

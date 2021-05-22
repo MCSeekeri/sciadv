@@ -1,6 +1,13 @@
-.l_side
+#l_side
   width: $sidebar
   float: right
+  if hexo-config('sidebar.position') =='left'
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+    padding-left: $gap
   position: relative
   display: flex
   flex-direction: column
@@ -104,7 +111,6 @@
     trans()
     .content
       padding: 0
-      text-align: center
       display: flex
       flex-direction: column
       align-items: stretch
@@ -142,11 +148,13 @@
         :first-child
           margin-top: $gap
       h2
+        text-align: center
         font-weight: bold
         margin: $gap * 0.5
         @media screen and (max-width: $device-tablet)
           margin: $gap * 0.5
       p
+        text-align: center
         font-weight: bold
         margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
         empty-cells: hide
@@ -320,7 +328,7 @@
         margin-bottom: 4px
 
 
-.l_side>.widget.page
+#l_side>.widget.page
   >.content
     padding-top: 0
     padding-left: $gap - 4px

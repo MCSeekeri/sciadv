@@ -1,3 +1,9 @@
+<!-- 
+  pjax重载区域接口：
+  1.  <pjax></pjax> 标签
+  2.  script[data-pjax]
+  3.  .pjax-reload script
+-->
 <%
   var banUrl = theme.plugins.pjax.banUrl || [];
 %>
@@ -15,7 +21,9 @@
           "title",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
           "#pjax-container",
-          "#pjax-header-nav-list"
+          "#pjax-header-nav-list",
+          "pjax", // <pjax></pjax> 标签
+          "script[data-pjax], .pjax-reload script" // script标签添加data-pjax 或 script标签外层添加.pjax-reload 的script代码段重载
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
         timeout: <%= theme.plugins.pjax.timeout %>
@@ -38,41 +46,18 @@
         }
       } catch (error) {}
 
-      window.subData = null; // 移除标题（用于一二级导航栏切换处）
-
-      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
-      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-
-      // 解绑事件 避免重复监听
-      volantis.$topBtn.unbind('click');
-      $('.menu a').unbind('click');
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
-	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
-	  volantis.pjax.method.send.start();
+      // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.send.start();
     });
 
     document.addEventListener('pjax:complete', function () {
-      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
-      $('script[data-pjax], .pjax-reload script').each(function () {
-        $(this).parent().append($(this).remove());
-      });
-      try{
-		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
-		volantis.pjax.method.complete.start();
-      } catch (e) {
-        console.log(e);
-      }
+      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.complete.start();
     });
 
     document.addEventListener('pjax:error', function (e) {
-	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
-	  volantis.pjax.method.error.start();
+      // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.error.start();
       window.location.href = e.triggerElement.href;
     });
 </script>

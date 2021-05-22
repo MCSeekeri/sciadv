@@ -1,15 +1,19 @@
 <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/logo/";
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
 
-$('.input.u-search-input').one('focus',function(){
-	<% if (theme.search.js) { %>
-		loadScript('<%- theme.search.js %>',setSearchService);
-	<% } else if(theme.use_cdn) { %>
-		loadScript('<%- 'https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/search/'+theme.search.service+'.min.js' %>',setSearchService);
-	<% } else { %>
-		loadScript('<%- url_for('/js/search/'+theme.search.service+'.js') %>',setSearchService);
-	<% } %>
+function loadSearchService(){
+  volantis.import.jQuery().then(()=>{
+    // see: layout/_partial/scripts/cdnCtrl.ejs
+    volantis.js('<%- theme.cdn.map.js.search %>',setSearchService); // 此处依赖JQ
+  })
+  document.querySelectorAll('.input.u-search-input').forEach((e)=>{
+    e.removeEventListener('focus',loadSearchService,false)
+  })
+}
+
+document.querySelectorAll('.input.u-search-input').forEach((e)=>{
+  e.addEventListener('focus',loadSearchService,false)
 })
 
 function listenSearch(){

@@ -42,11 +42,14 @@
         &.hl
           box-shadow: $boxshadow-card-float
 
-.l_main
+#l_main
   width: "calc(100% - 1 * %s)" % $sidebar
   @media screen and (max-width: $device-tablet)
     width: 100%
-  padding-right: $gap
+  if hexo-config('sidebar.position') =='right'
+    padding-right: $gap
+  if hexo-config('sidebar.position') =='left'
+    padding-left: $gap
   &.no_sidebar
     width: 100%
     padding-right: 0
@@ -54,9 +57,15 @@
     @media screen and (min-width: $device-2k)
       max-width: "calc(55vw - %s)" % $sidebar
     margin: auto
-    ~.l_side
+    ~#l_side
       display: none
   float: left
+  if hexo-config('sidebar.position') =='left'
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
   .post-list
     position: relative
     margin-bottom: $gap

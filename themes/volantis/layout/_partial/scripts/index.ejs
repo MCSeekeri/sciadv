@@ -1,29 +1,36 @@
 <%- partial('global') %>
 <script>
   <% if (theme.plugins.fontawesome) { %>
-  loadCSS("<%- theme.plugins.fontawesome %>", window.volantis.loadcss);
+  volantis.css("<%- theme.plugins.fontawesome %>");
   <% } %>
   <% if (theme.plugins.fontawesome_animation.enable) { %>
-  loadCSS("<%- theme.plugins.fontawesome_animation.css %>", window.volantis.loadcss);
+  volantis.css("<%- theme.plugins.fontawesome_animation.css %>");
   <% } %>
   <% if (theme.plugins.nodewaves.enable) { %>
-  loadCSS("<%- theme.plugins.nodewaves.css %>", window.volantis.loadcss);
+  volantis.css("<%- theme.plugins.nodewaves.css %>");
   <% } %>
   <% if ((theme.plugins.highlightjs.enable == true)&&(theme.plugins.highlightjs.css)) { %>
-  loadCSS("<%- theme.plugins.highlightjs.css %>", window.volantis.loadcss);
+  volantis.css("<%- theme.plugins.highlightjs.css %>");
   <% } %>
 </script>
 <!-- required -->
-<%- js(theme.plugins.jquery) %>
-<%- partial('../../_third-party/fancybox/script') %>
+<% if (theme.plugins.globalJquery) { %>
+  <%- js(theme.plugins.jquery) %>
+<% } %>
 
 <!-- internal -->
+
 <%- partial('cover') %>
+
 <% if (theme.rightmenu.enable == true) { %>
   <%- partial('../rightmenu') %>
 <% } %>
+<!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- partial('darkmode') %>
+<% } %>
 
-<%- partial('issues') %>
+<%- partial('github-api') %>
 
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
   <%- partial('../../_third-party/lazyload/script') %>
@@ -53,13 +60,7 @@
   <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
 <% } %>
 
-<% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
-  <%- js(theme.info.cdn.js) %>
-<% } else if(theme.use_cdn) { %>
-  <%- js(['https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/app.min.js']) %>
-<% } else { %>
-  <%- js(['js/app.js']) %>
-<% } %>
+<%- js(theme.cdn.map.js.app) %>
 
 <!-- optional -->
 <% if (theme.search && theme.search.enable) { %>
@@ -83,13 +84,17 @@
   <%- partial('counter') %>
 <% } %>
 
-<% if (theme.plugins.darkmodejs.enable) { %>
-  <%- partial('darkmode') %>
-<% } %>
-
 <%- partial('../../_third-party/analytics/script') %>
 
 <%- partial('../../_third-party/tidio/script') %>
+
+<%- partial('../../_third-party/parallax/script') %>
+
+<%- partial('../../_third-party/message/script') %>
+
+<%- partial('../../_third-party/hpp/hpptalk') %>
+
+<%- partial('../snackbar') %>
 
 <%- partial('toc') %>
 

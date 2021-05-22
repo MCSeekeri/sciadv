@@ -1,7 +1,8 @@
 <% if (theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
+  <% let faIcon = theme.rightmenu.faicon %>
   <% function loadmenu(obj) { %>
-    <li>
-      <a class='vlts-menu fix-cursor-default <%= obj.toggle == 'darkmode' ? 'toggle-mode-btn' : ''%>' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
         <% if (obj.rel) { %>
           rel="<%- obj.rel %>"
         <% } %>
@@ -15,7 +16,8 @@
           id="<%- obj.id %>"
         <% } else if (obj.url) { %>
           id="<%= url_for(obj.url).replace(/\/|%|\./g, "")?url_for(obj.url).replace(/\/|%|\./g, ""):"home" %>"
-        <% } %>>
+        <% } %>
+      >
         <% if (obj.icon) { %><i class='<%= obj.icon %> fa-fw'></i><% } %> <%- obj.name %>
       </a>
     </li>
@@ -23,39 +25,65 @@
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
-      <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %></a>
-        <hr id='hr-text'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i><%- __('rightmenu.copy_link') %></a>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %></a>
-        <hr id='hr-href'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %></a>
-        <hr id='hr-src'>
+      <li class='navigation menuNavigation-Content'>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='<%= faIcon %> fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='<%= faIcon %> fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='<%= faIcon %> fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='<%= faIcon %> fa-home fa-fw'></i></a>
       </li>
-      <% if (theme.plugins.fontawesome) { %>
-        <li class='navigation'>
-          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-        </li>
-      <% } else { %>
-        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i><%- __('rightmenu.back') %></a></li>
-        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i><%- __('rightmenu.forward') %></a></li>
-        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i><%- __('rightmenu.reload') %></a></li>
-      <% } %>
-      <hr>
+      <li class='option menuOption-Content'>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
+          <% let copy_text = __('rightmenu.copy_text') %>
+          <i class='<%= faIcon %> fa-copy fa-fw'></i> <%- trim(copy_text) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
+          <% let copy_paste = __('rightmenu.copy_paste') %>
+          <i class='<%= faIcon %> fa-paste fa-fw mR12'></i> <%- trim(copy_paste) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
+          <% let copy_select = __('rightmenu.copy_select') %>
+          <i class='<%= faIcon %> fa-object-ungroup fa-fw mR12'></i> <%- trim(copy_select) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
+          <% let copy_cut = __('rightmenu.copy_cut') %>
+          <i class='<%= faIcon %> fa-cut fa-fw mR12'></i> <%- trim(copy_cut) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
+          <% let open_in_new_tab = __('rightmenu.open_in_new_tab') %>
+          <i class='<%= faIcon %> fa-external-link-square-alt fa-fw mR12'></i> <%- trim(open_in_new_tab) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
+          <% let copy_image_src = __('rightmenu.copy_image_src') %>
+          <i class='<%= faIcon %> fa-image fa-fw mR12'></i> <%- trim(copy_image_src) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
+          <% let copy_image_file = __('rightmenu.copy_image_file') %>
+          <i class='<%= faIcon %> fa-images fa-fw mR12'></i> <%- trim(copy_image_file) %>
+        </span>
+      </li>
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
-          <hr>
+          <hr class="menuLoad-Content">
+        <% } else if (item == 'darkmode') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
+              <i class='<%= theme.rightmenu.darkmode.dark %> fa-fw '></i> <%- trim(theme.rightmenu.darkmode.name) %>
+            </span>
+          </li>
+        <% } else if (item == 'print') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='printHtml'>
+              <i class='<%= theme.rightmenu.print.icon %> fa-fw '></i> <%- trim(theme.rightmenu.print.name) %>
+            </span>
+          </li>  
         <% } else if (item == 'music' && theme.plugins.aplayer.enable == true) { %>
-          <li class='music name'>
+          <li class='music name menuOption-Content'>
             <p class='nav music-title fix-cursor-default'></p>
           </li>
           <li class='music ctrl'>
-            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
-            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+            <a class='nav icon-only backward fix-cursor-default' onclick='volantis.rightMenu.aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='volantis.rightMenu.aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='volantis.rightMenu.aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
           </li>
           <li class='music volume'>
             <a class='nav volume'>
@@ -76,124 +104,45 @@
   </div>
 
   <script>
-    window.document.oncontextmenu = function (event) {
-      if (event.ctrlKey) return true;
-      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
-      return popMenu(event);
-    };
-    document.addEventListener("click", function (event) {
-      var mymenu = document.getElementById('rightmenu-wrapper');
-      mymenu.style.display = "none";
-    });
-    function popMenu(event) {
-      var mymenu = document.getElementById('rightmenu-wrapper');
-      var menuContent = document.getElementById('rightmenu-content');
-      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
-      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
-      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
-      mymenu.style.top = event.clientY + "px";
-      mymenu.style.display = 'block';
-      if (event.clientX * 2 > screenWidth) {
-        menuContent.classList.add('left');
-      } else {
-        menuContent.classList.remove('left');
-      }
-      if (event.clientY * 2 > screenHeight) {
-        menuContent.classList.add('top');
-      } else {
-        menuContent.classList.remove('top');
-      }
-
-      let hrText = document.getElementById('hr-text');
-      let hrSrc = document.getElementById('hr-src');
-      let hrHref = document.getElementById('hr-href');
-
-      // 选中图片
-      let copySrc = document.getElementById('menu-copy-src');
-      if (copySrc != undefined) {
-        if (event.target.currentSrc) {
-          copySrc.style.display = 'block';
-          copySrc.addEventListener("click", function (e) {
-            copyString(event.target.currentSrc);
-          },{once: true});
-          hrSrc.style.display = 'block';
-        } else {
-          copySrc.style.display = 'none';
-          hrSrc.style.display = 'none';
+    volantis.rightMenu = {};
+    <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
+      volantis.rightMenu.music = true;
+      volantis.rightMenu.aplayerBackward = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerBackward) {
+          MainAPlayer.aplayerBackward();
         }
       }
-
-      // 选中按钮
-      // 判断是不是按钮
-      let href = '';
-      if (event.path) {
-        for (i = 0; i < event.path.length; i++) {
-          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
-            href = event.path[i].href;
-          }
+      volantis.rightMenu.aplayerToggle = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerToggle) {
+          MainAPlayer.aplayerToggle();
         }
       }
-
-      let copyText = document.getElementById('menu-copy-text');
-      copyText.style.display = 'none';
-      hrText.style.display = 'none';
-      if (href.length == 0) {
-        // 选中文本
-        if (window.getSelection().toString()) {
-          if ('<%= theme.plugins.clipboard.enable %>' == 'true') {
-            copyText.style.display = 'block';
-            hrText.style.display = 'block';
-          }
+      volantis.rightMenu.aplayerForward = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerForward) {
+          MainAPlayer.aplayerForward();
         }
       }
-
-      // 在新标签页打开
-      let openHref = document.getElementById('menu-open-href');
-      if (openHref != undefined) {
-        if (href.length > 0) {
-          openHref.style.display = 'block';
-          openHref.addEventListener("click", function (e) {
-            window.open(href);
-          },{once: true});
-          hrHref.style.display = 'block';
-        } else {
-          openHref.style.display = 'none';
-          hrHref.style.display = 'none';
+    <% } %>
+    <% if(theme.rightmenu.print.defaultStyles) { %>
+      volantis.rightMenu.defaultStyles = true;
+    <% } %>
+    <% if(theme.rightmenu.print.js) { %>
+      volantis.rightMenu.printJs = true;
+      volantis.rightMenu.printJsFun = () => {
+        try {
+          <% (theme.rightmenu.print.js || []).forEach(function(item) {  %>
+            <%- item %>
+          <% }) %>
+        } catch (error) {
+          console.error(error);
         }
-      }
-      // 复制链接
-      let copyHref = document.getElementById('menu-copy-href');
-      if (copyHref != undefined) {
-        if (href.length > 0) {
-          copyHref.style.display = 'block';
-          copyHref.addEventListener("click", function (e) {
-            copyString(href);
-          },{once: true});
-        } else {
-          copyHref.style.display = 'none';
-        }
-      }
-      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
-      <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
-      if(volantis.APlayerLoaded){ // APlayer加载完成？
-        // 如果有aplayer，初始化一下
-        checkAPlayer();
-      }
-      <% } %>
-      return false; // 该行代码确保系统自带的右键菜单不会被调出
-    }
-    function hideMenu() {
-      document.getElementById('rightmenu-wrapper').style.display = 'none';
-    }
-    function copyString(str) {
-      const input = document.createElement('input');
-      input.setAttribute('readonly', 'readonly');
-      document.body.appendChild(input);
-      input.setAttribute('value', str);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-    }
-    document.execCommand('click');
+      };
+    <% } %>
+    volantis.import.jQuery().then(()=>{
+      volantis.js('<%- theme.cdn.map.js.rightMenu %>') // 此处依赖JQ
+    })
   </script>
 <% } %>

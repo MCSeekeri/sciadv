@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 科学ADV图书馆（暂定）
+title: 科学ADV图书馆
 subtitle: ''
-description: 一个致力于科学ADV相关作品内容收集的网站
-keywords: '科A,科学ADV,命运石之门,混沌之子,混沌之脑,机器人笔记,超自然9人组'
+description: 一个致力于科学ADV相关作品(如命运石之门)内容收集的网站
+keywords: '命运石之门,科A,科学ADV,混沌之子,混沌之脑,机器人笔记,超自然9人组'
 author: MCSeekeri
 language: zh-CN
 timezone: Asia/Shanghai
@@ -45,7 +45,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: true
   tab_replace: ''
@@ -122,7 +122,6 @@ hexo_submit_urls_to_search_engine:
 
 import:
     link:
-      - <link rel="preconnect" href="https://cdn.jsdelivr.net">
       - <link rel="preconnect" href="https://ha3d7xjx.api.lncldglobal.com">
       - <link rel="preconnect" href="https://fonts.gstatic.com">
       - <link rel="preconnect" href="https://fonts.googleapis.com">
