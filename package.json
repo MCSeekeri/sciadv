@@ -32,7 +32,6 @@
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^4.0.0",
     "hexo-renderer-stylus": "^2.0.1",
-    "hexo-ruby-marks": "^1.0.1",
     "hexo-server": "^2.0.0",
     "hexo-submit-urls-to-search-engine": "^2.1.0",
     "hexo-tag-aplayer": "^3.0.4",
