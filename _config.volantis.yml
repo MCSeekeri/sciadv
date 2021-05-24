@@ -112,7 +112,7 @@ navbar:
           target: _blank
     - name: 开往
       icon: fas fa-subway
-      url: https://travellings.now.sh
+      url: https://travellings.link
       target: _blank
 ############################### Navigation Bar ############################### > end
 
