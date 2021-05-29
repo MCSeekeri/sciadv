@@ -14,7 +14,6 @@ icons: [fas fa-eye red, far fa-compass theme]
 thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
 description: CC贴吧吧主刈屋美沙希撰写的CC核心设定说明
 headimg:
-updated: 2021-02-23 08:50:00
 references:
   - title: 贴吧原帖
     url: https://tieba.baidu.com/p/5167471053
