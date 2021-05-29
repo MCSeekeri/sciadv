@@ -5,8 +5,8 @@
 # Site
 title: 科学ADV图书馆
 subtitle: ''
-description: 一个致力于科学ADV相关作品(如命运石之门)内容收集的网站
-keywords: '命运石之门,科A,科学ADV,混沌之子,混沌之脑,机器人笔记,超自然9人组'
+description: 本站致力于科学ADV作品(如命运石之门)内容收集
+keywords: 命运石之门,科A,科学ADV,混沌之子,混沌之脑,机器人笔记,超自然9人组
 author: MCSeekeri
 language: zh-CN
 timezone: Asia/Shanghai
@@ -83,7 +83,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -103,7 +103,7 @@ theme: volantis
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
-  count: 10 # 提交最新的10个链接
+  count: 5 # 提交最新的10个链接
   period: 1600 # 提交修改时间在 1600 秒内的链接
   google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
   bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
@@ -116,8 +116,8 @@ hexo_submit_urls_to_search_engine:
   google_host: https://sciadv.mcseekeri.top 
   google_key_file: push.json
   google_proxy: 0 # 向谷歌提交网址所使用的系统 http 代理，填 0 不使用
-  replace: 0  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
-  find_what: https://sciadv.mcseekeri.top
+  replace: 1  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
+  find_what: http://sciadv.mcseekeri.top
   replace_with: https://sciadv.mcseekeri.top
 
 import:

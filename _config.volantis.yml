@@ -19,7 +19,7 @@ default:
 info:
   theme_name: Volantis # This is theme's name.
   theme_version: '5.0.0.alpha.0' # This is theme's version.
-  theme_docs: https://volantis.js.org/ # This is theme's URL.
+  theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
 ############################### CDN ###############################
@@ -27,7 +27,7 @@ info:
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
-  enable: false
+  enable: true
   prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
@@ -106,10 +106,6 @@ navbar:
           icon: fas fa-user-edit
           url: https://space.bilibili.com/7348022/
           target: _blank
-        - name: 合成大石膏
-          icon: fas fa-gamepad
-          url: https://sg.vercel.app
-          target: _blank
     - name: 开往
       icon: fas fa-subway
       url: https://travellings.link
@@ -124,7 +120,7 @@ cover:
   display:
     home: true
     archive: true
-    others: false # can be written in front-matter 'cover: true'
+    others: true # can be written in front-matter 'cover: true'
   background: ''
     # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
@@ -179,7 +175,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, wordcount, counter] #启用评论数量需在此添加
+    top_meta: [author, category, tags, date, wordcount, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -444,8 +440,8 @@ sidebar:
           url: mailto:hiyajo.maho@outlook.com
         - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
-        - icon: fas fa-headphones-alt
-          url: https://github.com/MCSeekeri/SGCDN
+        # - icon: fas fa-headphones-alt
+        #   url: https://github.com/MCSeekeri/SGCDN
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -632,7 +628,7 @@ plugins:
     enable: true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
-    duration: 800 # ms
+    duration: 500 # ms
     interval: 20 # ms
     scale: 1 # 0.1~1
 
@@ -968,7 +964,7 @@ color_scheme:
     # 辅助性文字
     meta: '#888'
     # 夜间图片亮度
-    brightness: 70%
+    brightness: 60%
 ############################### Color Scheme ############################### > end
 
 ############################### Custom css ############################### > start
@@ -1068,9 +1064,9 @@ seo:
   use_excerpt_as_description: true
   robots:
     home_first_page: index,follow
-    home_other_pages: noindex,follow
-    archive: noindex,follow
-    category: noindex,follow
-    tag: noindex,follow
+    home_other_pages: index,follow
+    archive: index,follow
+    category: index,follow
+    tag: index,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end

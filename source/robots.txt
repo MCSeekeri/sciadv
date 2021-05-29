@@ -8,4 +8,8 @@ Allow: /tags/
 
 
 Sitemap: https://sciadv.mcseekeri.top/sitemap.xml
+Sitemap: https://sciadv.mcseekeri.top/post-sitemap.xml
+Sitemap: https://sciadv.mcseekeri.top/page-sitemap.xml
+Sitemap: https://sciadv.mcseekeri.top/category-sitemap.xml
+Sitemap: https://sciadv.mcseekeri.top/tag-sitemap.xml
 Sitemap: https://sciadv.mcseekeri.top/baidusitemap.xml
