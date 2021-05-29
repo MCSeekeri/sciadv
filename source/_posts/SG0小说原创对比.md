@@ -11,7 +11,6 @@ abbrlink: 1b843f8
 icons: [fas fa-cog blue, far fa-compass theme]
 thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
 date: 2021-02-24 21:30:18
-updated: 2021-02-24 21:30:18
 description: SG0的两大分支是原创线和小说线。两者之间的剧情差异巨大，甚至毫无关联。但仔细研究则会发现，逻辑依然有迹可循。
 headimg:
 ---
