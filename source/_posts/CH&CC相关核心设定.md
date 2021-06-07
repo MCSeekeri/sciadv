@@ -6,7 +6,6 @@ categories:
 tags:
   - 设定
   - 讨论探究
-copyright: false
 abbrlink: 61c7828f
 author: Kariya_Misaki
 date: 2017-06-17 12:51:00
