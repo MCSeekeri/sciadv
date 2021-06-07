@@ -1,10 +1,15 @@
 ---
-title: 科A入坑指南兼站点写文指导
+title: 科A入坑指南兼站点使用指北
 author: MCSeekeri
 tags:
   - 指南
-description: 本文将帮助你更好的了解科学ADV系列作品,并提供入坑建议及资源下载,以及指导如何在本站发表文章
+description: 本文将帮助你更好的了解科学ADV系列作品,并提供入坑建议及资源下载
 pin: true
+keywords:
+- 命运石之门
+- 命运石之门 介绍
+- 命运石之门 观看地址
+- 命运石之门 资源
 abbrlink: sciadv
 icons: [fas fa-cog blue, far fa-compass theme]
 thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
