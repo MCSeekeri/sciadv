@@ -1,6 +1,5 @@
 ---
-title: SG官方设定QA
-copyright: false
+title: SG官方设定QA - 命运石之门
 author: mages
 categories:
   - 命运石之门
