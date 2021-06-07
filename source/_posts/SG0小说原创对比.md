@@ -1,6 +1,5 @@
 ---
 title: 原创线、小说线都发生的事件但过程不同之处整理
-copyright: false
 author: serika
 categories:
   - 命运石之门

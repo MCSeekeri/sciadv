@@ -1,6 +1,5 @@
 ---
 title: 世界线AF理论内容解析
-copyright: false
 author: serika
 categories:
   - 命运石之门

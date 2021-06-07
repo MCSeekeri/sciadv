@@ -1,6 +1,5 @@
 ---
 title: SG0真结局整理
-copyright: false
 author: serika
 categories:
   - 命运石之门
