@@ -2,8 +2,8 @@ name = "sciadv"
 type = "webpack"
 account_id = "e948fb59c8aa2a756017549554f66d6a"
 workers_dev = false
-route = "sciadv.mcseekeri.top/*"
-zone_id = "1accbbb71cfa999af490708dd3973acb"
+route = "sciadv.top/*"
+zone_id = "4dd06b811f6f3b5dcfc83b257b93267b"
 
 [site]
 bucket = "./public"

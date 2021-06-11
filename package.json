@@ -24,7 +24,7 @@
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-indexed": "^1.2.1",
     "hexo-generator-json-content": "^4.2.3",
-    "hexo-generator-search": "^2.4.2",
+    "hexo-generator-search": "^2.4.3",
     "hexo-generator-seo-friendly-sitemap": "^0.2.1",
     "hexo-generator-tag": "^1.0.0",
     "hexo-helper-qrcode": "^1.0.2",
@@ -38,7 +38,7 @@
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
-    "snyk": "^1.605.0"
+    "snyk": "^1.628.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
