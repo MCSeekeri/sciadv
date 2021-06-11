@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://sciadv.mcseekeri.top
+url: https://sciadv.top
 root: /
 permalink: archives/:abbrlink/
 permalink_defaults:
@@ -109,16 +109,16 @@ hexo_submit_urls_to_search_engine:
   bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
   baidu: 1 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
   txt_path: submit_urls.txt ## 文本文档名， 需要推送的链接会保存在此文本文档里
-  baidu_host: https://sciadv.mcseekeri.top 
+  baidu_host: https://sciadv.top 
   baidu_token: 0
-  bing_host: https://sciadv.mcseekeri.top 
+  bing_host: https://sciadv.top 
   bing_token: 0
-  google_host: https://sciadv.mcseekeri.top 
+  google_host: https://sciadv.top 
   google_key_file: push.json
   google_proxy: 0 # 向谷歌提交网址所使用的系统 http 代理，填 0 不使用
   replace: 1  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
-  find_what: http://sciadv.mcseekeri.top
-  replace_with: https://sciadv.mcseekeri.top
+  find_what: https://sciadv.mcseekeri.top
+  replace_with: https://sciadv.top
 
 import:
     link:
@@ -131,7 +131,7 @@ nofollow:
   enable: true
   field: site
   exclude:
-    - 'sciadv.mcseekeri.top'
+    - 'sciadv.top'
     - 'mcseekeri.top'
   
 abbrlink:
