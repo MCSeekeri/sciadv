@@ -149,7 +149,7 @@ abbrlink:
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
 baidu_analytics_key: 633c3b07ea8711cceacf3394bcae9687
-google_analytics_key: G-619675E8HR
+google_analytics_key: G-SSK4MM0RCG
 
 algolia:
   applicationID: NZUPA1KZ8D
