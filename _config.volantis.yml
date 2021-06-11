@@ -437,7 +437,7 @@ sidebar:
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fas fa-envelope
-          url: mailto:hiyajo.maho@outlook.com
+          url: mailto:hiyajo.maho@outlook.jp
         - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
         # - icon: fas fa-headphones-alt
