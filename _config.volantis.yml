@@ -470,7 +470,7 @@ sidebar:
       header:
         icon: fas fa-tags
         title: 热门标签
-        url: tags/
+        url: /tags/
       min_font: 18
       max_font: 26
       color: true
@@ -1064,7 +1064,7 @@ seo:
   use_excerpt_as_description: true
   robots:
     home_first_page: index,follow
-    home_other_pages: index,follow
+    home_other_pages: noindex,follow
     archive: noindex,follow
     category: noindex,follow
     tag: noindex,follow
