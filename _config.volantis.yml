@@ -51,19 +51,19 @@ navbar:
       rows:
         - name: 混沌之脑
           icon: fas fa-mind-share
-          url: categories/混沌之脑
+          url: /categories/混沌之脑
         - name: 命运石之门
           icon: fas fa-cog
-          url: categories/命运石之门
+          url: /categories/命运石之门
         - name: 机器人笔记
           icon: fas fa-robot
-          url: categories/机器人笔记
+          url: /categories/机器人笔记
         - name: 混沌之子
           icon: fas fa-eye
-          url: categories/混沌之子
+          url: /categories/混沌之子
         # - name: 超自然9人组
         #   icon: fas fa-star-of-david
-        #   url: categories/超自然9人组
+        #   url: /categories/超自然9人组
         - name: 匿名代码
           icon: fas fa-code
           url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
@@ -72,13 +72,13 @@ navbar:
       rows:
         - name: 本站
           icon: fas fa-user-circle
-          url: about/
+          url: /about/
         - name: 时间机器
           icon: fas fa-microwave
-          url: time-machine/
+          url: /time-machine/
         - name: 留言
           icon: fas fa-comment-dots
-          url: comments/
+          url: /comments/
     - name: 更多
       icon: fas fa-ellipsis-v
       rows:
@@ -130,22 +130,22 @@ cover:
   features:
     - name: 归档
       icon: fas fa-archive
-      url: archives/
+      url: /archives/
     - name: 小说
       icon: fas fa-file-alt
-      url: tags/小说
+      url: /tags/小说
     - name: 同人
       icon: fas fa-user-edit
-      url: tags/同人
+      url: /tags/同人
     - name: 石学
       icon: fas fa-books
-      url: tags/讨论探究
+      url: /tags/讨论探究
     - name: 关于
       icon: fas fa-user-circle
-      url: about/
+      url: /about/
     - name: 评论
       icon: fas fa-comment
-      url: comments/
+      url: /comments/
 ############################### Cover ############################### > end
 
 pages:
