@@ -49,11 +49,6 @@ async function handleEvent(event) {
 
         response.headers.set('X-XSS-Protection', '1; mode=block');
 
-        // Server Push 样式文件
-        if (response.headers.get("Content-Type").includes('text/html')) {
-            response.headers.append('Link', '</css/style.css>; rel=preload; as=style');
-            response.headers.append('Link', '</css/first.css>; rel=preload; as=style');
-        }
 
         return response;
     } catch (e) {
