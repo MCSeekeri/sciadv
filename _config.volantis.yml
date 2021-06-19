@@ -175,7 +175,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, tags, date, wordcount, counter] #启用评论数量需在此添加
+    top_meta: [author, tags, date, wordcount, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -193,7 +193,7 @@ article:
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
       related_posts:
-        enable: true
+        enable: false
         title: 相关文章
         icon: fas fa-bookmark
         max_count: 5
