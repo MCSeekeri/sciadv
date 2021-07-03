@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
   volantis.pjax.send(() => {  // 此处依赖JQ
+    if (typeof $ == "undefined") return
     if (typeof $.fancybox != "undefined") {
       $.fancybox.close(); // 关闭弹窗
     }
@@ -248,9 +249,11 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        let id=element.querySelector("#"+idname)
-        if(id){
-          volantis.dom.$(id).addClass('active')
+        if(!/^\d/.test(idname)){ // id 不能数字开头
+          let id=element.querySelector("#"+idname)
+          if(id){
+            volantis.dom.$(id).addClass('active')
+          }
         }
       });
     }
@@ -259,26 +262,40 @@ const VolantisApp = (() => {
   // 设置全局事件
   fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
-      // 【移动端】 点击展开子菜单
+      // 【移动端】 关闭已经展开的子菜单 点击展开子菜单
       document.querySelectorAll('#l_header .m-phone li').forEach(function(e){
         if(e.querySelector(".list-v")){
+          // 点击菜单
           volantis.dom.$(e).click(function (e) {
             e.stopPropagation();
+            // 关闭已经展开的子菜单
+            e.currentTarget.parentElement.childNodes.forEach(function(e){
+              if(Object.prototype.toString.call(e) == '[object HTMLLIElement]'){
+                e.childNodes.forEach(function(e){
+                  if(Object.prototype.toString.call(e) == '[object HTMLUListElement]'){
+                    volantis.dom.$(e).hide()
+                  }
+                })
+              }
+            })
+            // 点击展开子菜单
             let array=e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
-                volantis.dom.$(element).show()
+              volantis.dom.$(element).show()
             }
           },0);
         }
       })
     } else {
-      // 【PC端】 hover时展开子菜单，点击时隐藏子菜单
+      // 【PC端】 hover时展开子菜单，点击时[target.baseURI==origin时]隐藏子菜单? 现有逻辑大部分情况不隐藏子菜单
       document.querySelectorAll('#wrapper .m-pc li > a[href]').forEach(function (e) {
         volantis.dom.$(e.parentElement).click(function (e) {
           e.stopPropagation();
           if (e.target.origin == e.target.baseURI) {
-            volantis.dom.$('#wrapper .m-pc .list-v').hide();
+            document.querySelectorAll('#wrapper .m-pc .list-v').forEach(function (e) {
+              volantis.dom.$(e).hide(); // 大概率不会执行
+            })
           }
         },0);
       })
@@ -337,7 +354,7 @@ const VolantisApp = (() => {
           $tab.find('.nav-tabs .active').removeClass('active');
           volantis.dom.$(e.target.parentElement).addClass('active');
           $tab.find('.tab-content .active').removeClass('active');
-          $tab.find($(e.target).attr('class')).addClass('active');
+          $tab.find(e.target.className).addClass('active');
           return false;
         });
       })
@@ -430,6 +447,7 @@ const volantisFancyBox = (() => { // 此处依赖JQ
   return {
     loadFancyBox: fn.loadFancyBox,
     pjaxReload: () => {
+      if (typeof $ == "undefined") return
       if (typeof $.fancybox == "undefined") {
         fn.loadFancyBox();
       } else {
