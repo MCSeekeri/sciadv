@@ -103,7 +103,7 @@ theme: volantis
 
 hexo_submit_urls_to_search_engine:
   submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
-  count: 5 # 提交最新的10个链接
+  count: 100 # 提交最新的10个链接
   period: 1600 # 提交修改时间在 1600 秒内的链接
   google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
   bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
@@ -117,8 +117,8 @@ hexo_submit_urls_to_search_engine:
   google_key_file: push.json
   google_proxy: 0 # 向谷歌提交网址所使用的系统 http 代理，填 0 不使用
   replace: 1  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
-  find_what: https://sciadv.mcseekeri.top
-  replace_with: https://sciadv.top
+  find_what: sciadv.mcseekeri.top
+  replace_with: sciadv.top
 
 import:
     link:
