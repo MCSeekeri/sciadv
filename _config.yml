@@ -63,7 +63,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 15
+  per_page: 20
   order_by: -date
   pagination_dir: page
 
@@ -87,7 +87,7 @@ updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 15
+per_page: 20
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -99,6 +99,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+plugins:
+  - hexo-reference
+
 theme: volantis
 
 hexo_submit_urls_to_search_engine:
