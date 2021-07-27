@@ -66,7 +66,7 @@ navbar:
         #   url: /categories/超自然9人组
         - name: 匿名代码
           icon: fas fa-code
-          url: https://7.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
+          url: https://bu.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
     - name: 关于
       icon: fas fa-info
       rows:
@@ -275,7 +275,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: minivaline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: waline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
   # utterances
   # https://utteranc.es/
   utterances:
@@ -400,7 +400,7 @@ comments:
   waline:
     js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
     path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
-    placeholder: 快来评论吧~  # 评论占位提示
+    placeholder: 欢迎在此发表您对本文的看法,本站评论只需填写昵称和接受回复用的邮箱  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
     meta: [nick,mail,link] # waline comment header info
@@ -411,6 +411,16 @@ comments:
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
     visitor: true
+    emoji:
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba-New
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/weibo
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Coolapk
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibili2233/
+    - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Menhera-chan
+    
 
 
 ############################### Comments ############################### > end
