@@ -626,7 +626,7 @@ plugins:
   lazyload:
     enable: true
     js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
-    onlypost: false
+    onlypost: true
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
@@ -641,7 +641,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 500 # ms
@@ -847,7 +847,7 @@ plugins:
 ############################### Rightmenu ############################### > start
 # 自定义右键菜单
 rightmenu:
-  enable: true
+  enable: false
   faicon: fa
   # hr: 分割线, music: 音乐控制器
   layout: [home, source_docs, source_theme, hr, print, darkmode]
@@ -990,7 +990,7 @@ color_scheme:
     # 辅助性文字
     meta: '#888'
     # 夜间图片亮度
-    brightness: 60%
+    brightness: 50%
 ############################### Color Scheme ############################### > end
 
 ############################### Custom css ############################### > start
