@@ -429,7 +429,7 @@ comments:
 sidebar:
   position: right # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, notice, tagcloud, webinfo]
+  for_page: [blogger, notice, lastupdate, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -543,6 +543,12 @@ sidebar:
         - '因为站长是位非实在青少年~~而且最近正在学习前端知识~~所以本站更新速度极为缓慢'
         - '本站建设进度可在[这里](https://github.com/MCSeekeri/sciadv/projects/1)查看，别忘了顺手点个Star'
         - '另外，目前本站的石学讨论探究仍然较少，欢迎诸位为本站提供内容。'
+    lastupdate:
+      class: lastupdate
+      display: [desktop, mobile]
+      header:
+        icon: fas fa-clock WISTERIA
+        title: 最近更新
 ############################### Sidebar ############################### > end
 
 
@@ -596,7 +602,7 @@ plugins:
   globalJquery: false # 全局引入 jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fontawesome-pro@5.13.1/css/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -829,6 +835,13 @@ plugins:
       # themecss:
     # HexoPlusPlus其他功能暂未集成
 
+  message:
+    enable: true
+    copyright:  # 是否在复制时弹出版权提示
+      enable: false
+      title: '知识共享许可协议'
+      message: '请遵守 CC BY-NC-SA 4.0 协议。'
+      icon: 'far fa-copyright'
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -985,13 +998,13 @@ custom_css:
   toc_smooth: false # TOC 目录平滑滚动效果
   cursor:
     enable: #true
-    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
+    text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:

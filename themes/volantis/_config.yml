@@ -414,7 +414,6 @@ sidebar:
       color: true
       start_color: '#999'
       end_color: '#555'
-
     # ---------------------------------------
     # qrcode widget
     qrcode:
@@ -461,6 +460,14 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+    # ---------------------------------------
+    # lastupdate widget 
+    lastupdate:
+      class: lastupdate
+      display: [desktop, mobile]
+      header:
+        icon: fas fa-clock WISTERIA
+        title: 最近更新
 ############################### Sidebar ############################### > end
 
 
@@ -513,8 +520,9 @@ plugins:
   # jquery
   globalJquery: false # 全局引入 jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
-  # fontawesome
+  # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
+  
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -525,7 +533,6 @@ plugins:
     enable: true
 
   ######## Plugins to improve loading speed:
-
   # 预加载
   preload:
     enable: true
@@ -543,7 +550,6 @@ plugins:
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
-
   # highlight.js
   highlightjs:
     enable: #true # Please set hexo.config.highlight.enable = false !!!
@@ -566,7 +572,6 @@ plugins:
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
-
   # npm i hexo-wordcount
   wordcount:
     enable: #true
@@ -670,6 +675,8 @@ plugins:
     list_max_height: 320px # list max height
     list_folded: true
     message: false    # 音乐通知
+  
+  # Pjax 
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -752,6 +759,14 @@ plugins:
       # themecss:
     # HexoPlusPlus其他功能暂未集成
 
+  # 消息提示
+  message:
+    enable: true
+    copyright:  # 是否在复制时弹出版权提示
+      enable: true
+      title: '知识共享许可协议'
+      message: '请遵守 CC BY-NC-SA 4.0 协议。'
+      icon: 'far fa-copyright'
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -920,13 +935,13 @@ custom_css:
   toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: #true
-    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
+    text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
