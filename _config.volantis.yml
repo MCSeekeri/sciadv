@@ -871,16 +871,16 @@ rightmenu:
     name: 打印页面        #       👆 class = article.post 的页面
     icon: fa fa-print
     defaultStyles: true   # 是否使用预制的打印样式
-    # js:                 # 自定义 js ，可用于修改样式~
-    #  - '$("article#comments").remove();'
-    #  - '$(".backstretch").remove();'
-    #  - '$("article").css({"boxShadow": "none"});'
-    #  - '$("body").css({"backgroundColor": "#fff"});'
-  darkmode: # 需开启plugins.darkmodejs
+    # js:                 # 自定义 js ，可用于修饰打印样式~， 右键剔除了对 Jquery 的依赖，所以此处你只能使用原生 js
+    #  - document.querySelector('article#comments').remove()  # 移除评论
+  darkmode:        # 需开启 plugins.darkmodejs
     name: 暗黑模式
-    white: fa fa-sun
-    dark: fa fa-moon
-  # 自定义菜单的格式如下
+    icon: fa fa-moon
+  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
+    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
+    old: #https://static.inkss.cn/img/article/
+    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/  
+  ### 自定义菜单 ###
   source_docs:
     name: 本站源码
     icon: fa fa-code-branch
