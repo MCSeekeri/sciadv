@@ -8,4 +8,7 @@ description:
 headimg:
 icons:
 thumbnail:
+references:
+  - title: 
+    url: 
 ---
