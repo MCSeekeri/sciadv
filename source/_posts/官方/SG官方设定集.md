@@ -1,5 +1,5 @@
 ---
-title: SG官方设定QA - 命运石之门
+title: SG官方设定QA
 author: mages
 categories:
   - 命运石之门
@@ -14,7 +14,6 @@ references:
 abbrlink: cb10de70
 date: 2011-09-16 00:00:00
 headimg:
-updated: 2021-02-13 20:42:00
 ---
 {% folding blue, 作品相关 %}
 Steins;Gate 公式设定集 Question & Answer
