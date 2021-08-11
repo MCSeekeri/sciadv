@@ -32,11 +32,11 @@ headimg: http://tiebapic.baidu.com/forum/w%3D580/sign=e121d9a3af99a9013b355b3e2d
 
 > 感谢：
 >
-> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px}、**某疯狂的科学家** 将剧场版小说（上/下)全部内容翻译完成。
+> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家** 将剧场版小说（上/下)全部内容翻译完成。
 >
 > 感谢：
 >
-> **天光逸**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px}、**可爱的serika**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/serika.jpg, height=30px}<sub>（贴吧ID:**尾上世莉架**)</sub> 给予的**理论支持**。
+> **天光逸**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px %}、**可爱的serika**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/serika.jpg, height=30px %}<sub>（贴吧ID:**尾上世莉架**)</sub> 给予的**理论支持**。
 
 ---
 
