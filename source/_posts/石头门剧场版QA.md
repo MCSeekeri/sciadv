@@ -16,19 +16,13 @@ headimg: http://tiebapic.baidu.com/forum/w%3D580/sign=e121d9a3af99a9013b355b3e2d
 
 #### 特别声明
 
-{% note blue 'fas fa-bullhorn' simple %}
+{% note info, 本QA手册不代表MAGES.官方观点，所有分析、结论均为组内讨论达成一致的结果，如有疑问，欢迎留言或**加群**共同研究。 %}
 
-本QA手册不代表MAGES.官方观点，所有分析、结论均为组内讨论达成一致的结果，如有疑问，欢迎留言或**加群**共同研究。
 
-{% endnote %}
 
 #### 特别提醒
 
-{% note blue 'fas fa-bullhorn' simple %}
-
-本QA仅面向**一周目以上**观众，在阅读前请确保至少看完命运石之门**本篇24话**+**OVA以及剧场版**《负荷领域的既视感》。
-
-{% endnote %}
+{% note info, 本QA仅面向**一周目以上**观众，在阅读前请确保至少看完命运石之门**本篇24话**+**OVA以及剧场版**《负荷领域的既视感》。 %}
 
 #### 特别感谢
 
