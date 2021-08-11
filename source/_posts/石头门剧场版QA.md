@@ -32,11 +32,47 @@ headimg: http://tiebapic.baidu.com/forum/w%3D580/sign=e121d9a3af99a9013b355b3e2d
 
 > 感谢：
 >
-> ![古晟天](https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg)**古晟天**、![刈屋美纱希](https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg)**刈屋美纱希**、**某疯狂的科学家** 将剧场版小说（上/下)全部内容翻译完成。
+> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px}、**某疯狂的科学家** 将剧场版小说（上/下)全部内容翻译完成。
 >
 > 感谢：
 >
-> ![天光逸](https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/tgy.jpg)**天光逸**、![尾上世莉架](https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/serika.jpg)**可爱的serika**^贴吧ID^^:^^尾上世莉架^ 给予的**理论支持**。
+> **天光逸**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px}、**可爱的serika**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/serika.jpg, height=30px}<sub>（贴吧ID:**尾上世莉架**)</sub> 给予的**理论支持**。
 
-## 待更
+---
+
+## PartⅠ 设定解析
+
+### 记忆
+
+### 短期记忆与长期记忆
+
+### 回忆与联想
+
+### 观测
+
+### 客观时系列与主观时系列
+
+### 未视感
+
+### 既视感
+
+### 普通人在世界线变动过程中的记忆变化
+
+### 新型脑炎<sub>出现在《命运石之门0》中</sub>
+
+### ReadingSteiner的过程
+
+### R世界线
+
+### 记忆空间
+
+---
+
+## Part Ⅱ Questions&Answers
+
+### 1.剧场版算是官方的正统续作吗？
+
+> 剧场版是官方的正统续作。
+>
+> 其中R世界线等设定对命运石之门的世界观起到了关键的填充作用，并非像流传的谣言：“剧场版不严谨，只是图一乐”、“剧场版毁了本篇”、“剧场版就是本篇的官方同人”所说的那样。
 
