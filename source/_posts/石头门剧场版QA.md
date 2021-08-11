@@ -10,7 +10,7 @@ date: 2021-08-10 12:51:00
 icons: [fas fa-cog blue, far fa-compass theme]
 thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/cog.svg
 description: Steins;Gate剧场版：负荷领域的既视感相关核心设定说明与常见问题的解答~
-headimg: http://tiebapic.baidu.com/forum/w%3D580/sign=e121d9a3af99a9013b355b3e2d940a58/ebe6d536afc37931f444839efcc4b74543a9116b.jpg
+headimg: https://bu.dusays.com/2021/08/11/da5d4965cdf9c.png
 ---
 ## 前言
 
@@ -34,7 +34,7 @@ headimg: http://tiebapic.baidu.com/forum/w%3D580/sign=e121d9a3af99a9013b355b3e2d
 
 > 感谢：
 >
-> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://i1.hdslb.com/bfs/face/29b052b76957f8e6350e9f90516afd824f3bf15d.png@128w_128h_1o.webp, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
+> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://bu.dusays.com/2021/08/11/d6808b3ad1335.png, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
 >
 > 感谢：
 >
