@@ -20,9 +20,6 @@
 <% } %>
 
 <!-- internal -->
-<% if (theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
-  <%- partial('cover') %>
-<% } %>
 
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../rightmenu') %>
@@ -88,7 +85,7 @@
   <%- partial('counter') %>
 <% } %>
 
-<% if (config.google_analytics_key || config.baidu_analytics_key) { %>
+<% if (config.google_analytics_key || config.baidu_analytics_key || config.tencent_aegis_id) { %>
   <%- partial('../../_third-party/analytics/script') %>
 <% } %>
 
@@ -113,6 +110,10 @@
 <% } %>
 
 <%- partial('toc') %>
+
+<% if (theme.structured_data && theme.structured_data.enable) { %>
+  <%- structured_data() %>
+<% } %>
 
 <!-- more -->
 <% if (config.import && config.import.script) { %>
