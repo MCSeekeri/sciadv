@@ -1,16 +1,19 @@
 ---
-title: S;G:负荷领域的既视感 QA手册
+title: 'S;G:负荷领域的既视感 QA手册'
 categories:
-  - [命运石之门]
+  - - 命运石之门
 tags:
   - 设定
   - 讨论探究
 author: 反物质委员会
-date: 2021-08-10 12:51:00
-icons: [fas fa-cog blue, far fa-compass theme]
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/cog.svg
+icons:
+  - fas fa-cog blue
+  - far fa-compass theme
+thumbnail: 'https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/cog.svg'
 description: Steins;Gate剧场版：负荷领域的既视感相关核心设定说明与常见问题的解答~
-headimg: https://bu.dusays.com/2021/08/11/da5d4965cdf9c.png
+headimg: 'https://bu.dusays.com/2021/08/11/da5d4965cdf9c.png'
+abbrlink: ff129072
+date: 2021-08-10 12:51:00
 ---
 ## 前言
 
