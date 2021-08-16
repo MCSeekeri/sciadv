@@ -31,6 +31,7 @@ jobs:
           ssh-keyscan github.com e.coding.net gitee.com >> ~/.ssh/known_hosts
           git config --global user.name 'MCSeekeri' 
           git config --global user.email 'mcseekeri@github.com'
+          git ls-files -z | while read -d '' path; do touch -d $(git log -1 --format="@%ct" "$path") "$path"; done
           npm i -g hexo-cli yarn
           yarn
   
