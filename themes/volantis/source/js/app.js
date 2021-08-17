@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.pjax.push(() => {
     VolantisApp.pjaxReload();
     sessionStorage.setItem("domTitle", document.title);
+    highlightKeyWords.startFromURL()
   }, 'app.js');
   volantis.pjax.send(() => {
     volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -21,18 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 'fancybox');
 
-  locationHas();
+  locationHash();
+  highlightKeyWords.startFromURL();
 });
 
-// /*锚点定位*/
-const locationHas = () => {
-  /*锚点定位*/
+/*锚点定位*/
+const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
     if (target) {
       setTimeout(() => {
-        if (window.location.hash.startsWith('#fn')) {
+        if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
             behavior: "smooth" //平滑滚动
@@ -66,7 +67,8 @@ const Debounce = (fn, t) => {
 };
 
 const VolantisApp = (() => {
-  const fn = {};
+  const fn = {},
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';;
   let scrollCorrection = 80;
 
   fn.init = () => {
@@ -115,9 +117,10 @@ const VolantisApp = (() => {
       behavior: 'smooth'
     });
   }
+
   // 滚动条距离顶部的距离
-  function getScrollTop() {
-    var scrollPos;
+  fn.getScrollTop = () => {
+    let scrollPos;
     if (window.pageYOffset) {
       scrollPos = window.pageYOffset;
     } else if (document.compatMode && document.compatMode != 'BackCompat') {
@@ -127,6 +130,7 @@ const VolantisApp = (() => {
     }
     return scrollPos;
   }
+
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
     // click topBtn 滚动至bodyAnchor 【移动端 PC】
@@ -143,7 +147,7 @@ const VolantisApp = (() => {
     let pos = document.body.scrollTop;
     volantis.dom.$(document).scroll(Debounce(() => {
       const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
-      const scrollTop = getScrollTop(); // 滚动条距离顶部的距离
+      const scrollTop = fn.getScrollTop(); // 滚动条距离顶部的距离
       const del = scrollTop - pos;
       pos = scrollTop;
       // topBtn
@@ -178,7 +182,7 @@ const VolantisApp = (() => {
     // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
     let pos = document.body.scrollTop;
     volantis.dom.$(document).scroll(Debounce(() => {
-      const scrollTop = getScrollTop();
+      const scrollTop = fn.getScrollTop();
       const del = scrollTop - pos;
       if (del >= 50 && scrollTop > 100) { // 向下滚动50px
         pos = scrollTop;
@@ -375,9 +379,9 @@ const VolantisApp = (() => {
     })
   }
 
-  // 页脚跳转
+  // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
-    let ref = document.querySelectorAll('.footnote-backref, .footnote-ref > a');
+    let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
     ref.forEach(function (e, i) {
       ref[i].click = () => {}; // 强制清空原 click 事件
       volantis.dom.$(e).on('click', (e) => {
@@ -395,6 +399,95 @@ const VolantisApp = (() => {
     })
   }
 
+  // 代码块复制
+  fn.copyCode = () => {
+    if (!(document.querySelector(".highlight .code pre") ||
+        document.querySelector(".article pre code"))) {
+      return;
+    }
+
+    document.querySelectorAll(".highlight .code pre, .article pre code").forEach(node => {
+      const test = node.insertAdjacentHTML("beforebegin", COPYHTML);
+      const _BtnCopy = node.previousSibling;
+      _BtnCopy.onclick = e => {
+        e.stopPropagation();
+        const _icon = _BtnCopy.querySelector('i');
+        const _span = _BtnCopy.querySelector('span');
+
+        node.focus();
+        const range = new Range();
+        range.selectNodeContents(node);
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(range);
+
+        const str = document.getSelection().toString();
+        fn.writeClipText(str).then(() => {
+          if(volantis.messageCopyright && volantis.messageCopyright.enable) {
+            volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+              icon: volantis.messageCopyright.icon
+            });
+          }
+          _BtnCopy.classList.add('copied');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-check-circle');
+          _span.innerText = "COPIED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-check-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          }, 2000)
+        }).catch(e => {
+          volantis.message('系统提示', e, {
+            icon: 'fa fa-exclamation-circle red'
+          });
+          _BtnCopy.classList.add('copied-failed');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-exclamation-circle');
+          _span.innerText = "COPY FAILED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-exclamation-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          })
+        })
+      }
+    });
+  }
+
+  // 工具类：复制字符串到剪切板
+  fn.writeClipText = (str) => {
+    try {
+      return navigator.clipboard
+        .writeText(str)
+        .then(() => {
+          return Promise.resolve()
+        })
+        .catch(err => {
+          return Promise.reject(err || '复制文本失败!')
+        })
+    } catch (e) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      try {
+        let result = document.execCommand('copy')
+        document.body.removeChild(input);
+        if (!result || result === 'unsuccessful') {
+          return Promise.reject('复制文本失败!')
+        } else {
+          return Promise.resolve()
+        }
+      } catch (e) {
+        document.body.removeChild(input);
+        return Promise.reject(
+          '当前浏览器不支持复制功能，请检查更新或更换其他浏览器操作!'
+        )
+      }
+    }
+  }
+
   return {
     init: () => {
       fn.init();
@@ -409,6 +502,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
     },
     pjaxReload: () => {
       fn.event();
@@ -419,6 +513,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
@@ -432,7 +527,8 @@ const VolantisApp = (() => {
           volantis.dom.switcher.removeClass('active');
         });
       }
-    }
+    },
+    writeClipText: fn.writeClipText
   }
 })()
 Object.freeze(VolantisApp);
@@ -443,7 +539,7 @@ const volantisFancyBox = (() => {
   fn.initFB = () => {
     const group = new Set();
     group.add('default'); // 默认类
-    group.add('Twikoo');  // TwiKoo 类
+    group.add('Twikoo'); // TwiKoo 类
 
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
@@ -486,3 +582,214 @@ const volantisFancyBox = (() => {
   }
 })()
 Object.freeze(volantisFancyBox);
+
+// highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
+
+// Question: 锚点稳定性未知
+
+// ToDo: 查找模式 
+// 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
+// 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
+// 2. 查找模式面板 (可拖动? or 固定?)
+// 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
+// 4. 可输入修改 查找关键词 keywords(type:list) 
+// 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
+// 6. 在选定区域中查找 querySelector ??
+// 7. 关闭查找模式
+// 8. 搜索跳转 (URL 入口) 自动开启查找模式 调用 scrollToNextHighlightKeywordMark()
+
+const highlightKeyWords = (() => {
+  let fn = {}
+  fn.markNum = 0
+  fn.markNextId = -1
+  fn.startFromURL = () => {
+    const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
+    const keywords = params ? params.split(' ') : [];
+    const post = document.querySelector('#l_main');
+    if (keywords.length==1&&keywords[0]=="null") {
+      return;
+    }
+    new Promise((resolve)=>{
+      fn.start(keywords, post); // 渲染耗时较长
+      resolve();
+    }).then(()=>{
+      let target = fn.scrollToNextHighlightKeywordMark("0");
+      let epcho = 10;
+      let CheckMarkInterval = setInterval(()=>{
+        if (!target && epcho) {
+          target = fn.scrollToNextHighlightKeywordMark("0");
+          epcho --;
+        }else{
+          clearInterval(CheckMarkInterval);
+        }
+      },1000);
+    })
+  }
+  fn.scrollToNextHighlightKeywordMark = (id) => {
+    // Next Id
+    let input = id || (fn.markNextId + 1) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId + 1) % fn.markNum;
+      target = document.getElementById("keyword-mark-"+fn.markNextId);
+    }
+    if (target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
+      });
+    }
+    // Current target
+    return target
+  }
+  fn.scrollToPrevHighlightKeywordMark = (id) => {
+    // Prev Id
+    let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+      target = document.getElementById("keyword-mark-"+fn.markNextId);
+    }
+    if (target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
+      });
+    }
+    // Current target
+    return target
+  }
+  fn.start = (keywords, querySelector) => {
+    fn.markNum = 0
+    if (!keywords.length || !querySelector || (keywords.length==1&&keywords[0]=="null")) return;
+    console.log(keywords);
+    const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
+    const allNodes = [];
+    while (walk.nextNode()) {
+      if (!walk.currentNode.parentNode.matches('button, select, textarea')) allNodes.push(walk.currentNode);
+    }
+    allNodes.forEach(node => {
+      const [indexOfNode] = fn.getIndexByWord(keywords, node.nodeValue);
+      if (!indexOfNode.length) return;
+      const slice = fn.mergeIntoSlice(0, node.nodeValue.length, indexOfNode);
+      fn.highlightText(node, slice, 'keyword');
+      fn.highlightStyle()
+    });
+  }
+  fn.getIndexByWord = (words, text, caseSensitive = false) => {
+    const index = [];
+    const included = new Set();
+    words.forEach(word => {
+      const div = document.createElement('div');
+      div.innerText = word;
+      word = div.innerHTML;
+  
+      const wordLen = word.length;
+      if (wordLen === 0) return;
+      let startPosition = 0;
+      let position = -1;
+      if (!caseSensitive) {
+        text = text.toLowerCase();
+        word = word.toLowerCase();
+      }
+      while ((position = text.indexOf(word, startPosition)) > -1) {
+        index.push({ position, word });
+        included.add(word);
+        startPosition = position + wordLen;
+      }
+    });
+    index.sort((left, right) => {
+      if (left.position !== right.position) {
+        return left.position - right.position;
+      }
+      return right.word.length - left.word.length;
+    });
+    return [index, included];
+  };
+  fn.mergeIntoSlice = (start, end, index) => {
+    let item = index[0];
+    let { position, word } = item;
+    const hits = [];
+    const count = new Set();
+    while (position + word.length <= end && index.length !== 0) {
+      count.add(word);
+      hits.push({
+        position,
+        length: word.length
+      });
+      const wordEnd = position + word.length;
+  
+      index.shift();
+      while (index.length !== 0) {
+        item = index[0];
+        position = item.position;
+        word = item.word;
+        if (wordEnd > position) {
+          index.shift();
+        } else {
+          break;
+        }
+      }
+    }
+    return {
+      hits,
+      start,
+      end,
+      count: count.size
+    };
+  };
+  fn.highlightText = (node, slice, className) => {
+    const val = node.nodeValue;
+    let index = slice.start;
+    const children = [];
+    for (const { position, length } of slice.hits) {
+      const text = document.createTextNode(val.substring(index, position));
+      index = position + length;
+      let mark = document.createElement('mark');
+      mark.className = className;
+      mark = fn.highlightStyle(mark)
+      mark.appendChild(document.createTextNode(val.substr(position, length)));
+      children.push(text, mark);
+    }
+    node.nodeValue = val.substring(index, slice.end);
+    children.forEach(element => {
+      node.parentNode.insertBefore(element, node);
+    });
+  }
+  fn.highlightStyle = (mark) => {
+    if(!mark) return;
+    mark.id = "keyword-mark-" + fn.markNum;
+    fn.markNum ++;
+    mark.style.background = "transparent";
+    mark.style["border-bottom"] = "1px dashed #ff2a2a";
+    mark.style["color"] = "#ff2a2a";
+    mark.style["font-weight"] = "bold";
+    return mark
+  }
+  fn.cleanHighlightStyle = () => {
+    document.querySelectorAll(".keyword").forEach(mark=>{
+      mark.style.background = "transparent";
+      mark.style["border-bottom"] = null;
+      mark.style["color"] = null;
+      mark.style["font-weight"] = null;
+    })
+  }
+  return {
+    start: (keywords, querySelector) => {
+      fn.start(keywords, querySelector)
+    },
+    startFromURL: () => {
+      fn.startFromURL()
+    },
+    scrollToNextHighlightKeywordMark: (id) => {
+      fn.scrollToNextHighlightKeywordMark(id)
+    },
+    scrollToPrevHighlightKeywordMark: (id) => {
+      fn.scrollToPrevHighlightKeywordMark(id)
+    },
+    cleanHighlightStyle: () => {
+      fn.cleanHighlightStyle()
+    },
+  }
+})()
+Object.freeze(highlightKeyWords);
