@@ -30,7 +30,7 @@ minivaline:
 因为WebP的压缩效果实在是太恐怖,所以我开心的抛弃了IE用户和旧版Chrome用户,全站转向Webp图片格式！
 {% endtimenode %}
 {% timenode 2021-01-25 %}
-干掉了Service Worker,这货确实能实现**断网也能看文章**的炫酷效果,但带来的问题太头疼了...
+干掉了Service Worker,这货确实能实现**断网也能看文章**的炫酷效果,但带来的问题太头疼了…
 {% endtimenode %}
 {% timenode 2021-01-18 %}
 尝试了一下哔哩哔哩播放器,被气到了,所以之后换到Dplayer配去不图床。
@@ -42,6 +42,6 @@ minivaline:
 搞定了超——好看的思源宋体,毕竟要做长文阅读,字体的舒适与否十分重要。
 {% endtimenode %}
 {% timenode 2021-01-09 %}
-在Github上创建了名为[sciadv](https://github.com/MCSeekeri/sciadv)的Repo,一切就此开始...
+在Github上创建了名为[sciadv](https://github.com/MCSeekeri/sciadv)的Repo,一切就此开始…
 {% endtimenode %}
 {% endtimeline %}
