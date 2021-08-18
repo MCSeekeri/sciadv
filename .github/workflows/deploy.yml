@@ -43,12 +43,11 @@ jobs:
           BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
           BING_TOKEN: ${{ secrets.BING_TOKEN }}
           GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
-          HEXO_ALGOLIA_INDEXING_KEY: ${{ secrets.HEXO_ALGOLIA_INDEXING_KEY }}
         run: |
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> $GITHUB_WORKSPACE/push.json
-          hexo algolia && hexo generate && gulp && hexo deploy
+          hexo generate && gulp && hexo deploy
 
-      # - name: 部署到Cloudflare Workers
-      #   uses: cloudflare/wrangler-action@1.3.0
-      #   with:
-      #     apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
+      - name: 部署到Cloudflare Workers
+        uses: cloudflare/wrangler-action@1.3.0
+        with:
+          apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
