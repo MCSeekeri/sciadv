@@ -179,6 +179,7 @@
           align-items: baseline
           justify-content: center
           margin: 0 $gap 0 0
+          padding: 8px 0  // seo https://web.dev/tap-targets/
           &:last-child
             margin-right: 0
           img,i
@@ -198,7 +199,7 @@
             img
               height: 16px
               width: 16px
-              margin-right: 5px
+              margin-right: 8px // seo https://web.dev/tap-targets/
             p
               margin: 0
               font-weight: normal
@@ -335,6 +336,12 @@ img
     transition opacity .5s ease-out 0s
     &:not(.loaded)
       opacity: 0
+      // 优化累积布局偏移 测试 begin
+      // https://web.dev/optimize-cls/
+      width: 100%
+      height: auto
+      aspect-ratio: 1.7777
+      // 优化累积布局偏移 测试 end
     &.loaded
       opacity: 1
     if hexo-config('plugins.lazyload.blurIn') == true

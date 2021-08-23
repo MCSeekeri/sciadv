@@ -21,12 +21,16 @@
 
 <!-- internal -->
 
+<% if (theme.plugins.message && theme.plugins.message.enable) { %>
+  <%- partial('../../_plugins/message/script') %>
+<% } %>
+
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../../_plugins/rightmenu/layout') %>
 <% } %>
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
-<% if (theme.plugins.darkmodejs.enable) { %>
+<% if (theme.plugins.darkmode.enable) { %>
   <%- partial('../../_plugins/darkmode/script') %>
 <% } %>
 
@@ -103,10 +107,6 @@
   <%- partial('../../_plugins/snackbar/script') %>
 <% } %>
 </pjax>
-
-<% if (theme.plugins.message && theme.plugins.message.enable) { %>
-  <%- partial('../../_plugins/message/script') %>
-<% } %>
 
 <%- partial('toc') %>
 

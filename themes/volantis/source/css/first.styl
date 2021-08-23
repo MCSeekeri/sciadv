@@ -1,15 +1,17 @@
-// 本文件样式内联硬编码写在HTML中  内联自动化方案 see：scripts/helpers/first-style/index.js
-// https://blog.skk.moe/post/improve-fcp-for-my-blog/
-#safearea{
+#safearea {
   display: none
 }
+// https://web.dev/content-visibility/
+// https://www.caniuse.com/?search=content-visibility
+.post-story {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
 @import '_defines/*'
 
 // Project
-@import '_base'
 @import '_first/*'
-if hexo-config('plugins.darkmodejs.enable')
-  @import '_plugins/darkmode'
 
 // Custom Files
 for $injects_first in hexo-config('injects.first')

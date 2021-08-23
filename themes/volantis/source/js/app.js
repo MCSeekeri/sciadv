@@ -1,23 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-  VolantisApp.init();
-  VolantisApp.subscribe();
-  volantisFancyBox.loadFancyBox();
+  volantis.requestAnimationFrame(() => {
+    VolantisApp.init();
+    VolantisApp.subscribe();
+    volantisFancyBox.loadFancyBox();
+    highlightKeyWords.startFromURL();
+    locationHash();
 
-  volantis.pjax.push(() => {
-    VolantisApp.pjaxReload();
-    sessionStorage.setItem("domTitle", document.title);
-    highlightKeyWords.startFromURL()
-  }, 'app.js');
-  volantis.pjax.send(() => {
-    volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-    volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-    volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-    volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
-  }, 'app.js');
-  volantis.pjax.push(volantisFancyBox.pjaxReload);
-
-  locationHash();
-  highlightKeyWords.startFromURL();
+    volantis.pjax.push(() => {
+      VolantisApp.pjaxReload();
+      sessionStorage.setItem("domTitle", document.title);
+      highlightKeyWords.startFromURL()
+      volantisFancyBox.pjaxReload()
+    }, 'app.js');
+    volantis.pjax.send(() => {
+      volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+      volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
+    }, 'app.js');
+  });
 });
 
 /*锚点定位*/
@@ -26,6 +27,7 @@ const locationHash = () => {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
     if (target) {
+      volantis.cleanContentVisibility()
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
           window.scrollTo({
@@ -53,16 +55,16 @@ const Debounce = (fn, t) => {
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-        timer = null;
-        fn.apply(this, args);
-      },
+      timer = null;
+      fn.apply(this, args);
+    },
       delay);
   };
 };
 
 const VolantisApp = (() => {
   const fn = {},
-    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';;
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';
   let scrollCorrection = 80;
 
   fn.init = () => {
@@ -106,6 +108,7 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
+    volantis.cleanContentVisibility()
     window.scrollTo({
       top: elem.offsetTop - correction,
       behavior: 'smooth'
@@ -219,9 +222,9 @@ const VolantisApp = (() => {
         });
         // 页面滚动  隐藏
         volantis.dom.$(document).scroll(Debounce(() => {
-            volantis.dom.tocTarget.removeClass('active');
-            volantis.dom.toc.removeClass('active');
-          },
+          volantis.dom.tocTarget.removeClass('active');
+          volantis.dom.toc.removeClass('active');
+        },
           100));
       } else volantis.dom.toc.remove(); // 隐藏toc目录按钮
     }
@@ -261,11 +264,9 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        if (!/^\d/.test(idname)) { // id 不能数字开头
-          let id = element.querySelector("#" + idname)
-          if (id) {
-            volantis.dom.$(id).addClass('active')
-          }
+        let id = element.querySelector("[active-action=" + idname + "]")
+        if (id) {
+          volantis.dom.$(id).addClass('active')
         }
       });
     }
@@ -377,13 +378,14 @@ const VolantisApp = (() => {
   fn.footnotes = () => {
     let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
     ref.forEach(function (e, i) {
-      ref[i].click = () => {}; // 强制清空原 click 事件
+      ref[i].click = () => { }; // 强制清空原 click 事件
       volantis.dom.$(e).on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
         let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
+          volantis.cleanContentVisibility()
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
             behavior: "smooth" //平滑滚动
@@ -396,7 +398,7 @@ const VolantisApp = (() => {
   // 代码块复制
   fn.copyCode = () => {
     if (!(document.querySelector(".highlight .code pre") ||
-        document.querySelector(".article pre code"))) {
+      document.querySelector(".article pre code"))) {
       return;
     }
 
@@ -416,7 +418,7 @@ const VolantisApp = (() => {
 
         const str = document.getSelection().toString();
         fn.writeClipText(str).then(() => {
-          if(volantis.messageCopyright && volantis.messageCopyright.enable) {
+          if (volantis.messageCopyright && volantis.messageCopyright.enable) {
             volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
               icon: volantis.messageCopyright.icon
             });
@@ -593,33 +595,27 @@ const highlightKeyWords = (() => {
     const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
     const keywords = params ? params.split(' ') : [];
     const post = document.querySelector('#l_main');
-    if (keywords.length==1&&keywords[0]=="null") {
+    if (keywords.length == 1 && keywords[0] == "null") {
       return;
     }
-    new Promise((resolve)=>{
-      fn.start(keywords, post); // 渲染耗时较长
-      resolve();
-    }).then(()=>{
-      let target = fn.scrollToNextHighlightKeywordMark("0");
-      let epcho = 10;
-      let CheckMarkInterval = setInterval(()=>{
-        if (!target && epcho) {
-          target = fn.scrollToNextHighlightKeywordMark("0");
-          epcho --;
-        }else{
-          clearInterval(CheckMarkInterval);
-        }
-      },1000);
-    })
+    volantis.cleanContentVisibility()
+    fn.start(keywords, post); // 渲染耗时较长
+    fn.scrollToFirstHighlightKeywordMark()
+  }
+  fn.scrollToFirstHighlightKeywordMark = () => {
+    let target = fn.scrollToNextHighlightKeywordMark("0");
+    if (!target) {
+      volantis.requestAnimationFrame(fn.scrollToFirstHighlightKeywordMark)
+    }
   }
   fn.scrollToNextHighlightKeywordMark = (id) => {
     // Next Id
     let input = id || (fn.markNextId + 1) % fn.markNum;
     fn.markNextId = parseInt(input)
-    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    let target = document.getElementById("keyword-mark-" + fn.markNextId);
     if (!target) {
       fn.markNextId = (fn.markNextId + 1) % fn.markNum;
-      target = document.getElementById("keyword-mark-"+fn.markNextId);
+      target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
       window.scrollTo({
@@ -633,10 +629,10 @@ const highlightKeyWords = (() => {
     // Prev Id
     let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
     fn.markNextId = parseInt(input)
-    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    let target = document.getElementById("keyword-mark-" + fn.markNextId);
     if (!target) {
       fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
-      target = document.getElementById("keyword-mark-"+fn.markNextId);
+      target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
       window.scrollTo({
@@ -648,7 +644,7 @@ const highlightKeyWords = (() => {
   }
   fn.start = (keywords, querySelector) => {
     fn.markNum = 0
-    if (!keywords.length || !querySelector || (keywords.length==1&&keywords[0]=="null")) return;
+    if (!keywords.length || !querySelector || (keywords.length == 1 && keywords[0] == "null")) return;
     console.log(keywords);
     const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
     const allNodes = [];
@@ -670,7 +666,7 @@ const highlightKeyWords = (() => {
       const div = document.createElement('div');
       div.innerText = word;
       word = div.innerHTML;
-  
+
       const wordLen = word.length;
       if (wordLen === 0) return;
       let startPosition = 0;
@@ -705,7 +701,7 @@ const highlightKeyWords = (() => {
         length: word.length
       });
       const wordEnd = position + word.length;
-  
+
       index.shift();
       while (index.length !== 0) {
         item = index[0];
@@ -744,9 +740,9 @@ const highlightKeyWords = (() => {
     });
   }
   fn.highlightStyle = (mark) => {
-    if(!mark) return;
+    if (!mark) return;
     mark.id = "keyword-mark-" + fn.markNum;
-    fn.markNum ++;
+    fn.markNum++;
     mark.style.background = "transparent";
     mark.style["border-bottom"] = "1px dashed #ff2a2a";
     mark.style["color"] = "#ff2a2a";
@@ -754,7 +750,7 @@ const highlightKeyWords = (() => {
     return mark
   }
   fn.cleanHighlightStyle = () => {
-    document.querySelectorAll(".keyword").forEach(mark=>{
+    document.querySelectorAll(".keyword").forEach(mark => {
       mark.style.background = "transparent";
       mark.style["border-bottom"] = null;
       mark.style["color"] = null;

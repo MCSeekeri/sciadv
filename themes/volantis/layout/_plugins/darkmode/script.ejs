@@ -1,7 +1,7 @@
 <script>
 const rootElement = document.documentElement;
-const darkModeStorageKey = "user-color-scheme";
-const rootElementDarkModeAttributeName = "data-user-color-scheme";
+const darkModeStorageKey = "color-scheme";
+const rootElementDarkModeAttributeName = "color-scheme";
 const setLS = (k, v) => {
     localStorage.setItem(k, v);
 };
@@ -90,6 +90,8 @@ function bindToggleButton() {
   })
 }
 applyCustomDarkModeSettings();
-document.addEventListener("DOMContentLoaded", bindToggleButton);
+document.addEventListener("DOMContentLoaded", ()=>{
+  volantis.requestAnimationFrame(bindToggleButton)
+});
 volantis.pjax.push(bindToggleButton);
 </script>

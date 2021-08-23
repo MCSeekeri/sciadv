@@ -13,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta content="<%=config.title%>" name="application-name">
   <meta content="<%=config.title%>" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
@@ -52,11 +52,11 @@
   </style>
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
-  <%_ if (theme.plugins.darkmodejs.enable) { _%>
+  <%_ if (theme.plugins.darkmode.enable) { _%>
     <script>
-      var userColorScheme=localStorage.getItem("user-color-scheme")
+      var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
-        document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
       }
     </script>
   <%_ } _%>
