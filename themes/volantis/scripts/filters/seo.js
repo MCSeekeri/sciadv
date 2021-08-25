@@ -3,6 +3,8 @@
 hexo.extend.filter.register('after_render:html', function (data) {
   // img 设置默认 alt https://web.dev/image-alt/
   data = data.replace(/<img (.*?)>/gi, function (str, p) {
+    p = p.trim()
+    p = p.replace(/\/$/, "")
     if (p && !str.includes('alt=')) {
       str = str.replace(p, p + ' alt="This is a picture without description" ');
     }

@@ -27,17 +27,16 @@ const locationHash = () => {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
     if (target) {
-      volantis.cleanContentVisibility()
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
-            behavior: "smooth" //平滑滚动
+            // behavior: "smooth" //平滑滚动
           });
         } else {
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5,
-            behavior: "smooth" //平滑滚动
+            // behavior: "smooth" //平滑滚动
           });
         }
       }, 1000)
@@ -45,22 +44,6 @@ const locationHash = () => {
   }
 }
 
-// 函数防抖 (只执行最后一次点击)
-const Debounce = (fn, t) => {
-  const delay = t || 50;
-  let timer;
-  return function () {
-    const args = arguments;
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      timer = null;
-      fn.apply(this, args);
-    },
-      delay);
-  };
-};
 
 const VolantisApp = (() => {
   const fn = {},
@@ -108,7 +91,6 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    volantis.cleanContentVisibility()
     window.scrollTo({
       top: elem.offsetTop - correction,
       behavior: 'smooth'
@@ -128,6 +110,83 @@ const VolantisApp = (() => {
     return scrollPos;
   }
 
+  // 使用 requestAnimationFrame 处理滚动事件
+  fn.initScrollEvents = () => {
+    volantis.scroll = {}
+    volantis.scroll.lastScrollTop = fn.getScrollTop()
+    function loop() {
+      const scrollTop = fn.getScrollTop();
+      if (volantis.scroll.lastScrollTop !== scrollTop) {
+        volantis.scroll.del = scrollTop - volantis.scroll.lastScrollTop;
+        volantis.scroll.lastScrollTop = scrollTop;
+        // if (volantis.scroll.del > 0) {
+        //   console.log("向下滚动");
+        // } else {
+        //   console.log("向上滚动");
+        // }
+        fn.scrollEventCallBack()
+      }
+      volantis.requestAnimationFrame(loop)
+    }
+    volantis.requestAnimationFrame(loop)
+  }
+
+  // 滚动事件回调们
+  fn.scrollEventCallBack = () => {
+    // 【移动端 PC】//////////////////////////////////////////////////////////////////////
+
+    // 显示/隐藏 Header导航 topBtn 【移动端 PC】
+    const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
+    const scrollTop = fn.getScrollTop(); // 滚动条距离顶部的距离
+
+    // topBtn
+    if (volantis.dom.topBtn) {
+      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
+        volantis.dom.topBtn.addClass('show');
+        // 向上滚动高亮 topBtn
+        if (volantis.scroll.del > 0) {
+          volantis.dom.topBtn.removeClass('hl');
+        } else {
+          volantis.dom.topBtn.addClass('hl');
+        }
+      } else {
+        volantis.dom.topBtn.removeClass('show').removeClass('hl');
+      }
+    }
+
+    // Header导航
+    if (volantis.dom.header) {
+      if (scrollTop - showHeaderPoint > -1) {
+        volantis.dom.header.addClass('show');
+      } else {
+        volantis.dom.header.removeClass('show');
+      }
+    }
+
+    // 决定一二级导航栏的切换 【向上滚动切换为一级导航栏；向下滚动切换为二级导航栏】  【移动端 PC】
+    if (pdata.ispage && volantis.dom.wrapper) {
+      if (volantis.scroll.del > 0 && scrollTop > 100) { // 向下滚动
+        volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
+      } else if (volantis.scroll.del < 0) { // 向上滚动
+        volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
+      }
+    }
+
+    // 【移动端】//////////////////////////////////////////////////////////////////////
+    if (volantis.isMobile) {
+      // 【移动端】 页面滚动  隐藏 移动端toc目录按钮
+      if (pdata.ispage && volantis.dom.tocTarget && volantis.dom.toc) {
+        volantis.dom.tocTarget.removeClass('active');
+        volantis.dom.toc.removeClass('active');
+      }
+      // 【移动端】 滚动时隐藏子菜单
+      if (volantis.dom.mPhoneList) {
+        volantis.dom.mPhoneList.forEach(function (e) {
+          volantis.dom.$(e).hide();
+        })
+      }
+    }
+  }
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
     // click topBtn 滚动至bodyAnchor 【移动端 PC】
@@ -140,32 +199,6 @@ const VolantisApp = (() => {
       });
     }
 
-    // 滚动监听 显示/隐藏 Header导航 topBtn 【移动端 PC】
-    let pos = document.body.scrollTop;
-    volantis.dom.$(document).scroll(Debounce(() => {
-      const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
-      const scrollTop = fn.getScrollTop(); // 滚动条距离顶部的距离
-      const del = scrollTop - pos;
-      pos = scrollTop;
-      // topBtn
-      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
-        volantis.dom.topBtn.addClass('show');
-        // 向上滚动高亮 topBtn
-        if (del > 0) {
-          volantis.dom.topBtn.removeClass('hl');
-        } else {
-          volantis.dom.topBtn.addClass('hl');
-        }
-      } else {
-        volantis.dom.topBtn.removeClass('show').removeClass('hl');
-      }
-      // Header导航
-      if (scrollTop - showHeaderPoint > -1) {
-        volantis.dom.header.addClass('show');
-      } else {
-        volantis.dom.header.removeClass('show');
-      }
-    }));
   }
 
   // 设置导航栏
@@ -175,20 +208,6 @@ const VolantisApp = (() => {
 
     // 填充二级导航文章标题 【移动端 PC】
     volantis.dom.wrapper.find('.nav-sub .title').html(pdata.postTitle);
-
-    // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
-    let pos = document.body.scrollTop;
-    volantis.dom.$(document).scroll(Debounce(() => {
-      const scrollTop = fn.getScrollTop();
-      const del = scrollTop - pos;
-      if (del >= 50 && scrollTop > 100) { // 向下滚动50px
-        pos = scrollTop;
-        volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
-      } else if (del <= -50) { // 向上滚动50px
-        pos = scrollTop;
-        volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
-      }
-    }));
 
     // ====== bind events to every btn =========
     // 评论按钮 【移动端 PC】
@@ -220,12 +239,6 @@ const VolantisApp = (() => {
           volantis.dom.tocTarget.removeClass('active');
           volantis.dom.toc.removeClass('active');
         });
-        // 页面滚动  隐藏
-        volantis.dom.$(document).scroll(Debounce(() => {
-          volantis.dom.tocTarget.removeClass('active');
-          volantis.dom.toc.removeClass('active');
-        },
-          100));
       } else volantis.dom.toc.remove(); // 隐藏toc目录按钮
     }
   }
@@ -264,7 +277,8 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        let id = element.querySelector("[active-action=" + idname + "]")
+        // idname 不能为数字开头, 加一个 action- 前缀
+        let id = element.querySelector("[active-action=action-" + idname + "]")
         if (id) {
           volantis.dom.$(id).addClass('active')
         }
@@ -325,12 +339,6 @@ const VolantisApp = (() => {
         volantis.dom.$(e).hide();
       })
     });
-    // 【移动端】 滚动时隐藏子菜单
-    volantis.dom.$(document).scroll(Debounce(() => {
-      volantis.dom.mPhoneList.forEach(function (e) {
-        volantis.dom.$(e).hide();
-      })
-    }));
   }
 
   // 设置导航栏搜索框 【移动端】
@@ -385,10 +393,9 @@ const VolantisApp = (() => {
         let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.cleanContentVisibility()
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
-            behavior: "smooth" //平滑滚动
+            // behavior: "smooth" //平滑滚动
           });
         }
       });
@@ -488,6 +495,7 @@ const VolantisApp = (() => {
     init: () => {
       fn.init();
       fn.event();
+      fn.initScrollEvents();
     },
     subscribe: () => {
       fn.setIsMobile();
@@ -598,7 +606,6 @@ const highlightKeyWords = (() => {
     if (keywords.length == 1 && keywords[0] == "null") {
       return;
     }
-    volantis.cleanContentVisibility()
     fn.start(keywords, post); // 渲染耗时较长
     fn.scrollToFirstHighlightKeywordMark()
   }

@@ -645,8 +645,7 @@ plugins:
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: false
-    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
-    distance: 32px
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js    distance: 32px
     duration: 500 # ms
     interval: 20 # ms
     scale: 1 # 0.1~1
@@ -845,6 +844,14 @@ plugins:
       pause: fas fa-pause
     rightmenu:                            # 是否开启右键模块的消息通知
       enable: true
+
+  # 标签插件样式按需加载
+  tag_plugin_load_on_demand:
+    enable: true
+    # 每个页面强制加载以下标签插件样式
+    plugins:
+      - note
+      - btns
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
