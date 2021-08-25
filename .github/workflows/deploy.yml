@@ -47,7 +47,7 @@ jobs:
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> $GITHUB_WORKSPACE/push.json
           hexo generate && gulp && hexo deploy
 
-      - name: 部署到Cloudflare Workers
-        uses: cloudflare/wrangler-action@1.3.0
-        with:
-          apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
+      # - name: 部署到Cloudflare Workers
+      #   uses: cloudflare/wrangler-action@1.3.0
+      #   with:
+      #     apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
