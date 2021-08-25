@@ -22,7 +22,7 @@
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^1.0.0",
-    "hexo-generator-indexed": "^1.2.1",
+    "hexo-generator-index": "^2.0.0",
     "hexo-generator-json-content": "^4.2.3",
     "hexo-generator-search": "^2.4.3",
     "hexo-generator-seo-friendly-sitemap": "^0.2.1",
@@ -35,11 +35,9 @@
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
     "hexo-submit-urls-to-search-engine": "^2.1.0",
-    "hexo-tag-aplayer": "^3.0.4",
-    "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
-    "snyk": "^1.683.0"
+    "snyk": "^1.688.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
