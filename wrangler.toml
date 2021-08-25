@@ -2,7 +2,7 @@ name = "sciadv"
 type = "webpack"
 account_id = "6e3571a1b0189d070e59a52e121e1dd4"
 workers_dev = true
-route = "www.sciadv.top/*"
+route = "sciadv.top/*"
 zone_id = "28bfb3a424f55826c830f70a67afd708"
 
 [site]
