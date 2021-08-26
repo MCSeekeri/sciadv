@@ -785,8 +785,8 @@ plugins:
   # Tidio聊天功能
   # https://www.tidio.com/
   tidio:
-    enable: #true
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    enable: true
+    id: cfeex4okbrrdpt6edk1w3hfsbymjft8x
 
   # HexoPlusPlus
   # https://github.com/HexoPlusPlus/HexoPlusPlus
