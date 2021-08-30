@@ -236,7 +236,23 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: beaudar # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: giscus # giscus, beaudar, utterances, valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    theme:
+      light: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
+    # 以下配置按照 yml 格式增删填写即可
+    # repo: xxx/xxx
+    # repo-id: xxx
+    # category: xxx
+    # category-id: xxx
+    # mapping: "pathname"
+    # reactions-enabled: "1"
+    # emit-metadata: "0"
+
   # beaudar
   # https://beaudar.lipk.org/
   beaudar:
@@ -250,7 +266,6 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous
   # utterances
   # https://utteranc.es/
   utterances:
@@ -261,7 +276,6 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous
   # Valine
   # https://valine.js.org/
   valine:
@@ -682,7 +696,8 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/artitalk/'     # artitalk 不支持 pjax
+      # - '/artitalk/'   # artitalk 不支持 pjax
+      # - '/bbtalk/'     # bbtalk 不支持 pjax
 
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：
@@ -729,17 +744,11 @@ plugins:
   # BBtalk https://bb.js.org
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
-    # 支持 Pjax
+    # 不支持 Pjax
     js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
-
-  # Tidio聊天功能
-  # https://www.tidio.com/
-  tidio:
-    enable: #true
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   # HexoPlusPlus
   # https://github.com/HexoPlusPlus/HexoPlusPlus
@@ -810,6 +819,20 @@ plugins:
       - btns
       - p
       - gallery
+
+  # 聊天功能
+  chat_service: # tidio or gitter
+
+  # Tidio
+  # https://www.tidio.com/
+  tidio:
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  # Gitter
+  # https://gitter.im
+  gitter:
+    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
