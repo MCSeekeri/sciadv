@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0.alpha.2' # This is theme's version.
+  theme_version: '5.0.0.alpha.3' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
@@ -36,7 +36,8 @@ cdn:
     css:
       style: #/css/style.css # (异步加载样式)
 ########################################################################
-
+ # 平滑滚动效果
+scroll_smooth: true
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
@@ -587,10 +588,11 @@ plugins:
   # highlight.js
   highlightjs:
     copy_code: true
-    # 如果开启 js, hexo.config.highlight.enable 需要设置为 false
-    js: #https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
-    css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css
-    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
+    # # 不再支持 v11.1.0 以下版本
+    # js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # prismjs
   # https://prismjs.com/
@@ -885,7 +887,7 @@ rightmenu:
 
 ############################### Search ############################### > start
 # To use hexo search, you need to install the following plugins:
-# npm i hexo-generator-search hexo-generator-json-content
+# npm i hexo-generator-json-content
 search:
   enable: true
   service: hexo  # hexo
@@ -989,7 +991,6 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
-  toc_smooth: false # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
