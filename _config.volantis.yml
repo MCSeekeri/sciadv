@@ -546,9 +546,10 @@ sidebar:
         icon: fad fa-siren-on
         title: 站点公告
       content:
-        - '因为站长是位非实在青少年~~而且最近正在摸鱼玩Ever 17~~所以本站更新速度极为缓慢'
-        - '本站建设进度可在[这里](https://github.com/MCSeekeri/sciadv/projects/1)查看，别忘了顺手点个Star'
-        - '另外，目前本站的石学讨论探究仍然较少，欢迎诸位为本站提供内容。'
+        - 在慢慢悠悠更新了大半年之后,科A图书馆的建设也已经进入尾声……我终究是把这个混帐的站点发布了
+        - 虽然距离我心中完善的"真·图书馆"还有很大的距离,但目前我能收录的似乎都收录的差不多了www
+        - 下一步的计划我写到[关于](/about/)页面里了,如果感兴趣就去看看罢
+        - 总之,预祝看的愉快,有问题欢迎向我反馈
     lastupdate:
       class: lastupdate
       display: [desktop, mobile]
