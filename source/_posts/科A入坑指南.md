@@ -206,7 +206,7 @@ SG里的桶子也有登场,毕竟是联动作品嘛。
 **科A不是只有4部作品**
 
 好了我们继续。
-{% btn center large, 科A资源站, https://storage.sciadv.top, fas fa-download %}
+{% btn center large, 科A资源站, https://res.sci-adv.cc, fas fa-download %}
 如果你对科A一无所知可以先去看SG的动画,如果能接受就继续,如果不能……就去看科A其他作品（
 
 ### 观看顺序问题
