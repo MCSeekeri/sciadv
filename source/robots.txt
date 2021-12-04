@@ -7,9 +7,9 @@ Allow: /about/
 Allow: /tags/
 
 
-Sitemap: https://sciadv.mcseekeri.top/sitemap.xml
-Sitemap: https://sciadv.mcseekeri.top/post-sitemap.xml
-Sitemap: https://sciadv.mcseekeri.top/page-sitemap.xml
-Sitemap: https://sciadv.mcseekeri.top/category-sitemap.xml
-Sitemap: https://sciadv.mcseekeri.top/tag-sitemap.xml
-Sitemap: https://sciadv.mcseekeri.top/baidusitemap.xml
+Sitemap: https://lib.sci-adv.cc/sitemap.xml
+Sitemap: https://lib.sci-adv.cc/post-sitemap.xml
+Sitemap: https://lib.sci-adv.cc/page-sitemap.xml
+Sitemap: https://lib.sci-adv.cc/category-sitemap.xml
+Sitemap: https://lib.sci-adv.cc/tag-sitemap.xml
+Sitemap: https://lib.sci-adv.cc/baidusitemap.xml

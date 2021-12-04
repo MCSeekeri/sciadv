@@ -607,7 +607,7 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 ### **科学ADV系列相关中文资料网站**|<sub>建设中</sub>
 
 1. [科学ADV中文wiki ](https://sci-adv.cc/wiki/首页)
-2. [科学ADV图书馆](https://sciadv.top/)
+2. [科学ADV图书馆](https://lib.sci-adv.cc)
 
 ### 科学ADV 交流频道
 
