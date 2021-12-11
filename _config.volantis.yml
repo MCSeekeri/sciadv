@@ -66,7 +66,7 @@ navbar:
         #   url: /categories/超自然9人组
         - name: 匿名代码
           icon: fas fa-code
-          url: https://bu.dusays.com/2021/01/15/0306b0fb7d0d7.jpg
+          url: https://cdn.jsdelivr.net/npm/sciadvfiles@1.1.3/other/pigeon.webp
     - name: 关于
       icon: fas fa-info
       rows:
@@ -98,7 +98,7 @@ navbar:
           icon: fas fa-book
           url: https://sci-adv.cc/wiki/%E9%A6%96%E9%A1%B5
           target: _blank
-        - name: devil的广播剧整理
+        - name: devil的CD整理
           icon: fas fa-compact-disc
           url: https://shimo.im/docs/XjCxcDkPxQwQXXXy/
           target: _blank
@@ -106,6 +106,10 @@ navbar:
           icon: fas fa-user-edit
           url: https://space.bilibili.com/7348022/
           target: _blank
+    - name: 科A资源站
+      icon: fas fa-server
+      url: https://res.sci-adv.cc
+      target: _blank
     - name: 开往
       icon: fas fa-subway
       url: https://travellings.link
@@ -143,9 +147,6 @@ cover:
     - name: 关于
       icon: fas fa-user-circle
       url: /about/
-    - name: 评论
-      icon: fas fa-comment
-      url: /comments/
 ############################### Cover ############################### > end
 
 pages:

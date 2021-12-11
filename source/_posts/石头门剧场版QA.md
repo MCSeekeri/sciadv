@@ -11,7 +11,7 @@ icons:
   - far fa-compass theme
 thumbnail: 'https://cdn.jsdelivr.net/npm/mcseekeri@1.2.3/cog.svg'
 description: Steins;Gate剧场版：负荷领域的既视感相关核心设定说明与常见问题的解答~
-headimg: 'https://bu.dusays.com/2021/08/11/da5d4965cdf9c.png'
+headimg: 'https://cdn.jsdelivr.net/npm/sciadvfiles@1.1.3/other/QA.webp'
 abbrlink: ff129072
 date: 2021-08-10 12:51:00
 ---
@@ -37,7 +37,7 @@ date: 2021-08-10 12:51:00
 
 > 感谢：
 >
-> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://bu.dusays.com/2021/08/11/d6808b3ad1335.png, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
+> **古晟天**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/%E6%9F%90%E7%96%AF%E7%8B%82%E7%9A%84%E7%A7%91%E5%AD%A6%E5%AE%B6.webp, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
 >
 > 感谢：
 >
@@ -677,19 +677,19 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 
 **负责讨论、编写、修订**
 
-> @听风落羽|{% inlineimage https://bu.dusays.com/2021/11/25/a9ac2fc301eef.jpg, height=20px %}
+> @听风落羽|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/%E5%90%AC%E9%A3%8E%E8%90%BD%E7%BE%BD.webp, height=20px %}
 >
-> @星影|{% inlineimage https://bu.dusays.com/2021/11/25/863dc2cf2f322.jpg, height=20px %}
+> @星影|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/%E6%98%9F%E5%BD%B1.webp, height=20px %}
 >
-> @Slie-wdy|{% inlineimage https://7.dusays.com/2021/06/20/4817bf6236b22.jpg, height=20px %}
+> @Slie-wdy|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/Slie.webp, height=20px %}
 >
 > @可爱的serika|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/serika.jpg, height=20px %}
 >
-> @Sisyphe_菠萝|{% inlineimage https://bu.dusays.com/2021/11/25/9747320ceb670.jpg, height=20px %}
+> @Sisyphe_菠萝|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/Sisyphe.webp, height=20px %}
 
 **提供宝贵的建议以及资源**
 
-> @laozei|{% inlineimage https://bu.dusays.com/2021/11/25/2610081a15078.jpg, height=20px %}
+> @laozei|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.3.0/avatar/laozei.webp, height=20px %}
 >
 > @天光逸|{% inlineimage https://cdn.jsdelivr.net/npm/mcseekeri@1.2.6/avatar/tgy.jpg, height=20px %}
 
