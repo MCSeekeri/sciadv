@@ -617,7 +617,6 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
   <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/sciADV.jpg" width="200" height="250"/>
   <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/SteinsGate.jpg" width="200" height="250"/>
 </p>
-<div align="center">
 
  {% noteblock info %}
 注：如果您的QQ尚未开通频道功能，也可以通过加入下面所列出来的QQ群获取**频道通行证**
