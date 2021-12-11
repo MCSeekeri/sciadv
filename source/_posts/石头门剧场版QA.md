@@ -609,13 +609,21 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 1. [科学ADV中文wiki ](https://sci-adv.cc/wiki/首页)
 2. [科学ADV图书馆](https://lib.sci-adv.cc)
 
-### 科学ADV 交流频道
+### **科学ADV 交流频道**
 
-> QQ新增功能：**频道**，可搜索{% emp 科学ADV %} 与 {% emp 命运石之门 %} 加入。
->
-> > 如果仍未开通频道功能，可加群领取QQ频道通行证
+> **QQ新增功能**：**频道**，可搜索{% emp 科学ADV %} 与 {% emp 命运石之门 %} 加入
 
-### 科学ADV 粉丝组织
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/sciADV.jpg" width="200" height="250"/>
+  <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/SteinsGate.jpg" width="200" height="250"/>
+</p>
+<div align="center">
+
+ {% noteblock info %}
+注：如果您的QQ尚未开通频道功能，也可以通过加入下面所列出来的QQ群获取**频道通行证**
+{% endnoteblock %}
+
+### **科学ADV 粉丝组织**
 
 #### **反物质委员会**
 
@@ -625,7 +633,6 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 
 {% link "反物质委员会|B站专栏"::https://www.bilibili.com/read/cv11242272::"https://cdn.jsdelivr.net/npm/mcseekeri@1.2.9/avatar/反物质委员会.webp" %} 
 
- 
 
 #### **未来同人研究所**
 
