@@ -38,7 +38,7 @@
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
-    "snyk": "^1.783.0"
+    "snyk": "^1.789.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
