@@ -760,7 +760,7 @@ plugins:
   # swiper
   # https://www.swiper.com.cn/
   swiper:
-    enable: true
+    enable: #true
     css: https://unpkg.com/swiper@6/swiper-bundle.min.css
     js: https://unpkg.com/swiper@6/swiper-bundle.min.js
 
