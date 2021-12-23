@@ -611,12 +611,12 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 
 ### **科学ADV 交流频道**
 
-> **QQ新增功能**：**频道**，可搜索{% emp 科学ADV %} 与 {% emp 命运石之门 %} 加入
+> **QQ新增功能**：**频道**，点击链接可直接加入：[科学ADV频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=1HSlkl&from=246610&biz=ka)、[命运石之门频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=BS7Tt&from=246610&biz=ka)
 
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/sciADV.jpg" width="200" height="250"/>
-  <img src="https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/SteinsGate.jpg" width="200" height="250"/>
-</p>
+<div align="center">
+{% inlineimage https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/SteinsGate.jpg, height=200px %}
+{% inlineimage https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/sciADV.jpg, height=200px %}
+</div>
 
  {% noteblock info %}
 注：如果您的QQ尚未开通频道功能，也可以通过加入下面所列出来的QQ群获取**频道通行证**
