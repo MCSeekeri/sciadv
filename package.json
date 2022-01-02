@@ -6,9 +6,7 @@
     "build": "hexo generate && gulp",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "server": "hexo server"
   },
   "hexo": {
     "version": "6.0.0"
@@ -48,5 +46,5 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-terser": "^2.1.0"
   },
-  "snyk": true
+  "snyk": false
 }
