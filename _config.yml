@@ -5,8 +5,8 @@
 # Site
 title: 科学ADV图书馆
 subtitle: ''
-description: 本站致力于科学ADV作品(如命运石之门)小说及同人内容收集
-keywords: 小说,命运石之门,科学ADV,混沌之子,混沌之脑,
+description: 本站致力于科学ADV作品(如命运石之门)小说漫画相关内容收集
+keywords: 小说,命运石之门,科学ADV,混沌之子,混沌之脑,资源,整合
 author: MCSeekeri
 language: zh-CN
 timezone: Asia/Shanghai
@@ -132,9 +132,13 @@ import:
 
 nofollow:
   enable: true
-  field: site
+  field: post
   exclude:
     - 'lib.sci-adv.cc'
+    - 'sciadv.top'
+    - 'sci-adv.cc'
+    - 'vercel.app'
+    - 'sciadv.mcseekeri.top'
     - 'mcseekeri.top'
   
 abbrlink:
@@ -151,14 +155,14 @@ abbrlink:
   auto_date: false #enable auto date, it can auto fill the date by time today
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
-baidu_analytics_key: 633c3b07ea8711cceacf3394bcae9687
-google_analytics_key: G-SSK4MM0RCG
+baidu_analytics_key: f09c12e0f91e5af6fd3968cbb113f71e
+#google_analytics_key: G-SSK4MM0RCG
 
-algolia:
-  applicationID: NZUPA1KZ8D
-  apiKey: 88c852dba6c38d051f025b32915f797a
-  indexName: Sciadv
-  chunkSize: 5000
+# algolia:
+#   applicationID: NZUPA1KZ8D
+#   apiKey: 88c852dba6c38d051f025b32915f797a
+#   indexName: Sciadv
+#   chunkSize: 5000
 
 sitemap:
   path: sitemap.xml

@@ -14,7 +14,7 @@ jobs:
       - name: 使用Node14.x
         uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "16.x"
 
       - name: 缓存Node模块内容
         uses: actions/cache@v2

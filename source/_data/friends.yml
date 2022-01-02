@@ -31,21 +31,9 @@
     backgroundColor: '#ff5627'
     textColor: '#fff'
     description: Free & Fast Open Source CDN
-  - title: Vercel
-    avatar: https://assets.vercel.com/image/upload/q_auto/front/favicon/vercel/57x57.png
-    url: https://vercel.com
-    backgroundColor: '#000'
-    textColor: '#fff'
-    description: Develop. Preview. Ship.
   - title: Cloudflare
     avatar: https://www.cloudflare.com/favicon.ico
     url: https://www.cloudflare.com
     backgroundColor: '#f48120'
     textColor: '#fff'
     description: 网络安全性、性能和可靠性提供完整的解决方案
-  - title: Visual Studio Code
-    avatar: https://code.visualstudio.com/favicon.ico
-    url: https://code.visualstudio.com
-    backgroundColor: '#21A1E9'
-    textColor: '#fff' 
-    description: Code editing.Redefined.
