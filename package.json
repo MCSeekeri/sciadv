@@ -30,13 +30,13 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^4.1.0",
     "hexo-renderer-stylus": "^2.0.1",
-    "hexo-server": "^2.0.0",
+    "hexo-server": "^3.0.0",
     "hexo-submit-urls-to-search-engine": "^2.1.0",
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
-    "snyk": "^1.809.0"
+    "snyk": "^1.814.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
