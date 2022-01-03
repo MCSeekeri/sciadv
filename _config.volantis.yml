@@ -70,6 +70,14 @@ navbar:
     - name: 关于本站
       icon: fas fa-info
       url: /about/
+    - name: 科A资源站
+      icon: fas fa-server
+      url: https://res.sci-adv.cc
+      target: _blank
+    - name: 开往
+      icon: fas fa-subway
+      url: https://travellings.link
+      target: _blank
     - name: 更多
       icon: fas fa-ellipsis-v
       rows:
@@ -97,14 +105,6 @@ navbar:
           icon: fas fa-user-edit
           url: https://space.bilibili.com/7348022/
           target: _blank
-    - name: 科A资源站
-      icon: fas fa-server
-      url: https://res.sci-adv.cc
-      target: _blank
-    - name: 开往
-      icon: fas fa-subway
-      url: https://travellings.link
-      target: _blank
 ############################### Navigation Bar ############################### > end
 
 
@@ -744,7 +744,7 @@ plugins:
 
   
   # 聊天功能
-  chat_service: tidio # or gitter
+  chat_service: #tidio # or gitter
 
   # Tidio
   # https://www.tidio.com/
@@ -927,9 +927,9 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   body:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
@@ -1005,8 +1005,8 @@ seo:
     home_first_page: index,follow
     home_other_pages: noindex,follow
     archive: index,follow
-    category: noindex,follow
-    tag: noindex,follow
+    category: index,follow
+    tag: index,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
 
