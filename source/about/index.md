@@ -2,8 +2,8 @@
 title: 关于
 author: MCSeekeri
 layout: friends
-minivaline:
-  placeholder: 有什么想对我说的呢？
+waline:
+  placeholder: 欢迎在此留下意见和建议。
 ---
 
 ![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.5/RINE/8.webp)
@@ -14,6 +14,12 @@ minivaline:
 <!-- more -->
 
 {% timeline 建站史 %}
+{% timenode 2022-01-07 %}
+准备发布决定版更新了……
+一年的时间,从妄想到现实。我做到了。
+现在我得从中抽身,干点别的事去了……
+顺带一提,科A图书馆 Lite计划流产了。
+{% endtimenode %}
 {% timenode 2021-10-16 %}
 好久没写这个了……大半年没更新了罢……
 内容填充已经完工,下一步将以精校现有内容和替换底层架构为目标……

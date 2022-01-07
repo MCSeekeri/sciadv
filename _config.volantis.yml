@@ -61,9 +61,9 @@ navbar:
         - name: 混沌之子
           icon: fas fa-eye
           url: /categories/混沌之子
-        # - name: 超自然9人组
-        #   icon: fas fa-star-of-david
-        #   url: /categories/超自然9人组
+        - name: 超自然9人组
+          icon: fas fa-star-of-david
+          url: /categories/超自然9人组
         - name: 匿名代码
           icon: fas fa-code
           url: https://cdn.jsdelivr.net/npm/sciadvfiles@1.1.3/other/pigeon.webp
@@ -104,6 +104,14 @@ navbar:
         - name: 未来同人研究所
           icon: fas fa-user-edit
           url: https://space.bilibili.com/7348022/
+          target: _blank
+        - name: 科A短链接服务
+          icon: fas fa-link
+          url: https://aka.sci-adv.cc
+          target: _blank
+        - name: 科A图床
+          icon: fas fa-images
+          url: https://photo.sci-adv.cc
           target: _blank
 ############################### Navigation Bar ############################### > end
 
