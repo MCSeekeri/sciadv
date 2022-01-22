@@ -455,7 +455,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [analytics, info, copyright]
+  layout: [powered, work, commit, status, hit, size, action, br, analytics, copyright]
   social:
     - icon: #fas fa-rss
       url:
@@ -475,7 +475,14 @@ site_footer:
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
-############################### Site Footer ############################### > end
+  powered: '[![forthebadge](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjkuOCIgaGVpZ2h0PSIzNSIgdmlld0JveD0iMCAwIDE2OS44IDM1Ij48cmVjdCBjbGFzcz0ic3ZnX19yZWN0IiB4PSIwIiB5PSIwIiB3aWR0aD0iOTkuODYiIGhlaWdodD0iMzUiIGZpbGw9IiNBN0JGQzEiLz48cmVjdCBjbGFzcz0ic3ZnX19yZWN0IiB4PSI5Ny44NiIgeT0iMCIgd2lkdGg9IjcxLjk0MDAwMDAwMDAwMDAxIiBoZWlnaHQ9IjM1IiBmaWxsPSIjMzg5QUQ1Ii8+PHBhdGggY2xhc3M9InN2Z19fdGV4dCIgZD0iTTE1LjcwIDIyTDE0LjIyIDIyTDE0LjIyIDEzLjQ3TDE3LjQ4IDEzLjQ3UTE4LjkxIDEzLjQ3IDE5Ljc1IDE0LjIxUTIwLjU5IDE0Ljk2IDIwLjU5IDE2LjE4TDIwLjU5IDE2LjE4UTIwLjU5IDE3LjQ0IDE5Ljc3IDE4LjEzUTE4Ljk1IDE4LjgzIDE3LjQ2IDE4LjgzTDE3LjQ2IDE4LjgzTDE1LjcwIDE4LjgzTDE1LjcwIDIyWk0xNS43MCAxNC42NkwxNS43MCAxNy42NEwxNy40OCAxNy42NFExOC4yNyAxNy42NCAxOC42OSAxNy4yN1ExOS4xMCAxNi45MCAxOS4xMCAxNi4xOUwxOS4xMCAxNi4xOVExOS4xMCAxNS41MCAxOC42OCAxNS4wOVExOC4yNiAxNC42OCAxNy41MiAxNC42NkwxNy41MiAxNC42NkwxNS43MCAxNC42NlpNMjQuNjEgMTguMDBMMjQuNjEgMTguMDBMMjQuNjEgMTcuNTJRMjQuNjEgMTYuMjggMjUuMDUgMTUuMzJRMjUuNDkgMTQuMzcgMjYuMzAgMTMuODZRMjcuMTAgMTMuMzUgMjguMTQgMTMuMzVRMjkuMTkgMTMuMzUgMjkuOTkgMTMuODVRMzAuODAgMTQuMzUgMzEuMjQgMTUuMjlRMzEuNjggMTYuMjMgMzEuNjggMTcuNDhMMzEuNjggMTcuNDhMMzEuNjggMTcuOTZRMzEuNjggMTkuMjEgMzEuMjUgMjAuMTZRMzAuODIgMjEuMTAgMzAuMDEgMjEuNjFRMjkuMjEgMjIuMTIgMjguMTYgMjIuMTJMMjguMTYgMjIuMTJRMjcuMTIgMjIuMTIgMjYuMzEgMjEuNjFRMjUuNTAgMjEuMTAgMjUuMDUgMjAuMTdRMjQuNjEgMTkuMjMgMjQuNjEgMTguMDBaTTI2LjA5IDE3LjQ2TDI2LjA5IDE3Ljk2UTI2LjA5IDE5LjM2IDI2LjY0IDIwLjEzUTI3LjE4IDIwLjkwIDI4LjE2IDIwLjkwTDI4LjE2IDIwLjkwUTI5LjE0IDIwLjkwIDI5LjY3IDIwLjE1UTMwLjIwIDE5LjQwIDMwLjIwIDE3Ljk2TDMwLjIwIDE3Ljk2TDMwLjIwIDE3LjUxUTMwLjIwIDE2LjA5IDI5LjY3IDE1LjM0UTI5LjEzIDE0LjU4IDI4LjE0IDE0LjU4TDI4LjE0IDE0LjU4UTI3LjE4IDE0LjU4IDI2LjY0IDE1LjMzUTI2LjEwIDE2LjA5IDI2LjA5IDE3LjQ2TDI2LjA5IDE3LjQ2Wk0zNy41MyAyMkwzNS41NiAxMy40N0wzNy4wMyAxMy40N0wzOC4zNiAxOS44OEwzOS45OSAxMy40N0w0MS4yMyAxMy40N0w0Mi44NCAxOS44OUw0NC4xNSAxMy40N0w0NS42MiAxMy40N0w0My42NSAyMkw0Mi4yNCAyMkw0MC42MSAxNS43N0wzOC45NiAyMkwzNy41MyAyMlpNNTUuMjcgMjJMNDkuNzAgMjJMNDkuNzAgMTMuNDdMNTUuMjMgMTMuNDdMNTUuMjMgMTQuNjZMNTEuMTggMTQuNjZMNTEuMTggMTcuMDJMNTQuNjggMTcuMDJMNTQuNjggMTguMTlMNTEuMTggMTguMTlMNTEuMTggMjAuODJMNTUuMjcgMjAuODJMNTUuMjcgMjJaTTYwLjk1IDIyTDU5LjQ3IDIyTDU5LjQ3IDEzLjQ3TDYyLjQ3IDEzLjQ3UTYzLjk1IDEzLjQ3IDY0Ljc1IDE0LjEzUTY1LjU1IDE0Ljc5IDY1LjU1IDE2LjA1TDY1LjU1IDE2LjA1UTY1LjU1IDE2LjkwIDY1LjE0IDE3LjQ4UTY0LjcyIDE4LjA2IDYzLjk5IDE4LjM3TDYzLjk5IDE4LjM3TDY1LjkwIDIxLjkyTDY1LjkwIDIyTDY0LjMxIDIyTDYyLjYwIDE4LjcxTDYwLjk1IDE4LjcxTDYwLjk1IDIyWk02MC45NSAxNC42Nkw2MC45NSAxNy41Mkw2Mi40OCAxNy41MlE2My4yMyAxNy41MiA2My42NSAxNy4xNVE2NC4wNyAxNi43NyA2NC4wNyAxNi4xMUw2NC4wNyAxNi4xMVE2NC4wNyAxNS40MyA2My42OCAxNS4wNVE2My4yOSAxNC42OCA2Mi41MiAxNC42Nkw2Mi41MiAxNC42Nkw2MC45NSAxNC42NlpNNzUuNTIgMjJMNjkuOTUgMjJMNjkuOTUgMTMuNDdMNzUuNDggMTMuNDdMNzUuNDggMTQuNjZMNzEuNDMgMTQuNjZMNzEuNDMgMTcuMDJMNzQuOTMgMTcuMDJMNzQuOTMgMTguMTlMNzEuNDMgMTguMTlMNzEuNDMgMjAuODJMNzUuNTIgMjAuODJMNzUuNTIgMjJaTTgyLjE3IDIyTDc5LjcyIDIyTDc5LjcyIDEzLjQ3TDgyLjI0IDEzLjQ3UTgzLjM3IDEzLjQ3IDg0LjI1IDEzLjk3UTg1LjEyIDE0LjQ4IDg1LjYwIDE1LjQwUTg2LjA4IDE2LjMzIDg2LjA4IDE3LjUyTDg2LjA4IDE3LjUyTDg2LjA4IDE3Ljk1UTg2LjA4IDE5LjE2IDg1LjYwIDIwLjA4UTg1LjEyIDIxLjAwIDg0LjIyIDIxLjUwUTgzLjMzIDIyIDgyLjE3IDIyTDgyLjE3IDIyWk04MS4yMCAxNC42Nkw4MS4yMCAyMC44Mkw4Mi4xNyAyMC44MlE4My4zMyAyMC44MiA4My45NiAyMC4wOVE4NC41OCAxOS4zNiA4NC41OSAxNy45OUw4NC41OSAxNy45OUw4NC41OSAxNy41MlE4NC41OSAxNi4xMyA4My45OSAxNS40MFE4My4zOSAxNC42NiA4Mi4yNCAxNC42Nkw4Mi4yNCAxNC42Nkw4MS4yMCAxNC42NloiIGZpbGw9IiNGRkZGRkYiLz48cGF0aCBjbGFzcz0ic3ZnX190ZXh0IiBkPSJNMTE0LjQzIDIyTDExMi4wNSAyMkwxMTIuMDUgMTMuNjBMMTE0LjQzIDEzLjYwTDExNC40MyAxNi43NkwxMTcuNjcgMTYuNzZMMTE3LjY3IDEzLjYwTDEyMC4wNCAxMy42MEwxMjAuMDQgMjJMMTE3LjY3IDIyTDExNy42NyAxOC43MkwxMTQuNDMgMTguNzJMMTE0LjQzIDIyWk0xMzEuOTUgMjJMMTI1LjIwIDIyTDEyNS4yMCAxMy42MEwxMzEuNzkgMTMuNjBMMTMxLjc5IDE1LjQ0TDEyNy41NiAxNS40NEwxMjcuNTYgMTYuODVMMTMxLjI5IDE2Ljg1TDEzMS4yOSAxOC42M0wxMjcuNTYgMTguNjNMMTI3LjU2IDIwLjE3TDEzMS45NSAyMC4xN0wxMzEuOTUgMjJaTTEzOC42MCAyMkwxMzUuODkgMjJMMTM4Ljk1IDE3Ljc1TDEzNi4wMiAxMy42MEwxMzguNzAgMTMuNjBMMTQwLjM4IDE2LjAyTDE0Mi4wMyAxMy42MEwxNDQuNjAgMTMuNjBMMTQxLjY3IDE3LjY2TDE0NC44MCAyMkwxNDIuMDYgMjJMMTQwLjMyIDE5LjQwTDEzOC42MCAyMlpNMTQ4LjY1IDE3LjgwTDE0OC42NSAxNy44MFExNDguNjUgMTYuNTUgMTQ5LjI1IDE1LjU1UTE0OS44NiAxNC41NiAxNTAuOTIgMTQuMDBRMTUxLjk5IDEzLjQzIDE1My4zMiAxMy40M0wxNTMuMzIgMTMuNDNRMTU0LjY1IDEzLjQzIDE1NS43MSAxNC4wMFExNTYuNzcgMTQuNTYgMTU3LjM4IDE1LjU1UTE1Ny45OSAxNi41NSAxNTcuOTkgMTcuODBMMTU3Ljk5IDE3LjgwUTE1Ny45OSAxOS4wNSAxNTcuMzggMjAuMDRRMTU2Ljc3IDIxLjA0IDE1NS43MSAyMS42MFExNTQuNjUgMjIuMTcgMTUzLjMyIDIyLjE3TDE1My4zMiAyMi4xN1ExNTEuOTkgMjIuMTcgMTUwLjkyIDIxLjYwUTE0OS44NiAyMS4wNCAxNDkuMjUgMjAuMDRRMTQ4LjY1IDE5LjA1IDE0OC42NSAxNy44MFpNMTUxLjA1IDE3LjgwTDE1MS4wNSAxNy44MFExNTEuMDUgMTguNTEgMTUxLjM1IDE5LjA1UTE1MS42NSAxOS42MCAxNTIuMTcgMTkuOTBRMTUyLjY4IDIwLjIwIDE1My4zMiAyMC4yMEwxNTMuMzIgMjAuMjBRMTUzLjk1IDIwLjIwIDE1NC40NyAxOS45MFExNTQuOTkgMTkuNjAgMTU1LjI4IDE5LjA1UTE1NS41OCAxOC41MSAxNTUuNTggMTcuODBMMTU1LjU4IDE3LjgwUTE1NS41OCAxNy4wOSAxNTUuMjggMTYuNTRRMTU0Ljk5IDE2IDE1NC40NyAxNS43MFExNTMuOTUgMTUuNDAgMTUzLjMyIDE1LjQwTDE1My4zMiAxNS40MFExNTIuNjggMTUuNDAgMTUyLjE2IDE1LjcwUTE1MS42NSAxNiAxNTEuMzUgMTYuNTRRMTUxLjA1IDE3LjA5IDE1MS4wNSAxNy44MFoiIGZpbGw9IiNGRkZGRkYiIHg9IjExMC44NiIvPjwvc3ZnPg==)](https://forthebadge.com)'
+  commit: '![](https://img.shields.io/github/last-commit/MCSeekeri/sciadv?style=for-the-badge)'
+  status: '![](https://img.shields.io/uptimerobot/ratio/m785802121-f726e102d93b206615b80ae4?style=for-the-badge)'
+  hit: '![](https://img.shields.io/jsdelivr/gh/hy/MCSeekeri/sciadvfiles?style=for-the-badge)'
+  size: '![](https://img.shields.io/github/repo-size/MCSeekeri/sciadv?style=for-the-badge)'
+  action: '![](https://img.shields.io/github/workflow/status/MCSeekeri/sciadv/%E9%83%A8%E7%BD%B2%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%86%85%E5%AE%B9)'
+
+  ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
 plugins:
@@ -974,16 +981,16 @@ custom_css:
   fontfamily:
     logofont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
-      #name: 'Varela Round'
-      #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
-      #weight: normal
-      #style: normal
+      name: 
+      url: 
+      weight:
+      style: 
     bodyfont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
-      #name: 'UbuntuMono'
-      #url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
-      #weight: normal
-      #style: normal
+      name: 
+      url: 
+      weight: 
+      style: 
     codefont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       # name: 'Monaco'
@@ -1010,7 +1017,7 @@ seo:
   use_excerpt_as_description: true
   robots:
     home_first_page: index,follow
-    home_other_pages: noindex,follow
+    home_other_pages: index,follow
     archive: index,follow
     category: index,follow
     tag: index,follow
@@ -1037,7 +1044,7 @@ open_graph:
 # https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
 # 富媒体搜索结果测试: https://search.google.com/test/rich-results
 structured_data:
-  enable: true
+  enable: false
   # 以下是覆盖配置, 默认配置见 scripts/helpers/structured-data/lib/config.js
   data:
     person:
