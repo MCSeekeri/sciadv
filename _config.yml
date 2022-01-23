@@ -63,7 +63,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 25
+  per_page: 20
   order_by: -date
   pagination_dir: page
 
@@ -87,7 +87,7 @@ updated_option: 'mtime'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 25
+per_page: 20
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -157,12 +157,6 @@ abbrlink:
 
 baidu_analytics_key: f09c12e0f91e5af6fd3968cbb113f71e
 #google_analytics_key: G-SSK4MM0RCG
-
-# algolia:
-#   applicationID: NZUPA1KZ8D
-#   apiKey: 88c852dba6c38d051f025b32915f797a
-#   indexName: Sciadv
-#   chunkSize: 5000
 
 sitemap:
   path: sitemap.xml
