@@ -51,19 +51,19 @@ navbar:
       rows:
         - name: 混沌之脑
           icon: fas fa-mind-share
-          url: /categories/混沌之脑
+          url: /categories/混沌之脑/
         - name: 命运石之门
           icon: fas fa-cog
-          url: /categories/命运石之门
+          url: /categories/命运石之门/
         - name: 机器人笔记
           icon: fas fa-robot
-          url: /categories/机器人笔记
+          url: /categories/机器人笔记/
         - name: 混沌之子
           icon: fas fa-eye
-          url: /categories/混沌之子
+          url: /categories/混沌之子/
         - name: 超自然9人组
           icon: fas fa-star-of-david
-          url: /categories/超自然9人组
+          url: /categories/超自然9人组/
         - name: 匿名代码
           icon: fas fa-code
           url: https://cdn.jsdelivr.net/npm/sciadvfiles@1.1.3/other/pigeon.webp
@@ -72,7 +72,7 @@ navbar:
       url: /about/
     - name: 科A资源站
       icon: fas fa-server
-      url: https://res.sci-adv.cc
+      url: https://res.sci-adv.cc/
       target: _blank
     - name: 开往
       icon: fas fa-subway
@@ -136,13 +136,13 @@ cover:
       url: /archives/
     - name: 小说
       icon: fas fa-file-alt
-      url: /tags/小说
+      url: /tags/小说/
     - name: 同人
       icon: fas fa-user-edit
-      url: /tags/同人
+      url: /tags/同人/
     - name: 石学
       icon: fas fa-books
-      url: /tags/讨论探究
+      url: /tags/讨论探究/
     - name: 关于
       icon: fas fa-user-circle
       url: /about/
@@ -303,7 +303,7 @@ comments:
 
 ############################### Sidebar ############################### > start
 sidebar:
-  position: right # left right
+  position: left # left right
   # 主页、分类、归档等独立页面
   for_page: [lastupdate, notice, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
@@ -455,7 +455,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [badge, powered, br, analytics, copyright]
+  layout: [aplayer, badge, br, analytics, copyright, powered]
   social:
     - icon: #fas fa-rss
       url:
@@ -623,11 +623,11 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
-    autoHide: true    # hide automaticaly
+    autoHide: false    # hide automaticaly
 
   pjax:
     enable: true
-    cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
+    cover: false          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # false, nprogress, circle
@@ -781,7 +781,7 @@ rightmenu:
   enable: true
   faicon: fa
   # hr: 分割线, music: 音乐控制器
-  layout: [home, source_docs, source_theme, hr, print, darkmode, reading, music]
+  layout: [home, print, darkmode, reading, hr, archive, about, source_docs, source_theme, music]
   # 可选功能项
   print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
     name: 打印页面        #       👆 class = article.post 的页面
@@ -790,7 +790,7 @@ rightmenu:
     # js:                 # 自定义 js ，可用于修饰打印样式~， 右键剔除了对 Jquery 的依赖，所以此处你只能使用原生 js
     #  - document.querySelector('article#comments').remove()  # 移除评论
   darkmode:        # 需开启 plugins.darkmodejs
-    name: 暗黑模式
+    name: 夜间模式
     icon: fa fa-moon
   reading:
     name: 阅读模式
@@ -802,6 +802,14 @@ rightmenu:
   music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     alwaysShow: true
   ### 自定义菜单 ###
+  archive: 
+    name: 归档
+    icon: fas fa-archive
+    url: /archives/
+  about:
+    name: 关于本站
+    icon: fas fa-info
+    url: /about/
   source_docs:
     name: 本站源码
     icon: fa fa-code-branch
