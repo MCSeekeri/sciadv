@@ -1,6 +1,7 @@
 ## 科学ADV图书馆
 > 然后。我、将这个混账的站点发布了
-
+> 
+[![commit](https://img.shields.io/github/last-commit/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![code size](https://img.shields.io/github/languages/code-size/MCSeekeri/sciadv?logo=code%20size&style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![size](https://img.shields.io/github/repo-size/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![star](https://img.shields.io/github/stars/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![status](https://img.shields.io/uptimerobot/ratio/m785802121-f726e102d93b206615b80ae4?style=for-the-badge)](https://status.mcseekeri.top/)
 本站是收录科学ADV系列所有小说内容的整合性质站点
 
 姊妹项目为[科学ADV资源站](https://res.sci-adv.cc)
