@@ -8,7 +8,7 @@ tags:
   - 指南
 abbrlink: 9b20444e
 icons: [fas fa-cog blue, far fa-compass theme]
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
+thumbnail: https://npm.elemecdn.com/mcseekeri@1.2.2/safari.svg
 date: 2018-08-14 00:00:00
 description:
 headimg:

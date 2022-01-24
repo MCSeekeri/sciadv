@@ -125,6 +125,7 @@ hexo_submit_urls_to_search_engine:
 
 import:
     link:
+      - <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
       - <link rel="preconnect" href="https://ha3d7xjx.api.lncldglobal.com">
       - <link rel="preconnect" href="https://fonts.googleapis.com">
       - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
