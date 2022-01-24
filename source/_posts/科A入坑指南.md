@@ -12,7 +12,7 @@ keywords:
   - 命运石之门 资源
 abbrlink: sciadv
 icons: [fas fa-cog blue, far fa-compass theme]
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
+thumbnail: https://npm.elemecdn.com/mcseekeri@1.2.2/safari.svg
 date: 2021-02-15 12:49:56
 categories:
 headimg:
@@ -43,7 +43,7 @@ headimg:
 
 #### Chäos;HEAd
 混沌之脑，简称CH。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CH.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/CH.webp)
 系列开山之作，但由于各种原因…不建议游玩。
 基本就是个半成品…设定不完整，线路不全，现在这部的资源都不好找了。
 {% note info, 官方登陆平台: PC %}
@@ -64,7 +64,7 @@ headimg:
 
 #### Chäos;Child
 混沌之子，简称CC。
-![图片选择的艺术（确信](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/CC1.webp)
+![图片选择的艺术（确信](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/CC1.webp)
 可以说是系列集大成之作，但因为社长放飞自我所以销量暴死（叹
 在人物塑造，世界观，剧情反转和悬疑设计方面基本是科A天花板。
 不过要是指望这部作品拳打EVER17脚踢命运石之门是非常不现实的w
@@ -87,7 +87,7 @@ headimg:
 
 #### Steins;Gate
 命运石之门，简称SG，石头门。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/SG.webp)
 已上架Steam，有官方中文和民间汉化
 全科A系列最出名的作品，MyAnimeList排名第3的神作，凭借着扎实的设定和精妙的剧情转折斩获无数赞誉。
 选择了受众更广的时间穿越题材，并独创世界线收束范围理论(AF理论)，给了这部作品巨大的讨论空间。
@@ -125,7 +125,7 @@ headimg:
 
 #### Steins;Gate 0
 命运石之门0，简称SG0。
-![用SG0E的图片没问题罢](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SG0E.webp)
+![用SG0E的图片没问题罢](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/SG0E.webp)
 这可是个好东西……
 介绍这部作品必定会剧透本篇，所以我就不介绍了（
 就我个人观感而言，0的质量远超本篇，完善了很多本篇的不足。
@@ -135,7 +135,7 @@ headimg:
 
 #### Steins;Gate ELITE
 命运石之门:精英，简称精英版。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/SGE.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/SGE.webp)
 就是SG的冷饭版本，把之前做的动画塞进本篇游戏卖，没啥可说的。
 已上架Steam，有官方中文。
 {% note info, 官方登陆平台: PC Xbox PS4 PSV NS iOS %}
@@ -149,7 +149,7 @@ headimg:
 
 #### Robotics;Notes
 机器人笔记，简称RN，萝卜本。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/RN.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/RN.webp)
 好罢……不是机战的机器人作品……
 设定是世界线变动率1.048596%的世界线，即SG世界线。
 与之前所有作品不同，RN的风格更加主流，属于一般普通高中生拯救世界的故事，轻松愉快的氛围和各种Otaku日常事件……
@@ -179,7 +179,7 @@ SG里的桶子也有登场，毕竟是联动作品嘛。
 
 #### Occultic;Nine
 超自然9人组，简称ON。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.7/Intro/ON.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.7/Intro/ON.webp)
 哼啊啊啊啊啊啊啊啊啊啊啊啊啊（怒吼
 全科A系列除了SG我最爱的作品，又是被志仓玩死了……
 与其他所有作品不同，这部是先有轻小说后有动画再有游戏。
@@ -191,7 +191,7 @@ SG里的桶子也有登场，毕竟是联动作品嘛。
 
 #### ANONYMOUS;CODE
 匿名代码，简称AC。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@1.0.8/Intro/AC.webp)
+![](https://npm.elemecdn.com/sciadvfiles@1.0.8/Intro/AC.webp)
 科A顶尖作品！志仓生涯极限！SG联动！独创世界层理论！2036年的未来世界！黑客们的故事！
 除了从2015年跳票至今仍未发布之外一切都好（抹泪
 我尽量不把志仓的全家问候一遍，尽量。

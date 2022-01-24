@@ -8,7 +8,7 @@ tags:
   - β世界线
 abbrlink: 1b843f8
 icons: [fas fa-cog blue, far fa-compass theme]
-thumbnail: https://cdn.jsdelivr.net/npm/mcseekeri@1.2.2/safari.svg
+thumbnail: https://npm.elemecdn.com/mcseekeri@1.2.2/safari.svg
 date: 2021-02-24 21:30:18
 description: SG0的两大分支是原创线和小说线。两者之间的剧情差异巨大，甚至毫无关联。但仔细研究则会发现，逻辑依然有迹可循。
 headimg:
@@ -44,9 +44,9 @@ C、小说线上真帆附近所经历的一切袭击都让她产生了警觉与�
 ——原创线：2010.12.15在lab和桶子一同被铃羽亲自告知。
 ——小说线：2010.12.21在lab被桶子告知。
 ——原因：*原创线上的冈部向真帆和教授报告后直接返回了lab。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@2.0.0/other/SG0/1.webp)
+![](https://npm.elemecdn.com/sciadvfiles@2.0.0/other/SG0/1.webp)
 小说线上的12.15冈部没有得知铃羽寻找篝的一大原因，就是在向真帆和教授报告amadeus观察情况之后，在地下车库被袭击了，然后被警察盘问到很晚才会lab。这个时候铃羽已经告诉桶子有关于篝的事情了。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@2.0.0/other/SG0/2.webp)
+![](https://npm.elemecdn.com/sciadvfiles@2.0.0/other/SG0/2.webp)
 **以上是两大分支的差异导致主角团内心的变化不同，以下则是时间机器竞争多方势力的不同。**
 ## 5、除了共通线2010.11.23研讨会前萌郁遇见真帆以外，萌郁最早的登场时间（代表sern）。
 ——原创线：2010.12.17桶子说“通过里世界的人来找篝试试”，于是就把萌郁请到lab来了。
@@ -57,9 +57,9 @@ C、小说线上真帆附近所经历的一切袭击都让她产生了警觉与�
 比如>>助手家被烧之后，rounder假扮成美国当地警察调查真帆的研究室。
 比如>>通过跟踪真帆刚刚得知助手遗产的消息，就直接抵达桶子的隐藏地点。
 **在此之前，萌郁并没有和桶子有过交流。下图证明，桶子是第一次遇见萌郁，但是萌郁早就知道桶子是专家了。**
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@2.0.1/other/SG0/3.webp)
+![](https://npm.elemecdn.com/sciadvfiles@2.0.1/other/SG0/3.webp)
 *原创线上，俄罗斯的压迫并不存在，sern的动作显然温顺很多。萌郁可以提前与桶子互相认识，慢慢调查有关于助手遗产的信息。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@2.0.0/other/SG0/4.webp)
+![](https://npm.elemecdn.com/sciadvfiles@2.0.0/other/SG0/4.webp)
 **图中对桶子的“采访”有没有一点既视感？提示：sg0动画第一集萌郁对真帆说了啥？**
 ——需要注意的地方：这个差异直接导致了，sern在两条线计划的变更，以及在原创线1.064750上amadeus被sern劫持的这一结果。
 显而易见，不论是在原创线还是小说线上，从11.23发布会那时起，萌郁（sern）就已经得知有关于amadeus的事情，而通过对真帆的跟踪调查，桶子的身份也被萌郁顺藤摸瓜地搜查到了。此后，由于调查得到的内容不同，sern的行动也发生了变化。
@@ -72,7 +72,7 @@ C、小说线上真帆附近所经历的一切袭击都让她产生了警觉与�
 原因：对于蕾丝所处的DP以及石膏所处的STF，小说线和原创线有很大的差异。
 *小说线中明显是STF占优，amadeus牢牢掌握在STF手里，知晓了时间机器秘密的石膏也非常轻松就能破解amadeus，彻底掌握她。因此，蕾丝以及DP无力干涉STF的事务，只能口头上提出异议，因此自己也不需要刻意接近真帆等人。而由于俄罗斯的行动，各方也只有纠结于论文和助手遗产的事，没能对amadeus的所属产生一定的竞争力。
 *原创线，amadeus项目受到外部舆论冲击。美国宗教势力（背后是sern或者俄罗斯，sern可能性大）、美军方都盯着，STF并没有很好控制amadeus的能力。就连属于美军的蕾丝也一直在“招人”，不论助手线还是真帆线末尾，她要寻找一个支持amadeus的人来为DP服务，正是外界压力大。在这么大压力之下，蕾丝不再信任石膏，打算自己指挥行动。因此才有蕾丝教授亲自上前线去抓篝/抓真帆等等事情的发生。
-![](https://cdn.jsdelivr.net/npm/sciadvfiles@2.0.1/other/SG0/5.webp)
+![](https://npm.elemecdn.com/sciadvfiles@2.0.1/other/SG0/5.webp)
 ——需要注意的地方：
 蕾丝出现时间的“前置”，能够说明DP在原创线上的处事态度：时刻监视并确保助手记忆的“打开方式”保留在自己手里。1.064750中，在Sern劫持amadeus之后仅几分钟，lab就被蕾丝带着STF的人袭击了，足以证明蕾丝是一直有办法知道篝的位置的。1.053649中，篝有双重记忆，蕾丝带STF的人寻找篝的脚步从来没有停下来过，久久无法寻找到lab是因为amadeus和冈部没有接触。1.055801中，STF把amadeus数据从大学文件转移走、使真帆登不上amadeus。原因正是由于发现蕾丝的真实身份，想以此为筹码谈判。结果蕾丝不耐烦，一人单挑STF全员，再一次把主动权把握在自己手里。这一切的核心，就是DP对“amadeus”以及“助手记忆”的争夺。
 小说线的DP完全被STF掌控着，无论是时间机器的情报还是洗脑技术，STF占据巨大优势。所以，蕾丝只能当个小弟。
