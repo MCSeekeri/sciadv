@@ -1,4 +1,4 @@
-name: 部署图书馆内容
+name: Deploy
 on: [push, repository_dispatch]
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: 使用Node14.x
+      - name: 使用Node16.x
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
