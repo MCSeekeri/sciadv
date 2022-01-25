@@ -95,7 +95,7 @@ navbar:
       url: /about/
     - name: 科A资源站
       icon: fas fa-server
-      url: https://res.sci-adv.cc/
+      url: https://drive.sci-adv.cc/
       target: _blank
     - name: 开往
       icon: fas fa-subway

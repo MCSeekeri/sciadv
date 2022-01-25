@@ -5,7 +5,7 @@
 
 本站是收录科学ADV系列所有小说内容的整合性质站点
 
-姊妹项目为[科学ADV资源站](https://res.sci-adv.cc)
+姊妹项目为[科学ADV资源站](https://drive.sci-adv.cc)
 # 介绍
 站点使用Hexo搭建,所有内容都针对Hexo及Markdown进行了特别优化。
 
