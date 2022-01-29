@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0.alpha.6' # This is theme's version.
+  theme_version: '5.0.0-beta.2' # This is theme's version.
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
@@ -38,28 +38,12 @@ cdn:
     css:
       style: #/css/style.css # (异步加载样式)
 ########################################################################
+# 全局页面字符串替换  A => B (可用于临时修改错字等)
+replace:
+  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
+
 # 平滑滚动效果
 scroll_smooth: true
-# 主题用到的内容资源 引用链接
-source:
-  katex:
-    js: https://npm.elemecdn.com/katex@0.13.13/dist/katex.min.js
-    css: https://npm.elemecdn.com/katex@0.13.13/dist/katex.min.css
-    render: https://npm.elemecdn.com/katex@0.13.13/dist/contrib/auto-render.min.js
-  mathjax:
-    js: https://npm.elemecdn.com/mathjax@3.0/es5/tex-mml-chtml.js
-  structured:
-    logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
-  tags:
-    btns: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg
-    markdown: https://npm.elemecdn.com/github-markdown-css/github-markdown.min.css
-    marked: https://npm.elemecdn.com/marked@4/marked.min.js
-    media: https://npm.elemecdn.com/hls.js@latest
-  githubApi: 
-    avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-    sites: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-    screenshot: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
-
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
