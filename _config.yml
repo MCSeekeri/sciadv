@@ -161,6 +161,10 @@ baidu_analytics_key: f09c12e0f91e5af6fd3968cbb113f71e
 
 sitemap:
   path: sitemap.xml
+  template: ./sitemap_template.xml
+  rel: false
+  tags: true
+  categories: true
 baidusitemap:
   path: baidusitemap.xml
 
