@@ -157,7 +157,7 @@ abbrlink:
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
 baidu_analytics_key: f09c12e0f91e5af6fd3968cbb113f71e
-#google_analytics_key: G-SSK4MM0RCG
+google_analytics_key: UA-104605102-5
 
 sitemap:
   path: sitemap.xml
@@ -165,8 +165,6 @@ sitemap:
   rel: false
   tags: true
   categories: true
-baidusitemap:
-  path: baidusitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

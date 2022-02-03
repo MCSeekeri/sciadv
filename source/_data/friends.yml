@@ -1,5 +1,5 @@
 - group:  <i class="fas fa-handshake fa-fw" aria-hidden="true"></i> 特别致谢
-  description: '本博客是在以下框架技术和开源服务的支持下搭建起来的:'
+  description: '本站点是在以下框架技术和开源服务的支持下搭建起来的:'
   items:
   - title: Node js
     avatar: https://nodejs.org/static/images/favicons/favicon.ico
