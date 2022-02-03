@@ -8,8 +8,3 @@ Allow: /tags/
 
 
 Sitemap: https://lib.sci-adv.cc/sitemap.xml
-Sitemap: https://lib.sci-adv.cc/post-sitemap.xml
-Sitemap: https://lib.sci-adv.cc/page-sitemap.xml
-Sitemap: https://lib.sci-adv.cc/category-sitemap.xml
-Sitemap: https://lib.sci-adv.cc/tag-sitemap.xml
-Sitemap: https://lib.sci-adv.cc/baidusitemap.xml
