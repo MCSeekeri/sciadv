@@ -18,10 +18,11 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-beta.2' # This is theme's version.
+  theme_version: '5.0.0-alpha.8' # This is theme's version.
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-
+# Debug 调试模式
+debug: false
 ############################### CDN ###############################
 # 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
 # 默认使用 https://npm.elemecdn.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
@@ -292,6 +293,7 @@ comments:
     placeholder: 欢迎在此发表您对本文的看法,本站评论只需填写昵称和接受回复用的邮箱  # 评论占位提示
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
+    imageHosting: https://7bu.top/api/upload?token=7ffe9d626fe4315c953758efbdb6ee2e # 图床api（默认注释使用base64）
     serverURL: https://sciadvwaline.vercel.app
     visitor: true
     emoji:
