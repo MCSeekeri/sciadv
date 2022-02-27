@@ -294,7 +294,7 @@ comments:
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
     imageHosting: https://7bu.top/api/upload?token=7ffe9d626fe4315c953758efbdb6ee2e # 图床api（默认注释使用base64）
-    serverURL: https://sciadvwaline.vercel.app
+    serverURL: https://comments.sciadv.mcseekeri.top
     visitor: true
     emoji:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
