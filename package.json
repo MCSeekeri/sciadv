@@ -12,7 +12,7 @@
     "version": "6.0.0"
   },
   "dependencies": {
-    "hexo": "^6.0.0",
+    "hexo": "^6.1.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^3.0.0",
     "hexo-filter-nofollow": "^2.0.2",
@@ -21,7 +21,7 @@
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",
     "hexo-generator-json-content": "^4.2.3",
-    "hexo-generator-sitemap": "^2.2.0",
+    "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^1.0.0",
     "hexo-helper-qrcode": "^1.0.2",
     "hexo-reference": "^1.0.4",
@@ -34,7 +34,7 @@
     "hexo-tag-dplayer": "^0.3.3",
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
-    "snyk": "^1.844.0"
+    "snyk": "^1.869.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
