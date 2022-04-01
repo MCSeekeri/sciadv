@@ -16,14 +16,6 @@ jobs:
         with:
           node-version: "16.x"
 
-      - name: 缓存Node模块内容
-        uses: actions/cache@v2
-        env:
-          cache-name: hexo-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
-
       - name: 设置Hexo环境
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
@@ -36,6 +28,7 @@ jobs:
           git config --global user.email 'mcseekeri@github.com'
           git ls-files -z | while read -d '' path; do touch -d $(git log -1 --format="@%ct" "$path") "$path"; done
           npm i -g hexo-cli yarn
+          yarn add js-yaml@4.1.0
           yarn
 
       - name: 部署页面并提交搜索引擎

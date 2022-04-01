@@ -274,8 +274,8 @@ article:
           img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/qzone.png
         - id: weibo
           img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/weibo.png
-        - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/wechat.png
+        # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+        #   img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/wechat.png
         - id: telegram
           img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/telegram.png
 ############################### Article Layout ############################### > end
