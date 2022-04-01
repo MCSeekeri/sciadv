@@ -18,26 +18,56 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.8' # This is theme's version.
+  theme_version: '5.0.0-alpha.10' # This is theme's version.
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
 debug: false
+############################### CSP ###############################
+# 内容安全策略( CSP )
+# https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
+# https://content-security-policy.com/
+csp:
+  content: "
+    default-src 'self' https:;
+    block-all-mixed-content;
+    base-uri 'self' https:;
+    form-action 'self' https:;
+    worker-src 'self' https:;
+    connect-src 'self' https: *;
+    img-src 'self' data: https: *;
+    media-src 'self' https: *;
+    font-src 'self' data: https: *;
+    frame-src 'self' https: *;
+    manifest-src 'self' https: *;
+    child-src https:;
+    script-src 'self' https: 'unsafe-inline' *;
+    style-src 'self' https: 'unsafe-inline' *;
+  "
+  # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
+  # hexo_fliter_sha256 用于 hexo g 时替换 'unsafe-inline' 生成 script-src 'sha256-' , 只适用于外层不含有压缩工具得场景.
+  # 如果外层含有压缩工具会改变 hash 导致无效,hexo_fliter_sha256 需设为false, 使用 gulp 方案.
+  hexo_fliter_sha256: false
+  # 另可以参考官网的 gulp 方案.
+  # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
 ############################### CDN ###############################
 # 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
 # 默认使用 https://npm.elemecdn.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
   enable: false
-  prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",
-          # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-          # 该配置默认值是："https://npm.elemecdn.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  # CDN 前缀，为空使用默认值，链接最后不加 "/",
+  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
+  # 该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  prefix: https://npm.elemecdn.com/hexo-theme-volantis@5.0.0-rc.4/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
       app: #/js/app.js
     css:
       style: #/css/style.css # (异步加载样式)
+# 请求静态资源添加时间戳 ?time=1648684470140
+cdn_version: true
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
@@ -55,70 +85,70 @@ navbar:
     title:
   menu:
     - name: 科A作品
-      icon: fas fa-head-side-brain
+      icon: fa-solid fa-head-side-brain
       rows:
         - name: 混沌之脑
-          icon: fas fa-mind-share
+          icon: fa-solid fa-mind-share
           url: /categories/混沌之脑/
         - name: 命运石之门
-          icon: fas fa-cog
+          icon: fa-solid fa-cog
           url: /categories/命运石之门/
         - name: 机器人笔记
-          icon: fas fa-robot
+          icon: fa-solid fa-robot
           url: /categories/机器人笔记/
         - name: 混沌之子
-          icon: fas fa-eye
+          icon: fa-solid fa-eye
           url: /categories/混沌之子/
         - name: 超自然9人组
-          icon: fas fa-star-of-david
+          icon: fa-solid fa-star-of-david
           url: /categories/超自然9人组/
         - name: 匿名代码
-          icon: fas fa-code
+          icon: fa-solid fa-code
           url: https://npm.elemecdn.com/sciadvfiles@1.1.3/other/pigeon.webp
     - name: 关于本站
-      icon: fas fa-info
+      icon: fa-solid fa-info
       url: /about/
     - name: 科A资源站
-      icon: fas fa-server
+      icon: fa-solid fa-server fa-bounce
       url: https://drive.sci-adv.cc/
       target: _blank
     - name: 开往
-      icon: fas fa-subway
+      icon: fa-solid fa-subway
       url: https://travellings.link
       target: _blank
     - name: 更多
-      icon: fas fa-ellipsis-v
+      icon: fa-solid fa-ellipsis-v
       rows:
         - name: 夜间模式
-          icon: fas fa-moon
+          icon: fa-solid fa-moon
           toggle: darkmode
         - name: 服务稳定性监测
-          icon: fas fa-telescope
+          icon: fa-solid fa-telescope
           url: https://status.mcseekeri.top
           target: _blank
         - name: 本站源代码
-          icon: fas fa-code
+          icon: fa-solid fa-code
           url: https://github.com/MCSeekeri/sciadv
           target: _blank
         - name: hr
         - name: 科学ADV中文Wiki
-          icon: fas fa-book
+          icon: fa-solid fa-book
           url: https://sci-adv.cc/wiki/%E9%A6%96%E9%A1%B5
           target: _blank
         - name: devil的CD整理
-          icon: fas fa-compact-disc
+          icon: fa-solid fa-compact-disc
           url: https://shimo.im/docs/XjCxcDkPxQwQXXXy/
           target: _blank
         - name: 未来同人研究所
-          icon: fas fa-user-edit
+          icon: fa-solid fa-user-edit
           url: https://space.bilibili.com/7348022/
           target: _blank
         - name: 科A短链接服务
-          icon: fas fa-link
+          icon: fa-solid fa-link
           url: https://aka.sci-adv.cc
           target: _blank
         - name: 科A图床
-          icon: fas fa-images
+          icon: fa-solid fa-images
           url: https://photo.sci-adv.cc
           target: _blank
 ############################### Navigation Bar ############################### > end
@@ -140,19 +170,19 @@ cover:
   search: '' # search bar placeholder
   features:
     - name: 归档
-      icon: fas fa-archive
+      icon: fa-solid fa-archive
       url: /archives/
     - name: 小说
-      icon: fas fa-file-alt
+      icon: fa-solid fa-file-alt
       url: /tags/小说/
     - name: 同人
-      icon: fas fa-user-edit
+      icon: fa-solid fa-user-edit
       url: /tags/同人/
     - name: 石学
-      icon: fas fa-books
+      icon: fa-solid fa-books
       url: /tags/讨论探究/
     - name: 关于
-      icon: fas fa-user-circle
+      icon: fa-solid fa-user-circle
       url: /about/
 ############################### Cover ############################### > end
 
@@ -193,7 +223,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fas fa-quote-left
+        icon: fa-solid fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
@@ -205,7 +235,7 @@ article:
       related_posts:
         enable: false
         title: 相关文章
-        icon: fas fa-bookmark
+        icon: fa-solid fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: /favicon.ico
@@ -237,35 +267,35 @@ article:
         url: /
       # 文章创建日期
       date:
-        icon: fas fa-calendar-alt
+        icon: fa-solid fa-calendar-alt
         title: '发布于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章更新日期
       updated:
-        icon: fas fa-edit
+        icon: fa-solid fa-edit
         title: '更新于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
       category:
-        icon: fas fa-folder-open
+        icon: fa-solid fa-folder-open
       # 文章浏览计数
       counter:
-        icon: fas fa-eye
+        icon: fa-solid fa-eye
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
-        icon: fas fa-comment-dots
+        icon: fa-solid fa-comment-dots
         desc: '' # 条评论
       walinecount:
-        icon: fas fa-comment-dots
+        icon: fa-solid fa-comment-dots
         desc: '' # 条评论
       # 文章字数和阅读时长
       wordcount:
-        icon_wordcount: fas fa-keyboard
-        icon_duration: fas fa-hourglass-half
+        icon_wordcount: fa-solid fa-keyboard
+        icon_duration: fa-solid fa-hourglass-half
       # 文章标签
       tags:
-        icon: fas fa-hashtag
+        icon: fa-solid fa-hashtag
       # 分享
       share:
         - id: qq
@@ -283,13 +313,13 @@ article:
 
 ############################### Comments ############################### > start
 comments:
-  title: <i class='fas fa-comments'></i> 评论区
+  title: <i class='fa-solid fa-comments'></i> 评论区
   subtitle:
   service: waline # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
   # Waline
   # https://waline.js.org/
   waline:
-    js: https://npm.elemecdn.com/@waline/client/dist/Waline.min.js
+    js: https://npm.elemecdn.com/@waline/client@1.6.0/dist/Waline.min.js
     placeholder: 欢迎在此发表您对本文的看法,本站评论只需填写昵称和接受回复用的邮箱  # 评论占位提示
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
@@ -331,7 +361,7 @@ sidebar:
       subtitle: 致力于科A相关内容的搜集与整理
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-envelope
+        - icon: fa-solid fa-envelope
           url: mailto:hiyajo.maho@outlook.jp
         - icon: fab fa-github
           url: https://github.com/mcseekeri/sciadv
@@ -343,7 +373,7 @@ sidebar:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-list
+        icon: fa-solid fa-list
         title: 本文目录
       list_number: false
       min_depth: 2
@@ -360,7 +390,7 @@ sidebar:
       class: category
       display: [desktop, mobile]
       header:
-        icon: fas fa-folder-open
+        icon: fa-solid fa-folder-open
         title: 文章分类
         url: /categories/
     # ---------------------------------------
@@ -369,7 +399,7 @@ sidebar:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-tags
+        icon: fa-solid fa-tags
         title: 热门标签
         url: /tags/
       min_font: 18
@@ -393,7 +423,7 @@ sidebar:
       class: webinfo
       display: [desktop, mobile]
       header:
-        icon: fas fa-award
+        icon: fa-solid fa-award
         title: 站点信息
       type:
         article:
@@ -438,7 +468,7 @@ sidebar:
       class: lastupdate
       display: [desktop, mobile]
       header:
-        icon: fas fa-clock WISTERIA
+        icon: fa-solid fa-clock WISTERIA
         title: 最近更新
 ############################### Sidebar ############################### > end
 
@@ -450,7 +480,7 @@ tag_plugins:
   note: # style for default note:
     icon: '\f054'
     color: ''
-    iconfont: 'Font Awesome 5 Pro'
+    iconfont: 'Font Awesome 6 Pro'
   # {% checkbox %}
   checkbox:
     interactive: false # enable interactive for user
@@ -478,8 +508,8 @@ site_footer:
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -495,7 +525,7 @@ plugins:
   globalJquery: false # 全局引入 jquery
   jquery: https://npm.elemecdn.com/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://npm.elemecdn.com/mcseekeri@1.3.1/fontawesome/css/all.min.css
+  fontawesome: https://npm.elemecdn.com/mcseekeri@1.3.2/fontawesome/css/all.min.css
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -576,10 +606,11 @@ plugins:
     css: https://npm.elemecdn.com/node-waves@0.7.6/dist/waves.min.css
     js: https://npm.elemecdn.com/node-waves@0.7.6/dist/waves.min.js
 
-  # fontawesome animation
+  # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
+  # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: #true
-    css: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
+    css: /libs/font-awesome-animation/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
@@ -696,23 +727,20 @@ plugins:
 
   # 友链朋友圈 hexo-circle-of-friends
   # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
-  # https://zfe.space/post/friend-link-circle.html
+  # https://fcircle-doc.js.cool/
   fcircle:
     # Set `plugins: ["fcircle"]` to enable in front-matter
     # 支持 Pjax
     api: '' # api 地址
-    max_number: 20 # 页面展示文章数量
-    add_number: 10 # 每次加载增加的篇数
-    opentype: '_blank' # '_blank'打开新标签,'_self'本窗口打开
-    nofollow: true # 禁止搜索引擎抓取
-    imgError: https://cdn.jsdelivr.net/gh/Zfour/Butterfly-friend-poor-html/friendcircle/404.png
-    # loadingCutom: # 自定义loading图 例如: <i class="fa fa-spinner fa-spin"></i> | <img src="你的图片地址" alt="加载中...">
+    message: '与主机通讯中……'  # 占位文字
+    css: 'https://cdn.jsdelivr.net/gh/lmm214/immmmm/themes/hello-friend/static/fcircle-beta.css'
+    js: 'https://cdn.jsdelivr.net/gh/lmm214/immmmm/themes/hello-friend/static/fcircle-beta.js'
 
   message:
     enable: true
     icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
-      default: fas fa-info-circle light-blue
-      quection: fas fa-question-circle light-blue
+      default: fa-solid fa-info-circle light-blue
+      quection: fa-solid fa-question-circle light-blue
     time:     # 默认持续时间
       default: 5000
       quection: 20000
@@ -730,8 +758,8 @@ plugins:
       icon: 'far fa-copyright light-blue'
     aplayer:                              # 是否开启音乐通知；播放、暂停、失败 时的图标
       enable: true
-      play: fas fa-play
-      pause: fas fa-pause
+      play: fa-solid fa-play
+      pause: fa-solid fa-pause
     rightmenu:                            
       enable: true                        # 是否开启右键模块的消息通知
       notice: true
@@ -779,7 +807,6 @@ rightmenu:
   print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
     name: 打印页面        #       👆 class = article.post 的页面
     icon: fa fa-print
-    defaultStyles: true   # 是否使用预制的打印样式
   darkmode:        # 需开启 plugins.darkmodejs
     name: 夜间模式
     icon: fa fa-moon
@@ -795,11 +822,11 @@ rightmenu:
   ### 自定义菜单 ###
   archive: 
     name: 归档
-    icon: fas fa-archive
+    icon: fa-solid fa-archive
     url: /archives/
   about:
     name: 关于本站
-    icon: fas fa-info
+    icon: fa-solid fa-info
     url: /about/
   source_docs:
     name: 本站源码

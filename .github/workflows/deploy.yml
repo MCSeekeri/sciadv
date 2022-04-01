@@ -28,7 +28,6 @@ jobs:
           git config --global user.email 'mcseekeri@github.com'
           git ls-files -z | while read -d '' path; do touch -d $(git log -1 --format="@%ct" "$path") "$path"; done
           npm i -g hexo-cli yarn
-          yarn add js-yaml@4.1.0
           yarn
 
       - name: 部署页面并提交搜索引擎
