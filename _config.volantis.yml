@@ -1,10 +1,10 @@
 
 
 default:
-  avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-  link: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-  cover: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
-  image: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+  avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 
 
 #
@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.11' # This is theme's version.
+  theme_version: '5.0.0-alpha.12' # This is theme's version.
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
@@ -51,15 +51,15 @@ csp:
   # 另可以参考官网的 gulp 方案.
   # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
 ############################### CDN ###############################
-# 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
-# 默认使用 https://npm.elemecdn.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# 本地静态文件使用 CDN 加速
+# 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
   enable: false
   # CDN 前缀，为空使用默认值，链接最后不加 "/",
   # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-  # 该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: https://npm.elemecdn.com/hexo-theme-volantis@5.0.0-rc.5/source
+  # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  prefix: #https://npm.elemecdn.com/hexo-theme-volantis/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
@@ -68,6 +68,9 @@ cdn:
       style: #/css/style.css # (异步加载样式)
 # 请求静态资源添加时间戳 ?time=1648684470140
 cdn_version: true
+# volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
+# https://github.com/volantis-x/volantis-static
+volantis_static_cdn: https://npm.elemecdn.com/volantis-static/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
@@ -252,8 +255,8 @@ article:
       donate:
         enable: false
         images:
-          - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-          - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     # 从 meta_library 中取
     bottom_meta: [updated, tags, share]
@@ -520,9 +523,26 @@ plugins:
   ################ required plugins ################
   # jquery
   globalJquery: false # 全局引入 jquery
-  jquery: https://npm.elemecdn.com/jquery@3.5/dist/jquery.min.js
+  jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
   # fontawesome
   fontawesome: https://npm.elemecdn.com/mcseekeri@1.3.2/fontawesome/css/all.min.css
+    # katex@0.15.2
+  katex:
+    js: volantis-static/libs/katex/katex.min.js # https://unpkg.com/katex@0.15.2/dist/katex.min.js
+    css: volantis-static/libs/katex/katex.min.css # https://unpkg.com/katex@0.15.2/dist/katex.min.css
+    render: volantis-static/libs/katex/contrib/auto-render.min.js # https://unpkg.com/katex@0.15.2/dist/contrib/auto-render.min.js
+  # mathjax@3.2.0
+  mathjax: volantis-static/libs/mathjax/es5/tex-mml-chtml.js # https://unpkg.com/mathjax@3.2.0/es5/tex-mml-chtml.js
+  # github-markdown-css@5.1.0
+  markdown: volantis-static/libs/github-markdown-css/github-markdown.css # https://unpkg.com/github-markdown-css@5.1.0/github-markdown.min.css
+  # marked@4.0.10
+  marked: volantis-static/libs/marked/marked.min.js # https://unpkg.com/marked@4.0.10/marked.min.js
+  # hls.js@1.1.3
+  hlsjs: volantis-static/libs/hls.js/dist/hls.min.js # https://unpkg.com/hls.js@1.1.3
+  # @fancyapps/ui@4.0.12
+  fancybox:
+    css: volantis-static/libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
+    js: volantis-static/libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -607,12 +627,12 @@ plugins:
   # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: #true
-    css: /libs/font-awesome-animation/font-awesome-animation.min.css
+    css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
     enable: #true
-    js: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
+    js: volantis-static/libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # Slide Background
   # 视差滚动效果 Slide Background
@@ -645,9 +665,9 @@ plugins:
   aplayer:
     enable: true
     js:
-      aplayer: https://npm.elemecdn.com/mcseekeri@1.3.1/APlayer.mini.js # aplayer@1.10 魔改: 将触摸和滚轮事件监听器标记为 `passive`，以提高页面的滚动性能
-      meting: https://npm.elemecdn.com/meting@2.0/dist/Meting.min.js
-    css: https://npm.elemecdn.com/aplayer@1.10/dist/APlayer.min.css
+      aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
+      meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
+    css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -764,8 +784,8 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: #true
-    css: https://unpkg.com/swiper@6/swiper-bundle.min.css
-    js: https://unpkg.com/swiper@6/swiper-bundle.min.js
+    css: volantis-static/libs/swiper/swiper-bundle.min.css # https://unpkg.com/swiper@6/swiper-bundle.min.css
+    js: volantis-static/libs/swiper/swiper-bundle.min.js # https://unpkg.com/swiper@6/swiper-bundle.min.js
 
 ############################### Plugins ############################### > end
 
@@ -920,13 +940,13 @@ color_scheme:
 custom_css:
   cursor:
     enable: #true
-    text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
+    text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: volantis-static/media/cursor/circle.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: volantis-static/media/cursor/zoom-out.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: volantis-static/media/cursor/zoom-in.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: volantis-static/media/cursor/openhand.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
