@@ -1,28 +1,17 @@
-
-
+############################### Volantis ###############################
+info:
+  theme_name: Volantis # This is theme's name.
+  theme_version: '5.0.0-alpha.15' # This is theme's version.
+  theme_docs: https:/vlts.cc/ # This is theme's URL.
+  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
+# Debug 调试模式
+debug: false
+############################### 默认占位图 ###############################
 default:
   avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
-
-
-#
-# 上面的是 v5 新版通用配置，可兼容 Stellar 主题，请放心使用
-#
-# xxxxxxxx
-#
-# 下面的是 v4 旧版配置，将逐步迁移至通用配置中
-#
-
-############################### Volantis ###############################
-info:
-  theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.12' # This is theme's version.
-  theme_docs: https:/vlts.cc/ # This is theme's URL.
-  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-# Debug 调试模式
-debug: false
 ############################### CSP ###############################
 # 内容安全策略( CSP )
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
@@ -66,15 +55,21 @@ cdn:
       app: #/js/app.js
     css:
       style: #/css/style.css # (异步加载样式)
-# 请求静态资源添加时间戳 ?time=1648684470140
+# 请求静态资源添加版本号 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://npm.elemecdn.com/volantis-static/
+volantis_static_cdn: https://npm.elemecdn.com/olantis-static@0.0.1649552113628/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
+  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
+  - https://unpkg.com/ => https://npm.elemecdn.com/
+
+# dns-prefetch preconnect x-dns-prefetch-control
+dns_prefetch:
+  # - https://unpkg.com
+  - https://npm.elemecdn.com
 
 # 平滑滚动效果
 scroll_smooth: true
@@ -738,6 +733,8 @@ plugins:
 
   message:
     enable: true
+    css: volantis-static/libs/izitoast/dist/css/iziToast.min.css
+    js: volantis-static/libs/izitoast/dist/js/iziToast.min.js
     icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
       default: fa-solid fa-info-circle light-blue
       quection: fa-solid fa-question-circle light-blue
@@ -790,45 +787,90 @@ plugins:
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
-# 自定义右键菜单
-rightmenu:
+
+### 自定义右键 新
+rightmenus:
   enable: true
-  faicon: fa
-  # hr: 分割线, music: 音乐控制器
-  layout: [home, print, darkmode, reading, hr, archive, about, source_docs, source_theme, music]
-  # 可选功能项
-  print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
-    name: 打印页面        #       👆 class = article.post 的页面
-    icon: fa fa-print
-  darkmode:        # 需开启 plugins.darkmodejs
-    name: 夜间模式
-    icon: fa fa-moon
-  reading:
-    name: 阅读模式
-    icon: fa fa-book-open
-  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
-    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
-    old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/  
-  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    alwaysShow: true
-  ### 自定义菜单 ###
-  archive: 
-    name: 归档
-    icon: fa-solid fa-archive
-    url: /archives/
-  about:
-    name: 关于本站
-    icon: fa-solid fa-info
-    url: /about/
-  source_docs:
-    name: 本站源码
-    icon: fa fa-code-branch
-    url: https://github.com/mcseekeri/sciadv
-  source_theme:
-    name: 主题源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/hexo-theme-volantis/
+  # 右键菜单项及加载顺序
+  # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
+  order: 
+    - plugins.navigation
+    - hr
+    - plugins.inputBox
+    - plugins.seletctText
+    - plugins.elementCheck
+    - menus.link
+    - hr
+    - menus.darkMode
+    - plugins.articlePage
+    - music
+  ############################
+  # - {id: '', name: '', icon: '', link: '', event: '', group: ''}
+  # id: 唯一值
+  # name: 用于菜单名称显示
+  # icon: 用于菜单图标显示
+  # link: 跳转链接
+  # event: 事件，当输入内容不为内置事件时，作 JavaScript 代码执行
+  # group: 菜单项所处分组名称
+  # 注： 
+  # 1. link/event 二选一，同时出现时仅处理 link
+  # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
+  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, articlePage
+  # 4. plugins 列允许自定义组内项目
+  # 5. menus   列允许自定义组及其内容
+  # 6. 除 navigation 外的内置组，在显示时会隐藏含 link 属性的菜单项
+  ###########################
+  # 基础项设置
+  options:
+    # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
+    iconPrefix: fa-solid
+    # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
+    articleShowLink: false
+    # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+    musicAlwaysShow: true
+  # 右键内置组，预置实现
+  plugins:
+    # 导航组件
+    # 横向排列，共用一行，仅显示图标 (原则上支持的数量不限)
+    navigation: 
+      - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
+      - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
+      - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
+      - {id: 'up', name: '回到顶部', icon: 'fa-solid fa-arrow-up', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+      #- {id: 'home', name: '回到首页', icon: 'fa-solid fa-home', link: '/', group: 'navigation'}
+    # 文本输入框相关组件
+    # 生效于 input/textarea，粘贴、剪切、全选
+    inputBox:
+      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-solid fa-paste', event: 'copyPaste', group: 'inputBox'}
+      - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
+      - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut', event: 'copyCut', group: 'inputBox'}
+    # 文本选中类组件
+    # 生效于右键选中文本，__text__ 为选中的文本。     
+    seletctText:
+      - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
+      - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
+      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+      #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
+    # 元素判断组件
+    # 生效于 a/img 处的右键行为，__link__ 为链接地址
+    elementCheck:
+      - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
+      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
+      # 复制图片文件至剪切板，仅支持 png 格式
+      - {id: 'copyImg', name: '复制图片文件', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementCheck'}
+    # 文章页面组件
+    # 生效于 post.article 页面
+    articlePage:
+      - {id: 'printMode', name: '打印页面', icon: 'fa-solid fa-print', event: 'printMode', group: 'articlePage'}
+      - {id: 'readMode', name: '阅读模式', icon: 'fa-solid fa-book-open', event: 'readMode', group: 'articlePage'}
+  # 右键自定义菜单区域
+  menus:
+    link:
+      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/mcseekeri/sciadv', group: 'link'}
+    darkMode: 
+      - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
+###
+
 ############################### Rightmenu ############################### > end
 
 
