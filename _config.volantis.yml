@@ -1,7 +1,6 @@
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.15' # This is theme's version.
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
@@ -13,9 +12,10 @@ default:
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 ############################### CSP ###############################
-# 内容安全策略( CSP )
+# 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
 # https://content-security-policy.com/
+# 也可以设为 false 在 HTTP 标头中设置 https://volantis.js.org/v5/advanced-settings/#设置-HTTP-响应标头
 csp:
   content: "
     default-src 'self' https:;
@@ -34,9 +34,6 @@ csp:
     style-src 'self' https: 'unsafe-inline' *;
   "
   # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
-  # hexo_fliter_sha256 用于 hexo g 时替换 'unsafe-inline' 生成 script-src 'sha256-' , 只适用于外层不含有压缩工具得场景.
-  # 如果外层含有压缩工具会改变 hash 导致无效,hexo_fliter_sha256 需设为false, 使用 gulp 方案.
-  hexo_fliter_sha256: false
   # 另可以参考官网的 gulp 方案.
   # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
 ############################### CDN ###############################
@@ -55,7 +52,9 @@ cdn:
       app: #/js/app.js
     css:
       style: #/css/style.css # (异步加载样式)
-# 请求静态资源添加版本号 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
+# 静态资源版本控制
+# 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
+# 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
@@ -63,8 +62,9 @@ volantis_static_cdn: https://npm.elemecdn.com/olantis-static@0.0.1649552113628/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
+  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
   - https://unpkg.com/ => https://npm.elemecdn.com/
+  - https://cdn.jsdelivr.net/ => https://fastly.jsdelivr.net/
 
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
@@ -214,6 +214,9 @@ article:
     # 文章顶部信息
     # 从 meta_library 中取
     top_meta: [author, tags, date, wordcount, counter] #启用评论数量需在此添加
+    # 文章底部信息
+    # 从 meta_library 中取
+    bottom_meta: [updated, tags, share]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -252,9 +255,6 @@ article:
         images:
           - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
           - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    # 文章底部信息
-    # 从 meta_library 中取
-    bottom_meta: [updated, tags, share]
     # meta library
     meta_library:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
@@ -283,7 +283,11 @@ article:
       # 文章评论数量
       walinecount:
         icon: fa-solid fa-comment-dots
-        desc: '' # 条评论
+        desc: '条评论' # 条评论
+      # artalk 文章评论数量
+      artalkcount:
+        icon: fa-solid fa-comment-dots
+        desc: '条评论' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fa-solid fa-keyboard
@@ -314,13 +318,22 @@ comments:
   # Waline
   # https://waline.js.org/
   waline:
-    js: https://npm.elemecdn.com/@waline/client@1.6.0/dist/Waline.min.js
+    js: https://unpkg.com/@waline/client@v2/dist/waline.js
+    css: https://unpkg.com/@waline/client@v2/dist/waline.css
     placeholder: 欢迎在此发表您对本文的看法,本站评论只需填写昵称和接受回复用的邮箱  # 评论占位提示
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
-    imageHosting: https://7bu.top/api/upload?token=7ffe9d626fe4315c953758efbdb6ee2e # 图床api（默认注释使用base64）
+    imageUploader:
+      # 以兰空图床为例，下列填写内容为：
+      # url: https://xxxxxx/api/v1/upload
+      # token: Bearer xxxxxxxxxxxxxx
+      # resp: data.links.url
+      api:   # 图床地址
+      token: # 图床验证
+      resp:  # 图片地址返回值的字段
+    pageview: true # 浏览量统计
+    comment: true  # 评论数统计    
     serverURL: https://comments.sciadv.mcseekeri.top
-    visitor: true
     emoji:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
@@ -435,7 +448,6 @@ sidebar:
           text: '本站总字数：'   # 需要启用 wordcount
           unit: '字'
         visitcounter:
-          service: leancloud  # busuanzi, leancloud
           siteuv:
             enable: true
             text: '本站访客数：'
@@ -503,8 +515,8 @@ site_footer:
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -598,8 +610,8 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: false
-    js: https://npm.elemecdn.com/scrollreveal@4.0.9/dist/scrollreveal.min.js
+    enable: true
+    js: volantis-static/libs/scrollreveal/dist/scrollreveal.min.js
     distance: 32px
     duration: 500 # ms
     interval: 20 # ms
@@ -799,6 +811,7 @@ rightmenus:
     - plugins.inputBox
     - plugins.seletctText
     - plugins.elementCheck
+    - plugins.elementImage
     - menus.link
     - hr
     - menus.darkMode
@@ -815,7 +828,7 @@ rightmenus:
   # 注： 
   # 1. link/event 二选一，同时出现时仅处理 link
   # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
-  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, articlePage
+  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, elementImage, articlePage
   # 4. plugins 列允许自定义组内项目
   # 5. menus   列允许自定义组及其内容
   # 6. 除 navigation 外的内置组，在显示时会隐藏含 link 属性的菜单项
@@ -851,13 +864,16 @@ rightmenus:
       - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
       - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
       #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
-    # 元素判断组件
-    # 生效于 a/img 处的右键行为，__link__ 为链接地址
+    # 链接判断组件
+    # 生效于链接处的右键行为，__link__ 为链接地址
     elementCheck:
       - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
       - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
-      # 复制图片文件至剪切板，仅支持 png 格式
-      - {id: 'copyImg', name: '复制图片文件', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementCheck'}
+    # 图片判断类组件
+    # 生效于图片类的右键行为，__link__ 为链接地址
+    elementImage:
+      - {id: 'copyImg', name: '复制图片', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementImage'}
+      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-solid fa-images', event: 'window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
     # 文章页面组件
     # 生效于 post.article 页面
     articlePage:
@@ -885,14 +901,15 @@ search:
 
 ############################### Color Scheme ############################### > start
 # Accessibility: 背景色和前景色要有足够的对比度 https://web.dev/color-contrast/
+# https://ant.design/docs/spec/colors-cn
 color_scheme:
   # ------------
   # 通用颜色
   common:
     # 主题色
-    theme: '#44D7B6'
+    theme: '#3dd9b6'
     # 链接色
-    link: '#1b79c4'
+    link: '#2092ec'
     # 按钮色
     button: '#44D7B6'
     # 鼠标放到交互元素上时的色
@@ -939,41 +956,43 @@ color_scheme:
     # 辅助性文字
     meta: '#888'
   # ------------
-  # 暗色主题
+  # https://www.maijisheji.com/2094.html
   dark:
-    # 网站背景色
-    site_bg: '#222'
+    # 网站最深底色            # Dark Grey 1
+    site_bd: '#121212'
+    # 网站背景色              # Dark Grey 2
+    site_bg: '#1f1f1f'
+    # 卡片背景色              # Dark Grey 3
+    card: '#262626'
     # 网站背景上的文字
-    site_inner: '#eee'
+    site_inner: '#eeeeeede'
     # 网站页脚文字
-    site_footer: '#aaa'
-    # 卡片背景色
-    card: '#333'
+    site_footer: '#aaaaaade'
     # 卡片上的普通文字
-    text: '#eee'
+    text: '#eeeeeede'
 
-    # 区块和代码块背景色
-    block: '#3a3a3a'
-    # 代码块高亮时的背景色
-    codeblock: '#343a3c'
+    # 区块和代码块背景色       # Dark Grey 4
+    block: '#434343'
+    # 代码块高亮时的背景色     # Dark Grey 2
+    codeblock: '#1f1f1f'
     # 行内代码颜色
     inlinecode: '#D56D28'
 
-    # 文章部分
-    h1: '#eee'
-    h2: '#eee'
-    h3: '#ddd'
-    h4: '#ddd'
-    h5: '#ddd'
-    h6: '#ddd'
-    p: '#bbb'
+    # 文章部分 高强度文本的不透明度应为87％ 中等重点文字适用于60％
+    h1: '#FFFFFFde'            #  Dark Grey 8
+    h2: '#FFFFFFde'
+    h3: '#FFFFFF99'            #  Dark Grey 7
+    h4: '#FFFFFF99'
+    h5: '#FFFFFF99'
+    h6: '#FFFFFF99'
+    p: '#d9d9d9de'           #  Dark Grey 6
 
-    # 列表文字
-    list: '#aaa'
+    # 列表文字                #  Dark Grey 6
+    list: '#d9d9d9de'
     # 列表 hover 时的文字
     list_hl: 'mix($color-theme, #fff, 80)'
-    # 辅助性文字
-    meta: '#888'
+    # 辅助性文字              #  Dark Grey 5
+    meta: '#bfbfbfde'
     # 夜间图片亮度
     brightness: 50%
 ############################### Color Scheme ############################### > end
@@ -1001,7 +1020,7 @@ custom_css:
   sidebar:
     effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   body:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       grayscale: false # Enable grayscale effect
