@@ -58,18 +58,17 @@ cdn:
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://npm.elemecdn.com/olantis-static@0.0.1654736714924
+volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
-  - https://unpkg.com/ => https://npm.elemecdn.com/
+  - https://npm.elemecdn.com/ => https://unpkg.com/
   - https://cdn.jsdelivr.net/ => https://fastly.jsdelivr.net/
 
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
-  # - https://unpkg.com
-  - https://npm.elemecdn.com
+  - https://unpkg.com
+  # - https://npm.elemecdn.com
 
 # 平滑滚动效果
 scroll_smooth: true
@@ -251,7 +250,7 @@ article:
          # 自定义版权组件：精细到文章的版权声明
         custom: true # 开启后替代上方内容的版权显示
         customData:
-          default: type1  # 默认授权声明
+          default: type4  # 默认授权声明
           #############################
           # 你可以在文章的 front-matter 覆盖默认版权声明
           # 配置示例（均可选）： 
@@ -625,9 +624,9 @@ plugins:
     copy_code: true
     # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
     # # 不再支持 v11.1.0 以下版本
-    # js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
-    # css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css
-    # # # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+    # js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
 
   # prismjs
   # https://prismjs.com/
@@ -874,7 +873,7 @@ rightmenus:
     # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
     iconPrefix: fa-solid
     # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
-    articleShowLink: false
+    articleShowLink: true
     # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     musicAlwaysShow: true
   # 右键内置组，预置实现
