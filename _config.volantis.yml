@@ -45,7 +45,7 @@ cdn:
   # CDN 前缀，为空使用默认值，链接最后不加 "/",
   # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
   # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: #https://npm.elemecdn.com/hexo-theme-volantis/source
+  prefix: #https://unpkg.com/hexo-theme-volantis/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
@@ -62,12 +62,12 @@ volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://npm.elemecdn.com/ => https://unpkg.com/
-  - https://cdn.jsdelivr.net/ => https://fastly.jsdelivr.net/
+  - https://unpkg.com/ => https://unpkg.onmicrosoft.cn/
+  - https://cdn.jsdelivr.net/ => https://jsd.onmicrosoft.cn
 
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
-  - https://unpkg.com
+  - https://unpkg.onmicrosoft.cn
   # - https://npm.elemecdn.com
 
 # 平滑滚动效果
@@ -101,7 +101,7 @@ navbar:
           url: /categories/超自然9人组/
         - name: 匿名代码
           icon: fa-solid fa-code
-          url: https://npm.elemecdn.com/sciadvfiles@1.1.3/other/pigeon.webp
+          url: https://unpkg.com/sciadvfiles@1.1.3/other/pigeon.webp
     - name: 关于本站
       icon: fa-solid fa-info
       url: /about/
@@ -159,7 +159,7 @@ cover:
     home: true
     archive: true
     others: true # can be written in front-matter 'cover: true'
-  background: https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover6.webp
+  background: https://unpkg.com/mcseekeri@1.2.6/img/cover/cover6.webp
     # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
@@ -195,7 +195,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: https://npm.elemecdn.com/mcseekeri@1.2.6/pin.svg
+    pin_icon: https://unpkg.com/mcseekeri@1.2.6/pin.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -294,7 +294,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/mp.webp
+        avatar: https://unpkg.com/mcseekeri@1.2.6/avatar/mp.webp
         name: Anonymous
         url: /
       # 文章创建日期
@@ -332,15 +332,15 @@ article:
       # 分享
       share:
         - id: qq
-          img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/qq.png
+          img: https://unpkg.com/mcseekeri@1.2.6/png/qq.png
         - id: qzone
-          img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/qzone.png
+          img: https://unpkg.com/mcseekeri@1.2.6/png/qzone.png
         - id: weibo
-          img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/weibo.png
+          img: https://unpkg.com/mcseekeri@1.2.6/png/weibo.png
         # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-        #   img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/wechat.png
+        #   img: https://unpkg.com/mcseekeri@1.2.6/png/wechat.png
         - id: telegram
-          img: https://npm.elemecdn.com/mcseekeri@1.2.6/png/telegram.png
+          img: https://unpkg.com/mcseekeri@1.2.6/png/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -396,7 +396,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/amadeus.webp
+      avatar: https://unpkg.com/mcseekeri@1.2.6/avatar/amadeus.webp
       shape: rectangle # circle, rectangle
       url: /about/
       title: 科学ADV图书馆
@@ -529,7 +529,7 @@ tag_plugins:
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
-    placeholder: https://npm.elemecdn.com/mcseekeri@1.2.6/safari.svg
+    placeholder: https://unpkg.com/mcseekeri@1.2.6/safari.svg
 ############################### Tag Plugins ############################### > end
 
 
@@ -567,7 +567,7 @@ plugins:
   globalJquery: false # 全局引入 jquery
   jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://npm.elemecdn.com/mcseekeri@1.3.2/fontawesome/css/all.min.css
+  fontawesome: https://unpkg.com/mcseekeri@1.3.2/fontawesome/css/all.min.css
     # katex@0.15.2
   katex:
     js: volantis-static/libs/katex/katex.min.js # https://unpkg.com/katex@0.15.2/dist/katex.min.js
@@ -601,7 +601,7 @@ plugins:
     enable: true
     service: flying_pages # instant_page, flying_pages
     instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-    flying_pages: https://npm.elemecdn.com/mcseekeri@1.3.1/flying-pages.min.js
+    flying_pages: https://unpkg.com/mcseekeri@1.3.1/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -610,7 +610,7 @@ plugins:
   # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
     enable: true
-    js: https://npm.elemecdn.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
+    js: https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: true
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -635,12 +635,12 @@ plugins:
     copy_code: true
     # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
     js:
-      - https://npm.elemecdn.com/prismjs/components/prism-core.min.js
-      - https://npm.elemecdn.com/prismjs/plugins/autoloader/prism-autoloader.min.js
-      - https://npm.elemecdn.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+      - https://unpkg.com/prismjs/components/prism-core.min.js
+      - https://unpkg.com/prismjs/plugins/autoloader/prism-autoloader.min.js
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js
     css:
-      - https://npm.elemecdn.com/prismjs/themes/prism-dark.css
-      - https://npm.elemecdn.com/prismjs/plugins/line-numbers/prism-line-numbers.css
+      - https://unpkg.com/prismjs/themes/prism-dark.css
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.css
 
 
   # https://scrollrevealjs.org/api/reveal.html
@@ -662,8 +662,8 @@ plugins:
   # Button Ripple Effect
   nodewaves:
     enable: true
-    css: https://npm.elemecdn.com/node-waves@0.7.6/dist/waves.min.css
-    js: https://npm.elemecdn.com/node-waves@0.7.6/dist/waves.min.js
+    css: https://unpkg.com/node-waves@0.7.6/dist/waves.min.css
+    js: https://unpkg.com/node-waves@0.7.6/dist/waves.min.js
 
   # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
   # fontawesome animation for fontawesome V5
@@ -685,22 +685,22 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover1.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover2.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover3.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover4.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover5.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover6.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover7.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover8.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover9.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover10.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover11.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover12.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover13.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover14.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover15.webp
-      - https://npm.elemecdn.com/mcseekeri@1.2.6/img/cover/cover16.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover1.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover2.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover3.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover4.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover5.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover6.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover7.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover8.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover9.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover10.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover11.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover12.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover13.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover14.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover15.webp
+      - https://unpkg.com/mcseekeri@1.2.6/img/cover/cover16.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -726,13 +726,13 @@ plugins:
     autoHide: false    # hide automaticaly
 
   pjax:
-    js: https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js
+    js: https://unpkg.com/pjax@0.2.8/pjax.min.js
     enable: true
     cover: false          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # false, nprogress, circle
-    nprogress: https://npm.elemecdn.com/nprogress@0.2.0
+    nprogress: https://unpkg.com/nprogress@0.2.0
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - '/bb/'           # bbtalk 不支持 pjax
 
@@ -761,7 +761,7 @@ plugins:
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
     # 不支持 Pjax
-    js: https://npm.elemecdn.com/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
+    js: https://unpkg.com/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
