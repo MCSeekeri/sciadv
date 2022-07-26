@@ -9,9 +9,9 @@ author: 反物质委员会
 icons:
   - fas fa-cog blue
   - far fa-compass theme
-thumbnail: 'https://npm.elemecdn.com/mcseekeri@1.2.3/cog.svg'
+thumbnail: 'https://unpkg.com/mcseekeri@1.2.3/cog.svg'
 description: Steins;Gate剧场版：负荷领域的既视感相关核心设定说明与常见问题的解答~
-headimg: 'https://npm.elemecdn.com/sciadvfiles@1.1.3/other/QA.webp'
+headimg: 'https://unpkg.com/sciadvfiles@1.1.3/other/QA.webp'
 abbrlink: ff129072
 date: 2021-08-10 12:51:00
 ---
@@ -40,11 +40,11 @@ date: 2021-08-10 12:51:00
 
 > 感谢：
 >
-> **古晟天**{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/%E6%9F%90%E7%96%AF%E7%8B%82%E7%9A%84%E7%A7%91%E5%AD%A6%E5%AE%B6.webp, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
+> **古晟天**{% inlineimage https://unpkg.com/mcseekeri@1.2.7/avatar/古晟天.jpg, height=30px %}、**刈屋美纱希**{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/Kariya_Misaki.jpg, height=30px %}、**某疯狂的科学家**{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/%E6%9F%90%E7%96%AF%E7%8B%82%E7%9A%84%E7%A7%91%E5%AD%A6%E5%AE%B6.webp, height=30px %} 将剧场版小说（上/下)全部内容翻译完成。
 >
 > 感谢：
 >
-> **天光逸**{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px %}、**可爱的serika**{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/serika.jpg, height=30px %}<sub>（贴吧ID:**尾上世莉架**)</sub> 给予的**理论支持**。
+> **天光逸**{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px %}、**可爱的serika**{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/serika.jpg, height=30px %}<sub>（贴吧ID:**尾上世莉架**)</sub> 给予的**理论支持**。
 
 ---
 
@@ -633,7 +633,7 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 
 **加群请私信UP想要担任的职务并展示能够胜任该岗位的凭证**
 
-{% link "反物质委员会|B站专栏"::https://www.bilibili.com/read/cv11242272::"https://npm.elemecdn.com/mcseekeri@1.2.9/avatar/反物质委员会.webp" %} 
+{% link "反物质委员会|B站专栏"::https://www.bilibili.com/read/cv11242272::"https://unpkg.com/mcseekeri@1.2.9/avatar/反物质委员会.webp" %} 
 
 
 #### **未来同人研究所**
@@ -678,21 +678,21 @@ R世界线由于其特殊性，并不能和一般意义上的世界线相提并�
 
 **负责讨论、编写、修订**
 
-> @听风落羽|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/%E5%90%AC%E9%A3%8E%E8%90%BD%E7%BE%BD.webp, height=20px %}
+> @听风落羽|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/%E5%90%AC%E9%A3%8E%E8%90%BD%E7%BE%BD.webp, height=20px %}
 >
-> @星影|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/%E6%98%9F%E5%BD%B1.webp, height=20px %}
+> @星影|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/%E6%98%9F%E5%BD%B1.webp, height=20px %}
 >
-> @Slie-wdy|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/Slie.webp, height=20px %}
+> @Slie-wdy|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/Slie.webp, height=20px %}
 >
-> @可爱的serika|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/serika.jpg, height=20px %}
+> @可爱的serika|{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/serika.jpg, height=20px %}
 >
-> @Sisyphe_菠萝|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/Sisyphe.webp, height=20px %}
+> @Sisyphe_菠萝|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/Sisyphe.webp, height=20px %}
 
 **提供宝贵的建议以及资源**
 
-> @laozei|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.3.0/avatar/laozei.webp, height=20px %}
+> @laozei|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/laozei.webp, height=20px %}
 >
-> @天光逸|{% inlineimage https://npm.elemecdn.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=20px %}
+> @天光逸|{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=20px %}
 
 
 

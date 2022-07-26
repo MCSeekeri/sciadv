@@ -6,7 +6,7 @@ categories:
 tags:
   - 设定
 icons: [fas fa-cog blue]
-thumbnail: https://npm.elemecdn.com/mcseekeri@1.2.2/cog.svg
+thumbnail: https://unpkg.com/mcseekeri@1.2.2/cog.svg
 description: '来自SG公式设定集,30条设定相关QA'
 references:
   - title: 豆瓣原内容
