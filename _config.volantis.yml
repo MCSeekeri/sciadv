@@ -63,7 +63,7 @@ volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
   - https://unpkg.com/ => https://unpkg.onmicrosoft.cn/
-  - https://cdn.jsdelivr.net/ => https://jsd.onmicrosoft.cn
+  - https://cdn.jsdelivr.net/ => https://jsd.onmicrosoft.cn/
 
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
