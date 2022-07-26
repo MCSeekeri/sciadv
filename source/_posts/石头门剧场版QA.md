@@ -14,6 +14,7 @@ description: Steins;Gate剧场版：负荷领域的既视感相关核心设定�
 headimg: 'https://unpkg.com/sciadvfiles@1.1.3/other/QA.webp'
 abbrlink: ff129072
 date: 2021-08-10 12:51:00
+copyright: true
 ---
 ## **前言**
 

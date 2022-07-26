@@ -58,7 +58,7 @@ cdn:
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924
+volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
@@ -212,7 +212,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, tags, date, wordcount, counter] #启用评论数量需在此添加
+    top_meta: [author, tags, date, wordcount, walinecount] #启用评论数量需在此添加
     # 文章底部信息
     # 从 meta_library 中取
     bottom_meta: [updated, tags, share]
@@ -484,11 +484,11 @@ sidebar:
           unit: '字'
         visitcounter:
           siteuv:
-            enable: true
+            enable: false
             text: '本站访客数：'
             unit: '人'
           sitepv:
-            enable: true
+            enable: false
             text: '本站总访问量：'
             unit: '次'
         lastupd:
@@ -536,7 +536,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, badge, br, analytics, copyright, powered]
+  layout: [aplayer, badge, br, copyright, powered]
   social:
     - icon: #fas fa-rss
       url:
@@ -1119,8 +1119,8 @@ custom_css:
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: HA3D7xjxQ7u3lMz2g9xbxWmq-MdYXbMMI
-    app_key: lAM7wDCNTAq7rHvOIf3DhqCC
+    app_id: 
+    app_key:
     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
