@@ -1,0 +1,24 @@
+name: sciadv-sw
+catch_rules: 
+    - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|unpkg\.com|npm\.elemecdn\.com)
+      transform_rules:
+      - search: _
+        replace:
+          - https://unpkg.com
+          - https://fastly.jsdelivr.net/npm
+          - https://unpkg.zhimg.com 
+          - https://npm.elemecdn.com 
+          - https://code.bdstatic.com/npm 
+          - https://unpkg.onmicrosoft.cn
+          - https://npm.sourcegcdn.com 
+          - https://cdn.bilicdn.tk/npm 
+        action: fetch
+        fetch:
+          preflight: false
+          engine: parallel
+          timeout: 10000
+  
+    - rule: .*
+      transform_rules:
+      - search: .*
+        action: skip
