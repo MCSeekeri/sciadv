@@ -124,7 +124,7 @@ hexo_submit_urls_to_search_engine:
   replace_with: lib.sci-adv.cc
 
 import:
-    link:
+    head_begin:
       - <link rel="manifest" href="/manifest.json">
       - <link rel="preconnect" href="https://npm.onmicrosoft.cn" crossorigin>
       - <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +157,7 @@ abbrlink:
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
 baidu_analytics_key: f09c12e0f91e5af6fd3968cbb113f71e
-google_analytics_key: UA-104605102-5
+google_analytics_key: G-MC8C2DMQ7M
 
 sitemap:
   path: sitemap.xml
