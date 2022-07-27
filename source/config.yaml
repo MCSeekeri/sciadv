@@ -5,18 +5,16 @@ catch_rules:
       - search: _
         replace:
           - https://unpkg.com
-          - https://fastly.jsdelivr.net/npm
-          - https://unpkg.zhimg.com 
           - https://npm.elemecdn.com 
-          - https://code.bdstatic.com/npm 
           - https://unpkg.onmicrosoft.cn
           - https://npm.sourcegcdn.com 
-          - https://cdn.bilicdn.tk/npm 
         action: fetch
         fetch:
+          status: 200
           preflight: false
           engine: parallel
-          timeout: 10000
+          timeout: 5000
+          expire: 1000*60*60
   
     - rule: .*
       transform_rules:
