@@ -29,7 +29,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: [cw.js, config.yaml]
+skip_render: [cw.js, config.yaml, manifest.json]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -125,8 +125,8 @@ hexo_submit_urls_to_search_engine:
 
 import:
     link:
-      - <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
-      - <link rel="preconnect" href="https://ha3d7xjx.api.lncldglobal.com">
+      - <link rel="manifest" href="/manifest.json">
+      - <link rel="preconnect" href="https://npm.onmicrosoft.cn" crossorigin>
       - <link rel="preconnect" href="https://fonts.googleapis.com">
       - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&family=Roboto:wght@300;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
