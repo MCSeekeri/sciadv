@@ -9,7 +9,7 @@ const PreCachlist = [
 ];
 let NPMMirror = true;
 const NPMPackage = "@mcseekeri/sciadv";
-let NPMPackageVersion = "1.0.1658968093900";
+let NPMPackageVersion = "1.0.1659011163458";
 let debug = true;
 // location.hostname == 'localhost' && (debug = true) && (NPMMirror = false);
 const handleFetch = async (event) => {
@@ -22,7 +22,7 @@ const handleFetch = async (event) => {
     return CacheFirst(event)
   } else if (/cdnjs\.cloudflare\.com/.test(url)) {
     return CacheAlways(event)
-  } else if (/jsdelivr\.net/.test(url)) {
+  } else if (/cdn\.jsdelivr\.net/.test(url)) {
     return CacheAlways(event)
   } else if (/unpkg\.com/.test(url)) {
     return CacheAlways(event)
