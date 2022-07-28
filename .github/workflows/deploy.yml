@@ -6,15 +6,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 载入文件
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
+          submodules: true # Checkout private submodules(themes or something else). 当有子模块时切换分支？
           persist-credentials: false
           fetch-depth: 0
 
-      - name: 使用Node16.x
-        uses: actions/setup-node@v2
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@main
         with:
-          node-version: "16.x"
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Setup Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+          architecture: "x64"
 
       - name: 设置Hexo环境
         env:
@@ -38,6 +46,24 @@ jobs:
         run: |
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> $GITHUB_WORKSPACE/push.json
           hexo generate && gulp && hexo deploy
+      
+      - name: Run Tools
+        run: |
+          python ./.github/cache.py
+          
+      - name: NPM Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          node ./.github/npm-version-bump.js
+          cd public
+          npm publish --access public
+          rm -rf ./package.json
+          cd ..
+      
+      - name: Refresh NPM Cache
+        run: |
+          curl -X PUT "https://registry.npmmirror.com/MCSeekeri/sciadv/sync?publish=false&nodeps=false"
 
       # - name: 部署到Cloudflare Workers
       #   uses: cloudflare/wrangler-action@1.3.0
