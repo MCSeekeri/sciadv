@@ -469,11 +469,11 @@ sidebar:
           unit: '字'
         visitcounter:
           siteuv:
-            enable: false
+            enable: true
             text: '本站访客数：'
             unit: '人'
           sitepv:
-            enable: false
+            enable: true
             text: '本站总访问量：'
             unit: '次'
         lastupd:
