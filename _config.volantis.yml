@@ -45,6 +45,10 @@ cdn_version: true
 # https://github.com/volantis-x/volantis-static
 volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
+#  https://web.dev/content-visibility/
+#  https://www.caniuse.com/?search=content-visibility
+content_visibility: false
+
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
   #- https://unpkg.com/ => https://unpkg.onmicrosoft.cn/
@@ -104,9 +108,6 @@ navbar:
         - name: 夜间模式
           icon: fa-solid fa-moon
           toggle: darkmode
-        - name: 服务稳定性监测
-          icon: fa-solid fa-telescope
-          url: https://status.mcseekeri.top
           target: _blank
         - name: 本站源代码
           icon: fa-solid fa-code
@@ -128,10 +129,6 @@ navbar:
         - name: 科A短链接服务
           icon: fa-solid fa-link
           url: https://aka.sci-adv.cc
-          target: _blank
-        - name: 科A图床
-          icon: fa-solid fa-images
-          url: https://photo.sci-adv.cc
           target: _blank
 ############################### Navigation Bar ############################### > end
 
