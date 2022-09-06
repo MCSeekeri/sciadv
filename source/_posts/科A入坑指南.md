@@ -25,8 +25,8 @@ copyright: true
 ## 科学 ADV 是什么？
 科学 ADV 系列是由 5pb 和 Nitro+ 合作打造的一堆作品的统称，包括《混沌之脑》《命运石之门》《机器人笔记》《混沌之子》《超自然 9 人组》和仍然在绝赞咕咕咕中的《匿名代码》（
 
-> 5pb 者何人？ gal 界全年龄纯爱系代表以至于活不下去的 KID 社传人，主打《MO》是十年连载不衰的“澄空学园”出处所在，代表人物“不老社长”志仓千代丸，游戏剧情走的都是“君子之交淡如水”的路子；
-> Nitro+ 者何人？ gal 界鬼畜汗臭系翘楚，《沙耶の呗》余音绕梁，新作是“游戏玩人”的《君と彼女と彼女の恋》，核心人物“爱的战士”虚渊玄，出的都是进一步恐怖小说退一步感官拔作的玩意儿。
+> 5pb 者何人？gal 界全年龄纯爱系代表以至于活不下去的 KID 社传人，主打《MO》是十年连载不衰的“澄空学园”出处所在，代表人物“不老社长”志仓千代丸，游戏剧情走的都是“君子之交淡如水”的路子；
+> Nitro+ 者何人？gal 界鬼畜汗臭系翘楚，《沙耶の呗》余音绕梁，新作是“游戏玩人”的《君と彼女と彼女の恋》，核心人物“爱的战士”虚渊玄，出的都是进一步恐怖小说退一步感官拔作的玩意儿。
 > 就是这样光明与黑暗、阳光与脚汗的组合。这么两家子合作出的游戏不玩难道还等 key 和 Lilith 合作？
 >
 > 引用自知乎用户蛏子圣子的[回答](https://www.zhihu.com/question/22290351/answer/28359735)
@@ -49,13 +49,13 @@ copyright: true
 ![](https://unpkg.com/sciadvfiles@1.0.7/Intro/CH.webp)
 系列开山之作，但由于各种原因…不建议游玩。
 基本就是个半成品…设定不完整，线路不全，现在这部的资源都不好找了。
-{% note info::官方登陆平台: PC %}
+{% note info::官方登陆平台：PC %}
 
 #### Chäos;HEAd NoAH
 混沌之脑：诺亚，简称 CHN。
 是 CH 的补完版本，完善了设定并添加了{% psw 充满了志仓社长恶意的 %}个人线。出色的奠定了科 A 系列基础，游玩体验一般，结局略显仓促，但确实是一部优秀的作品。
 独特的妄想机制很有新意，依靠男主的妄想来决定故事发展，比其他文字冒险游戏的点按钮高端多了（
-{% note info::官方登陆平台: PC Xbox PSP PS3 PSV iOS Android %}
+{% note info::官方登陆平台：PC Xbox PSP PS3 PSV iOS Android %}
 
 #### Chäos;HEAd Love chu☆chu
 混沌之脑：恋爱亲亲，简称 CHLCC。
@@ -63,7 +63,7 @@ copyright: true
 剧情有且仅有恋爱日常，完全没有了 CHN 的剧情高度。
 ~~其实玩这个可以有效应对被本篇吓到睡不着~~
 有贴吧老哥制作的 RenPy 全平台版本。
-{% note info::官方登陆平台: Xbox PSP PS3 PSV %}
+{% note info::官方登陆平台：Xbox PSP PS3 PSV %}
 
 #### Chäos;Child
 混沌之子，简称 CC。
@@ -78,7 +78,7 @@ copyright: true
 风格较为电波，能接受的认为是神作，不能接受的认为是莫名其妙的作品（摊手
 已上架 Steam，有民间汉化 (而且效果非常不错)
 {% psw 礼物盒简直令人疯狂掉 SAN 啊… %}
-{% note info::官方登陆平台: PC Xbox PS3 PS4 PSV iOS Android %}
+{% note info::官方登陆平台：PC Xbox PS3 PS4 PSV iOS Android %}
 <iframe src="https://store.steampowered.com/widget/970570/" frameborder="0" width="646" height="190"></iframe>
 
 #### Chäos;Child Love chu☆chu
@@ -86,7 +86,7 @@ copyright: true
 依旧是正统恋爱 FD，但极度不建议游玩。
 设定与本篇冲突，看似发糖实则喂屎，志仓的恶意贯穿其中…
 为啥要给自己找不痛快呢？
-{% note info::官方登陆平台: PS4 PSV %}
+{% note info::官方登陆平台：PS4 PSV %}
 
 总的来说，妄想科学 ADV 是非常「疯狂」的一系列作品，选择了超能力这个略显老套的题材配上猎奇的剧情内核……非常萌新不友好，除非是久经沙场的 Galgame 玩家否则我不推荐去接触。
 ### 想定科学 ADV
@@ -106,7 +106,7 @@ copyright: true
 ~~当然就算登神了 SG 还是著名冷门番这是为啥呢~~
 另外，志仓为了捞钱又发布了海量的小说漫画广播剧，短片续作设定集。~~让我这种试图做资源整合的人累到头秃~~
 {% note warning::本作采用手机触发，不是传统 Galgame 的选项触发，很多萌新就因此直奔铃羽线 %}
-{% note info::官方登陆平台: PC Xbox PSP PS3 PS4 PSV NS iOS Android %}
+{% note info::官方登陆平台：PC Xbox PSP PS3 PS4 PSV NS iOS Android %}
 <iframe src="https://store.steampowered.com/widget/412830/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate:My Darling's Embrace
@@ -116,7 +116,7 @@ copyright: true
 如果玩 SG0 的时候太胃疼可以靠比翼来缓解一下。
 已上架 Steam，有民间汉化。
 有贴吧老哥制作的 RenPy 全平台版本。
-{% note info::官方登陆平台: PC Xbox PSP PS3 PS4 PSV NS %}
+{% note info::官方登陆平台：PC Xbox PSP PS3 PS4 PSV NS %}
 <iframe src="https://store.steampowered.com/widget/970560/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate:Linear Bounded Phenogram
@@ -125,13 +125,13 @@ copyright: true
 没有像本篇一样使用主角单一视角，而是多人物叙事，完善了本篇略显单薄的人设。
 已上架 Steam，有民间汉化。
 有贴吧老哥制作的 RenPy 全平台版本。
-{% note info::官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
+{% note info::官方登陆平台：PC Xbox PS3 PS4 PSV NS %}
 
 #### Steins;Gate:Variant Space Octet
 命运石之门：变移空间的 8Bit，简称 8Bit。
 还不错的小外传，全部采用 8Bit 风格，剧情相对独立，与隔壁 CH 有角色上的联动。
 总之是部能几个小时通关的休闲作品，值得一玩。
-{% note info::官方登陆平台: PC %}
+{% note info::官方登陆平台：PC %}
 
 #### Steins;Gate 0
 命运石之门 0，简称 SG0。
@@ -140,7 +140,7 @@ copyright: true
 介绍这部作品必定会剧透本篇，所以我就不介绍了（
 就我个人观感而言，0 的质量远超本篇，完善了很多本篇的不足。
 已上架 Steam，有官方中文和民间汉化。
-{% note info::官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
+{% note info::官方登陆平台：PC Xbox PS3 PS4 PSV NS %}
 <iframe src="https://store.steampowered.com/widget/825630/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate ELITE
@@ -148,7 +148,7 @@ copyright: true
 ![](https://unpkg.com/sciadvfiles@1.0.7/Intro/SGE.webp)
 就是 SG 的冷饭版本，把之前做的动画塞进本篇游戏卖，没啥可说的。
 已上架 Steam，有官方中文。
-{% note info::官方登陆平台: PC Xbox PS4 PSV NS iOS %}
+{% note info::官方登陆平台：PC Xbox PS4 PSV NS iOS %}
 <iframe src="https://store.steampowered.com/widget/819030/" frameborder="0" width="646" height="190"></iframe>
 
 想定科学 ADV 可以说是整个科 A 系列中最接近传统科幻的作品了，但你要说石头门是软科幻……它建立了极为完善且大部分基于现代物理学的世界线收束理论；你要说石头门是硬科幻……多吃蔬菜生萌妹和 36TiB 压缩成 18Byte 这实在是纯属瞎扯啊……
@@ -165,7 +165,7 @@ copyright: true
 机器人笔记，简称 RN，萝卜本。
 ![](https://unpkg.com/sciadvfiles@1.0.7/Intro/RN.webp)
 好罢……不是机战的机器人作品……
-设定是世界线变动率 1.048596% 的世界线，即 SG 世界线。
+设定是世界线变动率 1.048596% 的世界线，即 SG世界线。
 与之前所有作品不同，RN 的风格更加主流，属于一般普通高中生拯救世界的故事，轻松愉快的氛围和各种 Otaku 日常事件……
 剧情与 SG 相比差了不是一星半点，如果是看完 SG 之后再去看 RN 那么大概率会失望的（
 不过 RN 本质上也是一部优秀作品，只是 SG 的光芒太耀眼……
@@ -173,7 +173,7 @@ copyright: true
 另外，高达粉建议去看完 0079 再来玩（
 顺带一提，本作没有登陆 Steam，没有！
 ~~不过动画化不错，推荐观看~~
-{% note info::官方登陆平台: PC Xbox PS3 PS4 PSV NS %}
+{% note info::官方登陆平台：PC Xbox PS3 PS4 PSV NS %}
 
 #### ROBOTICS;NOTES ELITE
 RN 的精英版，没什么可说的。
@@ -184,7 +184,7 @@ RN 的精英版，没什么可说的。
 RN 续作，讲述长大了的高中生拯救世界的故事（无端
 SG 里的桶子也有登场，毕竟是联动作品嘛。
 顺带一提，DaSH 的意思是 Daru·the·Super·Hacker（
-{% note info::官方登陆平台: PC PS4 %}
+{% note info::官方登陆平台：PC PS4 %}
 <iframe src="https://store.steampowered.com/widget/1111390/" frameborder="0" width="646" height="190"></iframe>
 
 相比前辈，扩张科学 ADV 可以说是最让人看着放心的作品了，不会有惊悚场景和志仓恶意……但也是最惨的系列，被 SG 的光芒掩盖住了，而且小清新的剧情也不怎么能让 SG 的爱好者们满意。
@@ -205,7 +205,7 @@ SG 里的桶子也有登场，毕竟是联动作品嘛。
 然后动画游戏双双暴死（大悲
 游戏至今未发布 PC 版，大约是志仓伤心了吧（
 动画和漫画走向的结局不同，所以我个人推荐是都去看，让游戏自生自灭罢（暴怒
-{% note info::官方登陆平台: Xbox PS4 PSV %}
+{% note info::官方登陆平台：Xbox PS4 PSV %}
 
 #### ANONYMOUS;CODE
 匿名代码，简称 AC。
@@ -214,8 +214,8 @@ SG 里的桶子也有登场，毕竟是联动作品嘛。
 
 ![](https://unpkg.com/sciadvfiles@1.0.8/Intro/AC.webp)
 科 A 顶尖作品！志仓生涯极限！SG 联动！独创世界层理论！2036 年的未来世界！黑客们的故事！
-除了从 2015 年跳票至今仍未发布之外一切都好（抹泪
-志仓原定是在 2022 年 7 月 28 日发布，我保持观望态度，到时候我再来改这里
+好吧，他玩砸了。
+大多数开发拖了很久的游戏要么是没做，要么是在重做，还能指望啥呢（
 {% note info::官方登陆平台：PS4 NS %}
 
 ## 如何入坑？
