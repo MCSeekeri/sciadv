@@ -9,7 +9,7 @@ const PreCachlist = [
 ];
 let NPMMirror = true;
 const NPMPackage = "@mcseekeri/sciadv";
-let NPMPackageVersion = "1.0.1659011163458";
+let NPMPackageVersion = "1.0.changethis";
 let debug = true;
 // location.hostname == 'localhost' && (debug = true) && (NPMMirror = false);
 const handleFetch = async (event) => {
