@@ -485,8 +485,10 @@ sidebar:
         icon: fad fa-siren-on
         title: 站点公告
       content:
-        - 然后呢,我,把这个混帐的站点,发布了
-        - 已经更新决定版,站点不再进行较大变动。
+        - 「然后呢,我,把这个混帐的站点,发布了。」
+        - 欢迎来到科学ADV图书馆，本站致力于收集科学ADV系列所有衍生小说。
+        - 站点支持离线访问及作为程序安装到设备上，方便用户查询内容。
+        - 如果您访问本站遇到了一些问题，请尝试清除浏览器数据之后访问。
         - 预祝看的愉快,有问题欢迎前往[关于页面](/about/)进行留言
     lastupdate:
       class: lastupdate
@@ -880,7 +882,7 @@ rightmenus:
       - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
       - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
       - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
-      #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
+      - {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
     # 链接判断组件
     # 生效于链接处的右键行为，__link__ 为链接地址
     elementCheck:
@@ -1034,7 +1036,7 @@ custom_css:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 12px
-    border: 2px
+    border: 3px
   navbar:
     height: 64px
     width: auto # auto, max
@@ -1042,7 +1044,7 @@ custom_css:
   sidebar:
     effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   body:
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       grayscale: false # Enable grayscale effect
@@ -1099,11 +1101,11 @@ custom_css:
 
 ############################### Analytics ############################### > start
 analytics:
-  busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-  leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: 
-    app_key:
-    custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
+  # busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  # leancloud: # 请使用自己的 id & key 以防止数据丢失
+  #   app_id: 
+  #   app_key:
+  #   custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
 ############################### SEO ############################### > start
