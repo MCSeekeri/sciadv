@@ -1101,11 +1101,11 @@ custom_css:
 
 ############################### Analytics ############################### > start
 analytics:
-  # busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-  # leancloud: # 请使用自己的 id & key 以防止数据丢失
-  #   app_id: 
-  #   app_key:
-  #   custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
+   busuanzi: https://cdn.dusays.com/bsz.js 
+   leancloud: # 请使用自己的 id & key 以防止数据丢失
+     app_id: 
+     app_key:
+     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
 ############################### SEO ############################### > start
