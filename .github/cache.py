@@ -22,7 +22,7 @@ print("==================== Precache Start ====================")
 walkFile("./public/js/")
 walkFile("./public/css/")
 print(Precache)
-f=open("./public/volantis-sw.js","rb")
+f=open("./public/sw.js","rb")
 fb = f.read().decode("utf8","ignore")
 f.close()
 
