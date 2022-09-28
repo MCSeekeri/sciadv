@@ -26,7 +26,7 @@ const handleFetch = async (event) => {
     return CacheAlways(event)
   } else if (/unpkg\.com/.test(url)) {
     return CacheAlways(event)
-  } else if (/.*\.(?:png|jpg|jpeg|svg|gif|webp|ico|eot|ttf|woff|woff2)$/.test(url)) {
+  } else if (/.*\.(?:png|jpg|jpeg|svg|gif|webp|ico|ttf|woff|woff2)$/.test(url)) {
     return CacheAlways(event)
   } else if (/.*\.(css|js)$/.test(url)) {
     return CacheAlways(event)
@@ -40,22 +40,18 @@ const cdn = {
     fastly: 'https://fastly.jsdelivr.net/gh',
     gcore: 'https://gcore.jsdelivr.net/gh',
     testingcf: 'https://testingcf.jsdelivr.net/gh',
-    test1: 'https://test1.jsdelivr.net/gh',
     jsdcn: 'https://jsd.onmicrosoft.cn',
 },
   combine: {
     jsdelivr: 'https://cdn.jsdelivr.net/combine',
     fastly: 'https://fastly.jsdelivr.net/combine',
     gcore: 'https://gcore.jsdelivr.net/combine',
-    testingcf: 'https://testingcf.jsdelivr.net/combine',
-    test1: 'https://test1.jsdelivr.net/combine',
+    jsdcn: 'https://jsd.onmicrosoft.cn/combine',
   },
   npm: {
     jsdelivr: 'https://cdn.jsdelivr.net/npm',
     fastly: 'https://fastly.jsdelivr.net/npm',
     gcore: 'https://gcore.jsdelivr.net/npm',
-    testingcf: 'https://testingcf.jsdelivr.net/npm',
-    test1: 'https://test1.jsdelivr.net/npm',
     unpkg: 'https://unpkg.com',
     unpkgcn: 'https://unpkg.onmicrosoft.cn',
   }
