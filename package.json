@@ -9,10 +9,10 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "6.2.0"
+    "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^6.2.0",
+    "hexo": "^6.3.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^3.0.0",
     "hexo-filter-nofollow": "^2.0.2",
@@ -33,7 +33,8 @@
     "hexo-tag-hint": "^0.3.1",
     "hexo-wordcount": "^6.0.1",
     "js-yaml": "4.1.0",
-    "snyk": "^1.997.0"
+    "nodejieba": "^2.6.0",
+    "snyk": "^1.1013.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
