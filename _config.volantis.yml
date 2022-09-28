@@ -4,13 +4,70 @@ info:
   theme_docs: https:/vlts.cc/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
-debug: false
+debug: false # false: 关闭调试模式， env：环境配置检查， pjax：调试pjax，rightMenus: 调试右键, cdn: 调试 CDN System
 ############################### 默认占位图 ###############################
 default:
   avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+############################### CDN System ###############################
+
+cdn_system:
+  # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
+  priority: [custom, local, cdnjs, npm, static]
+  # ========================================================================
+  # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
+  # 变量说明：
+  # 以下变量只能在 `prefix` 中使用。
+  # ${site_root}                站点根目录 一般是 "/"
+  # 以下变量只能在 `format` 中使用。
+  # ${prefix}                   CDN 链接前缀
+  # ${name}                     package 名称 见 "theme/_cdn.yml"
+  # ${version}                  package 版本 见 "theme/_cdn.yml"
+  # ${file}                     文件路径 见 "theme/_cdn.yml"
+  # ${min_file}                 文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
+  # ${timestamp}                Hexo运行时的时间戳(eg：1661246702300), 可用于静态资源版本控制 format: ${prefix}${file}?v=${timestamp}
+  system_config:
+    # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
+    custom:
+      busuanzi: https://cdn.dusays.com/bsz.js  # 杜老师友情赞助
+      #volantis_style: /css/style.css
+      #volantis_app: /js/app.js
+
+    # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN）,"theme/_cdn.yml" 中以 "volantis_" 开头的名称
+    # Tip: 在本配置文件中 匹配以 "volantis-local" 开头的链接路径替换为该格式的前缀开头 prefix
+    local:
+      # CDN 链接前缀
+      prefix: ${site_root}
+      # local CDN 格式
+      format: ${prefix}${file}
+    # npm
+    # https://www.npmjs.com/
+    # Tip: 在本配置文件中 匹配以 "volantis-npm" 开头的链接路径替换为该格式的前缀开头 prefix
+    npm:
+      # CDN 链接前缀
+      prefix: https://unpkg.com
+      # npm CDN 格式
+      format: ${prefix}/${name}@${version}/${file}
+    # volantis static 静态资源文件 npm 包 CDN 地址
+    # https://github.com/volantis-x/volantis-static
+    # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
+    static:
+      # CDN 链接前缀
+      prefix: https://unpkg.com/volantis-static@0.0.1660614606622
+      # volantis-static CDN 格式
+      format: ${prefix}/libs/${name}/${file}
+    # cdnjs
+    # https://cdnjs.com/
+    # Tip: 在本配置文件中 匹配以 "volantis-cdnjs" 开头的链接路径替换为该格式的前缀开头 prefix
+    cdnjs:
+      # CDN 链接前缀
+      prefix: https://cdn.bootcdn.net/ajax/libs
+      # cdnjs CDN 格式
+      format: ${prefix}/${name}/${version}/${min_file}
+  # ========================================================================
+
 ############################### CSP ###############################
 # 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
@@ -21,29 +78,6 @@ csp:
   # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
   # 另可以参考官网的 gulp 方案.
   # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
-############################### CDN ###############################
-# 本地静态文件使用 CDN 加速
-# 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 cdn.enable 设置为 false
-cdn:
-  enable: false
-  # CDN 前缀，为空使用默认值，链接最后不加 "/",
-  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-  # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: #https://unpkg.com/hexo-theme-volantis/source
-  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
-  set:
-    js:
-      app: #/js/app.js
-    css:
-      style: #/css/style.css # (异步加载样式)
-# 静态资源版本控制
-# 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
-# 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
-cdn_version: true
-# volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
-# https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
 #  https://web.dev/content-visibility/
 #  https://www.caniuse.com/?search=content-visibility
@@ -56,8 +90,9 @@ replace:
 
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
-  #- https://unpkg.onmicrosoft.cn
-  # - https://npm.elemecdn.com
+  - https://unpkg.onmicrosoft.cn
+  - https://unpkg.com
+  - https://cdn.bootcdn.net
 
 # 平滑滚动效果
 scroll_smooth: true
@@ -211,6 +246,21 @@ article:
         #     - title: 某篇文章
         #       url: https://
         # 即可显示此组件。
+      # ----------------
+            # 文章推荐 (for layout: post/docs)
+      # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
+      recommended_article:
+        enable: false
+        layout: ["post", "docs"]
+        title: 推荐阅读
+        icon: fa-solid fa-bookmark
+        max_count: 6
+        placeholder_img: https://lib.sci-adv.cc/favicon.ico
+        # 不展示文章推荐
+        # front-matter 使用 skip_recommended_article: true 关闭
+        # 不在以下文件夹文章中展示文章推荐 根目录是source/
+        skip_dirs:
+          
       # ----------------
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
@@ -465,12 +515,11 @@ sidebar:
           text: '本站总字数：'   # 需要启用 wordcount
           unit: '字'
         visitcounter:
+          enable: true
           siteuv:
-            enable: true
             text: '本站访客数：'
             unit: '人'
           sitepv:
-            enable: true
             text: '本站总访问量：'
             unit: '次'
         lastupd:
@@ -520,7 +569,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, badge, br, copyright, powered]
+  layout: [aplayer, badge, br, analytics, copyright, powered]
   social:
     - icon: #fas fa-rss
       url:
@@ -534,8 +583,8 @@ site_footer:
   source: https://github.com/mcseekeri/sciadv
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span>本站总访问量为 <span id='busuanzi_value_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span>访客数为 <span id='busuanzi_value_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -549,26 +598,9 @@ plugins:
   ################ required plugins ################
   # jquery
   globalJquery: false # 全局引入 jquery
-  jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://unpkg.com/mcseekeri@1.3.2/fontawesome/css/all.min.css
-    # katex@0.15.2
-  katex:
-    js: volantis-static/libs/katex/katex.min.js # https://unpkg.com/katex@0.15.2/dist/katex.min.js
-    css: volantis-static/libs/katex/katex.min.css # https://unpkg.com/katex@0.15.2/dist/katex.min.css
-    render: volantis-static/libs/katex/contrib/auto-render.min.js # https://unpkg.com/katex@0.15.2/dist/contrib/auto-render.min.js
-  # mathjax@3.2.0
-  mathjax: volantis-static/libs/mathjax/es5/tex-mml-chtml.js # https://unpkg.com/mathjax@3.2.0/es5/tex-mml-chtml.js
-  # github-markdown-css@5.1.0
-  markdown: volantis-static/libs/github-markdown-css/github-markdown.css # https://unpkg.com/github-markdown-css@5.1.0/github-markdown.min.css
-  # marked@4.0.10
-  marked: volantis-static/libs/marked/marked.min.js # https://unpkg.com/marked@4.0.10/marked.min.js
-  # hls.js@1.1.3
-  hlsjs: volantis-static/libs/hls.js/dist/hls.min.js # https://unpkg.com/hls.js@1.1.3
-  # @fancyapps/ui@4.0.12
-  fancybox:
-    css: volantis-static/libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
-    js: volantis-static/libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
+  fontawesome: true
+
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -584,8 +616,6 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-    flying_pages: https://unpkg.com/mcseekeri@1.3.1/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -594,7 +624,6 @@ plugins:
   # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
     enable: true
-    js: https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: true
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -630,36 +659,33 @@ plugins:
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: true
-    js: volantis-static/libs/scrollreveal/dist/scrollreveal.min.js
     distance: 32px
     duration: 500 # ms
     interval: 20 # ms
     scale: 1 # 0.1~1
 
-  ######## Plugins for SEO:
+  ######## Plugins for Count:
 
   # npm i hexo-wordcount
   wordcount:
+    enable: true
+  busuanzi:
     enable: true
 
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
     enable: true
-    css: https://unpkg.com/node-waves@0.7.6/dist/waves.min.css
-    js: https://unpkg.com/node-waves@0.7.6/dist/waves.min.js
 
   # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
   # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: #true
-    css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
     enable: #true
-    js: volantis-static/libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
-
+    
   # Slide Background
   # 视差滚动效果 Slide Background
   parallax:
@@ -690,10 +716,6 @@ plugins:
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: true
-    js:
-      aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
-      meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
-    css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -710,15 +732,17 @@ plugins:
     autoHide: false    # hide automaticaly
 
   pjax:
-    js: https://unpkg.com/pjax@0.2.8/pjax.min.js
     enable: true
     cover: false          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: nprogress # false, nprogress, circle
-    nprogress: https://unpkg.com/nprogress@0.2.0
-    banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/bb/'           # bbtalk 不支持 pjax
+    exclude:             # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
+   # pace
+  # An automatic web page progress bar.
+  # https://github.com/CodeByZach/pace
+  pace:
+    enable: true
+    color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
+    theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
 
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：
@@ -745,7 +769,6 @@ plugins:
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
     # 不支持 Pjax
-    js: https://unpkg.com/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
@@ -812,14 +835,12 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: #true
-    css: volantis-static/libs/swiper/swiper-bundle.min.css # https://unpkg.com/swiper@6/swiper-bundle.min.css
-    js: volantis-static/libs/swiper/swiper-bundle.min.js # https://unpkg.com/swiper@6/swiper-bundle.min.js
-
+    
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
 
-### 自定义右键 新
+### 自定义右键
 rightmenus:
   enable: true
   # 右键菜单项及加载顺序
@@ -914,8 +935,17 @@ rightmenus:
 # npm i hexo-generator-json-content
 search:
   enable: true
-  service: hexo  # hexo
-  js:
+  service: hexo  # hexo, algolia, meilisearch
+  algolia:
+    searchAsYouType: true # If false, triggers the search only on submit.
+    hitsPerPage: 5 # Set the number of hits per page.
+    placeholder: 'Search...' # The placeholder text of the input.
+  meilisearch:
+    placeholder: 'Search...'
+    searchKey: ''
+    indexName: ''
+    hostUrl: ''
+
 ############################### Search ############################### > end
 
 ############################### Color Scheme ############################### > start
@@ -1097,16 +1127,6 @@ custom_css:
       # weight: normal
       # style: normal
 ############################### Custom css ############################### > end
-
-
-############################### Analytics ############################### > start
-analytics:
-   busuanzi: https://cdn.dusays.com/bsz.js 
-   leancloud: # 请使用自己的 id & key 以防止数据丢失
-     app_id: 
-     app_key:
-     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
-############################### Analytics ############################### > end
 
 ############################### SEO ############################### > start
 seo:
