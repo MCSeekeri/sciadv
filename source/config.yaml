@@ -6,7 +6,18 @@ hotconfig:
     - https://cdn.jsdelivr.net/gh/MCSeekeri/sciadv/source/config.yaml
 
 catch_rules:
-  #! 并发CDN流量请求 - NPM
+  - rule: _
+    transform_rules:
+      - search: hm\.baidu\.com
+        action: skip
+      - search: www\.googletagmanager\.com
+        action: skip
+      - search: www\.google\-analytics\.com
+        action: skip
+      - search: \#.+
+        searchin: url
+        replace: ''
+      
   - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
     transform_rules:
       - search: _
@@ -33,7 +44,6 @@ catch_rules:
       - search: _
         replace:
           - _
-          - https://cdn.bootcdn.net/ajax/libs
           - https://lib.baomitu.com
           - https://mirrors.cqupt.edu.cn/cdnjs/ajax/libs    # 重庆邮电
           - https://cdn.staticfile.org
