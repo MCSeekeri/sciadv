@@ -1,8 +1,12 @@
 
 name: MCSeekeri_sciadv_CW
 
+hotconfig:
+    - https://raw.githubusercontent.com/MCSeekeri/sciadv/master/source/config.yaml
+    - https://cdn.jsdelivr.net/gh/MCSeekeri/sciadv/source/config.yaml
 
 catch_rules:
+  #! 并发CDN流量请求 - NPM
   - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
     transform_rules:
       - search: _
@@ -66,15 +70,3 @@ catch_rules:
           cache:
             expire: 1000*60*60*8
             delay: 300
-  - rule: _
-    transform_rules:
-      - search: _
-        action: fetch
-        fetch:
-          status: 200
-          engine: fetch
-          preflight: false
-          timeout: 30000
-          cache:
-            enable: true
-            expire: 1000*60*60*365
