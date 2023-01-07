@@ -18,11 +18,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
 
-      - name: Setup Python 3.7
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.7"
-          architecture: "x64"
 
       - name: 设置Hexo环境
         env:
@@ -38,26 +33,6 @@ jobs:
           npm i -g hexo-cli yarn
           yarn
 
-      - name: 生成文件
-        run: |
-          hexo generate && gulp
-          python ./.github/cache.py
-          
-      - name: NPM Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          node ./.github/npm-version-bump.js
-          cd public
-          rm ./sw.js
-          npm publish --access public
-          rm -rf ./package.json
-          cd ..
-      
-      - name: Refresh NPM Cache
-        run: |
-          curl -X PUT "https://registry.npmmirror.com/MCSeekeri/sciadv/sync?publish=false&nodeps=false"
-
       - name: 部署页面并提交搜索引擎
         env:
           BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
@@ -65,9 +40,7 @@ jobs:
           GOOGLE_TOKEN: ${{ secrets.GOOGLE_TOKEN }}
         run: |
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> $GITHUB_WORKSPACE/push.json
-          sed -i s/1.0.changethis/$(npm view @mcseekeri/sciadv version)/g $GITHUB_WORKSPACE/source/sw.js 
-          cp source/sw.js public/
-          gulp && hexo deploy
+          hexo generate && gulp && hexo deploy
 
       # - name: 部署到Cloudflare Workers
       #   uses: cloudflare/wrangler-action@1.3.0

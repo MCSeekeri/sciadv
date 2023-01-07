@@ -1,0 +1,80 @@
+
+name: MCSeekeri_sciadv_CW
+
+
+catch_rules:
+  - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
+    transform_rules:
+      - search: _
+        replace:
+          - https://unpkg.com
+          - https://npm.elemecdn.com
+          - https://npm.sourcegcdn.com
+          - https://cdn.staticfile.org
+          - https://cdn.jsdelivr.net
+          - _
+        action: fetch
+        fetch:
+          status: 200
+          engine: parallel
+          preflight: false
+          timeout: 3000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
+
+  #! 并发CDN流量请求 - CDNJS
+  - rule: ^https\:\/\/cdn\.bootcdn\.net\/ajax\/libs
+    transform_rules:
+      - search: _
+        replace:
+          - _
+          - https://cdn.bootcdn.net/ajax/libs
+          - https://lib.baomitu.com
+          - https://mirrors.cqupt.edu.cn/cdnjs/ajax/libs    # 重庆邮电
+          - https://cdn.staticfile.org
+          - https://mirrors.sustech.edu.cn/cdnjs/ajax/libs  # 南大
+          - https://cdnjs.sourcegcdn.com/ajax/libs          # 全同步 https://cdnjs.cloudflare.com
+          - https://cdnjs.cloudflare.com
+          - _
+        action: fetch
+        fetch:
+          status: 200
+          engine: parallel
+          preflight: false
+          timeout: 3000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
+
+  - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/gh)
+    transform_rules:
+      - search: _
+        replace:
+          - https://fastly.jsdelivr.net/gh
+          - https://gcore.jsdelivr.net/gh
+          - https://test1.jsdelivr.net/gh
+          - https://testingcf.jsdelivr.net/gh
+          - https://cdn.jsdelivr.net/gh
+          - _
+        action: fetch
+        fetch:
+          status: 200
+          engine: parallel
+          preflight: false
+          timeout: 3000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
+  - rule: _
+    transform_rules:
+      - search: _
+        action: fetch
+        fetch:
+          status: 200
+          engine: fetch
+          preflight: false
+          timeout: 30000
+          cache:
+            enable: true
+            expire: 1000*60*60*365
