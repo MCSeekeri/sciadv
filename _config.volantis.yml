@@ -400,6 +400,7 @@ comments:
     pageview: true # 浏览量统计
     comment: true  # 评论数统计    
     serverURL: https://comments.sciadv.mcseekeri.top
+    recaptchaV3Key: 6Lf9KTAbAAAAALfqwFyJmbRTABDc3MwyCKo696gp
     emoji:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/QQ
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Tieba
@@ -414,7 +415,6 @@ comments:
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_doubt.png
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_heart.png
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_lovely.png
-    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_rage.png
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_rage.png
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_cry.png
     - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_awkward.png
