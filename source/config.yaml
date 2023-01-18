@@ -1,10 +1,6 @@
 
 name: MCSeekeri_sciadv_CW
 
-hotconfig:
-    - https://raw.githubusercontent.com/MCSeekeri/sciadv/master/source/config.yaml
-    - https://cdn.jsdelivr.net/gh/MCSeekeri/sciadv/source/config.yaml
-
 catch_rules:
   - rule: _
     transform_rules:
@@ -17,6 +13,14 @@ catch_rules:
       - search: \#.+
         searchin: url
         replace: ''
+      - search: _
+        action: fetch
+        fetch:
+          status: 200
+          timeout: 5000
+          cache:
+            expire: 1000*60*60*8
+            delay: 300
       
   - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
     transform_rules:
@@ -27,6 +31,7 @@ catch_rules:
           - https://npm.sourcegcdn.com
           - https://cdn.staticfile.org
           - https://cdn.jsdelivr.net
+          - https://npm.onmicrosoft.cn
           - _
         action: fetch
         fetch:
@@ -45,6 +50,7 @@ catch_rules:
         replace:
           - _
           - https://lib.baomitu.com
+          - https://cdnjs.onmicrosoft.cn
           - https://mirrors.cqupt.edu.cn/cdnjs/ajax/libs    # 重庆邮电
           - https://cdn.staticfile.org
           - https://mirrors.sustech.edu.cn/cdnjs/ajax/libs  # 南大

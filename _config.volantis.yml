@@ -32,7 +32,7 @@ cdn_system:
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
       busuanzi: https://cdn.dusays.com/bsz.js  # 杜老师友情赞助
-      #volantis_style: /css/style.css
+      fontawesome: https://font.onmicrosoft.cn/font6pro@6.2.0/css/all.min.css
       #volantis_app: /js/app.js
 
     # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN）,"theme/_cdn.yml" 中以 "volantis_" 开头的名称
@@ -212,7 +212,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: https://unpkg.com/mcseekeri@1.2.6/pin.svg
+    pin_icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -364,15 +364,15 @@ article:
       # 分享
       share:
         - id: qq
-          img: https://unpkg.com/mcseekeri@1.2.6/png/qq.png
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
         - id: qzone
-          img: https://unpkg.com/mcseekeri@1.2.6/png/qzone.png
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
         - id: weibo
-          img: https://unpkg.com/mcseekeri@1.2.6/png/weibo.png
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
         # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-        #   img: https://unpkg.com/mcseekeri@1.2.6/png/wechat.png
+        #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
         - id: telegram
-          img: https://unpkg.com/mcseekeri@1.2.6/png/telegram.png
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -409,6 +409,16 @@ comments:
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/bilibili2233/
     - https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Menhera-chan
+    reaction:
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_agree.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_doubt.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_heart.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_lovely.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_rage.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_rage.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_cry.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_awkward.png
+    - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_vomit.png
     
 
 
@@ -562,7 +572,7 @@ tag_plugins:
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
-    placeholder: https://unpkg.com/mcseekeri@1.2.6/safari.svg
+    placeholder: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
 ############################### Tag Plugins ############################### > end
 
 
