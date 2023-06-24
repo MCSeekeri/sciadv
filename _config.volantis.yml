@@ -246,11 +246,11 @@ article:
         #       url: https://
         # 即可显示此组件。
       # ----------------
-            # 文章推荐 (for layout: post/docs)
+      # 文章推荐 (for layout: post/docs)
       # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
       recommended_article:
-        enable: true
-        layout: ["post", "docs"]
+        enable: false
+        layout: post
         title: 推荐阅读
         icon: fa-solid fa-bookmark
         max_count: 6
