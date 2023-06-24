@@ -250,7 +250,7 @@ article:
             # 文章推荐 (for layout: post/docs)
       # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
       recommended_article:
-        enable: false
+        enable: true
         layout: ["post", "docs"]
         title: 推荐阅读
         icon: fa-solid fa-bookmark
@@ -677,7 +677,7 @@ plugins:
   # https://prismjs.com/
   # https://hexo.io/zh-cn/docs/syntax-highlight#PrismJS
   prismjs:
-    copy_code: true
+    copy_code: false
     # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
     js:
       - https://unpkg.com/prismjs/components/prism-core.min.js
@@ -872,7 +872,7 @@ plugins:
   # AI摘要
   # https://github.com/zhheo/Post-Abstract-AI
   tianliGPT:
-    enable: false
+    enable: true
     key: 5Q5mpqRK5DkwT1X9Gi5e
     wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
     typewriter: true # 打字机效果
@@ -883,7 +883,7 @@ plugins:
 
 ### 自定义右键
 rightmenus:
-  enable: true
+  enable: false
   # 右键菜单项及加载顺序
   # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
   order: 
