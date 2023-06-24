@@ -1,6 +1,8 @@
 
 name: MCSeekeri_sciadv_CW
-
+hotconfig:
+    - https://cdn.jsdelivr.net/gh/MCSeekeri/sciadv/source/config.yaml
+    
 catch_rules:
   - rule: _
     transform_rules:
@@ -19,7 +21,7 @@ catch_rules:
           status: 200
           timeout: 5000
           cache:
-            expire: 1000*60*60*8
+            expire: 1000*60*60*1
             delay: 300
       
   - rule: ^https\:\/\/((cdn|fastly|gcore|test1|quantil)\.jsdelivr\.net\/npm|npm\.elemecdn\.com|unpkg\.com)
