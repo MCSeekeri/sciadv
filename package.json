@@ -28,9 +28,7 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-submit-urls-to-search-engine": "^2.1.0",
-    "hexo-wordcount": "^6.0.1",
-    "js-yaml": "4.1.0",
-    "nodejieba": "^2.6.0"
+    "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
