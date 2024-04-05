@@ -2,7 +2,7 @@
   description: '本站点是在以下框架技术和开源服务的支持下搭建起来的:'
   items:
   - title: Node js
-    avatar: https://nodejs.org/static/images/favicons/favicon.ico
+    avatar: https://nodejs.org/static/images/favicons/favicon.png
     url: https://nodejs.org
     backgroundColor: '#70A85B'
     textColor: '#fff' 
