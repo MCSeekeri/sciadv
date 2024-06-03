@@ -129,6 +129,8 @@ import:
       - <link rel="preconnect" href="https://fonts.googleapis.com">
       - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       - <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&family=Roboto:wght@300;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    body_end:
+      - <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","mlyat0xp7c");</script>
 
 nofollow:
   enable: true
