@@ -5,8 +5,8 @@
 # Site
 title: 科学ADV图书馆
 subtitle: ''
-description: 本站致力于科学ADV作品(如命运石之门)小说漫画相关内容收集
-keywords: 小说,命运石之门,科学ADV,混沌之子,混沌之脑,资源,整合
+description: 本站致力于科学 ADV 作品(命运石之门 混沌之脑 机器人笔记 匿名代码等)小说漫画相关内容收集
+keywords: 小说,命运石之门,科学ADV,混沌之子,混沌之脑,资源,整合,机器人笔记,匿名代码
 author: MCSeekeri
 language: zh-CN
 timezone: Asia/Shanghai
@@ -119,9 +119,9 @@ hexo_submit_urls_to_search_engine:
   google_host: https://lib.sci-adv.cc
   google_key_file: push.json
   google_proxy: 0 # 向谷歌提交网址所使用的系统 http 代理，填 0 不使用
-  replace: 1  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
-  find_what: sciadv.top
-  replace_with: lib.sci-adv.cc
+  # replace: 1  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
+  # find_what: sciadv.top
+  # replace_with: lib.sci-adv.cc
 
 import:
     head_begin:
@@ -137,11 +137,9 @@ nofollow:
   field: post
   exclude:
     - 'lib.sci-adv.cc'
-    - 'sciadv.top'
     - 'sci-adv.cc'
     - 'vercel.app'
-    - 'sciadv.mcseekeri.top'
-    - 'mcseekeri.top'
+    - 'mcseekeri.com'
   
 abbrlink:
   alg: crc32      #support crc16(default) and crc32
