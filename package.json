@@ -22,9 +22,8 @@
     "hexo-generator-json-content": "^4.2.3",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
-    "hexo-reference": "^1.0.4",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.3.0",
+    "hexo-renderer-markdown-it": "^7.1.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-submit-urls-to-search-engine": "^2.1.0",
@@ -32,10 +31,8 @@
   },
   "devDependencies": {
     "gulp": "^5.0.0",
-    "gulp-html-minifier-terser": "^7.1.0",
-    "gulp-htmlclean": "^2.7.22",
+    "gulp-clean-css": "^4.3.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-minify-css": "^1.2.4",
     "gulp-terser": "^2.1.0"
   }
 }

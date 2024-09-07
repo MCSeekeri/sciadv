@@ -12,14 +12,14 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Setup Node.js 20.x
+      - name: Setup Node.js 22.x
         uses: actions/setup-node@main
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org
 
 
-      - name: 设置Hexo环境
+      - name: 设置 Hexo 环境
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
         run: |
@@ -42,7 +42,7 @@ jobs:
           echo "$GOOGLE_TOKEN" | tr -d '\r' >> $GITHUB_WORKSPACE/push.json
           hexo generate && gulp && hexo deploy
 
-      # - name: 部署到Cloudflare Workers
+      # - name: 部署到 Cloudflare Workers
       #   uses: cloudflare/wrangler-action@1.3.0
       #   with:
       #     apiToken: ${{ secrets.CF_WORKERS_TOKEN }}
