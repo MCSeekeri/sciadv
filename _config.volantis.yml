@@ -134,7 +134,7 @@ navbar:
       target: _blank
     - name: 开往
       icon: fa-solid fa-subway
-      url: https://travellings.link
+      url: https://www.travellings.cn/go.html
       target: _blank
     - name: 更多
       icon: fa-solid fa-ellipsis-v
@@ -259,7 +259,7 @@ article:
         # front-matter 使用 skip_recommended_article: true 关闭
         # 不在以下文件夹文章中展示文章推荐 根目录是source/
         skip_dirs:
-          
+
       # ----------------
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
@@ -284,7 +284,7 @@ article:
           default: type4  # 默认授权声明
           #############################
           # 你可以在文章的 front-matter 覆盖默认版权声明
-          # 配置示例（均可选）： 
+          # 配置示例（均可选）：
           # copyright:
           #   type: type3           # 当前文章版权声明类型
           #   author: 张三          # 本文作者
@@ -293,16 +293,16 @@ article:
           #     url:                # 原文出处 - 链接
           #############################
           rules:
-            type1: 
+            type1:
               text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a>
               desc: 署名-非商业性使用-相同方式共享 4.0 国际。
-            type2: 
+            type2:
               text: 禁止转载引用
               desc: 除非获得原作者的单独授权，任何第三方不得转载！
-            type3: 
+            type3:
               text: 原作许可协议
               desc: 本文转载自他站，转载或引用本文时，请遵守原作许可协议！
-            type4: 
+            type4:
               text: 来自互联网
               desc: 本文来自互联网，未知来源，侵权请联系删除。
             type5:
@@ -397,7 +397,7 @@ comments:
       token: # 图床验证
       resp:  # 图片地址返回值的字段
     pageview: true # 浏览量统计
-    comment: true  # 评论数统计    
+    comment: true  # 评论数统计
     serverURL: https://comments.sci-adv.cc
     recaptchaV3Key: 6Lf9KTAbAAAAALfqwFyJmbRTABDc3MwyCKo696gp
     emoji:
@@ -418,7 +418,7 @@ comments:
     - https://unpkg.com/@waline/emojis@1.2.0/tieba/tieba_cry.png
     - https://unpkg.com/@waline/emojis@1.2.0/tieba/tieba_awkward.png
     - https://unpkg.com/@waline/emojis@1.2.0/tieba/tieba_vomit.png
-    
+
 
 
 ############################### Comments ############################### > end
@@ -535,7 +535,7 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
-    notice: 
+    notice:
       class: text
       display: [desktop, mobile] # [desktop, mobile]
       header:
@@ -619,7 +619,7 @@ site_footer:
   # site copyright
   copyright: '本站内容来源自网络 所有权归作者所有'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '<br>' 
+  br: '<br>'
   badge: '[![commit](https://img.shields.io/github/last-commit/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![star](https://img.shields.io/github/stars/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![size](https://img.shields.io/github/repo-size/MCSeekeri/sciadv?style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![code size](https://img.shields.io/github/languages/code-size/MCSeekeri/sciadv?logo=code%20size&style=for-the-badge)](https://github.com/MCSeekeri/sciadv) [![status](https://img.shields.io/uptimerobot/ratio/m785802121-f726e102d93b206615b80ae4?style=for-the-badge)](https://status.mcseekeri.com/)'
   powered: '[![Powered](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTcuMTkiIGhlaWdodD0iMzUiIHZpZXdCb3g9IjAgMCAxOTcuMTkgMzUiPjxyZWN0IGNsYXNzPSJzdmdfX3JlY3QiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMjcuMjUiIGhlaWdodD0iMzUiIGZpbGw9IiM1NTU1NTUiLz48cmVjdCBjbGFzcz0ic3ZnX19yZWN0IiB4PSIxMjUuMjUiIHk9IjAiIHdpZHRoPSI3MS45NCIgaGVpZ2h0PSIzNSIgZmlsbD0iIzM4OUFENSIvPjxwYXRoIGNsYXNzPSJzdmdfX3RleHQiIGQ9Ik0xNS43MCAyMkwxNC4yMiAyMkwxNC4yMiAxMy40N0wxNy40OCAxMy40N1ExOC45MSAxMy40NyAxOS43NSAxNC4yMVEyMC41OSAxNC45NiAyMC41OSAxNi4xOEwyMC41OSAxNi4xOFEyMC41OSAxNy40NCAxOS43NyAxOC4xM1ExOC45NSAxOC44MyAxNy40NiAxOC44M0wxNy40NiAxOC44M0wxNS43MCAxOC44M0wxNS43MCAyMlpNMTUuNzAgMTQuNjZMMTUuNzAgMTcuNjRMMTcuNDggMTcuNjRRMTguMjcgMTcuNjQgMTguNjkgMTcuMjdRMTkuMTAgMTYuOTAgMTkuMTAgMTYuMTlMMTkuMTAgMTYuMTlRMTkuMTAgMTUuNTAgMTguNjggMTUuMDlRMTguMjYgMTQuNjggMTcuNTIgMTQuNjZMMTcuNTIgMTQuNjZMMTUuNzAgMTQuNjZaTTI0LjYxIDE4LjAwTDI0LjYxIDE4LjAwTDI0LjYxIDE3LjUyUTI0LjYxIDE2LjI4IDI1LjA1IDE1LjMyUTI1LjQ5IDE0LjM3IDI2LjMwIDEzLjg2UTI3LjEwIDEzLjM1IDI4LjE0IDEzLjM1UTI5LjE5IDEzLjM1IDI5Ljk5IDEzLjg1UTMwLjgwIDE0LjM1IDMxLjI0IDE1LjI5UTMxLjY4IDE2LjIzIDMxLjY4IDE3LjQ4TDMxLjY4IDE3LjQ4TDMxLjY4IDE3Ljk2UTMxLjY4IDE5LjIxIDMxLjI1IDIwLjE2UTMwLjgyIDIxLjEwIDMwLjAxIDIxLjYxUTI5LjIxIDIyLjEyIDI4LjE2IDIyLjEyTDI4LjE2IDIyLjEyUTI3LjEyIDIyLjEyIDI2LjMxIDIxLjYxUTI1LjUwIDIxLjEwIDI1LjA1IDIwLjE3UTI0LjYxIDE5LjIzIDI0LjYxIDE4LjAwWk0yNi4wOSAxNy40NkwyNi4wOSAxNy45NlEyNi4wOSAxOS4zNiAyNi42NCAyMC4xM1EyNy4xOCAyMC45MCAyOC4xNiAyMC45MEwyOC4xNiAyMC45MFEyOS4xNCAyMC45MCAyOS42NyAyMC4xNVEzMC4yMCAxOS40MCAzMC4yMCAxNy45NkwzMC4yMCAxNy45NkwzMC4yMCAxNy41MVEzMC4yMCAxNi4wOSAyOS42NyAxNS4zNFEyOS4xMyAxNC41OCAyOC4xNCAxNC41OEwyOC4xNCAxNC41OFEyNy4xOCAxNC41OCAyNi42NCAxNS4zM1EyNi4xMCAxNi4wOSAyNi4wOSAxNy40NkwyNi4wOSAxNy40NlpNMzcuNTMgMjJMMzUuNTYgMTMuNDdMMzcuMDMgMTMuNDdMMzguMzYgMTkuODhMMzkuOTkgMTMuNDdMNDEuMjMgMTMuNDdMNDIuODQgMTkuODlMNDQuMTUgMTMuNDdMNDUuNjIgMTMuNDdMNDMuNjUgMjJMNDIuMjQgMjJMNDAuNjEgMTUuNzdMMzguOTYgMjJMMzcuNTMgMjJaTTU1LjI3IDIyTDQ5LjcwIDIyTDQ5LjcwIDEzLjQ3TDU1LjIzIDEzLjQ3TDU1LjIzIDE0LjY2TDUxLjE4IDE0LjY2TDUxLjE4IDE3LjAyTDU0LjY4IDE3LjAyTDU0LjY4IDE4LjE5TDUxLjE4IDE4LjE5TDUxLjE4IDIwLjgyTDU1LjI3IDIwLjgyTDU1LjI3IDIyWk02MC45NSAyMkw1OS40NyAyMkw1OS40NyAxMy40N0w2Mi40NyAxMy40N1E2My45NSAxMy40NyA2NC43NSAxNC4xM1E2NS41NSAxNC43OSA2NS41NSAxNi4wNUw2NS41NSAxNi4wNVE2NS41NSAxNi45MCA2NS4xNCAxNy40OFE2NC43MiAxOC4wNiA2My45OSAxOC4zN0w2My45OSAxOC4zN0w2NS45MCAyMS45Mkw2NS45MCAyMkw2NC4zMSAyMkw2Mi42MCAxOC43MUw2MC45NSAxOC43MUw2MC45NSAyMlpNNjAuOTUgMTQuNjZMNjAuOTUgMTcuNTJMNjIuNDggMTcuNTJRNjMuMjMgMTcuNTIgNjMuNjUgMTcuMTVRNjQuMDcgMTYuNzcgNjQuMDcgMTYuMTFMNjQuMDcgMTYuMTFRNjQuMDcgMTUuNDMgNjMuNjggMTUuMDVRNjMuMjkgMTQuNjggNjIuNTIgMTQuNjZMNjIuNTIgMTQuNjZMNjAuOTUgMTQuNjZaTTc1LjUyIDIyTDY5Ljk1IDIyTDY5Ljk1IDEzLjQ3TDc1LjQ4IDEzLjQ3TDc1LjQ4IDE0LjY2TDcxLjQzIDE0LjY2TDcxLjQzIDE3LjAyTDc0LjkzIDE3LjAyTDc0LjkzIDE4LjE5TDcxLjQzIDE4LjE5TDcxLjQzIDIwLjgyTDc1LjUyIDIwLjgyTDc1LjUyIDIyWk04Mi4xNyAyMkw3OS43MiAyMkw3OS43MiAxMy40N0w4Mi4yNCAxMy40N1E4My4zNyAxMy40NyA4NC4yNSAxMy45N1E4NS4xMiAxNC40OCA4NS42MCAxNS40MFE4Ni4wOCAxNi4zMyA4Ni4wOCAxNy41Mkw4Ni4wOCAxNy41Mkw4Ni4wOCAxNy45NVE4Ni4wOCAxOS4xNiA4NS42MCAyMC4wOFE4NS4xMiAyMS4wMCA4NC4yMiAyMS41MFE4My4zMyAyMiA4Mi4xNyAyMkw4Mi4xNyAyMlpNODEuMjAgMTQuNjZMODEuMjAgMjAuODJMODIuMTcgMjAuODJRODMuMzMgMjAuODIgODMuOTYgMjAuMDlRODQuNTggMTkuMzYgODQuNTkgMTcuOTlMODQuNTkgMTcuOTlMODQuNTkgMTcuNTJRODQuNTkgMTYuMTMgODMuOTkgMTUuNDBRODMuMzkgMTQuNjYgODIuMjQgMTQuNjZMODIuMjQgMTQuNjZMODEuMjAgMTQuNjZaTTk5LjY0IDIyTDk2LjUyIDIyTDk2LjUyIDEzLjQ3TDk5LjQ1IDEzLjQ3UTEwMC44OSAxMy40NyAxMDEuNjUgMTQuMDVRMTAyLjQxIDE0LjYzIDEwMi40MSAxNS43OEwxMDIuNDEgMTUuNzhRMTAyLjQxIDE2LjM2IDEwMi4wOSAxNi44M1ExMDEuNzcgMTcuMzAgMTAxLjE2IDE3LjU2TDEwMS4xNiAxNy41NlExMDEuODYgMTcuNzUgMTAyLjIzIDE4LjI2UTEwMi42MSAxOC43OCAxMDIuNjEgMTkuNTFMMTAyLjYxIDE5LjUxUTEwMi42MSAyMC43MSAxMDEuODQgMjEuMzZRMTAxLjA3IDIyIDk5LjY0IDIyTDk5LjY0IDIyWk05OC4wMSAxOC4xNUw5OC4wMSAyMC44Mkw5OS42NSAyMC44MlExMDAuMzUgMjAuODIgMTAwLjc0IDIwLjQ3UTEwMS4xNCAyMC4xMyAxMDEuMTQgMTkuNTFMMTAxLjE0IDE5LjUxUTEwMS4xNCAxOC4xOCA5OS43OCAxOC4xNUw5OS43OCAxOC4xNUw5OC4wMSAxOC4xNVpNOTguMDEgMTQuNjZMOTguMDEgMTcuMDZMOTkuNDYgMTcuMDZRMTAwLjE1IDE3LjA2IDEwMC41NCAxNi43NVExMDAuOTMgMTYuNDMgMTAwLjkzIDE1Ljg2TDEwMC45MyAxNS44NlExMDAuOTMgMTUuMjMgMTAwLjU3IDE0Ljk1UTEwMC4yMSAxNC42NiA5OS40NSAxNC42Nkw5OS40NSAxNC42Nkw5OC4wMSAxNC42NlpNMTA5LjEyIDE4Ljg2TDEwNi4yNiAxMy40N0wxMDcuOTAgMTMuNDdMMTA5Ljg3IDE3LjUxTDExMS44MyAxMy40N0wxMTMuNDcgMTMuNDdMMTEwLjYxIDE4Ljg2TDExMC42MSAyMkwxMDkuMTIgMjJMMTA5LjEyIDE4Ljg2WiIgZmlsbD0iI0ZGRkZGRiIvPjxwYXRoIGNsYXNzPSJzdmdfX3RleHQiIGQ9Ik0xNDEuODIgMjJMMTM5LjQ0IDIyTDEzOS40NCAxMy42MEwxNDEuODIgMTMuNjBMMTQxLjgyIDE2Ljc2TDE0NS4wNiAxNi43NkwxNDUuMDYgMTMuNjBMMTQ3LjQzIDEzLjYwTDE0Ny40MyAyMkwxNDUuMDYgMjJMMTQ1LjA2IDE4LjcyTDE0MS44MiAxOC43MkwxNDEuODIgMjJaTTE1OS4zNCAyMkwxNTIuNTkgMjJMMTUyLjU5IDEzLjYwTDE1OS4xOCAxMy42MEwxNTkuMTggMTUuNDRMMTU0Ljk1IDE1LjQ0TDE1NC45NSAxNi44NUwxNTguNjggMTYuODVMMTU4LjY4IDE4LjYzTDE1NC45NSAxOC42M0wxNTQuOTUgMjAuMTdMMTU5LjM0IDIwLjE3TDE1OS4zNCAyMlpNMTY1Ljk5IDIyTDE2My4yOCAyMkwxNjYuMzQgMTcuNzVMMTYzLjQxIDEzLjYwTDE2Ni4wOSAxMy42MEwxNjcuNzcgMTYuMDJMMTY5LjQyIDEzLjYwTDE3MS45OSAxMy42MEwxNjkuMDYgMTcuNjZMMTcyLjE5IDIyTDE2OS40NSAyMkwxNjcuNzEgMTkuNDBMMTY1Ljk5IDIyWk0xNzYuMDQgMTcuODBMMTc2LjA0IDE3LjgwUTE3Ni4wNCAxNi41NSAxNzYuNjQgMTUuNTVRMTc3LjI1IDE0LjU2IDE3OC4zMSAxNC4wMFExNzkuMzggMTMuNDMgMTgwLjcxIDEzLjQzTDE4MC43MSAxMy40M1ExODIuMDQgMTMuNDMgMTgzLjEwIDE0LjAwUTE4NC4xNiAxNC41NiAxODQuNzcgMTUuNTVRMTg1LjM4IDE2LjU1IDE4NS4zOCAxNy44MEwxODUuMzggMTcuODBRMTg1LjM4IDE5LjA1IDE4NC43NyAyMC4wNFExODQuMTYgMjEuMDQgMTgzLjEwIDIxLjYwUTE4Mi4wNCAyMi4xNyAxODAuNzEgMjIuMTdMMTgwLjcxIDIyLjE3UTE3OS4zOCAyMi4xNyAxNzguMzEgMjEuNjBRMTc3LjI1IDIxLjA0IDE3Ni42NCAyMC4wNFExNzYuMDQgMTkuMDUgMTc2LjA0IDE3LjgwWk0xNzguNDQgMTcuODBMMTc4LjQ0IDE3LjgwUTE3OC40NCAxOC41MSAxNzguNzQgMTkuMDVRMTc5LjA0IDE5LjYwIDE3OS41NiAxOS45MFExODAuMDcgMjAuMjAgMTgwLjcxIDIwLjIwTDE4MC43MSAyMC4yMFExODEuMzQgMjAuMjAgMTgxLjg2IDE5LjkwUTE4Mi4zOCAxOS42MCAxODIuNjcgMTkuMDVRMTgyLjk3IDE4LjUxIDE4Mi45NyAxNy44MEwxODIuOTcgMTcuODBRMTgyLjk3IDE3LjA5IDE4Mi42NyAxNi41NFExODIuMzggMTYgMTgxLjg2IDE1LjcwUTE4MS4zNCAxNS40MCAxODAuNzEgMTUuNDBMMTgwLjcxIDE1LjQwUTE4MC4wNyAxNS40MCAxNzkuNTUgMTUuNzBRMTc5LjA0IDE2IDE3OC43NCAxNi41NFExNzguNDQgMTcuMDkgMTc4LjQ0IDE3LjgwWiIgZmlsbD0iI0ZGRkZGRiIgeD0iMTM4LjI1Ii8+PC9zdmc+)](https://hexo.io)'
 ############################### Site Footer ############################### > end
@@ -650,7 +650,7 @@ plugins:
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
-  # tips: 
+  # tips:
   # 这里是主题自带的图片懒加载, 实现方案位于 /scripts/filters/z-lazyload ; srcset 属性的的优先级比 src 属性要高, 注意 srcset 存放了懒加载占位图,  src 存放了原图
   # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
@@ -716,7 +716,7 @@ plugins:
   # Typing Effects
   comment_typing:
     enable: #true
-    
+
   # Slide Background
   # 视差滚动效果 Slide Background
   parallax:
@@ -798,7 +798,7 @@ plugins:
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
 
-    
+
   # Memos https://usememos.com
   memos:
     # Set `plugins: ["memos"]` to enable in front-matter
@@ -843,12 +843,12 @@ plugins:
       enable: true
       play: fa-solid fa-play
       pause: fa-solid fa-pause
-    rightmenu:                            
+    rightmenu:
       enable: true                        # 是否开启右键模块的消息通知
       notice: true
 
 
-  
+
   # 聊天功能
   chat_service: #tidio # or gitter
 
@@ -862,12 +862,12 @@ plugins:
   gitter:
     room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-  
+
   # swiper
   # https://www.swiper.com.cn/
   swiper:
     enable: #true
-    
+
   # AI摘要
   # https://github.com/zhheo/Post-Abstract-AI
   tianliGPT:
@@ -885,7 +885,7 @@ rightmenus:
   enable: false
   # 右键菜单项及加载顺序
   # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
-  order: 
+  order:
     - plugins.navigation
     - hr
     - plugins.inputBox
@@ -905,7 +905,7 @@ rightmenus:
   # link: 跳转链接
   # event: 事件，当输入内容不为内置事件时，作 JavaScript 代码执行
   # group: 菜单项所处分组名称
-  # 注： 
+  # 注：
   # 1. link/event 二选一，同时出现时仅处理 link
   # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
   # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, elementImage, articlePage
@@ -925,7 +925,7 @@ rightmenus:
   plugins:
     # 导航组件
     # 横向排列，共用一行，仅显示图标 (原则上支持的数量不限)
-    navigation: 
+    navigation:
       - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
       - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
       - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
@@ -938,7 +938,7 @@ rightmenus:
       - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
       - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut', event: 'copyCut', group: 'inputBox'}
     # 文本选中类组件
-    # 生效于右键选中文本，__text__ 为选中的文本。     
+    # 生效于右键选中文本，__text__ 为选中的文本。
     seletctText:
       - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
       - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
@@ -963,7 +963,7 @@ rightmenus:
   menus:
     link:
       - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/mcseekeri/sciadv', group: 'link'}
-    darkMode: 
+    darkMode:
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
 
@@ -1044,7 +1044,7 @@ color_scheme:
     list_hl: 'mix($color-theme, #000, 80)'
     # 辅助性文字
     meta: '#888'
-        
+
     # 版权卡片背景色
     copyright_bkg: '#f5f5f5'
   # ------------
@@ -1150,16 +1150,16 @@ custom_css:
   fontfamily:
     logofont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
-      name: 
-      url: 
+      name:
+      url:
       weight:
-      style: 
+      style:
     bodyfont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
-      name: 
-      url: 
-      weight: 
-      style: 
+      name:
+      url:
+      weight:
+      style:
     codefont:
       fontfamily: '"Roboto", "Noto Serif SC", "PingFang SC", "Microsoft Yahei UI", "Microsoft Yahei", sans-serif'
       # name: 'Monaco'
