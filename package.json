@@ -9,10 +9,10 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "7.3.0"
+    "version": "8.0.0"
   },
   "dependencies": {
-    "hexo": "^7.3.0",
+    "hexo": "^8.0.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-nofollow": "^2.0.2",
@@ -30,7 +30,7 @@
     "hexo-wordcount": "^6.0.1"
   },
   "devDependencies": {
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-terser": "^2.1.0"
