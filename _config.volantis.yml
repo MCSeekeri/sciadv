@@ -1,5 +1,6 @@
 debug: false
 cdn_system:
+  priority: [custom, local, npm, static, cdnjs]
   system_config:
     custom:
       busuanzi: https://jsd.onmicrosoft.cn/npm/penndu@17.0.0/bsz.js
