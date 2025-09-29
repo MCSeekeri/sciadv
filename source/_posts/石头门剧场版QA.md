@@ -1,5 +1,5 @@
 ---
-title: 'S;G:负荷领域的既视感 QA 手册'
+title: "S;G:负荷领域的既视感 QA 手册"
 categories:
   - - 命运石之门
 tags:
@@ -9,12 +9,13 @@ author: 反物质委员会
 icons:
   - fas fa-cog blue
   - far fa-compass theme
-thumbnail: 'https://unpkg.com/mcseekeri@1.2.3/cog.svg'
+thumbnail: "https://unpkg.com/mcseekeri@1.2.3/cog.svg"
 description: Steins;Gate 剧场版：负荷领域的既视感相关核心设定说明与常见问题的解答~
-headimg: 'https://unpkg.com/sciadvfiles@1.1.3/other/QA.webp'
+headimg: "https://unpkg.com/sciadvfiles@1.1.3/other/QA.webp"
 abbrlink: ff129072
 date: 2021-08-10 12:51:00
 ---
+
 ## **前言**
 
 为了造福广大石学萌新，经过三年的沉寂之后，我们**反物质委员会**终于重启了命运石之门剧场版《负荷领域的既视感》的 QA 项目。
@@ -35,7 +36,6 @@ date: 2021-08-10 12:51:00
 本 QA 仅面向**一周目以上**观众，在阅读前请确保至少看完命运石之门**本篇 24 话**+**OVA 以及剧场版**《负荷领域的既视感》。
 {% endnoteblock %}
 
-
 #### 特别感谢
 
 > 感谢：
@@ -47,7 +47,6 @@ date: 2021-08-10 12:51:00
 > **天光逸**{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=30px %}、**可爱的 serika**{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/serika.jpg, height=30px %}<sub>（贴吧 ID:**尾上世莉架**)</sub> 给予的**理论支持**。
 
 ---
-
 
 ## PartⅠ **设定解析**
 
@@ -117,7 +116,7 @@ date: 2021-08-10 12:51:00
 
 ---
 
-### **新型脑炎**<sub>*出现在*《*命运石之门* *0*》*中*</sub>
+### **新型脑炎**<sub>_出现在_《_命运石之门_ _0_》_中_</sub>
 
 世界线变化后，有一部分人产生了经历过“另一种生活”的隐约的记忆。
 
@@ -162,7 +161,6 @@ date: 2021-08-10 12:51:00
 > “即便是冈部的大脑，在发生世界线变动的时候，肯定也是经过了替换这一过程的才对。但是冈部却保持了变动前的记忆。……不如说，在来到新世界线的时候，记忆没有被替换。也就是说记忆领域，在大脑的外部。
 >
 > 说不定在外部有着一个类似电脑系统备份系统似的东西，现阶段也只能这么想。可是只要世界线的变动会波及到所有纯物理的事象，而且那个备份系统也在世界线的内侧的话，那个它也难逃因世界线变动而带来的改写。
->
 
 **既然如此**，**经过世界线变动**，**仍能保持记忆的记忆领域**，**就变成了存在于世界之外的东西**。至少可以确定，一定不会是物理性的数据资料。”
 
@@ -538,7 +536,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 {% endtimeline %}
 
-------
+---
 
 {% noteblock info %}
 
@@ -548,7 +546,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 ## Part Ⅳ **剧场版相关作品整理**
 
-###  动画
+### 动画
 
 - 《命运石之门：负荷领域的既视感》是由 WHITE FOX 制作的动画电影。
 
@@ -576,34 +574,23 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
    Comptiq 2013 年 5 月号附录原创 Drama CD，讲述牧濑红莉栖和菲莉丝对桥田至和阿万音由季的交往经过感到好奇，从而展开调查的故事，世界线同动画剧场版。
 
-
-
 2. **命运石之门** **现存在的后验**（又译：此在的因果论）
 
    动画剧场版 BD 限定版特典，阿万音铃羽视角，剧场版的冈部伦太郎消失后 20 年间，牧濑红莉栖发明时间机器的故事，世界线同动画剧场版。
-
-
 
 3. **命运石之门** **隐晦曲折的交响曲**
 
    动画剧场版 BD 限定版 Amazon.co.jp 预约特典，剧场版剧情的补完，时间发生在剧场版的前一周，世界线同动画剧场版。
 
-
-
 4. **命运石之门** **意材言外的分形**
 
    动画剧场版 BD 限定版先行店铺预约特典，世界线同动画剧场版。
-
-
 
 5. **命运石之门** **混沌的必然演示**
 
    Softmap DVD/BD全卷购入特典，原创广播剧，大意为剧场版确定。
 
    冈部伦太郎把所有人的想法集合在一起，弄出一个超级无厘头的剧场版。然后大家都无语并抛弃他了。世界线同动画剧场版。
-
-   
-
 
 ## Part Ⅴ **其他说明**
 
@@ -621,7 +608,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 {% inlineimage https://cdn.jsdelivr.net/gh/SlieFamily/TempImages@1.0.1/QQGuild/sciADV.jpg, height=200px %}
 </div>
 
- {% noteblock info %}
+{% noteblock info %}
 注：如果您的 QQ 尚未开通频道功能，也可以通过加入下面所列出来的 QQ 群获取**频道通行证**
 {% endnoteblock %}
 
@@ -633,8 +620,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 **加群请私信 UP 想要担任的职务并展示能够胜任该岗位的凭证**
 
-{% link "反物质委员会|B 站专栏"::https://www.bilibili.com/read/cv11242272::"https://unpkg.com/mcseekeri@1.2.9/avatar/反物质委员会.webp" %} 
-
+{% link "反物质委员会|B 站专栏"::https://www.bilibili.com/read/cv11242272::"https://unpkg.com/mcseekeri@1.2.9/avatar/反物质委员会.webp" %}
 
 #### **未来同人研究所**
 
@@ -644,8 +630,6 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 **群号：681427075**
 
- 
-
 #### **科学 ADV 复兴祭**
 
 致力于创作科学 ADV 系列相关同人作品的同人社团
@@ -654,23 +638,17 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 **群号：806022928**
 
- 
-
 #### **SOS 团;石学圆桌会议**
 
 致力于讨论动画《命运石之门》和《命运石之门 0》及有关游戏、小说、漫画、广播剧等作品的人物、剧情及设定，为萌新科普、答疑解惑的普通爱好者交流群。
 
 **群号：729901771**
 
- 
-
 #### **科学 ADV 总基地**
 
 致力于讨论科学 ADV 系列游戏及相关动画、小说、漫画、广播剧等作品的人物、剧情及设定，为萌新科普、答疑解惑的普通爱好者交流群。
 
 **群号：757530435**
-
-
 
 ### 制作人员名单
 
@@ -686,15 +664,13 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 >
 > @可爱的 serika|{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/serika.jpg, height=20px %}
 >
-> @Sisyphe_菠萝|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/Sisyphe.webp, height=20px %}
+> @Sisyphe\_菠萝|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/Sisyphe.webp, height=20px %}
 
 **提供宝贵的建议以及资源**
 
 > @laozei|{% inlineimage https://unpkg.com/mcseekeri@1.3.0/avatar/laozei.webp, height=20px %}
 >
 > @天光逸|{% inlineimage https://unpkg.com/mcseekeri@1.2.6/avatar/tgy.jpg, height=20px %}
-
-
 
 **——命运石之门 FAQ 制作组**
 

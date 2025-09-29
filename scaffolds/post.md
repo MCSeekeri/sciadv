@@ -1,14 +1,14 @@
 ---
-title: {{ title }}
-author: 
+title: { { title } }
+author:
 categories:
 tags:
-date: {{ date }}
+date: { { date } }
 description:
 headimg:
 icons:
 thumbnail:
 references:
-  - title: 
-    url: 
+  - title:
+    url:
 ---
