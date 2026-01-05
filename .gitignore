@@ -29,3 +29,7 @@ yarn.lock
 # ide
 .idea
 *.iml
+
+.direnv
+.vscode
+.frontmatter
