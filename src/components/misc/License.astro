@@ -1,43 +1,77 @@
 ---
 import { Icon } from "astro-icon/components";
-import { licenseConfig, profileConfig } from "../../config";
-import I18nKey from "../../i18n/i18nKey";
-import { i18n } from "../../i18n/translation";
-import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import { authors } from "../../authors";
+import { profileConfig } from "../../config";
+import Avatar from "./Avatar.astro";
+
+interface Reference {
+	title: string;
+	url: string;
+}
 
 interface Props {
 	title: string;
 	slug: string;
 	pubDate: Date;
 	class: string;
+	authorId?: string;
+	references?: Reference[];
 }
 
-const { title, pubDate } = Astro.props;
+const { authorId, references } = Astro.props;
 const className = Astro.props.class;
-const profileConf = profileConfig;
-const licenseConf = licenseConfig;
-const postUrl = decodeURIComponent(Astro.url.toString());
+
+if (!references || references.length === 0) {
+	return null;
+}
+
+const author =
+	authorId && authors[authorId]
+		? authors[authorId]
+		: {
+				name: profileConfig.name,
+				avatar: profileConfig.avatar,
+				url: Astro.site?.toString() || "",
+			};
 ---
 <div class={`relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 ${className}`}>
-    <div class="transition font-bold text-black/75 dark:text-white/75">
-        {title}
-    </div>
-    <a href={postUrl} class="link text-[var(--primary)]">
-        {postUrl}
-    </a>
-    <div class="flex gap-6 mt-2">
-        <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.author)}</div>
-            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{profileConf.name}</div>
-        </div>
-        <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.publishedAt)}</div>
-            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{formatDateToYYYYMMDD(pubDate)}</div>
-        </div>
-        <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.license)}</div>
-            <a href={licenseConf.url} target="_blank" class="link text-[var(--primary)] line-clamp-2">{licenseConf.name}</a>
-        </div>
-    </div>
-    <Icon name="fa6-brands:creative-commons" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"></Icon>
+	<div class="flex items-start gap-3 mb-4">
+		<Icon name="material-symbols:link" class="text-2xl text-[var(--primary)] mt-1 flex-shrink-0"></Icon>
+		<div class="flex-1">
+			<div class="transition font-bold text-black/75 dark:text-white/75 text-lg mb-3">
+				文档来源
+			</div>
+			<div class="space-y-3">
+				{references.map((ref) => (
+					<div class="flex flex-col gap-1">
+						<div class="transition text-black/60 dark:text-white/60 text-sm">
+							{ref.title}
+						</div>
+						<a 
+							href={ref.url} 
+							target="_blank" 
+							rel="noopener noreferrer"
+							class="link text-[var(--primary)] text-sm break-all hover:underline"
+						>
+							{ref.url}
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+	
+	<div class="mt-4 pt-4 border-t border-black/10 dark:border-white/10">
+		<div class="flex items-center gap-2 text-sm">
+			<Icon name="material-symbols:copyright" class="text-base text-black/50 dark:text-white/50"></Icon>
+			<span class="transition text-black/60 dark:text-white/60">
+				原作者 <span class="font-semibold text-black/75 dark:text-white/75">{author.name}</span> 版权所有
+			</span>
+		</div>
+	</div>
+
+	<Icon 
+		name="material-symbols:link" 
+		class="transition text-[12rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"
+	></Icon>
 </div>

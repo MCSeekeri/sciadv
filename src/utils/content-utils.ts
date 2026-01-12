@@ -5,13 +5,13 @@ import { getCategoryUrl } from "@utils/url-utils.ts";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
-	const allBlogPosts = await getCollection("posts", ({ data }) => {
+	const allBlogPosts = await getCollection("archives", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
 	const sorted = allBlogPosts.sort((a, b) => {
-		const dateA = new Date(a.data.published);
-		const dateB = new Date(b.data.published);
+		const dateA = new Date(a.data.date);
+		const dateB = new Date(b.data.date);
 		return dateA > dateB ? -1 : 1;
 	});
 	return sorted;
@@ -33,7 +33,7 @@ export async function getSortedPosts() {
 }
 export type PostForList = {
 	slug: string;
-	data: CollectionEntry<"posts">["data"];
+	data: CollectionEntry<"archives">["data"];
 };
 export async function getSortedPostsList(): Promise<PostForList[]> {
 	const sortedFullPosts = await getRawSortedPosts();
@@ -52,7 +52,7 @@ export type Tag = {
 };
 
 export async function getTagList(): Promise<Tag[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
+	const allBlogPosts = await getCollection<"archives">("archives", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
@@ -79,23 +79,21 @@ export type Category = {
 };
 
 export async function getCategoryList(): Promise<Category[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
+	const allBlogPosts = await getCollection<"archives">("archives", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 	const count: { [key: string]: number } = {};
-	allBlogPosts.forEach((post: { data: { category: string | null } }) => {
-		if (!post.data.category) {
+	allBlogPosts.forEach((post: { data: { categories: string[] } }) => {
+		if (!post.data.categories || post.data.categories.length === 0) {
 			const ucKey = i18n(I18nKey.uncategorized);
 			count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
 			return;
 		}
-
-		const categoryName =
-			typeof post.data.category === "string"
-				? post.data.category.trim()
-				: String(post.data.category).trim();
-
-		count[categoryName] = count[categoryName] ? count[categoryName] + 1 : 1;
+		
+		post.data.categories.forEach(cat => {
+			const trimmedCat = cat.trim();
+			count[trimmedCat] = count[trimmedCat] ? count[trimmedCat] + 1 : 1;
+		});
 	});
 
 	const lst = Object.keys(count).sort((a, b) => {

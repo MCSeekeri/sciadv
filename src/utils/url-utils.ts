@@ -13,22 +13,22 @@ function joinUrl(...parts: string[]): string {
 }
 
 export function getPostUrlBySlug(slug: string): string {
-	return url(`/posts/${slug}/`);
+	return url(`/archives/${slug}/`);
 }
 
 export function getTagUrl(tag: string): string {
-	if (!tag) return url("/archive/");
-	return url(`/archive/?tag=${encodeURIComponent(tag.trim())}`);
+	if (!tag) return url("/archives/");
+	return url(`/archives/?tag=${encodeURIComponent(tag.trim())}`);
 }
 
-export function getCategoryUrl(category: string | null): string {
+export function getCategoryUrl(categories: string | null): string {
 	if (
-		!category ||
-		category.trim() === "" ||
-		category.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
+		!categories ||
+		categories.trim() === "" ||
+		categories.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
 	)
-		return url("/archive/?uncategorized=true");
-	return url(`/archive/?category=${encodeURIComponent(category.trim())}`);
+		return url("/archives/?uncategorized=true");
+	return url(`/archives/?categories=${encodeURIComponent(categories.trim())}`);
 }
 
 export function getDir(path: string): string {

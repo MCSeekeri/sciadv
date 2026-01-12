@@ -10,13 +10,13 @@ import PostMetadata from "./PostMeta.astro";
 
 interface Props {
 	class?: string;
-	entry: CollectionEntry<"posts">;
+	entry: CollectionEntry<"archives">;
 	title: string;
 	url: string;
-	published: Date;
+	date: Date;
 	updated?: Date;
 	tags: string[];
-	category: string | null;
+	categories: string | null;
 	image: string;
 	description: string;
 	draft: boolean;
@@ -26,10 +26,10 @@ const {
 	entry,
 	title,
 	url,
-	published,
+	date,
 	updated,
 	tags,
-	category,
+	categories,
 	image,
 	description,
 	style,
@@ -57,7 +57,7 @@ const { remarkPluginFrontmatter } = await entry.render();
         </a>
 
         <!-- metadata -->
-        <PostMetadata published={published} updated={updated} tags={tags} category={category} hideTagsForMobile={true} hideUpdateDate={true} class="mb-4"></PostMetadata>
+        <PostMetadata date={date} updated={updated} tags={tags} categories={categories} authorId={entry.data.author} hideTagsForMobile={true} hideUpdateDate={true} class="mb-4"></PostMetadata>
 
         <!-- description -->
         <div class:list={["transition text-75 mb-3.5 pr-4", {"line-clamp-2 md:line-clamp-1": !description}]}>
@@ -88,7 +88,7 @@ const { remarkPluginFrontmatter } = await entry.render();
                   class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl">
             </Icon>
         </div>
-        <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover Image of the Post"
+        <ImageWrapper src={image} basePath={path.join("content/archives/", getDir(entry.id))} alt="Cover Image of the Post"
                   class="w-full h-full">
         </ImageWrapper>
     </a>}

@@ -1,42 +1,71 @@
 ---
 import { Icon } from "astro-icon/components";
+import { authors } from "../authors";
+import { profileConfig } from "../config";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { formatDateToYYYYMMDD } from "../utils/date-utils";
 import { getCategoryUrl, getTagUrl } from "../utils/url-utils";
+import Avatar from "./misc/Avatar.astro";
 
 interface Props {
 	class: string;
-	published: Date;
+	date: Date;
 	updated?: Date;
 	tags: string[];
-	category: string | null;
+	categories: string[];
 	hideTagsForMobile?: boolean;
 	hideUpdateDate?: boolean;
+	authorId?: string;
 }
 const {
-	published,
+	date,
 	updated,
 	tags,
-	category,
+	categories,
 	hideTagsForMobile = false,
 	hideUpdateDate = false,
+	authorId,
 } = Astro.props;
 const className = Astro.props.class;
+const author =
+	authorId && authors[authorId]
+		? authors[authorId]
+		: {
+				name: profileConfig.name,
+				avatar: profileConfig.avatar,
+				url: Astro.site?.toString() || "",
+			};
 ---
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
+    <!-- author -->
+    <div class="flex items-center">
+        <div class="meta-icon">
+            {author.avatar ? (
+                <Avatar src={author.avatar} alt={author.name} class="w-8 h-8 object-cover rounded " size={64} />
+            ) : (
+                <Icon name="material-symbols:person-outline-rounded" class="text-xl"></Icon>
+            )}
+        </div>
+        {author.url ? (
+            <a href={author.url} target="_blank" class="link-lg transition text-50 text-sm font-medium hover:text-[var(--primary)] dark:hover:text-[var(--primary)]">{author.name}</a>
+        ) : (
+            <span class="text-50 text-sm font-medium">{author.name}</span>
+        )}
+    </div>
+
     <!-- publish date -->
     <div class="flex items-center">
         <div class="meta-icon"
         >
             <Icon name="material-symbols:calendar-today-outline-rounded" class="text-xl"></Icon>
         </div>
-        <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(published)}</span>
+        <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(date)}</span>
     </div>
 
     <!-- update date -->
-    {!hideUpdateDate && updated && updated.getTime() !== published.getTime() && (
+    {!hideUpdateDate && updated && updated.getTime() !== date.getTime() && (
         <div class="flex items-center">
             <div class="meta-icon"
             >
@@ -53,11 +82,24 @@ const className = Astro.props.class;
             <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
         </div>
         <div class="flex flex-row flex-nowrap items-center">
-            <a href={getCategoryUrl(category)} aria-label={`View all posts in the ${category} category`}
-               class="link-lg transition text-50 text-sm font-medium
-                            hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                {category || i18n(I18nKey.uncategorized)}
-            </a>
+            {categories && categories.length > 0 ? (
+                categories.map((cat, i) => (
+                    <>
+                        {i > 0 && <div class="mx-1.5 text-[var(--meta-divider)] text-sm">/</div>}
+                        <a href={getCategoryUrl(cat)} aria-label={`View all posts in the ${cat} categories`}
+                           class="link-lg transition text-50 text-sm font-medium
+                                        hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
+                            {cat}
+                        </a>
+                    </>
+                ))
+            ) : (
+                <a href={getCategoryUrl(null)} aria-label="View all uncategorized posts"
+                   class="link-lg transition text-50 text-sm font-medium
+                                hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
+                    {i18n(I18nKey.uncategorized)}
+                </a>
+            )}
         </div>
     </div>
 

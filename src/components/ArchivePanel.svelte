@@ -11,7 +11,7 @@ export let sortedPosts: Post[] = [];
 
 const params = new URLSearchParams(window.location.search);
 tags = params.has("tag") ? params.getAll("tag") : [];
-categories = params.has("category") ? params.getAll("category") : [];
+categories = params.has("categories") ? params.getAll("categories") : [];
 const uncategorized = params.get("uncategorized");
 
 interface Post {
@@ -19,8 +19,8 @@ interface Post {
 	data: {
 		title: string;
 		tags: string[];
-		category?: string;
-		published: Date;
+		categories: string[];
+		date: Date;
 	};
 }
 
@@ -54,17 +54,19 @@ onMount(async () => {
 
 	if (categories.length > 0) {
 		filteredPosts = filteredPosts.filter(
-			(post) => post.data.category && categories.includes(post.data.category),
+			(post) => post.data.categories.some(cat => categories.includes(cat))
 		);
 	}
 
 	if (uncategorized) {
-		filteredPosts = filteredPosts.filter((post) => !post.data.category);
+		filteredPosts = filteredPosts.filter((post) => 
+			!post.data.categories || post.data.categories.length === 0
+		);
 	}
 
 	const grouped = filteredPosts.reduce(
 		(acc, post) => {
-			const year = post.data.published.getFullYear();
+			const year = post.data.date.getFullYear();
 			if (!acc[year]) {
 				acc[year] = [];
 			}
@@ -112,7 +114,7 @@ onMount(async () => {
                     <div class="flex flex-row justify-start items-center h-full">
                         <!-- date -->
                         <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
-                            {formatDate(post.data.published)}
+                            {formatDate(post.data.date)}
                         </div>
 
                         <!-- dot and line -->
