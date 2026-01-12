@@ -1,9 +1,5 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 关于本站
 
-::github{repo="saicaca/fuwari"}
-
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+本站致力于搜集所有科学 ADV 相关衍生小说，包括但不限于官方或同人小说，设定集，民间设定研讨或者别的什么杂七杂八的内容。
+是对[科学 ADV 资源站](https://drive.sci-adv.cc)的补充，侧重于用更现代化的前端页面保证长文本的观看体验。
+这里本来还有关于本站历史和科 A 知识的长篇大论，不过编辑器太小我写不下。

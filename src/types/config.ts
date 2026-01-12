@@ -1,4 +1,5 @@
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+import type { WalineInitOptions } from "@waline/client";
 
 export type SiteConfig = {
 	title: string;
@@ -71,10 +72,47 @@ export type ProfileConfig = {
 	}[];
 };
 
+export type AnnouncementConfig = {
+	enable: boolean;
+	content: string;
+};
+
 export type LicenseConfig = {
 	enable: boolean;
-	name: string;
-	url: string;
+};
+
+export type WalineConfig = {
+	enable: boolean;
+	serverURL: string;
+	path?: string;
+	lang?: string;
+	locale?: WalineInitOptions["locale"];
+	emoji?: WalineInitOptions["emoji"];
+	dark?: string;
+
+	meta?: ("nick" | "mail" | "link")[];
+	requiredMeta?: ("nick" | "mail")[];
+	login?: "enable" | "disable" | "force";
+	wordLimit?: number | [number, number];
+	pageSize?: number;
+
+	imageUploader?: boolean | ((file: File) => Promise<string>);
+	highlighter?: (code: string, lang: string) => string;
+	texRenderer?: (blockMode: boolean, tex: string) => string;
+
+	search?: WalineInitOptions["search"];
+
+	recaptchaV3Key?: string;
+	turnstileKey?: string;
+	reaction?: boolean | string[];
+
+	noCopyright?: boolean;
+	commentSorting?: "latest" | "oldest" | "hottest";
+
+	avatar?: string;
+	avatarCDN?: string;
+	avatarForce?: boolean;
+	uploadImage?: (file: File) => Promise<string>;
 };
 
 export type LIGHT_DARK_MODE =
@@ -91,6 +129,7 @@ export type BlogPostData = {
 	draft?: boolean;
 	image?: string;
 	categories: string[];
+	references?: { title: string; url: string }[];
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

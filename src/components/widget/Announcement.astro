@@ -1,0 +1,35 @@
+---
+import { announcementConfig } from "../../config";
+import MarkdownIt from "markdown-it";
+
+const config = announcementConfig;
+
+if (!config.enable) {
+	return null;
+}
+
+const md = new MarkdownIt({
+	html: true,
+	linkify: true,
+	typographer: true,
+	breaks: true,
+});
+
+const htmlContent = md.render(config.content);
+---
+
+<div class="card-base p-4">
+	<div class="prose prose-sm dark:prose-invert max-w-none
+		prose-headings:text-neutral-900 dark:prose-headings:text-neutral-50
+		prose-p:text-neutral-700 dark:prose-p:text-neutral-300
+		prose-a:text-[var(--primary)] prose-a:no-underline hover:prose-a:underline
+		prose-strong:text-neutral-900 dark:prose-strong:text-neutral-50
+		prose-code:text-[var(--primary)] prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800
+		prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+		prose-blockquote:border-l-[var(--primary)] prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400
+		prose-ul:text-neutral-700 dark:prose-ul:text-neutral-300
+		prose-ol:text-neutral-700 dark:prose-ol:text-neutral-300
+		prose-li:text-neutral-700 dark:prose-li:text-neutral-300"
+		set:html={htmlContent}
+	/>
+</div>

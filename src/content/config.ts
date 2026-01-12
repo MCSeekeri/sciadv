@@ -12,6 +12,10 @@ const archivesCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		categories: z.array(z.string()).optional().default([]),
 		lang: z.string().optional().default(""),
+		references: z.array(z.object({
+			title: z.string(),
+			url: z.string(),
+		})).optional().default([]),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),
