@@ -1,0 +1,23 @@
+{
+  "MD013": false,
+  "MD024": false,
+  "MD028": false,
+  "MD033": {
+    "allowed_elements": [
+      "ruby",
+      "rb",
+      "rt",
+      "rp",
+      "summary",
+      "details",
+      "div",
+      "sup",
+      "font",
+      "img",
+      "center",
+      "sub",
+      "u"
+    ]
+  },
+  "MD045": false
+}

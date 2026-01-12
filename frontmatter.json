@@ -29,8 +29,8 @@
           "type": "string"
         },
         {
-          "title": "published",
-          "name": "published",
+          "title": "date",
+          "name": "date",
           "type": "datetime",
           "default": "{{now}}",
           "isPublishDate": true
@@ -47,8 +47,8 @@
           "type": "list"
         },
         {
-          "title": "category",
-          "name": "category",
+          "title": "categories",
+          "name": "categories",
           "type": "string"
         },
         {
@@ -60,6 +60,16 @@
           "title": "language",
           "name": "language",
           "type": "string"
+        },
+        {
+          "title": "author",
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "title": "categories",
+          "name": "categories",
+          "type": "categories"
         }
       ]
     }
