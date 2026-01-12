@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import Comment from "@components/Comment.svelte";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
@@ -8,7 +9,8 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
-import { licenseConfig } from "src/config";
+import { licenseConfig, walineConfig } from "src/config";
+import { authors } from "../../authors";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
@@ -27,6 +29,12 @@ const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
 
+const authorId = entry.data.author;
+const author =
+	authorId && authors[authorId]
+		? authors[authorId]
+		: { name: profileConfig.name, url: Astro.site?.toString() || "" };
+
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "BlogPosting",
@@ -35,10 +43,10 @@ const jsonLd = {
 	keywords: entry.data.tags,
 	author: {
 		"@type": "Person",
-		name: profileConfig.name,
-		url: Astro.site,
+		name: author.name,
+		url: author.url,
 	},
-	datePublished: formatDateToYYYYMMDD(entry.data.published),
+	datePublished: formatDateToYYYYMMDD(entry.data.date),
 	inLanguage: entry.data.lang
 		? entry.data.lang.replace("_", "-")
 		: siteConfig.lang.replace("_", "-"),
@@ -87,10 +95,11 @@ const jsonLd = {
             <div class="onload-animation">
                 <PostMetadata
                         class="mb-5"
-                        published={entry.data.published}
+                        date={entry.data.date}
                         updated={entry.data.updated}
                         tags={entry.data.tags}
-                        category={entry.data.category}
+                        categories={entry.data.categories}
+                        authorId={entry.data.author}
                 ></PostMetadata>
                 {!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
             </div>
@@ -98,7 +107,7 @@ const jsonLd = {
             <!-- always show cover as long as it has one -->
 
             {entry.data.image &&
-                <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
+                <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/archives/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
             }
 
 
@@ -106,7 +115,7 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.date} authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
@@ -132,5 +141,35 @@ const jsonLd = {
             </div>}
         </a>
     </div>
+
+    {walineConfig.enable && walineConfig.serverURL && (
+        <Comment 
+            client:only="svelte"
+            serverURL={walineConfig.serverURL}
+            path={walineConfig.path || Astro.url.pathname}
+            lang={walineConfig.lang || entry.data.lang || siteConfig.lang}
+            locale={walineConfig.locale}
+            emoji={walineConfig.emoji}
+            dark={walineConfig.dark}
+            meta={walineConfig.meta}
+            requiredMeta={walineConfig.requiredMeta}
+            login={walineConfig.login}
+            wordLimit={walineConfig.wordLimit}
+            pageSize={walineConfig.pageSize}
+            imageUploader={walineConfig.imageUploader}
+            highlighter={walineConfig.highlighter}
+            texRenderer={walineConfig.texRenderer}
+            search={walineConfig.search}
+            recaptchaV3Key={walineConfig.recaptchaV3Key}
+            turnstileKey={walineConfig.turnstileKey}
+            reaction={walineConfig.reaction}
+            noCopyright={walineConfig.noCopyright}
+            commentSorting={walineConfig.commentSorting}
+            avatar={walineConfig.avatar}
+            avatarCDN={walineConfig.avatarCDN}
+            avatarForce={walineConfig.avatarForce}
+            uploadImage={walineConfig.uploadImage}
+        />
+    )}
 
 </MainGridLayout>

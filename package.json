@@ -1,5 +1,5 @@
 {
-  "name": "fuwari",
+  "name": "sciadv",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,10 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
-    "new-post": "node scripts/new-post.js",
     "format": "biome format --write ./src",
-    "lint": "biome check --write ./src",
-    "preinstall": "npx only-allow pnpm"
+    "lint": "biome check --write ./src"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -33,6 +31,7 @@
     "@iconify/svelte": "^4.2.0",
     "@swup/astro": "^1.7.0",
     "@tailwindcss/typography": "^0.5.19",
+    "@waline/client": "^3.8.0",
     "astro": "5.13.10",
     "astro-expressive-code": "^0.41.4",
     "astro-icon": "^1.1.5",
@@ -48,6 +47,7 @@
     "rehype-components": "^0.3.0",
     "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
+    "remark-breaks": "^4.0.0",
     "remark-directive": "^3.0.1",
     "remark-directive-rehype": "^0.4.2",
     "remark-github-admonitions-to-directives": "^1.0.5",

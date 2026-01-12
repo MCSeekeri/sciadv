@@ -23,6 +23,6 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 export const collections = {
-	posts: postsCollection,
+	archives: archivesCollection,
 	spec: specCollection,
 };
