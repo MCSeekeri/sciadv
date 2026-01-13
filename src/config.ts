@@ -10,8 +10,8 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "Fuwari",
-	subtitle: "Demo Site",
+	title: "科学 ADV 图书馆",
+	subtitle: "致力于收集科学 ADV 系列所有小说和漫画的站点",
 	lang: "zh_CN",
 	themeColor: {
 		hue: 250,

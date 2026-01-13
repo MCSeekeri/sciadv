@@ -1,3 +1,5 @@
+@reference "tailwindcss";
+
 .custom-md {
     h1 {
         @apply text-3xl;
@@ -5,23 +7,43 @@
 
     h1, h2, h3, h4, h5, h6 {
         .anchor {
-            @apply transition -m-0.5 ml-[0.2ch] p-0.5 select-none opacity-0 no-underline !important;
+            transition: all 0.3s;
+            margin: -0.125rem !important;
+            margin-left: 0.2ch !important;
+            padding: 0.125rem !important;
+            user-select: none !important;
+            opacity: 0 !important;
+            text-decoration: none !important;
 
             .anchor-icon {
-                @apply mx-[0.45ch] !important;
+                margin-left: 0.45ch !important;
+                margin-right: 0.45ch !important;
             }
         }
 
         &:hover {
             .anchor {
-                @apply opacity-100 !important;
+                opacity: 1 !important;
             }
         }
     }
 
     a:not(.no-styling) {
-        @apply relative bg-none link font-medium text-[var(--primary)]
-        underline decoration-[var(--link-underline)] decoration-1 decoration-dashed underline-offset-4;
+        position: relative;
+        background: none;
+        transition: all 0.3s;
+        border-radius: 0.375rem;
+        padding: 0.25rem;
+        margin: -0.25rem;
+        z-index: 0;
+        font-weight: 500;
+        color: var(--primary);
+        text-decoration: underline;
+        text-decoration-color: var(--link-underline);
+        text-decoration-thickness: 1px;
+        text-decoration-style: dashed;
+        text-decoration-skip-ink: auto;
+        text-underline-offset: 0.25rem;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
         display: inline-block;
@@ -61,7 +83,41 @@
 
     .copy-btn {
         all: initial;
-        @apply btn-regular-dark opacity-0 shadow-lg shadow-black/50 absolute active:scale-90 h-8 w-8 top-3 right-3 text-sm rounded-lg transition-all ease-in-out z-20 cursor-pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: oklch(0.45 0.01 var(--hue));
+        opacity: 0;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+        position: absolute;
+        height: 2rem;
+        width: 2rem;
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        z-index: 20;
+        cursor: pointer;
+    }
+    .copy-btn:hover {
+        background: oklch(0.50 0.01 var(--hue));
+    }
+    .copy-btn:active {
+        background: oklch(0.55 0.01 var(--hue));
+        scale: 0.9;
+    }
+    @media (prefers-color-scheme: dark) {
+        .copy-btn {
+            background: oklch(0.30 0.02 var(--hue));
+        }
+        .copy-btn:hover {
+            background: oklch(0.35 0.03 var(--hue));
+        }
+        .copy-btn:active {
+            background: oklch(0.40 0.03 var(--hue));
+        }
     }
     .frame:hover .copy-btn {
         opacity: 1;
