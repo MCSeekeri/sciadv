@@ -12,10 +12,15 @@ const archivesCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		categories: z.array(z.string()).optional().default([]),
 		lang: z.string().optional().default(""),
-		references: z.array(z.object({
-			title: z.string(),
-			url: z.string(),
-		})).optional().default([]),
+		references: z
+			.array(
+				z.object({
+					title: z.string(),
+					url: z.string(),
+				}),
+			)
+			.optional()
+			.default([]),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),
@@ -27,7 +32,10 @@ const archivesCollection = defineCollection({
 const specCollection = defineCollection({
 	schema: z.object({}),
 });
-export const collections = {
-	archives: archivesCollection,
-	spec: specCollection,
+export const collections: Record<
+	string,
+	ReturnType<typeof defineCollection>
+> = {
+	archives: archivesCollection as ReturnType<typeof defineCollection>,
+	spec: specCollection as ReturnType<typeof defineCollection>,
 };

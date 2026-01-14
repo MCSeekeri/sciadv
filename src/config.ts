@@ -31,8 +31,7 @@ export const siteConfig: SiteConfig = {
 		enable: true,
 		depth: 3,
 	},
-	favicon: [
-	],
+	favicon: [],
 };
 
 export const navBarConfig: NavBarConfig = {
@@ -57,8 +56,7 @@ export const profileConfig: ProfileConfig = {
 	avatar: "assets/authors/mp.jpg",
 	name: "Anonymous",
 	bio: "",
-	links: [
-	],
+	links: [],
 };
 
 export const licenseConfig: LicenseConfig = {

@@ -17,7 +17,7 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
-export async function getSortedPosts() {
+export async function getSortedPosts(): Promise<CollectionEntry<"archives">[]> {
 	const sorted = await getRawSortedPosts();
 
 	for (let i = 1; i < sorted.length; i++) {
@@ -52,9 +52,12 @@ export type Tag = {
 };
 
 export async function getTagList(): Promise<Tag[]> {
-	const allBlogPosts = await getCollection<"archives">("archives", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts = await getCollection<"archives">(
+		"archives",
+		({ data }) => {
+			return import.meta.env.PROD ? data.draft !== true : true;
+		},
+	);
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
@@ -79,9 +82,12 @@ export type Category = {
 };
 
 export async function getCategoryList(): Promise<Category[]> {
-	const allBlogPosts = await getCollection<"archives">("archives", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts = await getCollection<"archives">(
+		"archives",
+		({ data }) => {
+			return import.meta.env.PROD ? data.draft !== true : true;
+		},
+	);
 	const count: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { categories: string[] } }) => {
 		if (!post.data.categories || post.data.categories.length === 0) {
@@ -89,8 +95,8 @@ export async function getCategoryList(): Promise<Category[]> {
 			count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
 			return;
 		}
-		
-		post.data.categories.forEach(cat => {
+
+		post.data.categories.forEach((cat) => {
 			const trimmedCat = cat.trim();
 			count[trimmedCat] = count[trimmedCat] ? count[trimmedCat] + 1 : 1;
 		});

@@ -3,7 +3,7 @@
  */
 import { definePlugin } from "@expressive-code/core";
 
-export function pluginLanguageBadge() {
+export function pluginLanguageBadge(): ReturnType<typeof definePlugin> {
 	return definePlugin({
 		name: "Language Badge",
 		// @ts-expect-error

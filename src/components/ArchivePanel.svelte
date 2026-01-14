@@ -53,14 +53,14 @@ onMount(async () => {
 	}
 
 	if (categories.length > 0) {
-		filteredPosts = filteredPosts.filter(
-			(post) => post.data.categories.some(cat => categories.includes(cat))
+		filteredPosts = filteredPosts.filter((post) =>
+			post.data.categories.some((cat) => categories.includes(cat)),
 		);
 	}
 
 	if (uncategorized) {
-		filteredPosts = filteredPosts.filter((post) => 
-			!post.data.categories || post.data.categories.length === 0
+		filteredPosts = filteredPosts.filter(
+			(post) => !post.data.categories || post.data.categories.length === 0,
 		);
 	}
 
