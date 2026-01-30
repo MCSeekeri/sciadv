@@ -1,4 +1,3 @@
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
@@ -101,16 +100,6 @@ export default defineConfig({
 		}),
 		svelte(),
 		sitemap(),
-		partytown({
-			config: {
-				forward: ["dataLayer.push", "clarity"],
-				proxy: {
-					"https://www.googletagmanager.com/gtm.js": "/proxytown/gtm",
-					"https://www.googletagmanager.com/gtag/js": "/proxytown/gtag",
-					"https://www.clarity.ms/tag/": "/proxytown/clarity",
-				},
-			},
-		}),
 	],
 	markdown: {
 		remarkPlugins: [

@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/svelte": "7.2.5",
