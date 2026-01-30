@@ -20,7 +20,10 @@ export let wordLimit: number | [number, number] = [0, 1000];
 export let pageSize = 10;
 
 // Image Upload & Rendering
-export let imageUploader: boolean | ((file: File) => Promise<string>) = false;
+export let imageUploader:
+	| boolean
+	| ((file: File) => Promise<string>)
+	| undefined = undefined;
 export let highlighter: ((code: string, lang: string) => string) | undefined =
 	undefined;
 export let texRenderer:

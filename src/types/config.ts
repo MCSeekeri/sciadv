@@ -36,7 +36,7 @@ export type SiteConfig = {
 		depth: 1 | 2 | 3;
 	};
 
-	favicon: Favicon[];
+	favicon: string;
 };
 
 export type Favicon = {
@@ -53,8 +53,9 @@ export enum LinkPreset {
 
 export type NavBarLink = {
 	name: string;
-	url: string;
+	url?: string;
 	external?: boolean;
+	sublinks?: NavBarLink[];
 };
 
 export type NavBarConfig = {

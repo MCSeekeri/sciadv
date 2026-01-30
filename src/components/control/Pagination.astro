@@ -52,13 +52,11 @@ const getPageUrl = (p: number) => {
 ---
 
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
-    <a href={page.url.prev || ""} aria-label={page.url.prev ? "Previous Page" : null}
-       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
-           {"disabled": page.url.prev == undefined}
-       ]}
+    {page.currentPage > 1 && <a href={page.url.prev || ""} aria-label="Previous Page"
+       class="btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11"
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
-    </a>
+    </a>}
     <div class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold">
         {pages.map((p) => {
             if (p == HIDDEN)
@@ -74,11 +72,9 @@ const getPageUrl = (p: number) => {
             >{p}</a>
         })}
     </div>
-    <a href={page.url.next || ""} aria-label={page.url.next ? "Next Page" : null}
-       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
-           {"disabled": page.url.next == undefined}
-       ]}
+    {page.currentPage < page.lastPage && <a href={page.url.next || ""} aria-label="Next Page"
+       class="btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11"
     >
         <Icon name="material-symbols:chevron-right-rounded" class="text-[1.75rem]"></Icon>
-    </a>
+    </a>}
 </div>

@@ -31,23 +31,37 @@ export const siteConfig: SiteConfig = {
 		enable: true,
 		depth: 3,
 	},
-	favicon: [],
+	favicon: "/favicon/favicon.png",
 };
 
 export const navBarConfig: NavBarConfig = {
 	links: [
-		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: "GitHub",
-			url: "https://github.com/MCSeekeri/sciadv",
+			name: "科 A 资源站",
+			url: "https://drive.sci-adv.cc",
 			external: true,
 		},
 		{
 			name: "开往",
 			url: "https://www.travellings.cn/go.html",
 			external: true,
+		},
+		{
+			name: "外部链接",
+			sublinks: [
+				{
+					name: "站点源代码",
+					url: "https://github.com/MCSeekeri/sciadv",
+					external: true,
+				},
+				{
+					name: "CD 整理",
+					url: "https://docs.google.com/document/d/1iy8uuAqUtINnfYP_DYmCStDTz_CA6O9W/edit",
+					external: true,
+				},
+			],
 		},
 	],
 };
@@ -77,7 +91,7 @@ export const walineConfig: WalineConfig = {
 	login: "enable",
 	wordLimit: [0, 1000],
 	pageSize: 10,
-	imageUploader: false,
+	imageUploader: undefined,
 	search: false,
 	noCopyright: false,
 	commentSorting: "latest",
