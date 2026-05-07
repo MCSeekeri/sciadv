@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import { Picture, getImage } from "astro:assets";
 
 interface Props {
 	id?: string;
@@ -8,12 +9,33 @@ interface Props {
 	alt?: string;
 	position?: string;
 	basePath?: string;
+	loading?: "eager" | "lazy";
+	decoding?: "async" | "auto" | "sync";
+	fetchpriority?: "high" | "low" | "auto";
+	sizes?: string;
+	widths?: number[];
+	priority?: boolean;
+	singleSourceWidth?: number;
+	singleSourceFormat?: "avif" | "webp" | "png" | "jpg" | "jpeg";
 }
 
-import { Picture } from "astro:assets";
 import { url } from "../../utils/url-utils";
 
-const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
+const {
+	id,
+	src,
+	alt,
+	position = "center",
+	basePath = "/",
+	loading,
+	decoding = "async",
+	fetchpriority,
+	sizes,
+	widths,
+	priority = false,
+	singleSourceWidth,
+	singleSourceFormat = "webp",
+} = Astro.props;
 const className = Astro.props.class;
 
 const isLocal = !(
@@ -44,11 +66,52 @@ if (isLocal) {
 	img = await file();
 }
 
+const singleSourceImage =
+	isLocal && img && singleSourceWidth
+		? await getImage({
+				src: img,
+				width: singleSourceWidth,
+				format: singleSourceFormat,
+			})
+		: undefined;
+
 const imageClass = "w-full h-full object-cover";
 const imageStyle = `object-position: ${position}`;
+const resolvedLoading = priority ? "eager" : loading || "lazy";
+const resolvedFetchPriority = priority ? "high" : fetchpriority || "auto";
 ---
 <div id={id} class:list={[className, 'overflow-hidden relative']}>
     <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div>
-    {isLocal && img && <Picture src={img} alt={alt || ""} formats={['avif', 'webp', 'jpg']} class={imageClass} style={imageStyle}/>}
-    {!isLocal && <img src={isPublic ? url(src) : src} alt={alt || ""} class={imageClass} style={imageStyle}/>}
+    {singleSourceImage && <img
+        src={singleSourceImage.src}
+        alt={alt || ""}
+        class={imageClass}
+        style={imageStyle}
+        width={singleSourceImage.attributes.width}
+        height={singleSourceImage.attributes.height}
+        loading={resolvedLoading}
+        decoding={decoding}
+        fetchpriority={resolvedFetchPriority}
+    />}
+    {!singleSourceImage && isLocal && img && <Picture
+        src={img}
+        alt={alt || ""}
+        formats={['avif', 'webp', 'jpg']}
+        class={imageClass}
+        style={imageStyle}
+        loading={resolvedLoading}
+        decoding={decoding}
+        fetchpriority={resolvedFetchPriority}
+        sizes={sizes}
+        widths={widths}
+    />}
+    {!isLocal && <img
+        src={isPublic ? url(src) : src}
+        alt={alt || ""}
+        class={imageClass}
+        style={imageStyle}
+        loading={resolvedLoading}
+        decoding={decoding}
+        fetchpriority={resolvedFetchPriority}
+    />}
 </div>

@@ -1,12 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getEntrySlug } from "@utils/content-utils";
 import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
 
-const { page } = Astro.props;
+interface Props {
+	page: {
+		data: CollectionEntry<"archives">[];
+	};
+}
 
-let delay = 0;
-const interval = 50;
+const { page } = Astro.props as Props;
 ---
 <div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
     {page.data.map((entry: CollectionEntry<"archives">) => (
@@ -17,12 +21,10 @@ const interval = 50;
                 categories={entry.data.categories}
                 date={entry.data.date}
                 updated={entry.data.updated}
-                url={getPostUrlBySlug(entry.slug)}
-                image={entry.data.image}
-                description={entry.data.description}
+                url={getPostUrlBySlug(getEntrySlug(entry))}
+                image={entry.data.image ?? ""}
+                description={entry.data.description ?? ""}
                 draft={entry.data.draft}
-                class:list="onload-animation"
-                style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
         ></PostCard>
     ))}
 </div>

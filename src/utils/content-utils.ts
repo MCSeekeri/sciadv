@@ -17,20 +17,25 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
+export function getEntrySlug(entry: { id: string; slug?: string }) {
+	return entry.slug || entry.id.replace(/\.(md|mdx)$/i, "");
+}
+
 export async function getSortedPosts(): Promise<CollectionEntry<"archives">[]> {
 	const sorted = await getRawSortedPosts();
 
 	for (let i = 1; i < sorted.length; i++) {
-		sorted[i].data.nextSlug = sorted[i - 1].slug;
+		sorted[i].data.nextSlug = getEntrySlug(sorted[i - 1]);
 		sorted[i].data.nextTitle = sorted[i - 1].data.title;
 	}
 	for (let i = 0; i < sorted.length - 1; i++) {
-		sorted[i].data.prevSlug = sorted[i + 1].slug;
+		sorted[i].data.prevSlug = getEntrySlug(sorted[i + 1]);
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
 	}
 
 	return sorted;
 }
+
 export type PostForList = {
 	slug: string;
 	data: CollectionEntry<"archives">["data"];
@@ -40,7 +45,7 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 
 	// delete post.body
 	const sortedPostsList = sortedFullPosts.map((post) => ({
-		slug: post.slug,
+		slug: getEntrySlug(post),
 		data: post.data,
 	}));
 

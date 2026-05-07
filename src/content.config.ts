@@ -1,6 +1,13 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import type { CollectionConfig } from "astro/content/config";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const archivesCollection = defineCollection({
+	loader: glob({
+		base: "./src/content/archives",
+		pattern: "**/*.md",
+	}),
 	schema: z.object({
 		title: z.string(),
 		author: z.string().optional(),
@@ -29,13 +36,16 @@ const archivesCollection = defineCollection({
 		nextSlug: z.string().default(""),
 	}),
 });
+
 const specCollection = defineCollection({
+	loader: glob({
+		base: "./src/content/spec",
+		pattern: "**/*.md",
+	}),
 	schema: z.object({}),
 });
-export const collections: Record<
-	string,
-	ReturnType<typeof defineCollection>
-> = {
-	archives: archivesCollection as ReturnType<typeof defineCollection>,
-	spec: specCollection as ReturnType<typeof defineCollection>,
-};
+
+export const collections = {
+	archives: archivesCollection,
+	spec: specCollection,
+} satisfies Record<string, CollectionConfig<any>>;

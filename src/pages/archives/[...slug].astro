@@ -6,28 +6,29 @@ import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import { getEntrySlug, getSortedPosts } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
+import { render, type CollectionEntry } from "astro:content";
 import { licenseConfig, walineConfig } from "src/config";
 import { authors } from "../../authors";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import katexCssUrl from "katex/dist/katex.css?url";
+import photoswipeCssUrl from "photoswipe/style.css?url";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: getEntrySlug(entry) },
 		props: { entry },
 	}));
 }
 
-const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
-
-const { remarkPluginFrontmatter } = await entry.render();
+const { entry } = Astro.props as { entry: CollectionEntry<"archives"> };
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 
 const authorId = entry.data.author;
 const author =
@@ -53,10 +54,11 @@ const jsonLd = {
 	// TODO include cover image here
 };
 ---
-<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
+<MainGridLayout banner={entry.data.image ?? undefined} title={entry.data.title} description={entry.data.description ?? undefined} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+    <link rel="stylesheet" href={katexCssUrl} slot="head" />
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
-        <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
+        <div id="post-container" data-photoswipe-style-url={photoswipeCssUrl} class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
             <!-- word count and reading time -->
@@ -107,7 +109,14 @@ const jsonLd = {
             <!-- always show cover as long as it has one -->
 
             {entry.data.image &&
-                <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/archives/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
+                <ImageWrapper
+                    id="post-cover"
+                    src={entry.data.image}
+                    basePath={path.join("content/archives/", getDir(entry.id))}
+                    class="mb-8 rounded-xl banner-container onload-animation"
+                    priority={true}
+                    sizes="100vw"
+                />
             }
 
 
@@ -115,7 +124,7 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.date} authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License title={entry.data.title} slug={getEntrySlug(entry)} pubDate={entry.data.date} authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
@@ -144,7 +153,7 @@ const jsonLd = {
 
     {walineConfig.enable && walineConfig.serverURL && (
         <Comment 
-            client:only="svelte"
+            client:visible
             serverURL={walineConfig.serverURL}
             path={walineConfig.path || Astro.url.pathname}
             lang={walineConfig.lang || entry.data.lang || siteConfig.lang}
@@ -173,3 +182,83 @@ const jsonLd = {
     )}
 
 </MainGridLayout>
+
+<script>
+const galleryImages = Array.from(
+	document.querySelectorAll(".custom-md img, #post-cover img"),
+);
+const postContainer = document.getElementById("post-container");
+const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
+
+if (galleryImages.length > 0 && photoswipeCssUrl) {
+	let lightboxInitialized = false;
+
+	const ensurePhotoswipeStyles = () => {
+		if (document.querySelector(`link[data-photoswipe-style][href="${photoswipeCssUrl}"]`)) {
+			return Promise.resolve();
+		}
+
+		return new Promise((resolve, reject) => {
+			const styleLink = document.createElement("link");
+			styleLink.rel = "stylesheet";
+			styleLink.href = photoswipeCssUrl;
+			styleLink.dataset.photoswipeStyle = "true";
+			styleLink.onload = () => resolve(true);
+			styleLink.onerror = () => reject(new Error("Failed to load PhotoSwipe styles"));
+			document.head.appendChild(styleLink);
+		});
+	};
+
+	const initLightbox = async () => {
+		if (lightboxInitialized) {
+			return;
+		}
+		lightboxInitialized = true;
+
+		await ensurePhotoswipeStyles();
+		const [{ default: PhotoSwipeLightbox }, pswpModule] = await Promise.all([
+			import("photoswipe/lightbox"),
+			import("photoswipe"),
+		]);
+		const lightbox = new PhotoSwipeLightbox({
+			gallery: ".custom-md img, #post-cover img",
+			pswpModule: () => Promise.resolve(pswpModule),
+			padding: { top: 20, bottom: 20, left: 20, right: 20 },
+			wheelToZoom: true,
+			arrowPrev: false,
+			arrowNext: false,
+			imageClickAction: "close",
+			tapAction: "close",
+			doubleTapAction: "zoom",
+		});
+
+		lightbox.addFilter("domItemData", (itemData, element) => {
+			if (element instanceof HTMLImageElement) {
+				itemData.src = element.src;
+				itemData.w = Number(element.naturalWidth || window.innerWidth);
+				itemData.h = Number(element.naturalHeight || window.innerHeight);
+				itemData.msrc = element.src;
+			}
+
+			return itemData;
+		});
+
+		lightbox.init();
+	};
+
+	const warmLightbox = () => {
+		void initLightbox();
+	};
+
+	for (const image of galleryImages) {
+		image.addEventListener("pointerenter", warmLightbox, {
+			once: true,
+			passive: true,
+		});
+		image.addEventListener("touchstart", warmLightbox, {
+			once: true,
+			passive: true,
+		});
+	}
+}
+</script>

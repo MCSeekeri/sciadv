@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { getImage } from "astro:assets";
 import path from "node:path";
 import type { ImageMetadata } from "astro";
 import { url } from "../../utils/url-utils";
@@ -41,25 +41,36 @@ if (isLocal) {
 }
 
 const imageClass = className || "w-6 h-6 object-cover";
-
-const widths = [size, size * 2, size * 4];
+const optimizedAvatar =
+	isLocal && img
+		? await getImage({
+				src: img,
+				width: size * 2,
+				format: "webp",
+			})
+		: undefined;
 ---
-{isLocal && img && (
-	<Picture 
-		src={img} 
-		alt={alt} 
-		formats={['avif', 'webp', 'jpg']} 
-		widths={widths}
-		sizes={`${size}px`}
+{optimizedAvatar && (
+	<img
+		src={optimizedAvatar.src}
+		alt={alt}
 		class={imageClass}
+		width={optimizedAvatar.attributes.width}
+		height={optimizedAvatar.attributes.height}
+		loading="lazy"
+		decoding="async"
+		fetchpriority="low"
 	/>
 )}
 {!isLocal && (
-	<img 
-		src={isPublic ? url(src) : src} 
-		alt={alt} 
+	<img
+		src={isPublic ? url(src) : src}
+		alt={alt}
 		class={imageClass}
 		width={size}
 		height={size}
+		loading="lazy"
+		decoding="async"
+		fetchpriority="low"
 	/>
 )}

@@ -1,15 +1,16 @@
-import type { AstroIntegration } from "@swup/astro";
-
 declare global {
 	interface Window {
-		// type from '@swup/astro' is incorrect
-		swup: AstroIntegration;
-		pagefind: {
+		__gtmLoaded?: boolean;
+		__pagefindLoadPromise?: Promise<unknown>;
+		__searchScriptPromise?: Promise<unknown>;
+		dataLayer?: Array<Record<string, unknown>>;
+		pagefind?: {
 			search: (query: string) => Promise<{
 				results: Array<{
 					data: () => Promise<SearchResult>;
 				}>;
 			}>;
+			options?: (options: Record<string, unknown>) => Promise<void>;
 		};
 	}
 }
@@ -39,3 +40,5 @@ interface SearchResult {
 	raw_url?: string;
 	sub_results?: SearchResult[];
 }
+
+export {};

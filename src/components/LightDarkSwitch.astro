@@ -1,0 +1,189 @@
+---
+import { Icon } from "astro-icon/components";
+import {
+	AUTO_MODE,
+	DARK_MODE,
+	DEFAULT_THEME,
+	LIGHT_MODE,
+} from "../constants/constants";
+import { expressiveCodeConfig } from "../config";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+---
+
+<!-- z-50 make the panel higher than other float panels -->
+<div id="light-dark-switch" class="relative z-50">
+	<button
+		aria-label="Light/Dark Mode"
+		aria-controls="light-dark-panel"
+		aria-expanded="false"
+		aria-haspopup="true"
+		class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90"
+		id="scheme-switch"
+	>
+		<div class="absolute" data-theme-icon={LIGHT_MODE}>
+			<Icon name="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem]" />
+		</div>
+		<div class="absolute opacity-0" data-theme-icon={DARK_MODE}>
+			<Icon name="material-symbols:dark-mode-outline-rounded" class="text-[1.25rem]" />
+		</div>
+		<div class="absolute opacity-0" data-theme-icon={AUTO_MODE}>
+			<Icon
+				name="material-symbols:radio-button-partial-outline"
+				class="text-[1.25rem]"
+			/>
+		</div>
+	</button>
+
+	<div
+		id="light-dark-panel"
+		role="listbox"
+		class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5"
+	>
+		<div class="card-base float-panel p-2">
+			<button
+				role="option"
+				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5"
+				data-theme-mode={LIGHT_MODE}
+			>
+				<Icon name="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem] mr-3" />
+				{i18n(I18nKey.lightMode)}
+			</button>
+			<button
+				role="option"
+				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5"
+				data-theme-mode={DARK_MODE}
+			>
+				<Icon
+					name="material-symbols:dark-mode-outline-rounded"
+					class="text-[1.25rem] mr-3"
+				/>
+				{i18n(I18nKey.darkMode)}
+			</button>
+			<button
+				role="option"
+				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95"
+				data-theme-mode={AUTO_MODE}
+			>
+				<Icon
+					name="material-symbols:radio-button-partial-outline"
+					class="text-[1.25rem] mr-3"
+				/>
+				{i18n(I18nKey.systemMode)}
+			</button>
+		</div>
+	</div>
+</div>
+
+<script
+	is:inline
+	define:vars={{
+		LIGHT_MODE,
+		DARK_MODE,
+		AUTO_MODE,
+		DEFAULT_THEME,
+		expressiveCodeTheme: expressiveCodeConfig.theme,
+	}}
+>
+	const themeModes = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
+	const themeSwitch = document.getElementById("light-dark-switch");
+	const switchButton = document.getElementById("scheme-switch");
+	const themePanel = document.getElementById("light-dark-panel");
+	const themeButtons = Array.from(
+		document.querySelectorAll("[data-theme-mode]"),
+	);
+	const themeIcons = Array.from(document.querySelectorAll("[data-theme-icon]"));
+
+	function getStoredTheme() {
+		return localStorage.getItem("theme") || DEFAULT_THEME;
+	}
+
+	function applyTheme(theme) {
+		switch (theme) {
+			case LIGHT_MODE:
+				document.documentElement.classList.remove("dark");
+				break;
+			case DARK_MODE:
+				document.documentElement.classList.add("dark");
+				break;
+			default:
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+				}
+				break;
+		}
+
+		document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
+	}
+
+	function updateThemeUI(theme) {
+		for (const button of themeButtons) {
+			button.classList.toggle(
+				"current-theme-btn",
+				button.getAttribute("data-theme-mode") === theme,
+			);
+			button.setAttribute(
+				"aria-selected",
+				String(button.getAttribute("data-theme-mode") === theme),
+			);
+		}
+
+		for (const icon of themeIcons) {
+			icon.classList.toggle(
+				"opacity-0",
+				icon.getAttribute("data-theme-icon") !== theme,
+			);
+		}
+	}
+
+	function setTheme(theme) {
+		localStorage.setItem("theme", theme);
+		applyTheme(theme);
+		updateThemeUI(theme);
+	}
+
+	function cycleTheme() {
+		const currentTheme = getStoredTheme();
+		const currentIndex = themeModes.indexOf(currentTheme);
+		const nextTheme = themeModes[(currentIndex + 1) % themeModes.length];
+		setTheme(nextTheme);
+	}
+
+	function setThemePanelOpen(open) {
+		themePanel?.classList.toggle("float-panel-closed", !open);
+		switchButton?.setAttribute("aria-expanded", String(open));
+	}
+
+	const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+	mediaQuery.addEventListener("change", () => {
+		if (getStoredTheme() === AUTO_MODE) {
+			applyTheme(AUTO_MODE);
+		}
+	});
+
+	updateThemeUI(getStoredTheme());
+	switchButton?.addEventListener("click", cycleTheme);
+
+	for (const button of themeButtons) {
+		button.addEventListener("click", () => {
+			const theme = button.getAttribute("data-theme-mode");
+			if (!theme) return;
+			setTheme(theme);
+		});
+	}
+
+	themeSwitch?.addEventListener("mouseenter", () => setThemePanelOpen(true));
+	themeSwitch?.addEventListener("mouseleave", () => setThemePanelOpen(false));
+	switchButton?.addEventListener("focus", () => setThemePanelOpen(true));
+	themePanel?.addEventListener("focusout", (event) => {
+		if (
+			event.relatedTarget instanceof Node &&
+			themeSwitch?.contains(event.relatedTarget)
+		) {
+			return;
+		}
+		setThemePanelOpen(false);
+	});
+</script>

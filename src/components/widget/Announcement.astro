@@ -19,17 +19,69 @@ const htmlContent = md.render(config.content);
 ---
 
 <div class="card-base p-4">
-	<div class="prose prose-sm dark:prose-invert max-w-none
-		prose-headings:text-neutral-900 dark:prose-headings:text-neutral-50
-		prose-p:text-neutral-700 dark:prose-p:text-neutral-300
-		prose-a:text-[var(--primary)] prose-a:no-underline hover:prose-a:underline
-		prose-strong:text-neutral-900 dark:prose-strong:text-neutral-50
-		prose-code:text-[var(--primary)] prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800
-		prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-		prose-blockquote:border-l-[var(--primary)] prose-blockquote:text-neutral-600 dark:prose-blockquote:text-neutral-400
-		prose-ul:text-neutral-700 dark:prose-ul:text-neutral-300
-		prose-ol:text-neutral-700 dark:prose-ol:text-neutral-300
-		prose-li:text-neutral-700 dark:prose-li:text-neutral-300"
-		set:html={htmlContent}
-	/>
+	<div class="announcement-content text-sm text-75" set:html={htmlContent} />
 </div>
+
+<style is:global>
+.announcement-content > :first-child {
+	margin-top: 0;
+}
+
+.announcement-content > :last-child {
+	margin-bottom: 0;
+}
+
+.announcement-content :where(h1, h2, h3, h4, h5, h6, strong) {
+	color: rgb(23 23 23 / 0.9);
+}
+
+.dark .announcement-content :where(h1, h2, h3, h4, h5, h6, strong) {
+	color: rgb(250 250 250);
+}
+
+.announcement-content :where(p, ul, ol, li) {
+	color: rgb(64 64 64);
+}
+
+.dark .announcement-content :where(p, ul, ol, li) {
+	color: rgb(212 212 212);
+}
+
+.announcement-content :where(p, ul, ol, blockquote) {
+	margin: 0.5rem 0;
+}
+
+.announcement-content :where(ul, ol) {
+	padding-left: 1.25rem;
+}
+
+.announcement-content a {
+	color: var(--primary);
+	text-decoration: none;
+}
+
+.announcement-content a:hover {
+	text-decoration: underline;
+}
+
+.announcement-content code {
+	color: var(--primary);
+	background-color: rgb(245 245 245);
+	border-radius: 0.25rem;
+	padding: 0.125rem 0.25rem;
+}
+
+.dark .announcement-content code {
+	background-color: rgb(38 38 38);
+}
+
+.announcement-content blockquote {
+	border-left: 3px solid var(--primary);
+	padding-left: 0.875rem;
+	color: rgb(82 82 82);
+}
+
+.dark .announcement-content blockquote {
+	color: rgb(163 163 163);
+}
+</style>

@@ -2,7 +2,7 @@
 import type { WalineInitOptions, WalineInstance } from "@waline/client";
 import { init } from "@waline/client";
 import { onDestroy, onMount } from "svelte";
-import "@waline/client/style";
+import walineStyleUrl from "@waline/client/style?url";
 
 // Basic Config
 export let serverURL = "";
@@ -52,11 +52,28 @@ export let uploadImage: ((file: File) => Promise<string>) | undefined =
 let walineInstance: WalineInstance | null = null;
 let walineContainer: HTMLDivElement;
 
+function ensureWalineStyles() {
+	const existingLink = document.querySelector<HTMLLinkElement>(
+		`link[data-waline-style][href="${walineStyleUrl}"]`,
+	);
+	if (existingLink) {
+		return;
+	}
+
+	const styleLink = document.createElement("link");
+	styleLink.rel = "stylesheet";
+	styleLink.href = walineStyleUrl;
+	styleLink.dataset.walineStyle = "true";
+	document.head.appendChild(styleLink);
+}
+
 onMount(() => {
 	if (!serverURL) {
 		console.warn("Waline serverURL is not configured");
 		return;
 	}
+
+	ensureWalineStyles();
 
 	const options: WalineInitOptions = {
 		el: walineContainer,
