@@ -2,7 +2,6 @@ import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import swup from "@swup/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
@@ -27,24 +26,10 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://lib.sci-adv.cc",
+	site: "https://lib.sci-adv.org",
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
-		swup({
-			theme: false,
-			animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
-			// the default value `transition-` cause transition delay
-			// when the Tailwind class `transition-all` is used
-			containers: ["main", "#toc"],
-			smoothScrolling: true,
-			cache: true,
-			preload: true,
-			accessibility: true,
-			updateHead: true,
-			updateBodyClass: false,
-			globalInstance: true,
-		}),
 		icon({
 			include: {
 				"preprocess: vitePreprocess(),": ["*"],
@@ -75,7 +60,7 @@ export default defineConfig({
 				borderColor: "none",
 				codeFontSize: "0.875rem",
 				codeFontFamily:
-					"'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+					"ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
 				codeLineHeight: "1.5rem",
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
@@ -156,6 +141,8 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
+			minify: "esbuild",
+			cssMinify: true,
 			rollupOptions: {
 				onwarn(warning, warn) {
 					// temporarily suppress this warning

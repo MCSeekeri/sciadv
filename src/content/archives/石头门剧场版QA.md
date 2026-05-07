@@ -473,8 +473,8 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 ### **科学 ADV 系列相关中文资料网站**|<sub>建设中</sub>
 
-1. [科学 ADV 中文 wiki](https://sci-adv.cc/wiki/首页)
-2. [科学 ADV 图书馆](https://lib.sci-adv.cc)
+1. [科学 ADV 中文 wiki](https://sci-adv.org/wiki/首页)
+2. [科学 ADV 图书馆](https://lib.sci-adv.org)
 
 ### **科学 ADV 交流频道**
 

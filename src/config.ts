@@ -40,7 +40,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "科 A 资源站",
-			url: "https://drive.sci-adv.cc",
+			url: "https://drive.sci-adv.org",
 			external: true,
 		},
 		{
@@ -83,7 +83,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 
 export const walineConfig: WalineConfig = {
 	enable: true,
-	serverURL: "https://comments.sci-adv.cc",
+	serverURL: "https://comments.sci-adv.org",
 	lang: "zh-CN",
 	dark: "html.dark",
 	meta: ["nick", "mail", "link"],
