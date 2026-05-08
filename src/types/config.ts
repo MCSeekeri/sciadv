@@ -75,9 +75,15 @@ export type LicenseConfig = {
 	enable: boolean;
 };
 
+export type AnalyticsConfig = {
+	gtmId?: string;
+	loadStrategy?: "off" | "idle";
+};
+
 export type WalineConfig = {
 	enable: boolean;
 	serverURL: string;
+	loadStrategy?: "click" | "idle";
 	path?: string;
 	lang?: string;
 	locale?: WalineInitOptions["locale"];

@@ -45,18 +45,18 @@ const mainPanelTop = siteConfig.banner.enable
 
 <!-- Navbar -->
 <slot slot="head" name="head"></slot>
-<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto" class:list={[""]}>
+<div id="top-row" transition:persist class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto" class:list={[""]}>
     <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all">
         <Navbar></Navbar>
     </div>
 </div>
 
 <!-- Banner -->
-{siteConfig.banner.enable && <div id="banner-wrapper" class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${BANNER_HEIGHT_EXTEND}vh`}>
+{siteConfig.banner.enable && <div id="banner-wrapper" transition:persist class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${BANNER_HEIGHT_EXTEND}vh`}>
     <ImageWrapper
         id="banner"
         alt="Banner of the blog"
-        class:list={["object-cover h-full transition duration-700"]}
+        class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
         src={siteConfig.banner.src}
         position={siteConfig.banner.position}
     />
@@ -70,9 +70,9 @@ const mainPanelTop = siteConfig.banner.enable
     mx-auto gap-4 px-0 md:px-4"
         >
             <!-- Banner image credit -->
-            {hasBannerCredit && <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener"
+            {hasBannerCredit && <a href={siteConfig.banner.credit.url} id="banner-credit" transition:persist target="_blank" rel="noopener"
                                    class:list={["group transition-all absolute flex justify-center items-center rounded-full " +
-                                   "px-3 right-4 -top-[3.25rem] bg-black/60 hover:bg-black/70 h-9", {"hover:pr-9 active:bg-black/80": hasBannerLink}]}
+                                   "px-3 right-4 -top-[3.25rem] bg-black/60 hover:bg-black/70 h-9 onload-animation", {"hover:pr-9 active:bg-black/80": hasBannerLink}]}
             >
                 <Icon class="text-white/75 text-[1.25rem] mr-1" name="material-symbols:copyright-outline-rounded" ></Icon>
                 <div class="text-white/75 text-xs">{siteConfig.banner.credit.text}</div>
@@ -81,21 +81,21 @@ const mainPanelTop = siteConfig.banner.enable
                       name="fa6-solid:arrow-up-right-from-square">
                 </Icon>
             </a>}
+            <div transition:persist class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem]">
+                <SideBar headings={headings}></SideBar>
+            </div>
 
-
-            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem]" headings={headings}></SideBar>
-
-            <main class="col-span-2 lg:col-span-1 overflow-hidden">
-                <div id="content-wrapper">
+            <main transition:name="page-content" transition:animate="fade" class="col-span-2 lg:col-span-1 overflow-hidden">
+                <div id="content-wrapper" class="onload-animation">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <slot></slot>
-                    <div class="footer col-span-2 hidden lg:block">
+                    <div class="footer col-span-2 hidden lg:block onload-animation">
                         <Footer></Footer>
                     </div>
                 </div>
             </main>
 
-            <div class="footer col-span-2 block lg:hidden">
+            <div class="footer col-span-2 block lg:hidden onload-animation">
                 <Footer></Footer>
             </div>
         </div>
@@ -108,7 +108,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="absolute w-full z-0 hidden 2xl:block">
     <div class="relative max-w-[var(--page-width)] mx-auto">
         <!-- TOC component -->
-        {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
+        {siteConfig.toc.enable && <div id="toc-wrapper" transition:name="toc-panel" transition:animate="fade" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
             {"toc-hide": siteConfig.banner.enable}]}
         >
             <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar">
@@ -120,7 +120,7 @@ const mainPanelTop = siteConfig.banner.enable
             </div>
         </div>}
 
-        <!-- #toc needs to exist for Swup to work normally -->
+        <!-- Keep a stable TOC anchor in the DOM even when the panel is disabled -->
         {!siteConfig.toc.enable && <div id="toc"></div>}
     </div>
 </div>

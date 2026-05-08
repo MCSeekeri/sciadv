@@ -7,6 +7,8 @@
     "start": "astro preview",
     "check": "astro check",
     "build": "astro build && pagefind --site dist",
+    "mirror:assets": "node scripts/mirror-external-assets.mjs",
+    "images:reorganize": "node scripts/reorganize-image-paths.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",

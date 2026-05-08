@@ -1,9 +1,16 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import roboto400Woff2 from "@fontsource/roboto/files/roboto-latin-400-normal.woff2?url";
 import roboto700Woff2 from "@fontsource/roboto/files/roboto-latin-700-normal.woff2?url";
 import jetbrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
-import { expressiveCodeConfig, profileConfig, siteConfig } from "@/config";
+import "../styles/transition.css";
+import {
+	analyticsConfig,
+	expressiveCodeConfig,
+	profileConfig,
+	siteConfig,
+} from "@/config";
 import {
 	AUTO_MODE,
 	BANNER_HEIGHT,
@@ -55,6 +62,9 @@ const bannerOffsetByPosition = {
 };
 const bannerOffset =
 	bannerOffsetByPosition[siteConfig.banner.position || "center"];
+const gtmId = analyticsConfig.gtmId?.trim();
+const shouldLoadGtm =
+	import.meta.env.PROD && analyticsConfig.loadStrategy === "idle" && !!gtmId;
 ---
 
 <!DOCTYPE html>
@@ -100,33 +110,38 @@ const bannerOffset =
 				expressiveCodeTheme: expressiveCodeConfig.theme,
 			}}
 		>
-			const theme = localStorage.getItem("theme") || DEFAULT_THEME;
-			switch (theme) {
-				case LIGHT_MODE:
-					document.documentElement.classList.remove("dark");
-					break;
-				case DARK_MODE:
-					document.documentElement.classList.add("dark");
-					break;
-				case AUTO_MODE:
-					if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-						document.documentElement.classList.add("dark");
-					} else {
+			function applyRootAppearance() {
+				const theme = localStorage.getItem("theme") || DEFAULT_THEME;
+				switch (theme) {
+					case LIGHT_MODE:
 						document.documentElement.classList.remove("dark");
-					}
-					break;
+						break;
+					case DARK_MODE:
+						document.documentElement.classList.add("dark");
+						break;
+					case AUTO_MODE:
+						if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+							document.documentElement.classList.add("dark");
+						} else {
+							document.documentElement.classList.remove("dark");
+						}
+						break;
+				}
+
+				const hue = localStorage.getItem("hue") || configHue;
+				document.documentElement.style.setProperty("--hue", hue);
+				document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
+
+				let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+				offset -= offset % 4;
+				document.documentElement.style.setProperty(
+					"--banner-height-extend",
+					`${offset}px`,
+				);
 			}
 
-			const hue = localStorage.getItem("hue") || configHue;
-			document.documentElement.style.setProperty("--hue", hue);
-			document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
-
-			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
-			offset -= offset % 4;
-			document.documentElement.style.setProperty(
-				"--banner-height-extend",
-				`${offset}px`,
-			);
+			applyRootAppearance();
+			document.addEventListener("astro:after-swap", applyRootAppearance);
 		</script>
 		<style
 			define:vars={{
@@ -144,13 +159,39 @@ const bannerOffset =
 			href={`${Astro.site}rss.xml`}
 		/>
 
-		{import.meta.env.PROD && (
-			<script is:inline>
-				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-				})(window,document,'script','dataLayer','GTM-W5FWDNPC');
+		{shouldLoadGtm && (
+			<script is:inline define:vars={{ gtmId }}>
+				const injectGtm = () => {
+					if (!gtmId || document.querySelector(`script[data-gtm-id="${gtmId}"]`)) {
+						return;
+					}
+
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push({
+						"gtm.start": Date.now(),
+						event: "gtm.js",
+					});
+
+					const script = document.createElement("script");
+					script.async = true;
+					script.dataset.gtmId = gtmId;
+					script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
+					document.head.appendChild(script);
+				};
+
+				const scheduleGtm = () => {
+					if ("requestIdleCallback" in window) {
+						window.requestIdleCallback(injectGtm, { timeout: 8000 });
+						return;
+					}
+					window.setTimeout(injectGtm, 4000);
+				};
+
+				if (document.readyState === "complete") {
+					scheduleGtm();
+				} else {
+					window.addEventListener("load", scheduleGtm, { once: true });
+				}
 			</script>
 		)}
 		<script
@@ -231,20 +272,12 @@ const bannerOffset =
 	</head>
 	<body
 		class="min-h-screen transition"
-		class:list={[{ "lg:is-home": isHomePage, "enable-banner": enableBanner }]}
+		class:list={[{ "is-home": isHomePage, "enable-banner": enableBanner }]}
 	>
-		{import.meta.env.PROD && (
-			<noscript
-				><iframe
-					src="https://www.googletagmanager.com/ns.html?id=GTM-W5FWDNPC"
-					height="0"
-					width="0"
-					style="display:none;visibility:hidden"
-				></iframe
-			></noscript>
-		)}
+		<ClientRouter />
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
+		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
 </html>
 
@@ -349,6 +382,12 @@ const bannerOffset =
 		}
 	});
 
+	function closeFloatPanels() {
+		for (const { panelId } of panelConfigs) {
+			document.getElementById(panelId)?.classList.add("float-panel-closed");
+		}
+	}
+
 	function updateBannerOffset() {
 		let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
 		offset -= offset % 4;
@@ -360,10 +399,24 @@ const bannerOffset =
 
 	function getBannerHeightPx() {
 		const bannerHeight =
-			document.body.classList.contains("lg:is-home") && window.innerWidth >= 1024
+			document.body.classList.contains("is-home") && window.innerWidth >= 1024
 				? BANNER_HEIGHT_HOME
 				: BANNER_HEIGHT;
 		return window.innerHeight * (bannerHeight / 100);
+	}
+
+	function setHomeState(pathname) {
+		const nextPathname = new URL(pathname, window.location.origin).pathname;
+		document.body.classList.toggle("is-home", nextPathname === "/");
+	}
+
+	function showBanner() {
+		if (!bannerEnabled) {
+			return;
+		}
+
+		const banner = document.getElementById("banner");
+		banner?.classList.remove("opacity-0", "scale-105");
 	}
 
 	function updateScrollState() {
@@ -397,7 +450,42 @@ const bannerOffset =
 		});
 	}
 
+	function markTocTransitionState(isNavigating) {
+		const toc = document.getElementById("toc-wrapper");
+		if (!toc) {
+			return;
+		}
+		toc.classList.toggle("toc-not-ready", isNavigating);
+	}
+
+	function setPageHeightExtension(visible) {
+		const heightExtend = document.getElementById("page-height-extend");
+		if (!heightExtend) {
+			return;
+		}
+		heightExtend.classList.toggle("hidden", !visible);
+	}
+
+	function preparePageTransition(pathname) {
+		document.documentElement.style.setProperty("--content-delay", "0ms");
+		closeFloatPanels();
+		setHomeState(pathname);
+		markTocTransitionState(true);
+		setPageHeightExtension(true);
+		scheduleScrollUpdate();
+	}
+
+	function completePageTransition() {
+		showBanner();
+		scheduleScrollUpdate();
+		window.setTimeout(() => {
+			markTocTransitionState(false);
+			setPageHeightExtension(false);
+		}, 200);
+	}
+
 	updateBannerOffset();
+	showBanner();
 	updateScrollState();
 
 	window.addEventListener("scroll", scheduleScrollUpdate, { passive: true });
@@ -409,4 +497,13 @@ const bannerOffset =
 		},
 		{ passive: true },
 	);
+
+	document.addEventListener("astro:before-preparation", (event) => {
+		preparePageTransition(event.to?.href || window.location.href);
+	});
+
+	document.addEventListener("astro:page-load", () => {
+		setHomeState(window.location.href);
+		completePageTransition();
+	});
 </script>

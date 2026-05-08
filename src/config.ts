@@ -1,4 +1,5 @@
 import type {
+	AnalyticsConfig,
 	AnnouncementConfig,
 	ExpressiveCodeConfig,
 	LicenseConfig,
@@ -77,6 +78,11 @@ export const licenseConfig: LicenseConfig = {
 	enable: true,
 };
 
+export const analyticsConfig: AnalyticsConfig = {
+	gtmId: "GTM-W5FWDNPC",
+	loadStrategy: "idle",
+};
+
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	theme: "github-dark",
 };
@@ -84,6 +90,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 export const walineConfig: WalineConfig = {
 	enable: true,
 	serverURL: "https://comments.sci-adv.org",
+	loadStrategy: "click",
 	lang: "zh-CN",
 	dark: "html.dark",
 	meta: ["nick", "mail", "link"],

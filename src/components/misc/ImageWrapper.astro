@@ -53,9 +53,14 @@ if (isLocal) {
 	const files = import.meta.glob<ImageMetadata>("../../**", {
 		import: "default",
 	});
-	const normalizedPath = path
-		.normalize(path.join("../../", basePath, src))
-		.replace(/\\/g, "/");
+	const normalizedSrcPath = src.replace(/\\/g, "/");
+	const normalizedPath = normalizedSrcPath.includes("assets/")
+		? path
+				.normalize(path.join("../../", normalizedSrcPath.replace(/^(\.\.\/)+/, "")))
+				.replace(/\\/g, "/")
+		: path
+				.normalize(path.join("../../", basePath, src))
+				.replace(/\\/g, "/");
 	const file = files[normalizedPath];
 	if (!file) {
 		console.error(

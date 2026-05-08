@@ -4,6 +4,7 @@ import commentScriptUrl from "../scripts/comment.ts?url";
 
 interface Props {
 	serverURL: string;
+	loadStrategy?: "click" | "idle";
 	path?: string;
 	lang?: string;
 	locale?: WalineInitOptions["locale"];
@@ -28,6 +29,7 @@ interface Props {
 
 const {
 	serverURL,
+	loadStrategy = "click",
 	path = "",
 	lang = "zh-CN",
 	locale,
@@ -78,9 +80,22 @@ const walineOptions = JSON.stringify({
 <div
 	class="waline-wrapper card-base px-6 md:px-9 pt-6 pb-4 rounded-[var(--radius-large)] onload-animation"
 	data-waline-root
+	data-load-strategy={loadStrategy}
 	data-waline-options={walineOptions}
 >
-	<div data-waline-container></div>
+	<div class="mb-4" data-waline-gate>
+		<button
+			type="button"
+			class="btn-regular rounded-xl h-11 px-5 text-sm font-bold active:scale-95"
+			data-waline-trigger
+		>
+			加载评论
+		</button>
+		<p class="transition text-50 text-sm mt-3">
+			评论仅在手动加载后请求外部服务，以减少首屏和中国大陆访问抖动。
+		</p>
+	</div>
+	<div data-waline-container class="hidden"></div>
 </div>
 
 <style>

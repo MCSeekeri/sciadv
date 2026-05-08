@@ -105,75 +105,80 @@ const emptyStateText = "No posts match the current filters.";
 </div>
 
 <script>
-	const archiveGroups = Array.from(
-		document.querySelectorAll<HTMLElement>("[data-archive-group]"),
-	);
-	const emptyState = document.getElementById("archive-empty-state");
-	const params = new URLSearchParams(window.location.search);
-	const selectedTags = params.getAll("tag");
-	const selectedCategories = params.getAll("categories");
-	const uncategorizedOnly = params.has("uncategorized");
-
-	function parseList(value: string | null): string[] {
-		try {
-			return JSON.parse(value || "[]");
-		} catch {
-			return [];
-		}
-	}
-
-	function matchesFilters(post: HTMLElement) {
-		const tags = parseList(post.getAttribute("data-tags"));
-		const categories = parseList(post.getAttribute("data-categories"));
-
-		if (
-			selectedTags.length > 0 &&
-			!tags.some((tag: string) => selectedTags.includes(tag))
-		) {
-			return false;
-		}
-
-		if (
-			selectedCategories.length > 0 &&
-			!categories.some((category: string) =>
-				selectedCategories.includes(category),
-			)
-		) {
-			return false;
-		}
-
-		if (uncategorizedOnly && categories.length > 0) {
-			return false;
-		}
-
-		return true;
-	}
-
-	let visiblePostCount = 0;
-
-	for (const group of archiveGroups) {
-		const posts = Array.from(
-			group.querySelectorAll<HTMLElement>("[data-archive-post]"),
+	function updateArchivePanel() {
+		const archiveGroups = Array.from(
+			document.querySelectorAll<HTMLElement>("[data-archive-group]"),
 		);
-		let visibleCount = 0;
+		const emptyState = document.getElementById("archive-empty-state");
+		const params = new URLSearchParams(window.location.search);
+		const selectedTags = params.getAll("tag");
+		const selectedCategories = params.getAll("categories");
+		const uncategorizedOnly = params.has("uncategorized");
 
-		for (const post of posts) {
-			const visible = matchesFilters(post);
-			post.hidden = !visible;
-			if (visible) {
-				visibleCount += 1;
-				visiblePostCount += 1;
+		function parseList(value: string | null): string[] {
+			try {
+				return JSON.parse(value || "[]");
+			} catch {
+				return [];
 			}
 		}
 
-		const countElement = group.querySelector("[data-archive-count]");
-		if (countElement) {
-			countElement.textContent = String(visibleCount);
+		function matchesFilters(post: HTMLElement) {
+			const tags = parseList(post.getAttribute("data-tags"));
+			const categories = parseList(post.getAttribute("data-categories"));
+
+			if (
+				selectedTags.length > 0 &&
+				!tags.some((tag: string) => selectedTags.includes(tag))
+			) {
+				return false;
+			}
+
+			if (
+				selectedCategories.length > 0 &&
+				!categories.some((category: string) =>
+					selectedCategories.includes(category),
+				)
+			) {
+				return false;
+			}
+
+			if (uncategorizedOnly && categories.length > 0) {
+				return false;
+			}
+
+			return true;
 		}
-		group.hidden = visibleCount === 0;
+
+		let visiblePostCount = 0;
+
+		for (const group of archiveGroups) {
+			const posts = Array.from(
+				group.querySelectorAll<HTMLElement>("[data-archive-post]"),
+			);
+			let visibleCount = 0;
+
+			for (const post of posts) {
+				const visible = matchesFilters(post);
+				post.hidden = !visible;
+				if (visible) {
+					visibleCount += 1;
+					visiblePostCount += 1;
+				}
+			}
+
+			const countElement = group.querySelector("[data-archive-count]");
+			if (countElement) {
+				countElement.textContent = String(visibleCount);
+			}
+			group.hidden = visibleCount === 0;
+		}
+
+		if (emptyState) {
+			emptyState.classList.toggle("hidden", visiblePostCount > 0);
+		}
 	}
 
-	if (emptyState) {
-		emptyState.classList.toggle("hidden", visiblePostCount > 0);
-	}
+	updateArchivePanel();
+	document.addEventListener("astro:page-load", updateArchivePanel);
 </script>

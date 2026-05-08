@@ -1,13 +1,29 @@
-import { init } from "@waline/client";
-import walineStyleUrl from "@waline/client/style?url";
-
 type WalineClientOptions = Record<string, unknown> & {
 	serverURL?: string;
 };
 
-const initializedRoots = new WeakSet<HTMLElement>();
+const initializedRoots: WeakSet<HTMLElement> = new WeakSet<HTMLElement>();
+let walineModulePromise: Promise<typeof import("@waline/client")> | undefined;
+let walineStyleUrlPromise: Promise<string> | undefined;
 
-function ensureWalineStyles() {
+function loadWalineModule(): Promise<typeof import("@waline/client")> {
+	if (!walineModulePromise) {
+		walineModulePromise = import("@waline/client");
+	}
+	return walineModulePromise;
+}
+
+function loadWalineStyleUrl(): Promise<string> {
+	if (!walineStyleUrlPromise) {
+		walineStyleUrlPromise = import("@waline/client/style?url").then(
+			(module) => module.default,
+		);
+	}
+	return walineStyleUrlPromise;
+}
+
+async function ensureWalineStyles(): Promise<void> {
+	const walineStyleUrl = await loadWalineStyleUrl();
 	const existingLink = document.querySelector<HTMLLinkElement>(
 		`link[data-waline-style][href="${walineStyleUrl}"]`,
 	);
@@ -22,11 +38,12 @@ function ensureWalineStyles() {
 	document.head.appendChild(styleLink);
 }
 
-function initWaline(root: Element) {
+async function initWaline(root: Element): Promise<void> {
 	if (!(root instanceof HTMLElement) || initializedRoots.has(root)) {
 		return;
 	}
 
+	const gate = root.querySelector<HTMLElement>("[data-waline-gate]");
 	const container = root.querySelector("[data-waline-container]");
 	if (!(container instanceof HTMLElement)) {
 		return;
@@ -44,7 +61,12 @@ function initWaline(root: Element) {
 	}
 	const { serverURL, ...restOptions } = options;
 
-	ensureWalineStyles();
+	const [{ init }] = await Promise.all([loadWalineModule(), ensureWalineStyles()]);
+	container.classList.remove("hidden");
+	if (gate instanceof HTMLElement) {
+		gate.classList.add("hidden");
+	}
+
 	init({
 		el: container,
 		serverURL,
@@ -53,13 +75,26 @@ function initWaline(root: Element) {
 	initializedRoots.add(root);
 }
 
-function observeWaline(root: Element) {
+function observeWaline(root: Element): void {
 	if (!(root instanceof HTMLElement) || initializedRoots.has(root)) {
 		return;
 	}
 
+	const loadStrategy = root.dataset.loadStrategy ?? "click";
+	const trigger = root.querySelector<HTMLButtonElement>("[data-waline-trigger]");
+	if (loadStrategy === "click") {
+		trigger?.addEventListener(
+			"click",
+			() => {
+				void initWaline(root);
+			},
+			{ once: true },
+		);
+		return;
+	}
+
 	if (!("IntersectionObserver" in window)) {
-		initWaline(root);
+		void initWaline(root);
 		return;
 	}
 
@@ -70,7 +105,7 @@ function observeWaline(root: Element) {
 					continue;
 				}
 				observer.disconnect();
-				initWaline(root);
+				void initWaline(root);
 				break;
 			}
 		},

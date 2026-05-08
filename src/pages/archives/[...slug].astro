@@ -152,6 +152,7 @@ const jsonLd = {
     {walineConfig.enable && walineConfig.serverURL && (
         <Comment 
             serverURL={walineConfig.serverURL}
+            loadStrategy={walineConfig.loadStrategy}
             path={walineConfig.path || Astro.url.pathname}
             lang={walineConfig.lang || entry.data.lang || siteConfig.lang}
             locale={walineConfig.locale}
@@ -178,13 +179,17 @@ const jsonLd = {
 </MainGridLayout>
 
 <script>
-const galleryImages = Array.from(
-	document.querySelectorAll(".custom-md img, #post-cover img"),
-);
-const postContainer = document.getElementById("post-container");
-const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
+function setupPostLightbox() {
+	const galleryImages = Array.from(
+		document.querySelectorAll(".custom-md img, #post-cover img"),
+	);
+	const postContainer = document.getElementById("post-container");
+	const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
 
-if (galleryImages.length > 0 && photoswipeCssUrl) {
+	if (galleryImages.length === 0 || !photoswipeCssUrl) {
+		return;
+	}
+
 	let lightboxInitialized = false;
 
 	const ensurePhotoswipeStyles = () => {
@@ -255,4 +260,7 @@ if (galleryImages.length > 0 && photoswipeCssUrl) {
 		});
 	}
 }
+
+setupPostLightbox();
+document.addEventListener("astro:page-load", setupPostLightbox);
 </script>

@@ -1,6 +1,70 @@
 @reference "tailwindcss";
 
 .onload-animation {
-	opacity: 1;
-	animation: none;
+	opacity: 0;
+	animation: 300ms fade-in-up;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-up {
+	0% {
+		transform: translateY(2rem);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+#navbar {
+	animation-delay: 0ms;
+}
+
+#sidebar {
+	animation-delay: 100ms;
+}
+
+#content-wrapper {
+	animation-delay: var(--content-delay);
+}
+
+.footer {
+	animation-delay: 250ms;
+}
+
+#banner-credit {
+	animation-delay: 400ms;
+}
+
+#post-container :nth-child(1) {
+	animation-delay: calc(var(--content-delay) + 0ms);
+}
+
+#post-container :nth-child(2) {
+	animation-delay: calc(var(--content-delay) + 50ms);
+}
+
+#post-container :nth-child(3) {
+	animation-delay: calc(var(--content-delay) + 100ms);
+}
+
+#post-container :nth-child(4) {
+	animation-delay: calc(var(--content-delay) + 175ms);
+}
+
+#post-container :nth-child(5) {
+	animation-delay: calc(var(--content-delay) + 250ms);
+}
+
+#post-container :nth-child(6) {
+	animation-delay: calc(var(--content-delay) + 325ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.onload-animation {
+		opacity: 1;
+		animation: none;
+	}
 }
