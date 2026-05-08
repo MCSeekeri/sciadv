@@ -3,7 +3,17 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
-// // Retrieve posts and sort them by publication date
+export type AdjacentPost = {
+	slug: string;
+	title: string;
+};
+
+export type SortedPost = CollectionEntry<"archives"> & {
+	slug: string;
+	prev?: AdjacentPost;
+	next?: AdjacentPost;
+};
+
 async function getRawSortedPosts() {
 	const allBlogPosts = await getCollection("archives", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
@@ -17,23 +27,31 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
-export function getEntrySlug(entry: { id: string; slug?: string }) {
+export function getEntrySlug(entry: { id: string; slug?: string }): string {
 	return entry.slug || entry.id.replace(/\.(md|mdx)$/i, "");
 }
 
-export async function getSortedPosts(): Promise<CollectionEntry<"archives">[]> {
+export async function getSortedPosts(): Promise<SortedPost[]> {
 	const sorted = await getRawSortedPosts();
 
-	for (let i = 1; i < sorted.length; i++) {
-		sorted[i].data.nextSlug = getEntrySlug(sorted[i - 1]);
-		sorted[i].data.nextTitle = sorted[i - 1].data.title;
-	}
-	for (let i = 0; i < sorted.length - 1; i++) {
-		sorted[i].data.prevSlug = getEntrySlug(sorted[i + 1]);
-		sorted[i].data.prevTitle = sorted[i + 1].data.title;
-	}
-
-	return sorted;
+	return sorted.map((entry, index) => ({
+		...entry,
+		slug: getEntrySlug(entry),
+		prev:
+			index < sorted.length - 1
+				? {
+						slug: getEntrySlug(sorted[index + 1]),
+						title: sorted[index + 1].data.title,
+					}
+				: undefined,
+		next:
+			index > 0
+				? {
+						slug: getEntrySlug(sorted[index - 1]),
+						title: sorted[index - 1].data.title,
+					}
+				: undefined,
+	}));
 }
 
 export type PostForList = {

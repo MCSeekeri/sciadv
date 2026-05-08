@@ -1,20 +1,20 @@
 ---
 import path from "node:path";
-import Comment from "@components/Comment.svelte";
+import Comment from "@components/Comment.astro";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getEntrySlug, getSortedPosts } from "@utils/content-utils";
+import { getSortedPosts } from "@utils/content-utils";
+import { resolveAuthor } from "@utils/author-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
-import { render, type CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 import { licenseConfig, walineConfig } from "src/config";
-import { authors } from "../../authors";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
-import { profileConfig, siteConfig } from "../../config";
+import { siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 import katexCssUrl from "katex/dist/katex.css?url";
 import photoswipeCssUrl from "photoswipe/style.css?url";
@@ -22,19 +22,17 @@ import photoswipeCssUrl from "photoswipe/style.css?url";
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 	return blogEntries.map((entry) => ({
-		params: { slug: getEntrySlug(entry) },
+		params: { slug: entry.slug },
 		props: { entry },
 	}));
 }
 
-const { entry } = Astro.props as { entry: CollectionEntry<"archives"> };
+const { entry } = Astro.props as {
+	entry: Awaited<ReturnType<typeof getSortedPosts>>[number];
+};
 const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 
-const authorId = entry.data.author;
-const author =
-	authorId && authors[authorId]
-		? authors[authorId]
-		: { name: profileConfig.name, url: Astro.site?.toString() || "" };
+const author = resolveAuthor(entry.data.author, Astro.site?.toString() || "");
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -124,27 +122,27 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={getEntrySlug(entry)} pubDate={entry.data.date} authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
-        <a href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.nextSlug}]}>
-            {entry.data.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
+        <a href={entry.next ? getPostUrlBySlug(entry.next.slug) : "#"}
+           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.next}]}>
+            {entry.next && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
                 <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.data.nextTitle}
+                    {entry.next.title}
                 </div>
             </div>}
         </a>
 
-        <a href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.prevSlug}]}>
-            {entry.data.prevSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
+        <a href={entry.prev ? getPostUrlBySlug(entry.prev.slug) : "#"}
+           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.prev}]}>
+            {entry.prev && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.data.prevTitle}
+                    {entry.prev.title}
                 </div>
                 <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
             </div>}
@@ -153,7 +151,6 @@ const jsonLd = {
 
     {walineConfig.enable && walineConfig.serverURL && (
         <Comment 
-            client:visible
             serverURL={walineConfig.serverURL}
             path={walineConfig.path || Astro.url.pathname}
             lang={walineConfig.lang || entry.data.lang || siteConfig.lang}
@@ -166,8 +163,6 @@ const jsonLd = {
             wordLimit={walineConfig.wordLimit}
             pageSize={walineConfig.pageSize}
             imageUploader={walineConfig.imageUploader}
-            highlighter={walineConfig.highlighter}
-            texRenderer={walineConfig.texRenderer}
             search={walineConfig.search}
             recaptchaV3Key={walineConfig.recaptchaV3Key}
             turnstileKey={walineConfig.turnstileKey}
@@ -177,7 +172,6 @@ const jsonLd = {
             avatar={walineConfig.avatar}
             avatarCDN={walineConfig.avatarCDN}
             avatarForce={walineConfig.avatarForce}
-            uploadImage={walineConfig.uploadImage}
         />
     )}
 

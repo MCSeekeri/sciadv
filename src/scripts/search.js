@@ -60,7 +60,9 @@ function initSearch() {
 		}
 
 		if (!window.__pagefindLoadPromise) {
-			window.__pagefindLoadPromise = import(pagefindScriptUrl)
+			// Pagefind is generated into /pagefind/ at build time, so this URL is
+			// intentionally resolved at runtime instead of through Vite's module graph.
+			window.__pagefindLoadPromise = import(/* @vite-ignore */ pagefindScriptUrl)
 				.then(async (pagefind) => {
 					if (typeof pagefind.options === "function") {
 						await pagefind.options({ excerptLength: 20 });

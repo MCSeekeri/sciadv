@@ -1,6 +1,5 @@
 declare global {
 	interface Window {
-		__gtmLoaded?: boolean;
 		__pagefindLoadPromise?: Promise<unknown>;
 		__searchScriptPromise?: Promise<unknown>;
 		dataLayer?: Array<Record<string, unknown>>;

@@ -27,7 +27,7 @@ if (isLocal) {
 	const files = import.meta.glob<ImageMetadata>("../../**", {
 		import: "default",
 	});
-	let normalizedPath = path
+	const normalizedPath = path
 		.normalize(path.join("../../", src))
 		.replace(/\\/g, "/");
 	const file = files[normalizedPath];
@@ -61,6 +61,13 @@ const optimizedAvatar =
 		decoding="async"
 		fetchpriority="low"
 	/>
+)}
+{isLocal && !optimizedAvatar && (
+	<div
+		aria-hidden="true"
+		class={imageClass}
+		title={`Missing avatar: ${src}`}
+	></div>
 )}
 {!isLocal && (
 	<img

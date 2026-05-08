@@ -17,7 +17,7 @@ import { i18n } from "../i18n/translation";
 		aria-label="Light/Dark Mode"
 		aria-controls="light-dark-panel"
 		aria-expanded="false"
-		aria-haspopup="true"
+		aria-haspopup="menu"
 		class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90"
 		id="scheme-switch"
 	>
@@ -37,12 +37,13 @@ import { i18n } from "../i18n/translation";
 
 	<div
 		id="light-dark-panel"
-		role="listbox"
+		role="menu"
+		aria-label={i18n(I18nKey.systemMode)}
 		class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5"
 	>
 		<div class="card-base float-panel p-2">
 			<button
-				role="option"
+				role="menuitemradio"
 				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5"
 				data-theme-mode={LIGHT_MODE}
 			>
@@ -50,7 +51,7 @@ import { i18n } from "../i18n/translation";
 				{i18n(I18nKey.lightMode)}
 			</button>
 			<button
-				role="option"
+				role="menuitemradio"
 				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5"
 				data-theme-mode={DARK_MODE}
 			>
@@ -61,7 +62,7 @@ import { i18n } from "../i18n/translation";
 				{i18n(I18nKey.darkMode)}
 			</button>
 			<button
-				role="option"
+				role="menuitemradio"
 				class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95"
 				data-theme-mode={AUTO_MODE}
 			>
@@ -120,14 +121,15 @@ import { i18n } from "../i18n/translation";
 
 	function updateThemeUI(theme) {
 		for (const button of themeButtons) {
+			const isCurrentTheme =
+				button.getAttribute("data-theme-mode") === theme;
+
 			button.classList.toggle(
 				"current-theme-btn",
-				button.getAttribute("data-theme-mode") === theme,
+				isCurrentTheme,
 			);
-			button.setAttribute(
-				"aria-selected",
-				String(button.getAttribute("data-theme-mode") === theme),
-			);
+			button.setAttribute("aria-checked", String(isCurrentTheme));
+			button.removeAttribute("aria-selected");
 		}
 
 		for (const icon of themeIcons) {

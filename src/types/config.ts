@@ -35,14 +35,7 @@ export type SiteConfig = {
 		enable: boolean;
 		depth: 1 | 2 | 3;
 	};
-
 	favicon: string;
-};
-
-export type Favicon = {
-	src: string;
-	theme?: "light" | "dark";
-	sizes?: string;
 };
 
 export enum LinkPreset {
@@ -90,52 +83,27 @@ export type WalineConfig = {
 	locale?: WalineInitOptions["locale"];
 	emoji?: WalineInitOptions["emoji"];
 	dark?: string;
-
 	meta?: ("nick" | "mail" | "link")[];
 	requiredMeta?: ("nick" | "mail")[];
 	login?: "enable" | "disable" | "force";
 	wordLimit?: number | [number, number];
 	pageSize?: number;
-
-	imageUploader?: boolean | ((file: File) => Promise<string>);
-	highlighter?: (code: string, lang: string) => string;
-	texRenderer?: (blockMode: boolean, tex: string) => string;
-
+	imageUploader?: boolean;
 	search?: WalineInitOptions["search"];
-
 	recaptchaV3Key?: string;
 	turnstileKey?: string;
 	reaction?: boolean | string[];
-
 	noCopyright?: boolean;
 	commentSorting?: "latest" | "oldest" | "hottest";
-
 	avatar?: string;
 	avatarCDN?: string;
 	avatarForce?: boolean;
-	uploadImage?: (file: File) => Promise<string>;
 };
 
 export type LIGHT_DARK_MODE =
 	| typeof LIGHT_MODE
 	| typeof DARK_MODE
 	| typeof AUTO_MODE;
-
-export type BlogPostData = {
-	body: string;
-	title: string;
-	date: Date;
-	description: string;
-	tags: string[];
-	draft?: boolean;
-	image?: string;
-	categories: string[];
-	references?: { title: string; url: string }[];
-	prevTitle?: string;
-	prevSlug?: string;
-	nextTitle?: string;
-	nextSlug?: string;
-};
 
 export type ExpressiveCodeConfig = {
 	theme: string;

@@ -3,10 +3,6 @@ import ConfigCarrier from "@components/ConfigCarrier.astro";
 import roboto400Woff2 from "@fontsource/roboto/files/roboto-latin-400-normal.woff2?url";
 import roboto700Woff2 from "@fontsource/roboto/files/roboto-latin-700-normal.woff2?url";
 import jetbrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
-import mainCssUrl from "../styles/main.css?url";
-import markdownCssUrl from "../styles/markdown.css?url";
-import markdownExtendCssUrl from "../styles/markdown-extend.styl?url";
-import variablesCssUrl from "../styles/variables.styl?url";
 import { expressiveCodeConfig, profileConfig, siteConfig } from "@/config";
 import {
 	AUTO_MODE,
@@ -87,10 +83,6 @@ const bannerOffset =
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preload" as="style" href={variablesCssUrl} />
-		<link rel="preload" as="style" href={mainCssUrl} />
-		<link rel="preload" as="style" href={markdownCssUrl} />
-		<link rel="preload" as="style" href={markdownExtendCssUrl} />
 		<link
 			rel="icon"
 			href={siteConfig.favicon.startsWith("/") ? url(siteConfig.favicon) : siteConfig.favicon}
@@ -152,11 +144,15 @@ const bannerOffset =
 			href={`${Astro.site}rss.xml`}
 		/>
 
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-58CVM94M');</script>
+		{import.meta.env.PROD && (
+			<script is:inline>
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','GTM-W5FWDNPC');
+			</script>
+		)}
 		<script
 			is:inline
 			define:vars={{
@@ -237,14 +233,16 @@ const bannerOffset =
 		class="min-h-screen transition"
 		class:list={[{ "lg:is-home": isHomePage, "enable-banner": enableBanner }]}
 	>
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-58CVM94M"
-				height="0"
-				width="0"
-				style="display:none;visibility:hidden"
-			></iframe
-		></noscript>
+		{import.meta.env.PROD && (
+			<noscript
+				><iframe
+					src="https://www.googletagmanager.com/ns.html?id=GTM-W5FWDNPC"
+					height="0"
+					width="0"
+					style="display:none;visibility:hidden"
+				></iframe
+			></noscript>
+		)}
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
 	</body>

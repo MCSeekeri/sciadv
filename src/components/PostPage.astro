@@ -1,19 +1,18 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getEntrySlug } from "@utils/content-utils";
+import { type SortedPost } from "@utils/content-utils";
 import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
 
 interface Props {
 	page: {
-		data: CollectionEntry<"archives">[];
+		data: SortedPost[];
 	};
 }
 
 const { page } = Astro.props as Props;
 ---
 <div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
-    {page.data.map((entry: CollectionEntry<"archives">) => (
+    {page.data.map((entry: SortedPost) => (
         <PostCard
                 entry={entry}
                 title={entry.data.title}
@@ -21,7 +20,7 @@ const { page } = Astro.props as Props;
                 categories={entry.data.categories}
                 date={entry.data.date}
                 updated={entry.data.updated}
-                url={getPostUrlBySlug(getEntrySlug(entry))}
+                url={getPostUrlBySlug(entry.slug)}
                 image={entry.data.image ?? ""}
                 description={entry.data.description ?? ""}
                 draft={entry.data.draft}

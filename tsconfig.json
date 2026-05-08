@@ -5,6 +5,7 @@
     "strictNullChecks": true,
     "allowJs": false,
     "declaration": true,
+    "ignoreDeprecations": "6.0",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"

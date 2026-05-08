@@ -1,0 +1,110 @@
+---
+import type { WalineInitOptions } from "@waline/client";
+import commentScriptUrl from "../scripts/comment.ts?url";
+
+interface Props {
+	serverURL: string;
+	path?: string;
+	lang?: string;
+	locale?: WalineInitOptions["locale"];
+	emoji?: WalineInitOptions["emoji"];
+	dark?: string;
+	meta?: ("nick" | "mail" | "link")[];
+	requiredMeta?: ("nick" | "mail")[];
+	login?: "enable" | "disable" | "force";
+	wordLimit?: number | [number, number];
+	pageSize?: number;
+	imageUploader?: boolean;
+	search?: WalineInitOptions["search"];
+	recaptchaV3Key?: string;
+	turnstileKey?: string;
+	reaction?: boolean | string[];
+	noCopyright?: boolean;
+	commentSorting?: "latest" | "oldest" | "hottest";
+	avatar?: string;
+	avatarCDN?: string;
+	avatarForce?: boolean;
+}
+
+const {
+	serverURL,
+	path = "",
+	lang = "zh-CN",
+	locale,
+	emoji,
+	dark = "auto",
+	meta = ["nick", "mail", "link"],
+	requiredMeta = [],
+	login = "enable",
+	wordLimit = [0, 1000],
+	pageSize = 10,
+	imageUploader,
+	search = false,
+	recaptchaV3Key,
+	turnstileKey,
+	reaction = false,
+	noCopyright = false,
+	commentSorting = "latest",
+	avatar,
+	avatarCDN,
+	avatarForce = false,
+} = Astro.props;
+
+const walineOptions = JSON.stringify({
+	serverURL,
+	path,
+	lang,
+	dark,
+	meta,
+	requiredMeta,
+	login,
+	pageSize,
+	wordLimit,
+	imageUploader,
+	search,
+	noCopyright,
+	commentSorting,
+	locale,
+	emoji,
+	recaptchaV3Key,
+	turnstileKey,
+	reaction,
+	avatar,
+	avatarCDN,
+	avatarForce,
+});
+---
+
+<div
+	class="waline-wrapper card-base px-6 md:px-9 pt-6 pb-4 rounded-[var(--radius-large)] onload-animation"
+	data-waline-root
+	data-waline-options={walineOptions}
+>
+	<div data-waline-container></div>
+</div>
+
+<style>
+	.waline-wrapper {
+		--waline-theme-color: var(--primary);
+		--waline-active-color: var(--primary);
+		--waline-bg-color: var(--card-bg);
+		--waline-bg-color-light: var(--btn-plain-bg-hover);
+		--waline-info-bg-color: var(--btn-regular-bg);
+		--waline-info-color: var(--btn-content);
+		--waline-border-color: var(--btn-regular-bg);
+		--waline-disable-bg-color: var(--btn-plain-bg-hover);
+		--waline-disable-color: var(--btn-content);
+	}
+
+	.waline-wrapper :global(.wl-count),
+	.waline-wrapper :global([data-waline]) {
+		color: rgba(0, 0, 0, 0.75);
+	}
+
+	:global(html.dark) .waline-wrapper :global(.wl-count),
+	:global(html.dark) .waline-wrapper :global([data-waline]) {
+		color: rgba(255, 255, 255, 0.75);
+	}
+</style>
+
+<script is:inline type="module" src={commentScriptUrl}></script>

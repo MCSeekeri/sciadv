@@ -28,12 +28,6 @@ const archivesCollection = defineCollection({
 			)
 			.optional()
 			.default([]),
-
-		/* For internal use */
-		prevTitle: z.string().default(""),
-		prevSlug: z.string().default(""),
-		nextTitle: z.string().default(""),
-		nextSlug: z.string().default(""),
 	}),
 });
 
@@ -45,7 +39,7 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
-export const collections = {
+export const collections: Record<string, CollectionConfig<any>> = {
 	archives: archivesCollection,
 	spec: specCollection,
-} satisfies Record<string, CollectionConfig<any>>;
+};

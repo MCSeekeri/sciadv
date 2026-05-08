@@ -47,7 +47,7 @@ export const authors: Record<string, Author> = {
 	},
 	非实在汉化组: {
 		name: "非实在汉化组",
-		avatar: "assets/authors/非实在汉化组.webp",
+		avatar: "assets/authors/非实在汉化组.jpg",
 		url: "https://space.bilibili.com/2005435659",
 	},
 };

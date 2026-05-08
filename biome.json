@@ -45,7 +45,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
+			"includes": ["**/*.astro", "**/*.vue"],
 			"linter": {
 				"rules": {
 					"style": {

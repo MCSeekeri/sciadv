@@ -1,8 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { authors } from "../../authors";
-import { profileConfig } from "../../config";
-import Avatar from "./Avatar.astro";
+import { resolveAuthor } from "../../utils/author-utils";
 
 interface Reference {
 	title: string;
@@ -10,29 +8,19 @@ interface Reference {
 }
 
 interface Props {
-	title: string;
-	slug: string;
-	pubDate: Date;
-	class: string;
+	class?: string;
 	authorId?: string;
 	references?: Reference[];
 }
 
 const { authorId, references } = Astro.props;
-const className = Astro.props.class;
+const className = Astro.props.class ?? "";
 
 if (!references || references.length === 0) {
 	return null;
 }
 
-const author =
-	authorId && authors[authorId]
-		? authors[authorId]
-		: {
-				name: profileConfig.name,
-				avatar: profileConfig.avatar,
-				url: Astro.site?.toString() || "",
-			};
+const author = resolveAuthor(authorId, Astro.site?.toString() || "");
 ---
 <div class={`relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 ${className}`}>
 	<div class="flex items-start gap-3 mb-4">
