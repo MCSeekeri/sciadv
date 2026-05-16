@@ -1,8 +1,10 @@
+import { CONTENT_SIGNAL_DIRECTIVE } from "@utils/agent-readiness";
 import type { APIRoute } from "astro";
 
 const robotsTxt = `
 User-agent: *
 Disallow: /_astro/
+Content-Signal: ${CONTENT_SIGNAL_DIRECTIVE}
 
 Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}
 `.trim();

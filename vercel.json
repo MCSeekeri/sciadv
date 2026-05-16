@@ -1,0 +1,70 @@
+{
+	"headers": [
+		{
+			"source": "/",
+			"headers": [
+				{
+					"key": "Link",
+					"value": "</.well-known/agent-skills/index.json>; rel=\"describedby\"; type=\"application/json\", </rss.xml>; rel=\"alternate\"; type=\"application/rss+xml\", </about/>; rel=\"about\"; type=\"text/html\""
+				}
+			]
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/",
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": ".*text/markdown.*"
+				}
+			],
+			"destination": "/agent-markdown-internal/index.md"
+		},
+		{
+			"source": "/:page(\\d+)/",
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": ".*text/markdown.*"
+				}
+			],
+			"destination": "/agent-markdown-internal/:page.md"
+		},
+		{
+			"source": "/about/",
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": ".*text/markdown.*"
+				}
+			],
+			"destination": "/agent-markdown-internal/about.md"
+		},
+		{
+			"source": "/archives/",
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": ".*text/markdown.*"
+				}
+			],
+			"destination": "/agent-markdown-internal/archives/index.md"
+		},
+		{
+			"source": "/archives/:slug*",
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": ".*text/markdown.*"
+				}
+			],
+			"destination": "/agent-markdown-internal/archives/:slug*.md"
+		}
+	]
+}
