@@ -42,7 +42,7 @@
     "@types/sanitize-html": "^2.16.1",
     "hastscript": "^9.0.1",
     "katex": "^0.16.47",
-    "markdown-it": "^14.1.1",
+    "markdown-it": "^14.2.0",
     "mdast-util-to-string": "^4.0.0",
     "pagefind": "^1.5.2",
     "photoswipe": "^5.4.4",
