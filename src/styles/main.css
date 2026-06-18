@@ -125,7 +125,8 @@
     }
 }
 
-.custom-md img, #post-cover img {
+.custom-md img:not([data-no-lightbox]),
+#post-cover img {
     @apply cursor-zoom-in
 }
 

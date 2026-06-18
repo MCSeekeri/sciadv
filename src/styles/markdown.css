@@ -174,4 +174,33 @@
         margin: 1em 0;
     }
     
+    .inline-avatar {
+        display: inline-block;
+        vertical-align: middle;
+        margin-inline: 0.25rem;
+        margin-block: 0;
+    }
+
+    .image-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1.5rem 0;
+
+        &.image-row--left {
+            justify-content: flex-start;
+        }
+
+        &.image-row--center {
+            justify-content: center;
+        }
+
+        &.image-row--right {
+            justify-content: flex-end;
+        }
+
+        picture, img {
+            margin: 0;
+        }
+    }
 }

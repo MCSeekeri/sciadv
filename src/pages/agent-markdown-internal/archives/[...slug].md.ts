@@ -3,17 +3,19 @@ import {
 	createMarkdownResponse,
 } from "@utils/agent-readiness";
 import { getSortedPosts, type SortedPost } from "@utils/content-utils";
-import type { APIRoute, GetStaticPaths } from "astro";
+import type { APIRoute } from "astro";
 
-export const getStaticPaths = (async () => {
+export async function getStaticPaths(): Promise<
+	{ params: { slug: string }; props: { entry: SortedPost } }[]
+> {
 	const entries = await getSortedPosts();
 	return entries.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },
 	}));
-}) satisfies GetStaticPaths;
+}
 
-export const GET: APIRoute = async ({ props, site }) => {
+export const GET: APIRoute = async ({ props, site }): Promise<Response> => {
 	const entry = (props as { entry?: SortedPost }).entry;
 	if (!entry) {
 		return new Response("Not found", { status: 404 });

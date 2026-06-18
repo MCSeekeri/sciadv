@@ -33,11 +33,11 @@ date: 2021-08-10 12:51:00
 
 > 感谢：
 >
-> **古晟天**<img src="../../../assets/authors/古晟天.jpg" alt="古晟天" width="30">、**刈屋美纱希**<img src="../../../assets/authors/Kariya_Misaki.png" alt="刈屋美纱希" width="30">、**某疯狂的科学家** 将剧场版小说（上/下) 全部内容翻译完成。
+> **古晟天** :avatar[古晟天]{src="../../../assets/authors/古晟天.jpg" data-size="30"}、**刈屋美纱希** :avatar[刈屋美纱希]{src="../../../assets/authors/Kariya_Misaki.png" data-size="30"}、**某疯狂的科学家** 将剧场版小说（上/下) 全部内容翻译完成。
 >
 > 感谢：
 >
-> **天光逸**<img src="../../../assets/authors/tgy.webp" alt="天光逸" width="30">、**可爱的 serika**<img src="../../../assets/authors/serika.jpg" alt="可爱的 serika" width="30"><sub>（贴吧 ID:**尾上世莉架**)</sub> 给予的**理论支持**。
+> **天光逸** :avatar[天光逸]{src="../../../assets/authors/tgy.webp" data-size="30"}、**可爱的 serika** :avatar[可爱的 serika]{src="../../../assets/authors/serika.jpg" data-size="30"}<sub>（贴吧 ID:**尾上世莉架**)</sub> 给予的**理论支持**。
 
 ---
 
@@ -480,10 +480,10 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 > **QQ 新增功能**：**频道**，点击链接可直接加入：[科学 ADV 频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=1HSlkl&from=246610&biz=ka)、[命运石之门频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=BS7Tt&from=246610&biz=ka)
 
-<div align="center">
-<img src="../../../assets/images/community/steinsgate.jpg" width="200">
-<img src="../../../assets/images/community/sciadv.jpg" width="200">
-</div>
+:::image-row{align="center"}
+::image[命运石之门频道]{src="../../../assets/images/community/steinsgate.jpg" data-width="200"}
+::image[科学 ADV 频道]{src="../../../assets/images/community/sciadv.jpg" data-width="200"}
+:::
 
 > [!NOTE]
 > 注：如果您的 QQ 尚未开通频道功能，也可以通过加入下面所列出来的 QQ 群获取**频道通行证**
@@ -496,7 +496,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 **加群请私信 UP 想要担任的职务并展示能够胜任该岗位的凭证**
 
-[反物质委员会|B 站专栏](https://www.bilibili.com/read/cv11242272)![](../../../assets/authors/反物质委员会.jpg)
+[反物质委员会|B 站专栏](https://www.bilibili.com/read/cv11242272) :avatar[反物质委员会]{src="../../../assets/authors/反物质委员会.jpg" data-size="20"}
 
 #### **未来同人研究所**
 
@@ -538,7 +538,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 >
 > @Slie-wdy
 >
-> @可爱的 serika|<img src="../../../assets/authors/serika.jpg" alt="可爱的 serika" width="20">
+> @可爱的 serika| :avatar[可爱的 serika]{src="../../../assets/authors/serika.jpg" data-size="20"}
 >
 > @Sisyphe*菠萝
 
@@ -546,7 +546,7 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 > @laozei
 >
-> @天光逸|<img src="../../../assets/authors/tgy.webp" alt="天光逸" width="20">
+> @天光逸| :avatar[天光逸]{src="../../../assets/authors/tgy.webp" data-size="20"}
 
 **——命运石之门 FAQ 制作组**
 

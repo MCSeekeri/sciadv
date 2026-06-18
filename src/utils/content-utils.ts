@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
-import { getCategoryUrl } from "@utils/url-utils.ts";
+import { getCategoryUrl } from "@utils/url-utils";
 
 export type AdjacentPost = {
 	slug: string;
@@ -19,12 +19,14 @@ async function getRawSortedPosts() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const sorted = allBlogPosts.sort((a, b) => {
-		const dateA = new Date(a.data.date);
-		const dateB = new Date(b.data.date);
-		return dateA > dateB ? -1 : 1;
+	return allBlogPosts.sort((a, b) => {
+		const timeDiff = b.data.date.getTime() - a.data.date.getTime();
+		if (timeDiff !== 0) {
+			return timeDiff;
+		}
+
+		return getEntrySlug(a).localeCompare(getEntrySlug(b));
 	});
-	return sorted;
 }
 
 export function getEntrySlug(entry: { id: string; slug?: string }): string {

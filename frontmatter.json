@@ -5,16 +5,15 @@
   "frontMatter.content.publicFolder": "public",
   "frontMatter.content.pageFolders": [
     {
-      "title": "posts",
-      "path": "[[workspace]]/src/content/posts"
+      "title": "archives",
+      "path": "[[workspace]]/src/content/archives"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "pageBundle": true,
-      "previewPath": "'blog'",
-      "filePrefix": null,
+      "previewPath": "archives",
       "clearEmpty": true,
       "fields": [
         {
@@ -49,7 +48,7 @@
         {
           "title": "categories",
           "name": "categories",
-          "type": "string"
+          "type": "categories"
         },
         {
           "title": "draft",
@@ -58,18 +57,13 @@
         },
         {
           "title": "language",
-          "name": "language",
+          "name": "lang",
           "type": "string"
         },
         {
           "title": "author",
           "name": "author",
           "type": "string"
-        },
-        {
-          "title": "categories",
-          "name": "categories",
-          "type": "categories"
         }
       ]
     }

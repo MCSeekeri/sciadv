@@ -5,18 +5,18 @@ import {
 	createMarkdownResponse,
 } from "@utils/agent-readiness";
 import { getSortedPostsList } from "@utils/content-utils";
-import type { APIRoute, GetStaticPaths } from "astro";
+import type { APIRoute } from "astro";
 
-export const getStaticPaths = (async () => {
+export async function getStaticPaths(): Promise<{ params: { page: string } }[]> {
 	const posts = await getSortedPostsList();
 	const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
 
 	return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({
 		params: { page: String(index + 2) },
 	}));
-}) satisfies GetStaticPaths;
+}
 
-export const GET: APIRoute = async ({ params, site }) => {
+export const GET: APIRoute = async ({ params, site }): Promise<Response> => {
 	const currentPage = Number(params.page);
 	if (!Number.isInteger(currentPage) || currentPage < 2) {
 		return new Response("Not found", { status: 404 });
