@@ -1,0 +1,14 @@
+{
+	"schemaVersion": "v1",
+	"serverInfo": {
+		"name": "科学ADV图书馆",
+		"version": "1.0.0"
+	},
+	"transport": {
+		"type": "streamable-http",
+		"endpoint": "https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/mcp"
+	},
+	"capabilities": {
+		"tools": {}
+	}
+}

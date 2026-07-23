@@ -8,6 +8,19 @@
 					"value": "</.well-known/agent-skills/index.json>; rel=\"describedby\"; type=\"application/json\", </rss.xml>; rel=\"alternate\"; type=\"application/rss+xml\", </about/>; rel=\"about\"; type=\"text/html\""
 				}
 			]
+		},
+		{
+			"source": "/.well-known/(.*)",
+			"headers": [
+				{
+					"key": "Access-Control-Allow-Origin",
+					"value": "*"
+				},
+				{
+					"key": "Access-Control-Allow-Methods",
+					"value": "GET, OPTIONS"
+				}
+			]
 		}
 	],
 	"rewrites": [

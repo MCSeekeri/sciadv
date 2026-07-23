@@ -275,6 +275,17 @@ const shouldLoadGtm =
 		<ClientRouter />
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
+		<!-- AI Search Chat Bubble -->
+		<chat-bubble-snippet
+			api-url="https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/"
+			placeholder="问关于科学 ADV 的任何问题…"
+			theme="auto"
+			hide-branding
+		></chat-bubble-snippet>
+
+		<script>
+			import "@cloudflare/ai-search-snippet/chat";
+		</script>
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
 </html>

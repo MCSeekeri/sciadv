@@ -64,5 +64,8 @@
     "typescript": "^7.0.2",
     "unist-util-visit": "^5.1.0"
   },
-  "packageManager": "pnpm@11.16.0"
+  "packageManager": "pnpm@11.16.0",
+  "dependencies": {
+    "@cloudflare/ai-search-snippet": "^0.0.42"
+  }
 }
