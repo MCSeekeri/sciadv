@@ -2,11 +2,8 @@ import rss from "@astrojs/rss";
 import { getEntrySlug, getSortedPosts } from "@utils/content-utils";
 import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
-import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
 import { siteConfig } from "@/config";
-
-const parser = new MarkdownIt();
 
 function stripInvalidXmlChars(str: string): string {
 	return str.replace(
@@ -22,21 +19,28 @@ export async function GET(context: APIContext): Promise<Response> {
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-		site: context.site ?? new URL("https://lib.sci-adv.org"),
+		site: context.site ?? new URL(import.meta.env.SITE),
 		items: blog.map((post) => {
-			const content =
-				typeof post.body === "string" ? post.body : String(post.body || "");
-			const cleanedContent = stripInvalidXmlChars(content);
+			const html = (post.rendered?.html ?? "")
+				.replaceAll(
+					'src="/content-assets/',
+					`src="${new URL("/content-assets/", context.site).href}`,
+				)
+				.replaceAll(
+					'srcset="/content-assets/',
+					`srcset="${new URL("/content-assets/", context.site).href}`,
+				);
+			const cleanedHtml = stripInvalidXmlChars(html);
 			return {
 				title: post.data.title,
 				pubDate: post.data.date,
 				description: post.data.description || "",
 				link: url(`/archives/${getEntrySlug(post)}/`),
-				content: sanitizeHtml(parser.render(cleanedContent), {
+				content: sanitizeHtml(cleanedHtml, {
 					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 				}),
 			};
 		}),
-		customData: `<language>${siteConfig.lang}</language>`,
+		customData: `<language>${siteConfig.lang.replace("_", "-").toLowerCase()}</language>`,
 	});
 }

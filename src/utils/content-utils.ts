@@ -3,6 +3,9 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils";
 
+const isPublished = ({ data }: { data: { draft?: boolean } }) =>
+	import.meta.env.PROD ? data.draft !== true : true;
+
 export type AdjacentPost = {
 	slug: string;
 	title: string;
@@ -15,9 +18,7 @@ export type SortedPost = CollectionEntry<"archives"> & {
 };
 
 async function getRawSortedPosts() {
-	const allBlogPosts = await getCollection("archives", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts = await getCollection("archives", isPublished);
 
 	return allBlogPosts.sort((a, b) => {
 		const timeDiff = b.data.date.getTime() - a.data.date.getTime();
@@ -79,9 +80,7 @@ export type Tag = {
 export async function getTagList(): Promise<Tag[]> {
 	const allBlogPosts = await getCollection<"archives">(
 		"archives",
-		({ data }) => {
-			return import.meta.env.PROD ? data.draft !== true : true;
-		},
+		isPublished,
 	);
 
 	const countMap: { [key: string]: number } = {};
@@ -109,9 +108,7 @@ export type Category = {
 export async function getCategoryList(): Promise<Category[]> {
 	const allBlogPosts = await getCollection<"archives">(
 		"archives",
-		({ data }) => {
-			return import.meta.env.PROD ? data.draft !== true : true;
-		},
+		isPublished,
 	);
 	const count: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { categories: string[] } }) => {

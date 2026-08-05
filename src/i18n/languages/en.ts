@@ -9,11 +9,7 @@ export const en: Translation = {
 
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
-	[Key.recentPosts]: "Recent Posts",
 
-	[Key.comments]: "Comments",
-
-	[Key.untitled]: "Untitled",
 	[Key.uncategorized]: "Uncategorized",
 	[Key.noTags]: "No Tags",
 
@@ -31,8 +27,4 @@ export const en: Translation = {
 	[Key.systemMode]: "System",
 
 	[Key.more]: "More",
-
-	[Key.author]: "Author",
-	[Key.dateAt]: "Published at",
-	[Key.license]: "License",
 };

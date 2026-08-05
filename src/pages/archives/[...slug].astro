@@ -12,8 +12,8 @@ import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
 import bannerSocialImageUrl from "../../assets/images/banner.jpg?url";
 import { getImage } from "astro:assets";
 import { render } from "astro:content";
-import type { ImageMetadata } from "astro";
 import { licenseConfig, siteConfig, walineConfig } from "@/config";
+import { resolveLocalImage } from "@utils/image-utils";
 import ImageWrapper from "@components/misc/ImageWrapper.astro";
 import PostMetadata from "@components/PostMeta.astro";
 import { Icon } from "astro-icon/components";
@@ -46,16 +46,13 @@ if (articleImage) {
 	} else if (articleImage.startsWith("/")) {
 		socialImageUrl = new URL(url(articleImage), siteUrl).href;
 	} else {
-		const files = import.meta.glob<ImageMetadata>("../../**", {
-			import: "default",
-		});
-		const normalizedPath = path
-			.normalize(path.join("../../", path.join("content/archives/", getDir(entry.id)), articleImage))
-			.replace(/\\/g, "/");
-		const file = files[normalizedPath];
-		if (file) {
+		const img = await resolveLocalImage(
+			articleImage,
+			path.join("content/archives/", getDir(entry.id)),
+		);
+		if (img) {
 			const optimizedImage = await getImage({
-				src: await file(),
+				src: img,
 				width: 1200,
 				format: "jpg",
 			});

@@ -4,6 +4,8 @@ import {
 	buildContentImageVariantPath,
 	getContentImageDescriptor,
 	contentTypeForFormat,
+	legalWidthsFor,
+	resolveWidth,
 } from "./content-image-manifest.ts";
 
 function normalizeDimension(value, fallback) {
@@ -26,7 +28,9 @@ function buildResponsivePicture({
 	className,
 	noLightbox = false,
 }) {
-	const widths = [width, width * 2];
+	const widths = [width, width * 2].filter((w) =>
+		legalWidthsFor(descriptor).includes(w),
+	);
 	const sourceFormats = descriptor.formats.filter(
 		(format) => format !== descriptor.fallbackFormat,
 	);
@@ -77,10 +81,16 @@ export function ContentImageComponent(properties, children) {
 		: Array.isArray(children)
 			? children.map((child) => child.value ?? "").join("").trim()
 			: "";
-	const width = normalizeDimension(
+	const requestedWidth = normalizeDimension(
 		properties?.["data-width"] ?? properties?.dataWidth ?? properties?.width,
 		800,
 	);
+	const width = resolveWidth(descriptor, requestedWidth);
+	if (width !== requestedWidth) {
+		console.warn(
+			`[content-image] No variant for width ${requestedWidth} of ${descriptor.assetKey}; using ${width}.`,
+		);
+	}
 
 	return buildResponsivePicture({
 		descriptor,
@@ -101,10 +111,16 @@ export function InlineAvatarComponent(properties, children) {
 		: Array.isArray(children)
 			? children.map((child) => child.value ?? "").join("").trim()
 			: "";
-	const width = normalizeDimension(
+	const requestedWidth = normalizeDimension(
 		properties?.["data-size"] ?? properties?.dataSize ?? properties?.size ?? properties?.["data-width"] ?? properties?.dataWidth ?? properties?.width,
 		24,
 	);
+	const width = resolveWidth(descriptor, requestedWidth);
+	if (width !== requestedWidth) {
+		console.warn(
+			`[content-image] No variant for width ${requestedWidth} of ${descriptor.assetKey}; using ${width}.`,
+		);
+	}
 
 	return buildResponsivePicture({
 		descriptor,

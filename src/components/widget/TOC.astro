@@ -71,6 +71,7 @@ class TableOfContents extends HTMLElement {
     tocEntries: HTMLAnchorElement[] = [];
     active: boolean[] = [];
     activeIndicator: HTMLElement | null = null;
+    initialized = false;
 
     constructor() {
         super();
@@ -202,17 +203,24 @@ class TableOfContents extends HTMLElement {
 
     connectedCallback() {
         // wait for the onload animation to finish, which makes the `getBoundingClientRect` return correct values
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reducedMotion) {
+            this.init();
+            return;
+        }
         const element = document.querySelector('.prose');
         if (element) {
             element.addEventListener('animationend', () => {
                 this.init();
             }, { once: true });
-        } else {
-            console.debug('Animation element not found');
         }
+        // 兜底：动画事件因任何原因未触发时也初始化
+        window.setTimeout(() => this.init(), 1000);
     };
 
     init() {
+        if (this.initialized) return;
+        this.initialized = true;
         this.tocEl = document.getElementById(
             "toc-inner-wrapper"
         );

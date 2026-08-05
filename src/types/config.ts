@@ -1,4 +1,3 @@
-import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
 import type { WalineInitOptions } from "@waline/client";
 
 export type SiteConfig = {
@@ -8,14 +7,7 @@ export type SiteConfig = {
 	lang:
 		| "en"
 		| "zh_CN"
-		| "zh_TW"
-		| "ja"
-		| "ko"
-		| "es"
-		| "th"
-		| "vi"
-		| "tr"
-		| "id";
+		| "zh_TW";
 
 	themeColor: {
 		hue: number;
@@ -106,10 +98,10 @@ export type WalineConfig = {
 	avatarForce?: boolean;
 };
 
-export type LIGHT_DARK_MODE =
-	| typeof LIGHT_MODE
-	| typeof DARK_MODE
-	| typeof AUTO_MODE;
+export type AiSearchConfig = {
+	enable: boolean;
+	apiUrl: string;
+};
 
 export type ExpressiveCodeConfig = {
 	theme: string;

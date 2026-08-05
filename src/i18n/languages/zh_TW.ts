@@ -9,11 +9,7 @@ export const zh_TW: Translation = {
 
 	[Key.tags]: "標籤",
 	[Key.categories]: "分類",
-	[Key.recentPosts]: "最新文章",
 
-	[Key.comments]: "評論",
-
-	[Key.untitled]: "無標題",
 	[Key.uncategorized]: "未分類",
 	[Key.noTags]: "無標籤",
 
@@ -31,8 +27,4 @@ export const zh_TW: Translation = {
 	[Key.systemMode]: "跟隨系統",
 
 	[Key.more]: "更多",
-
-	[Key.author]: "作者",
-	[Key.dateAt]: "發佈於",
-	[Key.license]: "許可協議",
 };

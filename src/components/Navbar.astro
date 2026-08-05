@@ -53,7 +53,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                         </div>
                     )}
                     {l.sublinks && (
-                        <div class="absolute top-11 pt-2 left-0 w-max hidden group-hover:block transition z-50 animate-fade-in-up-fast">
+                        <div class="absolute top-11 pt-2 left-0 w-max hidden group-hover:block group-focus-within:block transition z-50 animate-fade-in-up-fast">
                             <div class="card-base !p-2 flex flex-col gap-1 w-full rounded-xl shadow-xl">
                                 {l.sublinks.map((sub) => (
                                     <a aria-label={sub.name} href={sub.external ? sub.url : url(sub.url!)} target={sub.external ? "_blank" : null}
@@ -74,12 +74,12 @@ let links: NavBarLink[] = navBarConfig.links.map(
         <div class="flex">
             <Search></Search>
             {!siteConfig.themeColor.fixed && (
-                    <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
+                    <button aria-label="Display Settings" aria-expanded="false" aria-controls="display-setting" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
                         <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
                     </button>
             )}
             <LightDarkSwitch></LightDarkSwitch>
-            <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
+            <button aria-label="Menu" name="Nav Menu" aria-expanded="false" aria-controls="nav-menu-panel" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
         </div>
@@ -93,11 +93,19 @@ const settingBtn = document.getElementById("display-settings-switch");
 settingBtn?.addEventListener("click", () => {
     const settingPanel = document.getElementById("display-setting");
     settingPanel?.classList.toggle("float-panel-closed");
+    settingBtn.setAttribute(
+        "aria-expanded",
+        settingPanel?.classList.contains("float-panel-closed") ? "false" : "true",
+    );
 });
 
 const menuBtn = document.getElementById("nav-menu-switch");
 menuBtn?.addEventListener("click", () => {
     const menuPanel = document.getElementById("nav-menu-panel");
     menuPanel?.classList.toggle("float-panel-closed");
+    menuBtn.setAttribute(
+        "aria-expanded",
+        menuPanel?.classList.contains("float-panel-closed") ? "false" : "true",
+    );
 });
 </script>

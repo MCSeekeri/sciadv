@@ -1,17 +1,15 @@
 import sharp from "sharp";
 import type { APIRoute, GetStaticPaths } from "astro";
-import { contentImageManifest, contentTypeForFormat } from "@/plugins/content-image-manifest.ts";
+import {
+	assetKindFor,
+	contentImageManifest,
+	contentTypeForFormat,
+	variantWidthsByKind,
+} from "@/plugins/content-image-manifest.ts";
 import type { ContentImageDescriptor, OutputFormat } from "@/plugins/content-image-manifest.ts";
 
-const variantWidths = {
-	authors: [20, 30, 40, 60],
-	community: [200, 400],
-};
-
 function variantListFor(descriptor: ContentImageDescriptor): { width: number; format: OutputFormat }[] {
-	const widths = descriptor.assetKey.startsWith("authors/")
-		? variantWidths.authors
-		: variantWidths.community;
+	const widths = variantWidthsByKind[assetKindFor(descriptor.assetKey)];
 
 	return widths.flatMap((width) =>
 		descriptor.formats.map((format) => ({ width, format })),

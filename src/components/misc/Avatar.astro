@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
-import path from "node:path";
 import type { ImageMetadata } from "astro";
 import { url } from "../../utils/url-utils";
+import { resolveLocalImage } from "../../utils/image-utils";
 
 interface Props {
 	src: string;
@@ -24,20 +24,7 @@ const isPublic = src.startsWith("/");
 
 let img: ImageMetadata | undefined;
 if (isLocal) {
-	const files = import.meta.glob<ImageMetadata>("../../**", {
-		import: "default",
-	});
-	const normalizedPath = path
-		.normalize(path.join("../../", src))
-		.replace(/\\/g, "/");
-	const file = files[normalizedPath];
-	if (!file) {
-		console.error(
-			`\n[ERROR] Avatar image file not found: ${normalizedPath.replace("../../", "src/")}`,
-		);
-	} else {
-		img = await file();
-	}
+	img = await resolveLocalImage(src);
 }
 
 const localFormats = img

@@ -6,11 +6,7 @@ enum I18nKey {
 
 	tags = "tags",
 	categories = "categories",
-	recentPosts = "recentPosts",
 
-	comments = "comments",
-
-	untitled = "untitled",
 	uncategorized = "uncategorized",
 	noTags = "noTags",
 
@@ -28,10 +24,6 @@ enum I18nKey {
 	systemMode = "systemMode",
 
 	more = "more",
-
-	author = "author",
-	dateAt = "dateAt",
-	license = "license",
 }
 
 export default I18nKey;

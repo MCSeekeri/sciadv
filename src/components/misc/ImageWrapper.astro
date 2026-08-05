@@ -1,6 +1,6 @@
 ---
-import path from "node:path";
 import { Picture, getImage } from "astro:assets";
+import { resolveLocalImage } from "../../utils/image-utils";
 
 interface Props {
 	id?: string;
@@ -46,29 +46,9 @@ const isLocal = !(
 );
 const isPublic = src.startsWith("/");
 
-// TODO temporary workaround for images dynamic import
-// https://github.com/withastro/astro/issues/3373
 let img: ImageMetadata | undefined;
 if (isLocal) {
-	const files = import.meta.glob<ImageMetadata>("../../**", {
-		import: "default",
-	});
-	const normalizedSrcPath = src.replace(/\\/g, "/");
-	const normalizedPath = normalizedSrcPath.includes("assets/")
-		? path
-				.normalize(path.join("../../", normalizedSrcPath.replace(/^(\.\.\/)+/, "")))
-				.replace(/\\/g, "/")
-		: path
-				.normalize(path.join("../../", basePath, src))
-				.replace(/\\/g, "/");
-	const file = files[normalizedPath];
-	if (!file) {
-		console.error(
-			`\n[ERROR] Image file not found: ${normalizedPath.replace("../../", "src/")}`,
-		);
-	} else {
-		img = await file();
-	}
+	img = await resolveLocalImage(src, basePath);
 }
 
 const singleSourceImage =

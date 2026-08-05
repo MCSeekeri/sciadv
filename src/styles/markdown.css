@@ -108,16 +108,14 @@
         background: oklch(0.55 0.01 var(--hue));
         scale: 0.9;
     }
-    @media (prefers-color-scheme: dark) {
-        .copy-btn {
-            background: oklch(0.30 0.02 var(--hue));
-        }
-        .copy-btn:hover {
-            background: oklch(0.35 0.03 var(--hue));
-        }
-        .copy-btn:active {
-            background: oklch(0.40 0.03 var(--hue));
-        }
+    .dark .copy-btn {
+        background: oklch(0.30 0.02 var(--hue));
+    }
+    .dark .copy-btn:hover {
+        background: oklch(0.35 0.03 var(--hue));
+    }
+    .dark .copy-btn:active {
+        background: oklch(0.40 0.03 var(--hue));
     }
     .frame:hover .copy-btn {
         opacity: 1;

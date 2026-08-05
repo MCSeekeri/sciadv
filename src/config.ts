@@ -1,4 +1,5 @@
 import type {
+	AiSearchConfig,
 	AnalyticsConfig,
 	AnnouncementConfig,
 	ExpressiveCodeConfig,
@@ -108,4 +109,9 @@ export const announcementConfig: AnnouncementConfig = {
 	enable: true,
 	content: `欢迎来到科学 ADV 图书馆重构版本
 遇到任何问题欢迎反馈，缺失的部分功能会在未来补齐或彻底弃用`,
+};
+
+export const aiSearchConfig: AiSearchConfig = {
+	enable: true,
+	apiUrl: "https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/",
 };

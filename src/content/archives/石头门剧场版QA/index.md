@@ -396,23 +396,23 @@ R 世界线由于其特殊性，并不能和一般意义上的世界线相提并
 
 ## Part Ⅲ **剧场版剧情梳理**
 
-#### **一周目**
+### **一周目**
 
 <div class="timeline"><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 3 日</p><p></p></div><div class="body"><p>2011 年 8 月 3 日，牧濑红莉栖从美国回到日本，与 Labmem 们聚会。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 4 日</p><p></p></div><div class="body"><p>红莉栖在洗衣房前与冈部伦太郎擦肩而过，没能送出自己提前准备的礼物——白大褂。不久之后冈部消失。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2017 年</p><p></p></div><div class="body"><p>阿万音铃羽出生。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2036 年</p><p></p></div><div class="body"><p>红莉栖成功造出了时间机器，铃羽不顾红莉栖的阻止启动时间机器回到了 2011 年（广播剧《现存在的后验》剧情）。</p></div></div></div>
 
-#### **二周目|<sub>剧场版动画的最初时间</sub>**
+### **二周目|<sub>剧场版动画的最初时间</sub>**
 
 <div class="timeline"><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 3 日</p><p></p></div><div class="body"><p>牧濑红莉栖从美国回到日本，阿万音铃羽出现在机场。晚上，<strong>Labmem</strong>们进行了聚会。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 4 日</p><p></p></div><div class="body"><p>红莉栖在酒店洗澡时，铃羽潜入房间给红莉栖留下了提示“手机、微波炉、SERN”。红莉栖察觉到异常后，没有向浴缸里注水慢悠悠地洗澡，因此提前赶到了洗衣房，遇见冈部并送出了白大褂。在聊天过程中冈部消失。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 13 日</p><p></p></div><div class="body"><p>红莉栖研制出了时间跳跃机器（该时间跳跃机器并没有本篇中 48 小时的可回溯时间上限），并使用它回到了 10 天前。</p></div></div></div>
 
-#### **三周目|<sub>牧濑红莉栖时间跳跃之后</sub>**
+### **三周目|<sub>牧濑红莉栖时间跳跃之后</sub>**
 
 <div class="timeline"><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 3 日晚 -8 月 4 日凌晨</p><p></p></div><div class="body"><p>牧濑红莉栖两次观测到冈部伦太郎的消失，并与冈部、铃羽讨论了他即将消失的现象。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 4 日</p><p></p></div><div class="body"><p>红莉栖赶到 Lab 的时候冈部恰好消失，她决定听从冈部的警告，放弃使用时间跳跃机器。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 13 日晚 -8 月 14 日凌晨</p><p></p></div><div class="body"><p>铃羽质问红莉栖真正的心愿，并带她登上时间机器。两人一同回到了 2005 年 6 月 30 日。</p></div></div></div>
 
-#### **四周目|<sub>牧濑红莉栖第一次使用时间机器</sub>**
+### **四周目|<sub>牧濑红莉栖第一次使用时间机器</sub>**
 
 <div class="timeline"><div class="timenode"><div class="meta"><p></p><p>2005 年 6 月 30 日</p><p></p></div><div class="body"><p>牧濑红莉栖第一次拯救冈部伦太郎失败。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 14 日</p><p></p></div><div class="body"><p>回到现在的红莉栖感到心灰意冷，本打算再次放弃拯救冈部，但其它 Labmem 们全部渐渐回想起了冈部的存在，点燃了红莉栖的斗志。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 8 月 15 日</p><p></p></div><div class="body"><p>红莉栖与铃羽再次乘上时间机器。</p></div></div></div>
 
-#### **五周目|<sub>牧濑红莉栖第二次使用时间机器</sub>**
+### **五周目|<sub>牧濑红莉栖第二次使用时间机器</sub>**
 
 <div class="timeline"><div class="timenode"><div class="meta"><p></p><p>2005 年 6 月 30 日</p><p></p></div><div class="body"><p>牧濑红莉栖夺走了冈部伦太郎的初吻。</p></div></div><div class="timenode"><div class="meta"><p></p><p>2011 年 x 月 x 日</p><p></p></div><div class="body"><p>红莉栖乘坐时间机器回到现在，铃羽和时间机器消失，冈部回归命运石之门世界线。</p></div></div></div>
 

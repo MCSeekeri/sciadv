@@ -23,7 +23,6 @@ const { page } = Astro.props as Props;
                 url={getPostUrlBySlug(entry.slug)}
                 image={entry.data.image ?? ""}
                 description={entry.data.description ?? ""}
-                draft={entry.data.draft}
         ></PostCard>
     ))}
 </div>

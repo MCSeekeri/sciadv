@@ -1,12 +1,19 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import ConfigCarrier from "@components/ConfigCarrier.astro";
 import roboto400Woff2 from "@fontsource/roboto/files/roboto-latin-400-normal.woff2?url";
 import roboto700Woff2 from "@fontsource/roboto/files/roboto-latin-700-normal.woff2?url";
 import jetbrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
 import siteBannerOgUrl from "../assets/images/banner.jpg?url";
+import "../styles/variables.styl";
+import "../styles/main.css";
+import "../styles/markdown.css";
+import "../styles/markdown-extend.styl";
+import "../styles/scrollbar.css";
+import "../styles/expressive-code.css";
+import "../styles/photoswipe.css";
 import "../styles/transition.css";
 import {
+	aiSearchConfig,
 	analyticsConfig,
 	expressiveCodeConfig,
 	profileConfig,
@@ -126,7 +133,8 @@ const shouldLoadGtm =
 						break;
 				}
 
-				const hue = localStorage.getItem("hue") || configHue;
+				const storedHue = Number(localStorage.getItem("hue"));
+				const hue = Number.isFinite(storedHue) ? storedHue : configHue;
 				document.documentElement.style.setProperty("--hue", hue);
 				document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
 
@@ -266,6 +274,11 @@ const shouldLoadGtm =
 				},
 				{ once: true },
 			);
+
+			document.addEventListener("astro:after-swap", () => {
+				fontLoadScheduled = false;
+				scheduleLazyFonts();
+			});
 		</script>
 	</head>
 	<body
@@ -273,18 +286,34 @@ const shouldLoadGtm =
 		class:list={[{ "is-home": isHomePage, "enable-banner": enableBanner }]}
 	>
 		<ClientRouter />
-		<ConfigCarrier></ConfigCarrier>
 		<slot />
 		<!-- AI Search Chat Bubble -->
-		<chat-bubble-snippet
-			api-url="https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/"
-			placeholder="问关于科学 ADV 的任何问题…"
-			theme="auto"
-			hide-branding
-		></chat-bubble-snippet>
+		{aiSearchConfig.enable && (
+			<chat-bubble-snippet
+				api-url={aiSearchConfig.apiUrl}
+				placeholder="问关于科学 ADV 的任何问题…"
+				theme="auto"
+				hide-branding
+			></chat-bubble-snippet>
+		)}
 
 		<script>
-			import "@cloudflare/ai-search-snippet/chat";
+			let chatPromise: Promise<unknown> | undefined;
+			const ensureChat = () => {
+				if (!chatPromise) chatPromise = import("@cloudflare/ai-search-snippet/chat");
+				return chatPromise;
+			};
+			if ("requestIdleCallback" in window) {
+				window.requestIdleCallback(() => void ensureChat(), { timeout: 6000 });
+			} else {
+				window.setTimeout(() => void ensureChat(), 4000);
+			}
+			for (const eventName of ["pointerdown", "keydown"]) {
+				window.addEventListener(eventName, () => void ensureChat(), {
+					once: true,
+					passive: true,
+				});
+			}
 		</script>
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
@@ -407,6 +436,7 @@ const shouldLoadGtm =
 	}
 
 	function getBannerHeightPx() {
+		if (!bannerEnabled) return 0;
 		const bannerHeight =
 			document.body.classList.contains("is-home") && window.innerWidth >= 1024
 				? BANNER_HEIGHT_HOME

@@ -1,4 +1,6 @@
+import { readdirSync } from "node:fs";
 import path from "node:path";
+import { authors } from "../authors";
 
 export type OutputFormat = "avif" | "webp" | "jpg" | "png";
 
@@ -9,54 +11,86 @@ export interface ContentImageDescriptor {
 	fallbackFormat: OutputFormat;
 }
 
-export const contentImageManifest: ContentImageDescriptor[] = [
-	{
-		assetKey: "authors/古晟天.jpg",
-		sourcePath: path.join(process.cwd(), "src/assets/authors/古晟天.jpg"),
-		formats: ["avif", "webp", "jpg"],
-		fallbackFormat: "jpg",
-	},
-	{
-		assetKey: "authors/Kariya_Misaki.png",
-		sourcePath: path.join(process.cwd(), "src/assets/authors/Kariya_Misaki.png"),
-		formats: ["avif", "webp", "png"],
-		fallbackFormat: "png",
-	},
-	{
-		assetKey: "authors/tgy.webp",
-		sourcePath: path.join(process.cwd(), "src/assets/authors/tgy.webp"),
-		formats: ["avif", "webp"],
-		fallbackFormat: "webp",
-	},
-	{
-		assetKey: "authors/serika.jpg",
-		sourcePath: path.join(process.cwd(), "src/assets/authors/serika.jpg"),
-		formats: ["avif", "webp", "jpg"],
-		fallbackFormat: "jpg",
-	},
-	{
-		assetKey: "authors/反物质委员会.jpg",
-		sourcePath: path.join(process.cwd(), "src/assets/authors/反物质委员会.jpg"),
-		formats: ["avif", "webp", "jpg"],
-		fallbackFormat: "jpg",
-	},
-	{
-		assetKey: "images/community/steinsgate.jpg",
-		sourcePath: path.join(process.cwd(), "src/assets/images/community/steinsgate.jpg"),
-		formats: ["avif", "webp", "jpg"],
-		fallbackFormat: "jpg",
-	},
-	{
-		assetKey: "images/community/sciadv.jpg",
-		sourcePath: path.join(process.cwd(), "src/assets/images/community/sciadv.jpg"),
-		formats: ["avif", "webp", "jpg"],
-		fallbackFormat: "jpg",
-	},
-];
+export const variantWidthsByKind = {
+	authors: [20, 30, 40, 60],
+	community: [200, 400],
+} as const;
 
-const manifestByAssetKey: Record<string, ContentImageDescriptor> = Object.fromEntries(
-	contentImageManifest.map((descriptor) => [descriptor.assetKey, descriptor]),
-);
+export function assetKindFor(assetKey: string): "authors" | "community" {
+	return assetKey.startsWith("authors/") ? "authors" : "community";
+}
+
+export function legalWidthsFor(
+	descriptor: ContentImageDescriptor,
+): readonly number[] {
+	return variantWidthsByKind[assetKindFor(descriptor.assetKey)];
+}
+
+export function resolveWidth(
+	descriptor: ContentImageDescriptor,
+	requested: number,
+): number {
+	const widths = legalWidthsFor(descriptor);
+	return widths.find((w) => w >= requested) ?? widths[widths.length - 1];
+}
+
+function formatsForFile(
+	fileName: string,
+): Pick<ContentImageDescriptor, "formats" | "fallbackFormat"> | null {
+	const extension = path.extname(fileName).slice(1).toLowerCase();
+	switch (extension) {
+		case "jpg":
+		case "jpeg":
+			return { formats: ["avif", "webp", "jpg"], fallbackFormat: "jpg" };
+		case "png":
+			return { formats: ["avif", "webp", "png"], fallbackFormat: "png" };
+		case "webp":
+			return { formats: ["avif", "webp"], fallbackFormat: "webp" };
+		default:
+			return null;
+	}
+}
+
+function buildManifest(): ContentImageDescriptor[] {
+	const manifest: ContentImageDescriptor[] = [];
+
+	for (const dir of ["src/assets/authors", "src/assets/images/community"]) {
+		const basePath = path.join(process.cwd(), dir);
+		const prefix = dir.replace(/^src\/assets\//, "");
+		for (const fileName of readdirSync(basePath)) {
+			const formats = formatsForFile(fileName);
+			if (!formats) {
+				continue;
+			}
+			manifest.push({
+				assetKey: `${prefix}/${fileName}`,
+				sourcePath: path.join(basePath, fileName),
+				...formats,
+			});
+		}
+	}
+
+	return manifest;
+}
+
+export const contentImageManifest: ContentImageDescriptor[] = buildManifest();
+
+const manifestByAssetKey: Record<string, ContentImageDescriptor> =
+	Object.fromEntries(
+		contentImageManifest.map((descriptor) => [
+			descriptor.assetKey,
+			descriptor,
+		]),
+	);
+
+for (const author of Object.values(authors)) {
+	const assetKey = author.avatar.replace(/^assets\//, "");
+	if (!manifestByAssetKey[assetKey]) {
+		console.error(
+			`[content-image-manifest] Missing author avatar in manifest: ${assetKey}`,
+		);
+	}
+}
 
 export function normalizeDirectiveSource(src: string): string {
 	return src
@@ -66,7 +100,9 @@ export function normalizeDirectiveSource(src: string): string {
 		.replace(/^assets\//, "");
 }
 
-export function getContentImageDescriptor(src: string): ContentImageDescriptor | undefined {
+export function getContentImageDescriptor(
+	src: string,
+): ContentImageDescriptor | undefined {
 	return manifestByAssetKey[normalizeDirectiveSource(src)];
 }
 

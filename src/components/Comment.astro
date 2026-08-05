@@ -1,6 +1,5 @@
 ---
 import type { WalineInitOptions } from "@waline/client";
-import commentScriptUrl from "../scripts/comment.ts?url";
 
 interface Props {
 	serverURL: string;
@@ -122,4 +121,6 @@ const walineOptions = JSON.stringify({
 	}
 </style>
 
-<script is:inline type="module" src={commentScriptUrl}></script>
+<script>
+	import "../scripts/comment.ts";
+</script>
