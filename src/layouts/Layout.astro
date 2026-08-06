@@ -186,7 +186,7 @@ const shouldLoadGtm =
 				};
 
 				const scheduleGtm = () => {
-					if ("requestIdleCallback" in window) {
+					if (typeof window.requestIdleCallback === "function") {
 						window.requestIdleCallback(injectGtm, { timeout: 8000 });
 						return;
 					}
@@ -303,7 +303,7 @@ const shouldLoadGtm =
 				if (!chatPromise) chatPromise = import("@cloudflare/ai-search-snippet/chat");
 				return chatPromise;
 			};
-			if ("requestIdleCallback" in window) {
+			if (typeof window.requestIdleCallback === "function") {
 				window.requestIdleCallback(() => void ensureChat(), { timeout: 6000 });
 			} else {
 				window.setTimeout(() => void ensureChat(), 4000);
