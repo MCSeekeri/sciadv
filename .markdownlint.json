@@ -2,6 +2,7 @@
   "MD013": false,
   "MD024": false,
   "MD028": false,
+  "MD036": false,
   "MD033": {
     "allowed_elements": [
       "ruby",
@@ -16,7 +17,11 @@
       "img",
       "center",
       "sub",
-      "u"
+      "u",
+      "iframe",
+      "p",
+      "span",
+      "strong"
     ]
   },
   "MD045": false
