@@ -57,7 +57,7 @@
     "remark-github-admonitions-to-directives": "^2.1.0",
     "remark-math": "^6.0.0",
     "remark-sectionize": "^2.1.0",
-    "sanitize-html": "^2.17.6",
+    "sanitize-html": "^2.17.7",
     "sharp": "^0.35.3",
     "stylus": "^0.64.0",
     "tailwindcss": "^4.3.3",
