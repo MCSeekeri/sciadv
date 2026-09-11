@@ -54,14 +54,23 @@ async function initWaline(root: Element): Promise<void> {
 		return;
 	}
 
-	const options = JSON.parse(rawOptions) as WalineClientOptions;
+	let options: WalineClientOptions;
+	try {
+		options = JSON.parse(rawOptions) as WalineClientOptions;
+	} catch (error) {
+		console.error("[waline] invalid data-waline-options JSON", error);
+		return;
+	}
 	if (!options.serverURL) {
 		console.warn("Waline serverURL is not configured");
 		return;
 	}
 	const { serverURL, ...restOptions } = options;
 
-	const [{ init }] = await Promise.all([loadWalineModule(), ensureWalineStyles()]);
+	const [{ init }] = await Promise.all([
+		loadWalineModule(),
+		ensureWalineStyles(),
+	]);
 	container.classList.remove("hidden");
 	if (gate instanceof HTMLElement) {
 		gate.classList.add("hidden");
@@ -81,7 +90,9 @@ function observeWaline(root: Element): void {
 	}
 
 	const loadStrategy = root.dataset.loadStrategy ?? "click";
-	const trigger = root.querySelector<HTMLButtonElement>("[data-waline-trigger]");
+	const trigger = root.querySelector<HTMLButtonElement>(
+		"[data-waline-trigger]",
+	);
 	if (loadStrategy === "click") {
 		trigger?.addEventListener(
 			"click",

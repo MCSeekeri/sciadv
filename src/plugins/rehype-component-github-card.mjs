@@ -15,7 +15,7 @@ export function GithubCardComponent(properties, children) {
 			'Invalid directive. ("github" directive must be leaf type "::github{repo="owner/repo"}")',
 		]);
 
-	if (!properties.repo || !properties.repo.includes("/"))
+	if (!properties.repo?.includes("/"))
 		return h(
 			"div",
 			{ class: "hidden" },
@@ -27,7 +27,7 @@ export function GithubCardComponent(properties, children) {
 	const cardUuid =
 		"GC" +
 		Array.from(repo)
-			.reduce((acc, c) => ((acc * 31 + c.charCodeAt(0)) >>> 0), 7)
+			.reduce((acc, c) => (acc * 31 + c.charCodeAt(0)) >>> 0, 7)
 			.toString(36);
 
 	const nAvatar = h(`div#${cardUuid}-avatar`, { class: "gc-avatar" });
@@ -63,7 +63,7 @@ export function GithubCardComponent(properties, children) {
 		`script#${cardUuid}-script`,
 		{ type: "text/javascript", defer: true },
 		`
-      fetch('https://api.github.com/repos/' + ${repoEscaped}, { referrerPolicy: "no-referrer" }).then(response => response.json()).then(data => {
+      fetch('https://api.github.com/repos/' + ${repoEscaped}, { referrerPolicy: "no-referrer" }).then(response => { if (!response.ok) throw new Error("GitHub API " + response.status); return response.json(); }).then(data => {
         document.getElementById('${cardUuid}-description').innerText = data.description?.replace(/:[a-zA-Z0-9_]+:/g, '') || "Description not set";
         document.getElementById('${cardUuid}-language').innerText = data.language;
         document.getElementById('${cardUuid}-forks').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.forks).replaceAll("\u202f", '');
@@ -87,6 +87,7 @@ export function GithubCardComponent(properties, children) {
 			class: "card-github fetch-waiting no-styling",
 			href: `https://github.com/${repo}`,
 			target: "_blank",
+			rel: "noopener noreferrer",
 			repo,
 		},
 		[

@@ -15,20 +15,22 @@ function stripInvalidXmlChars(str: string): string {
 
 export async function GET(context: APIContext): Promise<Response> {
 	const blog = await getSortedPosts();
+	const fallbackSite = new URL("https://lib.sci-adv.org");
+	const site = context.site ?? fallbackSite;
 
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-		site: context.site ?? new URL(import.meta.env.SITE),
+		site,
 		items: blog.map((post) => {
 			const html = (post.rendered?.html ?? "")
 				.replaceAll(
 					'src="/content-assets/',
-					`src="${new URL("/content-assets/", context.site).href}`,
+					`src="${new URL("/content-assets/", site).href}`,
 				)
 				.replaceAll(
 					'srcset="/content-assets/',
-					`srcset="${new URL("/content-assets/", context.site).href}`,
+					`srcset="${new URL("/content-assets/", site).href}`,
 				);
 			const cleanedHtml = stripInvalidXmlChars(html);
 			return {
@@ -41,6 +43,6 @@ export async function GET(context: APIContext): Promise<Response> {
 				}),
 			};
 		}),
-		customData: `<language>${siteConfig.lang.replace("_", "-").toLowerCase()}</language>`,
+		customData: `<language>${siteConfig.lang.replace("_", "-")}</language>`,
 	});
 }

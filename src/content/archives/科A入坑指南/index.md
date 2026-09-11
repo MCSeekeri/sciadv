@@ -92,7 +92,7 @@ date: 2021-02-15 12:49:56
 > [!NOTE]
 > **官方登陆平台**
 > PC Xbox PS3 PS4 PSV iOS Android
-<iframe src="https://store.steampowered.com/widget/970570/?t=%E5%85%AD%E5%B9%B4%E5%89%8D%E7%9A%84%E7%81%BE%E9%9A%BE%E5%90%8E%EF%BC%8C%E8%88%9E%E5%8F%B0%E9%87%8D%E6%96%B0%E5%9B%9E%E5%88%B0%E4%BA%86%E8%A2%AB%E5%A4%8D%E5%85%B4%E9%87%8D%E5%BB%BA%E7%9A%84%E6%B6%A9%E8%B0%B7%E3%80%822015%20%E5%B9%B4%2010%20%E6%9C%88%EF%BC%8C%E9%AB%98%E4%B8%AD%E4%B8%89%E5%B9%B4%E7%BA%A7%E5%AD%A6%E7%94%9F%E5%AE%AB%E4%BB%A3%E6%8B%93%E7%95%99%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E6%8E%A5%E8%BF%9E%E5%8F%91%E7%94%9F%E5%9C%A8%E6%B6%A9%E8%B0%B7%E4%B8%AD%E7%9A%84%E8%AF%A1%E5%BC%82%E4%BA%8B%E4%BB%B6%EF%BC%9A%E7%A5%9E%E7%A7%98%E6%AD%BB%E4%BA%A1%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%BB%E6%92%AD%E4%B8%8E%E7%A6%BB%E5%A5%87%E6%AD%BB%E4%BA%A1%E7%9A%84%E8%A1%97%E5%A4%B4%E6%AD%8C%E6%89%8B%E3%80%82%E4%BB%96%E6%95%8F%E9%94%90%E5%9C%B0%E5%AF%9F%E8%A7%89%E5%88%B0%EF%BC%8C%E8%BF%99%E4%B8%A4%E8%B5%B7%E4%BA%8B%E4%BB%B6%E4%BC%BC%E4%B9%8E%E9%83%BD%E4%B8%8E%E5%85%AD%E5%B9%B4%E5%89%8D%E9%9C%87%E5%8A%A8%E6%B6%A9%E8%B0%B7%E7%9A%84%E2%80%9C%E6%9F%90%E4%B8%AA%E4%BA%8B%E4%BB%B6%E2%80%9D%E7%9A%84%E6%97%A5%E6%9C%9F%E4%B8%80%E8%87%B4%E2%80%94%E2%80%94%E4%BB%BF%E4%BD%9B%E2%80%9C%E6%96%B0%E4%B8%96%E4%BB%A3%E7%9A%84%E7%96%AF%E7%8B%82%E2%80%9D%E5%86%8D%E6%AC%A1%E8%A2%AD%E6%9D%A5%E3%80%82%0A%E8%87%AA%E8%AF%A9%E4%B8%BA%E6%83%85%E6%8A%A5%E5%BC%BA%E8%80%85%E7%9A%84%E6%8B%93%E7%95%99%E4%B8%8E%E4%BB%96%E7%9A%84%E6%96%B0%E9%97%BB%E9%83%A8%EF%BC%8C%E5%BC%80%E5%A7%8B%E8%BF%BD%E9%80%90%E4%BA%8B%E4%BB%B6%E3%80%82%0A%E5%8F%AA%E6%9C%89%E6%8B%AF%E6%95%91%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E7%9A%84%EF%BC%8C%E6%89%8D%E6%98%AF%E8%8B%B1%E9%9B%84%E5%90%97%EF%BC%9F" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/970570/?t=%E5%85%AD%E5%B9%B4%E5%89%8D%E7%9A%84%E7%81%BE%E9%9A%BE%E5%90%8E%EF%BC%8C%E8%88%9E%E5%8F%B0%E9%87%8D%E6%96%B0%E5%9B%9E%E5%88%B0%E4%BA%86%E8%A2%AB%E5%A4%8D%E5%85%B4%E9%87%8D%E5%BB%BA%E7%9A%84%E6%B6%A9%E8%B0%B7%E3%80%822015%20%E5%B9%B4%2010%20%E6%9C%88%EF%BC%8C%E9%AB%98%E4%B8%AD%E4%B8%89%E5%B9%B4%E7%BA%A7%E5%AD%A6%E7%94%9F%E5%AE%AB%E4%BB%A3%E6%8B%93%E7%95%99%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E6%8E%A5%E8%BF%9E%E5%8F%91%E7%94%9F%E5%9C%A8%E6%B6%A9%E8%B0%B7%E4%B8%AD%E7%9A%84%E8%AF%A1%E5%BC%82%E4%BA%8B%E4%BB%B6%EF%BC%9A%E7%A5%9E%E7%A7%98%E6%AD%BB%E4%BA%A1%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%BB%E6%92%AD%E4%B8%8E%E7%A6%BB%E5%A5%87%E6%AD%BB%E4%BA%A1%E7%9A%84%E8%A1%97%E5%A4%B4%E6%AD%8C%E6%89%8B%E3%80%82%E4%BB%96%E6%95%8F%E9%94%90%E5%9C%B0%E5%AF%9F%E8%A7%89%E5%88%B0%EF%BC%8C%E8%BF%99%E4%B8%A4%E8%B5%B7%E4%BA%8B%E4%BB%B6%E4%BC%BC%E4%B9%8E%E9%83%BD%E4%B8%8E%E5%85%AD%E5%B9%B4%E5%89%8D%E9%9C%87%E5%8A%A8%E6%B6%A9%E8%B0%B7%E7%9A%84%E2%80%9C%E6%9F%90%E4%B8%AA%E4%BA%8B%E4%BB%B6%E2%80%9D%E7%9A%84%E6%97%A5%E6%9C%9F%E4%B8%80%E8%87%B4%E2%80%94%E2%80%94%E4%BB%BF%E4%BD%9B%E2%80%9C%E6%96%B0%E4%B8%96%E4%BB%A3%E7%9A%84%E7%96%AF%E7%8B%82%E2%80%9D%E5%86%8D%E6%AC%A1%E8%A2%AD%E6%9D%A5%E3%80%82%0A%E8%87%AA%E8%AF%A9%E4%B8%BA%E6%83%85%E6%8A%A5%E5%BC%BA%E8%80%85%E7%9A%84%E6%8B%93%E7%95%99%E4%B8%8E%E4%BB%96%E7%9A%84%E6%96%B0%E9%97%BB%E9%83%A8%EF%BC%8C%E5%BC%80%E5%A7%8B%E8%BF%BD%E9%80%90%E4%BA%8B%E4%BB%B6%E3%80%82%0A%E5%8F%AA%E6%9C%89%E6%8B%AF%E6%95%91%E8%BF%99%E4%B8%AA%E4%B8%96%E7%95%8C%E7%9A%84%EF%BC%8C%E6%89%8D%E6%98%AF%E8%8B%B1%E9%9B%84%E5%90%97%EF%BC%9F" frameborder="0" width="646" height="190"></iframe>
 
 #### Chäos;Child Love chu☆chu
 
@@ -133,7 +133,7 @@ date: 2021-02-15 12:49:56
 > [!NOTE]
 > **官方登陆平台**
 > PC Xbox PSP PS3 PS4 PSV NS iOS Android
-<iframe src="https://store.steampowered.com/widget/412830/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/412830/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate:My Darling's Embrace
 
@@ -147,7 +147,7 @@ date: 2021-02-15 12:49:56
 > [!NOTE]
 > **官方登陆平台**
 > PC Xbox PSP PS3 PS4 PSV NS
-<iframe src="https://store.steampowered.com/widget/970560/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/970560/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate:Linear Bounded Phenogram
 
@@ -183,7 +183,7 @@ date: 2021-02-15 12:49:56
 > [!NOTE]
 > **官方登陆平台**
 > PC Xbox PS3 PS4 PSV NS
-<iframe src="https://store.steampowered.com/widget/825630/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/825630/" frameborder="0" width="646" height="190"></iframe>
 
 #### Steins;Gate ELITE
 
@@ -195,7 +195,7 @@ date: 2021-02-15 12:49:56
 > [!NOTE]
 > **官方登陆平台**
 > PC Xbox PS4 PSV NS iOS
-<iframe src="https://store.steampowered.com/widget/819030/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/819030/" frameborder="0" width="646" height="190"></iframe>
 
 想定科学 ADV 可以说是整个科 A 系列中最接近传统科幻的作品了，但你要说石头门是软科幻……它建立了极为完善且大部分基于现代物理学的世界线收束理论；你要说石头门是硬科幻……多吃蔬菜生萌妹和 36TiB 压缩成 18Byte 这实在是纯属瞎扯啊……
 剧情节奏的设计也不甚合理，不管是 SG 还是 SG0，虽然很多二刷三刷甚至 114514 刷的爱好者对于前半段的悠闲日常津津乐道，但客观来讲前半部分确实太过拖沓，让很多非科幻迷直接弃坑（摊手
@@ -230,7 +230,7 @@ date: 2021-02-15 12:49:56
 RN 的精英版，没什么可说的。
 已上架 Steam。
 
-<iframe src="https://store.steampowered.com/widget/1111380/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/1111380/" frameborder="0" width="646" height="190"></iframe>
 
 #### ROBOTICS;NOTES DaSH
 
@@ -241,7 +241,7 @@ SG 里的桶子也有登场，毕竟是联动作品嘛。
 > [!NOTE]
 > **官方登陆平台**
 > PC PS4
-<iframe src="https://store.steampowered.com/widget/1111390/" frameborder="0" width="646" height="190"></iframe>
+<iframe referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups" title="Steam 商店小部件" loading="lazy" src="https://store.steampowered.com/widget/1111390/" frameborder="0" width="646" height="190"></iframe>
 
 相比前辈，扩张科学 ADV 可以说是最让人看着放心的作品了，不会有惊悚场景和志仓恶意……但也是最惨的系列，被 SG 的光芒掩盖住了，而且小清新的剧情也不怎么能让 SG 的爱好者们满意。
 但如果你不是很关心设定啦反转啦，只想开开心心看番，那 RN 出色的剧情水准绝对不会让你失望。

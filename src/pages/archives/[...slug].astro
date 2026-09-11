@@ -1,25 +1,25 @@
 ---
+import { getImage } from "astro:assets";
+import { render } from "astro:content";
 import path from "node:path";
 import Comment from "@components/Comment.astro";
+import ImageWrapper from "@components/misc/ImageWrapper.astro";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import PostMetadata from "@components/PostMeta.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
 import { resolveAuthor } from "@utils/author-utils";
-import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
-import bannerSocialImageUrl from "../../assets/images/banner.jpg?url";
-import { getImage } from "astro:assets";
-import { render } from "astro:content";
-import { licenseConfig, siteConfig, walineConfig } from "@/config";
-import { resolveLocalImage } from "@utils/image-utils";
-import ImageWrapper from "@components/misc/ImageWrapper.astro";
-import PostMetadata from "@components/PostMeta.astro";
-import { Icon } from "astro-icon/components";
+import { getSortedPosts } from "@utils/content-utils";
 import { formatDateToYYYYMMDD } from "@utils/date-utils";
+import { resolveLocalImage } from "@utils/image-utils";
+import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
+import { Icon } from "astro-icon/components";
 import katexCssUrl from "katex/dist/katex.css?url";
 import photoswipeCssUrl from "photoswipe/style.css?url";
+import { licenseConfig, siteConfig, walineConfig } from "@/config";
+import bannerSocialImageUrl from "../../assets/images/banner.jpg?url";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -41,7 +41,10 @@ const articleImage = entry.data.image?.trim();
 let socialImageUrl = new URL(bannerSocialImageUrl, siteUrl).href;
 
 if (articleImage) {
-	if (/^(https?:)?\/\//.test(articleImage) || articleImage.startsWith("data:")) {
+	if (
+		/^(https?:)?\/\//.test(articleImage) ||
+		articleImage.startsWith("data:")
+	) {
 		socialImageUrl = articleImage;
 	} else if (articleImage.startsWith("/")) {
 		socialImageUrl = new URL(url(articleImage), siteUrl).href;

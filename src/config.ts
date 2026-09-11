@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "./assets/images/banner.jpg",
+		src: "/assets/images/banner.jpg",
 		position: "top",
 		credit: {
 			enable: true,
@@ -69,9 +69,9 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/authors/mp.jpg",
-	name: "Anonymous",
-	bio: "",
+	avatar: "/assets/authors/mp.jpg",
+	name: "科学 ADV 图书馆",
+	bio: "致力于收集科学 ADV 系列所有小说和漫画",
 	links: [],
 };
 
@@ -113,5 +113,6 @@ export const announcementConfig: AnnouncementConfig = {
 
 export const aiSearchConfig: AiSearchConfig = {
 	enable: true,
-	apiUrl: "https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/",
+	apiUrl:
+		"https://51a16630-fddd-4f83-8f77-2a5b40839cc8.search.ai.cloudflare.com/",
 };

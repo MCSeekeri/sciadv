@@ -1,11 +1,14 @@
 import { PAGE_SIZE } from "@constants/constants";
-import { siteConfig } from "@/config";
-import { getEntrySlug, type PostForList, type SortedPost } from "@utils/content-utils";
-import { formatDateToYYYYMMDD } from "@utils/date-utils";
 import { resolveAuthor } from "@utils/author-utils";
+import {
+	getEntrySlug,
+	type PostForList,
+	type SortedPost,
+} from "@utils/content-utils";
+import { formatDateToYYYYMMDD } from "@utils/date-utils";
+import { siteConfig } from "@/config";
 
-export const CONTENT_SIGNAL_DIRECTIVE =
-	"ai-train=no, search=yes, ai-input=yes";
+export const CONTENT_SIGNAL_DIRECTIVE = "ai-train=no, search=yes, ai-input=yes";
 
 export function createMarkdownResponse(markdown: string): Response {
 	const body = markdown.trimEnd().concat("\n");
@@ -37,7 +40,9 @@ export function buildSiteFrontmatter(extra: Record<string, string>): string {
 
 	return [
 		"---",
-		...frontmatterEntries.map(([key, value]) => `${key}: "${escapeFrontmatterValue(value)}"`),
+		...frontmatterEntries.map(
+			([key, value]) => `${key}: "${escapeFrontmatterValue(value)}"`,
+		),
 		"---",
 		"",
 	].join("\n");
@@ -117,12 +122,15 @@ export function buildArchiveMarkdown(
 	posts: PostForList[],
 	siteUrl: string,
 ): string {
-	const groupedPosts = posts.reduce<Record<string, PostForList[]>>((groups, post) => {
-		const year = String(post.data.date.getFullYear());
-		groups[year] ??= [];
-		groups[year].push(post);
-		return groups;
-	}, {});
+	const groupedPosts = posts.reduce<Record<string, PostForList[]>>(
+		(groups, post) => {
+			const year = String(post.data.date.getFullYear());
+			groups[year] ??= [];
+			groups[year].push(post);
+			return groups;
+		},
+		{},
+	);
 
 	return [
 		buildSiteFrontmatter({
@@ -173,7 +181,9 @@ function formatPostListItem(post: PostForList, siteUrl: string): string[] {
 			? `Categories: ${post.data.categories.join(", ")}`
 			: "Categories: none";
 	const tags =
-		post.data.tags.length > 0 ? `Tags: ${post.data.tags.join(", ")}` : "Tags: none";
+		post.data.tags.length > 0
+			? `Tags: ${post.data.tags.join(", ")}`
+			: "Tags: none";
 
 	return [
 		`- [${post.data.title}](${canonicalUrl})`,

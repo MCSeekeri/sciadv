@@ -2,8 +2,8 @@
 import { h } from "hastscript";
 import {
 	buildContentImageVariantPath,
-	getContentImageDescriptor,
 	contentTypeForFormat,
+	getContentImageDescriptor,
 	legalWidthsFor,
 	resolveWidth,
 } from "./content-image-manifest.ts";
@@ -76,14 +76,18 @@ export function ContentImageComponent(properties, children) {
 		return h("div", { class: "hidden" }, "Invalid image directive source.");
 	}
 
-	const alt = typeof properties?.alt === "string" && properties.alt.trim() !== ""
-		? properties.alt
-		: Array.isArray(children)
-			? children.map((child) => child.value ?? "").join("").trim()
-			: "";
+	const alt =
+		typeof properties?.alt === "string" && properties.alt.trim() !== ""
+			? properties.alt
+			: Array.isArray(children)
+				? children
+						.map((child) => child.value ?? "")
+						.join("")
+						.trim()
+				: "";
 	const requestedWidth = normalizeDimension(
 		properties?.["data-width"] ?? properties?.dataWidth ?? properties?.width,
-		800,
+		400,
 	);
 	const width = resolveWidth(descriptor, requestedWidth);
 	if (width !== requestedWidth) {
@@ -106,14 +110,23 @@ export function InlineAvatarComponent(properties, children) {
 		return h("span", { class: "hidden" }, "Invalid avatar directive source.");
 	}
 
-	const alt = typeof properties?.alt === "string" && properties.alt.trim() !== ""
-		? properties.alt
-		: Array.isArray(children)
-			? children.map((child) => child.value ?? "").join("").trim()
-			: "";
+	const alt =
+		typeof properties?.alt === "string" && properties.alt.trim() !== ""
+			? properties.alt
+			: Array.isArray(children)
+				? children
+						.map((child) => child.value ?? "")
+						.join("")
+						.trim()
+				: "";
 	const requestedWidth = normalizeDimension(
-		properties?.["data-size"] ?? properties?.dataSize ?? properties?.size ?? properties?.["data-width"] ?? properties?.dataWidth ?? properties?.width,
-		24,
+		properties?.["data-size"] ??
+			properties?.dataSize ??
+			properties?.size ??
+			properties?.["data-width"] ??
+			properties?.dataWidth ??
+			properties?.width,
+		30,
 	);
 	const width = resolveWidth(descriptor, requestedWidth);
 	if (width !== requestedWidth) {

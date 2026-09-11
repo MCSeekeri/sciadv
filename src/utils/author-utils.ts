@@ -1,4 +1,4 @@
-import { authors, type Author } from "../authors";
+import { type Author, authors } from "../authors";
 import { profileConfig } from "../config";
 
 export function resolveAuthor(

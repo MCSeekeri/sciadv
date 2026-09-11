@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -19,7 +19,13 @@
 		"enabled": true,
 		"indentStyle": "tab"
 	},
-	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -45,7 +51,10 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/*.astro", "**/*.vue"],
+			"includes": [
+				"**/*.astro",
+				"**/*.vue"
+			],
 			"linter": {
 				"rules": {
 					"style": {

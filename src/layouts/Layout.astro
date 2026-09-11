@@ -1,8 +1,5 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import roboto400Woff2 from "@fontsource/roboto/files/roboto-latin-400-normal.woff2?url";
-import roboto700Woff2 from "@fontsource/roboto/files/roboto-latin-700-normal.woff2?url";
-import jetbrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
 import siteBannerOgUrl from "../assets/images/banner.jpg?url";
 import "../styles/variables.styl";
 import "../styles/main.css";
@@ -18,6 +15,7 @@ import {
 	expressiveCodeConfig,
 	profileConfig,
 	siteConfig,
+	walineConfig,
 } from "@/config";
 import {
 	AUTO_MODE,
@@ -45,7 +43,8 @@ let { title, description, lang, setOGTypeArticle, socialImage } = Astro.props;
 const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
 const configHue = siteConfig.themeColor.hue;
 
-const socialImageUrl = socialImage ?? new URL(siteBannerOgUrl, Astro.site ?? Astro.url).href;
+const socialImageUrl =
+	socialImage ?? new URL(siteBannerOgUrl, Astro.site ?? Astro.url).href;
 
 const enableBanner = siteConfig.banner.enable;
 
@@ -158,11 +157,12 @@ const shouldLoadGtm =
 
 		<slot name="head"></slot>
 
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site ?? Astro.url).href} />
 		<link
 			rel="alternate"
 			type="application/rss+xml"
-			title={profileConfig.name}
-			href={`${Astro.site}rss.xml`}
+			title={siteConfig.title}
+			href={new URL("rss.xml", Astro.site ?? Astro.url).href}
 		/>
 
 		{shouldLoadGtm && (
@@ -178,6 +178,11 @@ const shouldLoadGtm =
 						event: "gtm.js",
 					});
 
+					const warm = document.createElement("link");
+					warm.rel = "preconnect";
+					warm.href = "https://www.googletagmanager.com";
+					document.head.appendChild(warm);
+
 					const script = document.createElement("script");
 					script.async = true;
 					script.dataset.gtmId = gtmId;
@@ -186,11 +191,12 @@ const shouldLoadGtm =
 				};
 
 				const scheduleGtm = () => {
+					// 功能不砍、只推迟：弱网下 GTM 等主线程空闲再加载，不和 LCP 抢带宽
 					if (typeof window.requestIdleCallback === "function") {
-						window.requestIdleCallback(injectGtm, { timeout: 8000 });
+						window.requestIdleCallback(injectGtm, { timeout: 15000 });
 						return;
 					}
-					window.setTimeout(injectGtm, 4000);
+					window.setTimeout(injectGtm, 10000);
 				};
 
 				if (document.readyState === "complete") {
@@ -200,86 +206,14 @@ const shouldLoadGtm =
 				}
 			</script>
 		)}
-		<script
-			is:inline
-			define:vars={{
-				sansFontFaces: [
-					{ family: "Roboto", source: roboto400Woff2, descriptors: { weight: "400", style: "normal" } },
-					{ family: "Roboto", source: roboto700Woff2, descriptors: { weight: "700", style: "normal" } },
-				],
-				monoFontFace: {
-					family: "JetBrains Mono Variable",
-					source: jetbrainsMonoWoff2,
-					descriptors: { weight: "100 800", style: "normal" },
-				},
-			}}
-		>
-			const loadedFontFamilies = new Set();
-
-			async function loadFontFace(fontConfig) {
-				if (!fontConfig?.source || loadedFontFamilies.has(fontConfig.family)) {
-					return;
-				}
-
-				try {
-					const fontFace = new FontFace(
-						fontConfig.family,
-						`url(${fontConfig.source}) format("woff2")`,
-						fontConfig.descriptors,
-					);
-					await fontFace.load();
-					document.fonts.add(fontFace);
-					loadedFontFamilies.add(fontConfig.family);
-				} catch (error) {
-					console.error(`Failed to load font ${fontConfig.family}:`, error);
-				}
-			}
-
-			const loadLazyFonts = async () => {
-				if (!("fonts" in document)) {
-					return;
-				}
-
-				for (const fontConfig of sansFontFaces) {
-					await loadFontFace(fontConfig);
-				}
-
-				if (document.querySelector("pre, code, .expressive-code, .custom-md")) {
-					await loadFontFace(monoFontFace);
-				}
-			};
-
-			let fontLoadScheduled = false;
-			const scheduleLazyFonts = () => {
-				if (fontLoadScheduled) {
-					return;
-				}
-				fontLoadScheduled = true;
-				window.setTimeout(() => {
-					void loadLazyFonts();
-				}, 1200);
-			};
-
-			for (const eventName of ["pointerdown", "keydown", "touchstart"]) {
-				window.addEventListener(eventName, scheduleLazyFonts, {
-					once: true,
-					passive: eventName !== "keydown",
-				});
-			}
-
-			window.addEventListener(
-				"load",
-				() => {
-					window.setTimeout(scheduleLazyFonts, 6000);
-				},
-				{ once: true },
-			);
-
-			document.addEventListener("astro:after-swap", () => {
-				fontLoadScheduled = false;
-				scheduleLazyFonts();
-			});
-		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="dns-prefetch" href="https://comments.sci-adv.org" />
+		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;700&display=optional"
+			rel="stylesheet"
+		/>
 	</head>
 	<body
 		class="min-h-screen transition"
@@ -303,16 +237,50 @@ const shouldLoadGtm =
 				if (!chatPromise) chatPromise = import("@cloudflare/ai-search-snippet/chat");
 				return chatPromise;
 			};
-			if (typeof window.requestIdleCallback === "function") {
-				window.requestIdleCallback(() => void ensureChat(), { timeout: 6000 });
-			} else {
-				window.setTimeout(() => void ensureChat(), 4000);
-			}
+			// 慢网络下不做空闲预加载，避免与 LCP 资源抢带宽：只在用户交互时加载
 			for (const eventName of ["pointerdown", "keydown"]) {
 				window.addEventListener(eventName, () => void ensureChat(), {
 					once: true,
 					passive: true,
 				});
+			}
+		</script>
+		<script
+			is:inline
+			define:vars={{
+				commentOrigin: (() => {
+					try {
+						return new URL(walineConfig.serverURL || "").origin;
+					} catch {
+						return "";
+					}
+				})(),
+				aiOrigin: (() => {
+					try {
+						return new URL(aiSearchConfig.apiUrl || "").origin;
+					} catch {
+						return "";
+					}
+				})(),
+			}}
+		>
+			// 高延迟优化：空闲时只做 TCP+TLS 握手预热，不取任何内容；
+			// 用户点评论/唤 AI 时直接复用热连接，省 1~2 个 RTT，功能零裁剪
+			const warmOriginsIdle = () => {
+				for (const origin of [commentOrigin, aiOrigin]) {
+					if (!origin) continue;
+					if (document.querySelector(`link[data-warm="${origin}"]`)) continue;
+					const link = document.createElement("link");
+					link.rel = "preconnect";
+					link.href = origin;
+					link.dataset.warm = origin;
+					document.head.appendChild(link);
+				}
+			};
+			if (typeof window.requestIdleCallback === "function") {
+				window.requestIdleCallback(warmOriginsIdle, { timeout: 12000 });
+			} else {
+				window.setTimeout(warmOriginsIdle, 8000);
 			}
 		</script>
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
@@ -458,26 +426,35 @@ const shouldLoadGtm =
 		banner?.classList.remove("opacity-0", "scale-105");
 	}
 
+	const scrollRefs = {
+		backToTopBtn: document.getElementById("back-to-top-btn"),
+		toc: document.getElementById("toc-wrapper"),
+		navbar: document.getElementById("navbar-wrapper"),
+	};
+	let lastScrollBucket = "";
 	function updateScrollState() {
+		// 先集中读，再集中写；状态无变化直接返回，避免每帧触发布局
 		const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
 		const bannerHeightPx = getBannerHeightPx();
-		const backToTopBtn = document.getElementById("back-to-top-btn");
-		const toc = document.getElementById("toc-wrapper");
-		const navbar = document.getElementById("navbar-wrapper");
+		const pastBanner = scrollTop > bannerHeightPx;
+		const threshold =
+			bannerHeightPx - 72 - MAIN_PANEL_OVERLAPS_BANNER_HEIGHT * 16 - 16;
+		const pastThreshold = scrollTop >= threshold;
+		const bucket = `${pastBanner}/${pastThreshold}`;
+		if (bucket === lastScrollBucket) return;
+		lastScrollBucket = bucket;
 
-		backToTopBtn?.classList.toggle("hide", scrollTop <= bannerHeightPx);
+		scrollRefs.backToTopBtn?.classList.toggle("hide", !pastBanner);
 
-		if (bannerEnabled && toc) {
-			toc.classList.toggle("toc-hide", scrollTop <= bannerHeightPx);
+		if (bannerEnabled && scrollRefs.toc) {
+			scrollRefs.toc.classList.toggle("toc-hide", !pastBanner);
 		}
 
-		if (!bannerEnabled || !navbar) {
+		if (!bannerEnabled || !scrollRefs.navbar) {
 			return;
 		}
 
-		const threshold =
-			bannerHeightPx - 72 - MAIN_PANEL_OVERLAPS_BANNER_HEIGHT * 16 - 16;
-		navbar.classList.toggle("navbar-hidden", scrollTop >= threshold);
+		scrollRefs.navbar.classList.toggle("navbar-hidden", pastThreshold);
 	}
 
 	let scrollFrame = 0;

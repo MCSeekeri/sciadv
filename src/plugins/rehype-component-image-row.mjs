@@ -11,9 +11,10 @@ function flattenChildren(children) {
 }
 
 export function ImageRowComponent(properties, children) {
-	const align = properties?.align === "left" || properties?.align === "right"
-		? properties.align
-		: "center";
+	const align =
+		properties?.align === "left" || properties?.align === "right"
+			? properties.align
+			: "center";
 
 	return h(
 		"div",

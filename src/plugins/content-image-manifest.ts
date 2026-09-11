@@ -2,7 +2,7 @@ import { readdirSync } from "node:fs";
 import path from "node:path";
 import { authors } from "../authors";
 
-export type OutputFormat = "avif" | "webp" | "jpg" | "png";
+export type OutputFormat = "avif" | "webp" | "jpg" | "png" | "gif" | "svg";
 
 export interface ContentImageDescriptor {
 	assetKey: string;
@@ -13,7 +13,7 @@ export interface ContentImageDescriptor {
 
 export const variantWidthsByKind = {
 	authors: [20, 30, 40, 60],
-	community: [200, 400],
+	community: [200, 400, 800, 1200],
 } as const;
 
 export function assetKindFor(assetKey: string): "authors" | "community" {
@@ -46,6 +46,12 @@ function formatsForFile(
 			return { formats: ["avif", "webp", "png"], fallbackFormat: "png" };
 		case "webp":
 			return { formats: ["avif", "webp"], fallbackFormat: "webp" };
+		case "avif":
+			return { formats: ["avif", "webp"], fallbackFormat: "avif" };
+		case "gif":
+			return { formats: ["webp"], fallbackFormat: "gif" };
+		case "svg":
+			return { formats: [], fallbackFormat: "svg" };
 		default:
 			return null;
 	}
@@ -77,10 +83,7 @@ export const contentImageManifest: ContentImageDescriptor[] = buildManifest();
 
 const manifestByAssetKey: Record<string, ContentImageDescriptor> =
 	Object.fromEntries(
-		contentImageManifest.map((descriptor) => [
-			descriptor.assetKey,
-			descriptor,
-		]),
+		contentImageManifest.map((descriptor) => [descriptor.assetKey, descriptor]),
 	);
 
 for (const author of Object.values(authors)) {

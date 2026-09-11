@@ -33,7 +33,8 @@ const formatDate = (date: Date) => {
 	return `${month}-${day}`;
 };
 
-const formatTag = (tagList: string[]) => tagList.map((tag) => `#${tag}`).join(" ");
+const formatTag = (tagList: string[]) =>
+	tagList.map((tag) => `#${tag}`).join(" ");
 const emptyStateText = "No posts match the current filters.";
 ---
 

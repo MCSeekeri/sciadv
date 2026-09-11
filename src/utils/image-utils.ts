@@ -15,9 +15,7 @@ export async function resolveLocalImage(
 		? path
 				.normalize(path.join("../", normalizedSrc.replace(/^(\.\.\/)+/, "")))
 				.replace(/\\/g, "/")
-		: path
-				.normalize(path.join("../", basePath, src))
-				.replace(/\\/g, "/");
+		: path.normalize(path.join("../", basePath, src)).replace(/\\/g, "/");
 	const file = imageFiles[normalizedPath];
 	if (!file) {
 		console.error(

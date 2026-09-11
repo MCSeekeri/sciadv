@@ -30,8 +30,15 @@ async function getRawSortedPosts() {
 	});
 }
 
-export function getEntrySlug(entry: { id: string; slug?: string }): string {
-	return entry.slug || entry.id.replace(/\.(md|mdx)$/i, "");
+export function getEntrySlug(entry: {
+	id: string;
+	slug?: string;
+	data?: { slug?: string };
+}): string {
+	const frontmatterSlug = entry.data?.slug?.trim();
+	if (frontmatterSlug) return frontmatterSlug;
+	if (entry.slug?.trim()) return entry.slug;
+	return entry.id.replace(/\.(md|mdx)$/i, "");
 }
 
 export async function getSortedPosts(): Promise<SortedPost[]> {
@@ -78,10 +85,7 @@ export type Tag = {
 };
 
 export async function getTagList(): Promise<Tag[]> {
-	const allBlogPosts = await getCollection<"archives">(
-		"archives",
-		isPublished,
-	);
+	const allBlogPosts = await getCollection<"archives">("archives", isPublished);
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
@@ -106,10 +110,7 @@ export type Category = {
 };
 
 export async function getCategoryList(): Promise<Category[]> {
-	const allBlogPosts = await getCollection<"archives">(
-		"archives",
-		isPublished,
-	);
+	const allBlogPosts = await getCollection<"archives">("archives", isPublished);
 	const count: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { categories: string[] } }) => {
 		if (!post.data.categories || post.data.categories.length === 0) {

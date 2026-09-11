@@ -59,7 +59,7 @@
     code {
         @apply bg-[var(--inline-code-bg)] text-[var(--inline-code-color)] px-1 py-0.5 rounded-md overflow-hidden;
 
-        font-family: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
         &:before {
             content:none;
         }
@@ -201,4 +201,12 @@
             margin: 0;
         }
     }
+}
+
+/* 弱 CPU 优化：长文分节虚拟化渲染，屏外 section 跳过排版绘制。
+   内容零裁剪：滚动接近时自动渲染，锚点跳转/页内查找不受影响。
+   intrinsic 占位避免滚动条乱跳。 */
+.custom-md > section {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 600px;
 }

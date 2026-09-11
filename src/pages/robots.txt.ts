@@ -1,15 +1,16 @@
 import { CONTENT_SIGNAL_DIRECTIVE } from "@utils/agent-readiness";
 import type { APIRoute } from "astro";
 
-const robotsTxt = `
+export const GET: APIRoute = (context) => {
+	const site = context.site ?? new URL("https://lib.sci-adv.org");
+	const robotsTxt = `
 User-agent: *
 Disallow: /_astro/
+Disallow: /pagefind/
 Content-Signal: ${CONTENT_SIGNAL_DIRECTIVE}
 
-Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}
+Sitemap: ${new URL("sitemap-index.xml", site).href}
 `.trim();
-
-export const GET: APIRoute = () => {
 	return new Response(robotsTxt, {
 		headers: {
 			"Content-Type": "text/plain; charset=utf-8",

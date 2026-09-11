@@ -1,4 +1,5 @@
 ---
+import { getImage } from "astro:assets";
 import BackToTop from "@components/control/BackToTop.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
@@ -13,6 +14,7 @@ import {
 	BANNER_HEIGHT_EXTEND,
 	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
 } from "../constants/constants";
+import { resolveLocalImage } from "../utils/image-utils";
 import Layout from "./Layout.astro";
 
 interface Props {
@@ -39,12 +41,44 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 const mainPanelTop = siteConfig.banner.enable
 	? `calc(${BANNER_HEIGHT}vh - ${MAIN_PANEL_OVERLAPS_BANNER_HEIGHT}rem)`
 	: "5.5rem";
+
+// LCP 预热：构建期算出横幅 AVIF 三档 URL，head 里 preload 带 imagesrcset，
+// 高延迟下浏览器在 head 解析完就发起图片请求，不用等 body 扫到 img。
+// 与 ImageWrapper 同参数（同源同变换命中 Astro 图片缓存，不重复转码）。
+let bannerPreloadSrcset = "";
+if (siteConfig.banner.enable) {
+	const bannerImg = await resolveLocalImage(siteConfig.banner.src);
+	if (bannerImg) {
+		const variants = await Promise.all(
+			[400, 800, 1200].map(async (width) => {
+				const optimized = await getImage({
+					src: bannerImg,
+					width,
+					format: "avif",
+				});
+				return `${optimized.src} ${width}w`;
+			}),
+		);
+		bannerPreloadSrcset = variants.join(", ");
+	}
+}
 ---
 
 <Layout title={title} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle} socialImage={socialImage}>
 
 <!-- Navbar -->
 <slot slot="head" name="head"></slot>
+{bannerPreloadSrcset && (
+	<link
+		slot="head"
+		rel="preload"
+		as="image"
+		type="image/avif"
+		imagesrcset={bannerPreloadSrcset}
+		imagesizes="100vw"
+		fetchpriority="high"
+	/>
+)}
 <div id="top-row" transition:persist class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
     <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all">
         <Navbar></Navbar>
@@ -59,6 +93,8 @@ const mainPanelTop = siteConfig.banner.enable
         class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
         src={siteConfig.banner.src}
         position={siteConfig.banner.position}
+        priority={true}
+        sizes="100vw"
     />
 </div>}
 

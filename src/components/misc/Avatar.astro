@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import { url } from "../../utils/url-utils";
 import { resolveLocalImage } from "../../utils/image-utils";
+import { url } from "../../utils/url-utils";
 
 interface Props {
 	src: string;
@@ -14,13 +14,16 @@ interface Props {
 const { src, alt, size = 64 } = Astro.props;
 const className = Astro.props.class ?? "w-6 h-6 object-cover";
 
-const isLocal = !(
-	src.startsWith("/") ||
-	src.startsWith("http") ||
-	src.startsWith("https") ||
-	src.startsWith("data:")
-);
-const isPublic = src.startsWith("/");
+const isBundledAsset = src.startsWith("/assets/");
+const isLocal =
+	isBundledAsset ||
+	!(
+		src.startsWith("/") ||
+		src.startsWith("http") ||
+		src.startsWith("https") ||
+		src.startsWith("data:")
+	);
+const isPublic = src.startsWith("/") && !src.startsWith("/assets/");
 
 let img: ImageMetadata | undefined;
 if (isLocal) {
@@ -28,10 +31,18 @@ if (isLocal) {
 }
 
 const localFormats = img
-	? Array.from(new Set(["avif", "webp", img.format === "png" ? "png" : img.format === "webp" ? "webp" : "jpg"]))
+	? Array.from(
+			new Set([
+				"avif",
+				"webp",
+				img.format === "png" ? "png" : img.format === "webp" ? "webp" : "jpg",
+			]),
+		)
 	: undefined;
 
-const responsiveWidths = Array.from(new Set([size, size * 2])).sort((a, b) => a - b);
+const responsiveWidths = Array.from(new Set([size, size * 2])).sort(
+	(a, b) => a - b,
+);
 
 const imageClass = className;
 ---

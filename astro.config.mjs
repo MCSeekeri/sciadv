@@ -34,12 +34,36 @@ export default defineConfig({
 	integrations: [
 		icon({
 			include: {
-				"fa6-regular": ["*"],
-				"fa6-solid": ["*"],
+				"fa6-regular": ["address-card"],
+				"fa6-solid": ["arrow-up-right-from-square", "arrow-rotate-left"],
+				"material-symbols": [
+					"copyright-outline-rounded",
+					"wb-sunny-outline-rounded",
+					"dark-mode-outline-rounded",
+					"radio-button-partial-outline",
+					"home-outline-rounded",
+					"keyboard-arrow-down-rounded",
+					"keyboard-arrow-up-rounded",
+					"palette-outline",
+					"menu-rounded",
+					"chevron-right-rounded",
+					"chevron-left-rounded",
+					"more-horiz",
+					"person-outline-rounded",
+					"calendar-today-outline-rounded",
+					"edit-calendar-outline-rounded",
+					"book-2-outline-rounded",
+					"tag-rounded",
+					"search",
+					"link",
+					"copyright",
+					"notes-rounded",
+					"schedule-outline-rounded",
+				],
 			},
 		}),
 		expressiveCode({
-			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			themes: ["github-light", expressiveCodeConfig.theme],
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
@@ -60,7 +84,7 @@ export default defineConfig({
 				borderColor: "none",
 				codeFontSize: "0.875rem",
 				codeFontFamily:
-					"ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+					"'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
 				codeLineHeight: "1.5rem",
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
@@ -83,7 +107,19 @@ export default defineConfig({
 				showCopyToClipboardButton: false,
 			},
 		}),
-		sitemap(),
+		sitemap({
+			filter: (page) =>
+				!page.includes("/agent-markdown-internal/") &&
+				!page.includes("/content-assets/"),
+			serialize: (item) => {
+				if (
+					item.url.includes("/agent-markdown-internal/") ||
+					item.url.includes("/content-assets/")
+				)
+					return undefined;
+				return item;
+			},
+		}),
 	],
 	markdown: {
 		processor: unified({

@@ -1,5 +1,5 @@
 ---
-import { Picture, getImage } from "astro:assets";
+import { getImage, Picture } from "astro:assets";
 import { resolveLocalImage } from "../../utils/image-utils";
 
 interface Props {
@@ -34,29 +34,40 @@ const {
 	widths,
 	priority = false,
 	singleSourceWidth,
-	singleSourceFormat = "webp",
+	singleSourceFormat,
 } = Astro.props;
 const className = Astro.props.class;
 
-const isLocal = !(
-	src.startsWith("/") ||
-	src.startsWith("http") ||
-	src.startsWith("https") ||
-	src.startsWith("data:")
-);
-const isPublic = src.startsWith("/");
+const isBundledAsset = src.startsWith("/assets/");
+const isLocal =
+	isBundledAsset ||
+	!(
+		src.startsWith("/") ||
+		src.startsWith("http") ||
+		src.startsWith("https") ||
+		src.startsWith("data:")
+	);
+const isPublic = src.startsWith("/") && !src.startsWith("/assets/");
 
 let img: ImageMetadata | undefined;
 if (isLocal) {
 	img = await resolveLocalImage(src, basePath);
 }
 
+const isPngSource =
+	isLocal && img
+		? img.src.toLowerCase().endsWith(".png")
+		: src.toLowerCase().endsWith(".png");
+const fallbackFormat = isPngSource ? "png" : "jpg";
+const resolvedWidths = widths ?? [400, 800, 1200];
+const resolvedSizes = sizes ?? "(max-width: 768px) 100vw, 800px";
+
 const singleSourceImage =
 	isLocal && img && singleSourceWidth
 		? await getImage({
 				src: img,
 				width: singleSourceWidth,
-				format: singleSourceFormat,
+				format: singleSourceFormat ?? fallbackFormat,
 			})
 		: undefined;
 
@@ -81,14 +92,15 @@ const resolvedFetchPriority = priority ? "high" : fetchpriority || "auto";
     {!singleSourceImage && isLocal && img && <Picture
         src={img}
         alt={alt || ""}
-        formats={['avif', 'webp', 'jpg']}
+        formats={['avif', 'webp', 'png']}
+        fallbackFormat={fallbackFormat}
         class={imageClass}
         style={imageStyle}
         loading={resolvedLoading}
         decoding={decoding}
         fetchpriority={resolvedFetchPriority}
-        sizes={sizes}
-        widths={widths}
+        sizes={resolvedSizes}
+        widths={resolvedWidths}
     />}
     {!isLocal && <img
         src={isPublic ? url(src) : src}

@@ -10,6 +10,7 @@ const archivesCollection = defineCollection({
 	}),
 	schema: z.object({
 		title: z.string(),
+		slug: z.string().optional(),
 		author: z.string().optional(),
 		date: z.date(),
 		updated: z.date().optional(),
@@ -39,6 +40,7 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
+// biome-ignore lint/suspicious/noExplicitAny: Astro CollectionConfig 需要 any 泛型
 export const collections: Record<string, CollectionConfig<any>> = {
 	archives: archivesCollection,
 	spec: specCollection,

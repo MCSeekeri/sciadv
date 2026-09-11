@@ -62,7 +62,9 @@ function initSearch() {
 		if (!window.__pagefindLoadPromise) {
 			// Pagefind is generated into /pagefind/ at build time, so this URL is
 			// intentionally resolved at runtime instead of through Vite's module graph.
-			window.__pagefindLoadPromise = import(/* @vite-ignore */ pagefindScriptUrl)
+			window.__pagefindLoadPromise = import(
+				/* @vite-ignore */ pagefindScriptUrl
+			)
 				.then(async (pagefind) => {
 					if (typeof pagefind.options === "function") {
 						await pagefind.options({ excerptLength: 20 });
@@ -87,6 +89,10 @@ function initSearch() {
 
 	const renderResults = (items) => {
 		if (!results) return;
+		const sanitizeExcerpt = (value) =>
+			escapeHtml(String(value ?? ""))
+				.replaceAll("&lt;mark&gt;", "<mark>")
+				.replaceAll("&lt;/mark&gt;", "</mark>");
 		results.innerHTML = items
 			.map(
 				(item) => `
@@ -99,7 +105,7 @@ function initSearch() {
 							${escapeHtml(item.meta.title)}
 							<span class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]">&rsaquo;</span>
 						</div>
-						<div class="transition text-sm text-50">${item.excerpt ?? ""}</div>
+						<div class="transition text-sm text-50">${sanitizeExcerpt(item.excerpt)}</div>
 					</a>
 				`,
 			)

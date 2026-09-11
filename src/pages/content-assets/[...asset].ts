@@ -1,14 +1,20 @@
-import sharp from "sharp";
+import { readFile } from "node:fs/promises";
 import type { APIRoute, GetStaticPaths } from "astro";
+import sharp from "sharp";
+import type {
+	ContentImageDescriptor,
+	OutputFormat,
+} from "@/plugins/content-image-manifest.ts";
 import {
 	assetKindFor,
 	contentImageManifest,
 	contentTypeForFormat,
 	variantWidthsByKind,
 } from "@/plugins/content-image-manifest.ts";
-import type { ContentImageDescriptor, OutputFormat } from "@/plugins/content-image-manifest.ts";
 
-function variantListFor(descriptor: ContentImageDescriptor): { width: number; format: OutputFormat }[] {
+function variantListFor(
+	descriptor: ContentImageDescriptor,
+): { width: number; format: OutputFormat }[] {
 	const widths = variantWidthsByKind[assetKindFor(descriptor.assetKey)];
 
 	return widths.flatMap((width) =>
@@ -16,7 +22,11 @@ function variantListFor(descriptor: ContentImageDescriptor): { width: number; fo
 	);
 }
 
-function buildAssetParam(assetKey: string, width: number, format: OutputFormat): string {
+function buildAssetParam(
+	assetKey: string,
+	width: number,
+	format: OutputFormat,
+): string {
 	return `${assetKey}@${width}.${format}`;
 }
 
@@ -41,6 +51,16 @@ export const GET: APIRoute = async ({ props }): Promise<Response> => {
 		width: number;
 		format: OutputFormat;
 	};
+
+	if (format === "svg" || format === "gif") {
+		const data = await readFile(descriptor.sourcePath);
+		return new Response(data, {
+			headers: {
+				"Content-Type": contentTypeForFormat(format),
+				"Cache-Control": "public, max-age=31536000, immutable",
+			},
+		});
+	}
 
 	const pipeline = sharp(descriptor.sourcePath).resize({
 		width,
