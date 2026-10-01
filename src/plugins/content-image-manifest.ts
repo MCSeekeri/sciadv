@@ -87,7 +87,8 @@ const manifestByAssetKey: Record<string, ContentImageDescriptor> =
 	);
 
 for (const author of Object.values(authors)) {
-	const assetKey = author.avatar.replace(/^assets\//, "");
+	// 复用 normalizeDirectiveSource() 去掉前导 "/" 与 "assets/" 前缀。
+	const assetKey = normalizeDirectiveSource(author.avatar);
 	if (!manifestByAssetKey[assetKey]) {
 		console.error(
 			`[content-image-manifest] Missing author avatar in manifest: ${assetKey}`,

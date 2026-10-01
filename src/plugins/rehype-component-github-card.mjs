@@ -23,7 +23,11 @@ export function GithubCardComponent(properties, children) {
 		);
 
 	const repo = properties.repo;
-	const repoEscaped = JSON.stringify(repo);
+	// JSON.stringify 不转义 "<"，"</script>" 可闭合脚本块；用 unicode 转义做安全序列化。
+	const repoEscaped = JSON.stringify(repo)
+		.replace(/</g, "\\u003c")
+		.replace(/>/g, "\\u003e")
+		.replace(/&/g, "\\u0026");
 	const cardUuid =
 		"GC" +
 		Array.from(repo)

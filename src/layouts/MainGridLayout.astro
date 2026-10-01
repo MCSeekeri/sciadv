@@ -121,7 +121,20 @@ if (siteConfig.banner.enable) {
                 <SideBar headings={headings}></SideBar>
             </div>
 
-            <main transition:name="page-content" transition:animate="fade" class="col-span-2 lg:col-span-1 overflow-hidden">
+            <main
+                transition:name="page-content"
+                transition:animate={{
+                    forwards: {
+                        old: { name: "nav-fwd-old", duration: "220ms", easing: "ease-in" },
+                        new: { name: "nav-fwd-new", duration: "320ms", easing: "ease-out" },
+                    },
+                    backwards: {
+                        old: { name: "nav-back-old", duration: "220ms", easing: "ease-in" },
+                        new: { name: "nav-back-new", duration: "320ms", easing: "ease-out" },
+                    },
+                }}
+                class="col-span-2 lg:col-span-1 overflow-hidden"
+            >
                 <div id="content-wrapper" class="onload-animation">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <slot></slot>

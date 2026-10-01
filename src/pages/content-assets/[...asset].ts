@@ -16,9 +16,13 @@ function variantListFor(
 	descriptor: ContentImageDescriptor,
 ): { width: number; format: OutputFormat }[] {
 	const widths = variantWidthsByKind[assetKindFor(descriptor.assetKey)];
+	// fallbackFormat 可能不在 formats 里，需并集去重，否则该 URL 未预渲染而 404。
+	const formats = descriptor.formats.includes(descriptor.fallbackFormat)
+		? descriptor.formats
+		: [...descriptor.formats, descriptor.fallbackFormat];
 
 	return widths.flatMap((width) =>
-		descriptor.formats.map((format) => ({ width, format })),
+		formats.map((format) => ({ width, format })),
 	);
 }
 

@@ -12,30 +12,37 @@ const { class: className = "" }: Props = Astro.props;
 </div>
 
 <script>
-document.addEventListener("click", function (e: MouseEvent) {
-    const target = e.target as Element | null;
-    if (target && target.classList.contains("copy-btn")) {
-        const preEle = target.closest("pre");
-        const codeEle = preEle?.querySelector("code");
-        const code = Array.from(codeEle?.querySelectorAll(".code:not(summary *)") ?? [])
-            .map(el => el.textContent)
-            .map(t => t === "\n" ? "" : t)
-            .join("\n");
-        navigator.clipboard.writeText(code);
+	const markdownWindow = window as Window & { __markdownCopyBound?: boolean };
 
-        const timeoutId = target.getAttribute("data-timeout-id");
-        if (timeoutId) {
-            clearTimeout(parseInt(timeoutId));
-        }
+	function handleCopyClick(e: MouseEvent) {
+		const target = e.target as Element | null;
+		if (target && target.classList.contains("copy-btn")) {
+			const preEle = target.closest("pre");
+			const codeEle = preEle?.querySelector("code");
+			const code = Array.from(codeEle?.querySelectorAll(".code:not(summary *)") ?? [])
+				.map((el) => el.textContent)
+				.map((t) => (t === "\n" ? "" : t))
+				.join("\n");
+			navigator.clipboard.writeText(code);
 
-        target.classList.add("success");
+			const timeoutId = target.getAttribute("data-timeout-id");
+			if (timeoutId) {
+				clearTimeout(parseInt(timeoutId));
+			}
 
-        // 设置新的timeout并保存ID到按钮的自定义属性中
-        const newTimeoutId = setTimeout(() => {
-            target.classList.remove("success");
-        }, 1000);
+			target.classList.add("success");
 
-        target.setAttribute("data-timeout-id", newTimeoutId.toString());
-    }
-});
+			// 设置新的timeout并保存ID到按钮的自定义属性中
+			const newTimeoutId = setTimeout(() => {
+				target.classList.remove("success");
+			}, 1000);
+
+			target.setAttribute("data-timeout-id", newTimeoutId.toString());
+		}
+	}
+
+	if (!markdownWindow.__markdownCopyBound) {
+		markdownWindow.__markdownCopyBound = true;
+		document.addEventListener("click", handleCopyClick);
+	}
 </script>

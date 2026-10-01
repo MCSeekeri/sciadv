@@ -31,6 +31,10 @@ export default defineConfig({
 	site: "https://lib.sci-adv.org",
 	base: "/",
 	trailingSlash: "always",
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "hover",
+	},
 	integrations: [
 		icon({
 			include: {
@@ -108,15 +112,9 @@ export default defineConfig({
 			},
 		}),
 		sitemap({
-			filter: (page) =>
-				!page.includes("/agent-markdown-internal/") &&
-				!page.includes("/content-assets/"),
+			filter: (page) => !page.includes("/content-assets/"),
 			serialize: (item) => {
-				if (
-					item.url.includes("/agent-markdown-internal/") ||
-					item.url.includes("/content-assets/")
-				)
-					return undefined;
+				if (item.url.includes("/content-assets/")) return undefined;
 				return item;
 			},
 		}),

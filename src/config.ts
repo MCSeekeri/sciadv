@@ -3,10 +3,10 @@ import type {
 	AnalyticsConfig,
 	AnnouncementConfig,
 	ExpressiveCodeConfig,
-	LicenseConfig,
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
+	SourceNoticeConfig,
 	WalineConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
@@ -75,7 +75,7 @@ export const profileConfig: ProfileConfig = {
 	links: [],
 };
 
-export const licenseConfig: LicenseConfig = {
+export const sourceNoticeConfig: SourceNoticeConfig = {
 	enable: true,
 };
 

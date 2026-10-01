@@ -1,3 +1,6 @@
+/
+  Link: </rss.xml>; rel="alternate"; type="application/rss+xml", </about/>; rel="about"; type="text/html"
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 

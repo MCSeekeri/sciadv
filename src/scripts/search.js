@@ -33,6 +33,15 @@ function initSearch() {
 			.replaceAll('"', "&quot;")
 			.replaceAll("'", "&#39;");
 
+	// 白名单限制 href 起始，防御伪协议经 innerHTML 注入。
+	const safeHref = (rawUrl) => {
+		const url = String(rawUrl ?? "");
+		if (url.startsWith("/") || /^https?:\/\//i.test(url)) {
+			return escapeHtml(url);
+		}
+		return "#";
+	};
+
 	const setPanelOpen = (open) => {
 		panel?.classList.toggle("float-panel-closed", !open);
 	};
@@ -97,7 +106,7 @@ function initSearch() {
 			.map(
 				(item) => `
 					<a
-						href="${escapeHtml(item.url)}"
+						href="${safeHref(item.url)}"
 						class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
 	       rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]"
 					>

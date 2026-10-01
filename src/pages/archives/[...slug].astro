@@ -4,8 +4,8 @@ import { render } from "astro:content";
 import path from "node:path";
 import Comment from "@components/Comment.astro";
 import ImageWrapper from "@components/misc/ImageWrapper.astro";
-import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import SourceNotice from "@components/misc/SourceNotice.astro";
 import PostMetadata from "@components/PostMeta.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
@@ -18,7 +18,7 @@ import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import katexCssUrl from "katex/dist/katex.css?url";
 import photoswipeCssUrl from "photoswipe/style.css?url";
-import { licenseConfig, siteConfig, walineConfig } from "@/config";
+import { siteConfig, sourceNoticeConfig, walineConfig } from "@/config";
 import bannerSocialImageUrl from "../../assets/images/banner.jpg?url";
 
 export async function getStaticPaths() {
@@ -152,7 +152,7 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {sourceNoticeConfig.enable && <SourceNotice authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl source-notice-container onload-animation"></SourceNotice>}
 
         </div>
     </div>
@@ -210,11 +210,21 @@ const jsonLd = {
 
 <script>
 function setupPostLightbox() {
+	const postContainer = document.getElementById("post-container");
+	const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
+
+	// 防同一容器初始化两次（脚本直接调用与 astro:page-load 都会触发）。
+	if (
+		!(postContainer instanceof HTMLElement) ||
+		postContainer.dataset.lightboxBound === "true"
+	) {
+		return;
+	}
+	postContainer.dataset.lightboxBound = "true";
+
 	const galleryImages = Array.from(
 		document.querySelectorAll('.custom-md img:not([data-no-lightbox]), #post-cover img'),
 	);
-	const postContainer = document.getElementById("post-container");
-	const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
 
 	if (galleryImages.length === 0 || !photoswipeCssUrl) {
 		return;
@@ -292,5 +302,11 @@ function setupPostLightbox() {
 }
 
 setupPostLightbox();
-document.addEventListener("astro:page-load", setupPostLightbox);
+
+const lightboxWindow = window as Window & { __postLightboxBound?: boolean };
+
+if (!lightboxWindow.__postLightboxBound) {
+	lightboxWindow.__postLightboxBound = true;
+	document.addEventListener("astro:page-load", setupPostLightbox);
+}
 </script>

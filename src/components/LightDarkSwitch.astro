@@ -12,12 +12,19 @@ import { i18n } from "../i18n/translation";
 ---
 
 <!-- z-50 make the panel higher than other float panels -->
-<div id="light-dark-switch" class="relative z-50">
+<div
+	id="light-dark-switch"
+	class="relative z-50"
+	data-light-mode={LIGHT_MODE}
+	data-dark-mode={DARK_MODE}
+	data-auto-mode={AUTO_MODE}
+	data-default-theme={DEFAULT_THEME}
+	data-expressive-code-theme={expressiveCodeConfig.theme}
+>
 	<button
-		aria-label="Light/Dark Mode"
+		aria-label="Toggle light, dark or system theme"
 		aria-controls="light-dark-panel"
 		aria-expanded="false"
-		aria-haspopup="menu"
 		class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90"
 		id="scheme-switch"
 	>
@@ -76,116 +83,123 @@ import { i18n } from "../i18n/translation";
 	</div>
 </div>
 
-<script
-	is:inline
-	define:vars={{
-		LIGHT_MODE,
-		DARK_MODE,
-		AUTO_MODE,
-		DEFAULT_THEME,
-		expressiveCodeTheme: expressiveCodeConfig.theme,
-	}}
->
-	const themeModes = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
-	const themeSwitch = document.getElementById("light-dark-switch");
-	const switchButton = document.getElementById("scheme-switch");
-	const themePanel = document.getElementById("light-dark-panel");
-	const themeButtons = Array.from(
-		document.querySelectorAll("[data-theme-mode]"),
-	);
-	const themeIcons = Array.from(document.querySelectorAll("[data-theme-icon]"));
+<script is:inline>
+	(() => {
+		const root = document.getElementById("light-dark-switch");
+		if (!root) return;
 
-	function getStoredTheme() {
-		return localStorage.getItem("theme") || DEFAULT_THEME;
-	}
+		const LIGHT_MODE = root.dataset.lightMode;
+		const DARK_MODE = root.dataset.darkMode;
+		const AUTO_MODE = root.dataset.autoMode;
+		const DEFAULT_THEME = root.dataset.defaultTheme;
+		const expressiveCodeTheme = root.dataset.expressiveCodeTheme;
 
-	function applyTheme(theme) {
-		switch (theme) {
-			case LIGHT_MODE:
-				document.documentElement.classList.remove("dark");
-				break;
-			case DARK_MODE:
-				document.documentElement.classList.add("dark");
-				break;
-			default:
-				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					document.documentElement.classList.add("dark");
-				} else {
+		const themeModes = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
+		const themeSwitch = root;
+		const switchButton = document.getElementById("scheme-switch");
+		const themePanel = document.getElementById("light-dark-panel");
+		const themeButtons = Array.from(
+			document.querySelectorAll("[data-theme-mode]"),
+		);
+		const themeIcons = Array.from(document.querySelectorAll("[data-theme-icon]"));
+
+		function getStoredTheme() {
+			return localStorage.getItem("theme") || DEFAULT_THEME;
+		}
+
+		function applyTheme(theme) {
+			switch (theme) {
+				case LIGHT_MODE:
 					document.documentElement.classList.remove("dark");
-				}
-				break;
+					break;
+				case DARK_MODE:
+					document.documentElement.classList.add("dark");
+					break;
+				default:
+					if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+						document.documentElement.classList.add("dark");
+					} else {
+						document.documentElement.classList.remove("dark");
+					}
+					break;
+			}
+
+			if (expressiveCodeTheme) {
+				document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
+			}
 		}
 
-		document.documentElement.setAttribute("data-theme", expressiveCodeTheme);
-	}
+		function updateThemeUI(theme) {
+			for (const button of themeButtons) {
+				const isCurrentTheme =
+					button.getAttribute("data-theme-mode") === theme;
 
-	function updateThemeUI(theme) {
-		for (const button of themeButtons) {
-			const isCurrentTheme =
-				button.getAttribute("data-theme-mode") === theme;
+				button.classList.toggle(
+					"current-theme-btn",
+					isCurrentTheme,
+				);
+				button.setAttribute("aria-checked", String(isCurrentTheme));
+				button.removeAttribute("aria-selected");
+			}
 
-			button.classList.toggle(
-				"current-theme-btn",
-				isCurrentTheme,
-			);
-			button.setAttribute("aria-checked", String(isCurrentTheme));
-			button.removeAttribute("aria-selected");
+			for (const icon of themeIcons) {
+				icon.classList.toggle(
+					"opacity-0",
+					icon.getAttribute("data-theme-icon") !== theme,
+				);
+			}
 		}
 
-		for (const icon of themeIcons) {
-			icon.classList.toggle(
-				"opacity-0",
-				icon.getAttribute("data-theme-icon") !== theme,
-			);
+		function setTheme(theme) {
+			localStorage.setItem("theme", theme);
+			applyTheme(theme);
+			updateThemeUI(theme);
 		}
-	}
 
-	function setTheme(theme) {
-		localStorage.setItem("theme", theme);
-		applyTheme(theme);
-		updateThemeUI(theme);
-	}
-
-	function cycleTheme() {
-		const currentTheme = getStoredTheme();
-		const currentIndex = themeModes.indexOf(currentTheme);
-		const nextTheme = themeModes[(currentIndex + 1) % themeModes.length];
-		setTheme(nextTheme);
-	}
-
-	function setThemePanelOpen(open) {
-		themePanel?.classList.toggle("float-panel-closed", !open);
-		switchButton?.setAttribute("aria-expanded", String(open));
-	}
-
-	const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-	mediaQuery.addEventListener("change", () => {
-		if (getStoredTheme() === AUTO_MODE) {
-			applyTheme(AUTO_MODE);
+		function cycleTheme() {
+			const currentTheme = getStoredTheme();
+			const currentIndex = themeModes.indexOf(currentTheme);
+			const nextTheme = themeModes[(currentIndex + 1) % themeModes.length];
+			setTheme(nextTheme);
 		}
-	});
 
-	updateThemeUI(getStoredTheme());
-	switchButton?.addEventListener("click", cycleTheme);
+		function setThemePanelOpen(open) {
+			themePanel?.classList.toggle("float-panel-closed", !open);
+			switchButton?.setAttribute("aria-expanded", String(open));
+		}
 
-	for (const button of themeButtons) {
-		button.addEventListener("click", () => {
-			const theme = button.getAttribute("data-theme-mode");
-			if (!theme) return;
-			setTheme(theme);
+		updateThemeUI(getStoredTheme());
+		if (root.dataset.bound === "true") return;
+		root.dataset.bound = "true";
+
+		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		mediaQuery.addEventListener("change", () => {
+			if (getStoredTheme() === AUTO_MODE) {
+				applyTheme(AUTO_MODE);
+			}
 		});
-	}
 
-	themeSwitch?.addEventListener("mouseenter", () => setThemePanelOpen(true));
-	themeSwitch?.addEventListener("mouseleave", () => setThemePanelOpen(false));
-	switchButton?.addEventListener("focus", () => setThemePanelOpen(true));
-	themePanel?.addEventListener("focusout", (event) => {
-		if (
-			event.relatedTarget instanceof Node &&
-			themeSwitch?.contains(event.relatedTarget)
-		) {
-			return;
+		switchButton?.addEventListener("click", cycleTheme);
+
+		for (const button of themeButtons) {
+			button.addEventListener("click", () => {
+				const theme = button.getAttribute("data-theme-mode");
+				if (!theme) return;
+				setTheme(theme);
+			});
 		}
-		setThemePanelOpen(false);
-	});
+
+		themeSwitch.addEventListener("mouseenter", () => setThemePanelOpen(true));
+		themeSwitch.addEventListener("mouseleave", () => setThemePanelOpen(false));
+		switchButton?.addEventListener("focus", () => setThemePanelOpen(true));
+		themePanel?.addEventListener("focusout", (event) => {
+			if (
+				event.relatedTarget instanceof Node &&
+				themeSwitch.contains(event.relatedTarget)
+			) {
+				return;
+			}
+			setThemePanelOpen(false);
+		});
+	})();
 </script>

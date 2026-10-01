@@ -103,12 +103,14 @@ const author = resolveAuthor(authorId, Astro.site?.toString() || "");
         </div>
         <div class="flex flex-row flex-nowrap items-center">
             {(tags && tags.length > 0) && tags.map((tag, i) => (
-                <div class:list={[{"hidden": i == 0}, "mx-1.5 text-[var(--meta-divider)] text-sm"]}>/</div>
-                <a href={getTagUrl(tag)}
-                   class="link-lg transition text-50 text-sm font-medium
-                                hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                    {tag.trim()}
-                </a>
+                <>
+                    {i > 0 && <div class="mx-1.5 text-[var(--meta-divider)] text-sm">/</div>}
+                    <a href={getTagUrl(tag)}
+                       class="link-lg transition text-50 text-sm font-medium
+                                    hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
+                        {tag.trim()}
+                    </a>
+                </>
             ))}
             {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
         </div>

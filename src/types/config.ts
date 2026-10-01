@@ -60,7 +60,7 @@ export type AnnouncementConfig = {
 	content: string;
 };
 
-export type LicenseConfig = {
+export type SourceNoticeConfig = {
 	enable: boolean;
 };
 

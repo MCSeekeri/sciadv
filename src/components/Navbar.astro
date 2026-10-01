@@ -32,7 +32,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
         </a>
         <div class="hidden md:flex">
             {links.map((l) => (
-                <div class="relative group">
+                <div class="relative group" data-nav-item>
                     {l.url ? (
                         <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
                            class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95 flex items-center"
@@ -44,16 +44,18 @@ let links: NavBarLink[] = navBarConfig.links.map(
                             </div>
                         </a>
                     ) : (
-                        <div class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95 flex items-center cursor-default">
+                        <button type="button" data-nav-trigger aria-expanded="false"
+                           class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95 flex items-center cursor-default"
+                        >
                             <div class="flex items-center">
                                 {l.name}
                                 {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>}
-                                {l.sublinks && <Icon name="material-symbols:keyboard-arrow-down-rounded" class="text-[1.25rem] text-[var(--primary)] ml-1 transition-transform duration-200 group-hover:-rotate-180"></Icon>}
+                                {l.sublinks && <Icon name="material-symbols:keyboard-arrow-down-rounded" class="text-[1.25rem] text-[var(--primary)] ml-1 transition-transform duration-200 group-hover:-rotate-180 group-data-[open=true]:-rotate-180"></Icon>}
                             </div>
-                        </div>
+                        </button>
                     )}
                     {l.sublinks && (
-                        <div class="absolute top-11 pt-2 left-0 w-max hidden group-hover:block group-focus-within:block transition z-50 animate-fade-in-up-fast">
+                        <div data-nav-submenu class="absolute top-11 pt-2 left-0 w-max hidden group-hover:block group-focus-within:block transition z-50 animate-fade-in-up-fast">
                             <div class="card-base !p-2 flex flex-col gap-1 w-full rounded-xl shadow-xl">
                                 {l.sublinks.map((sub) => (
                                     <a aria-label={sub.name} href={sub.external ? sub.url : url(sub.url!)} target={sub.external ? "_blank" : null}
@@ -89,23 +91,64 @@ let links: NavBarLink[] = navBarConfig.links.map(
 </div>
 
 <script is:inline>
-const settingBtn = document.getElementById("display-settings-switch");
-settingBtn?.addEventListener("click", () => {
-    const settingPanel = document.getElementById("display-setting");
-    settingPanel?.classList.toggle("float-panel-closed");
-    settingBtn.setAttribute(
-        "aria-expanded",
-        settingPanel?.classList.contains("float-panel-closed") ? "false" : "true",
-    );
-});
+function setNavSubmenuOpen(item, open) {
+    const trigger = item.querySelector("[data-nav-trigger]");
+    const submenu = item.querySelector("[data-nav-submenu]");
+    if (!(submenu instanceof HTMLElement)) return;
+    submenu.classList.toggle("hidden", !open);
+    if (trigger instanceof HTMLElement) {
+        trigger.setAttribute("aria-expanded", String(open));
+    }
+    if (open) {
+        item.dataset.open = "true";
+    } else {
+        delete item.dataset.open;
+    }
+}
 
-const menuBtn = document.getElementById("nav-menu-switch");
-menuBtn?.addEventListener("click", () => {
-    const menuPanel = document.getElementById("nav-menu-panel");
-    menuPanel?.classList.toggle("float-panel-closed");
-    menuBtn.setAttribute(
-        "aria-expanded",
-        menuPanel?.classList.contains("float-panel-closed") ? "false" : "true",
-    );
-});
+function setupNavSubmenus() {
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+    for (const item of document.querySelectorAll("[data-nav-item]")) {
+        if (!(item instanceof HTMLElement) || item.dataset.bound === "true") continue;
+        const trigger = item.querySelector("[data-nav-trigger]");
+        const submenu = item.querySelector("[data-nav-submenu]");
+        if (!(trigger instanceof HTMLElement) || !(submenu instanceof HTMLElement)) continue;
+        item.dataset.bound = "true";
+
+        trigger.addEventListener("click", (event) => {
+            if (event.detail === 0 || !canHover) {
+                setNavSubmenuOpen(item, true);
+                return;
+            }
+            setNavSubmenuOpen(item, item.dataset.open !== "true");
+        });
+        trigger.addEventListener("focus", () => setNavSubmenuOpen(item, true));
+        item.addEventListener("focusout", (event) => {
+            const next = event.relatedTarget;
+            if (next instanceof Node && item.contains(next)) return;
+            setNavSubmenuOpen(item, false);
+        });
+        item.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") setNavSubmenuOpen(item, false);
+        });
+    }
+
+    if (document.documentElement.dataset.navSubmenuBound === "true") return;
+    document.documentElement.dataset.navSubmenuBound = "true";
+
+    document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Node)) return;
+        for (const item of document.querySelectorAll("[data-nav-item][data-open]")) {
+            if (!item.contains(event.target)) setNavSubmenuOpen(item, false);
+        }
+    });
+    document.addEventListener("astro:page-load", () => {
+        for (const item of document.querySelectorAll("[data-nav-item][data-open]")) {
+            setNavSubmenuOpen(item, false);
+        }
+    });
+}
+
+setupNavSubmenus();
 </script>

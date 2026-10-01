@@ -164,7 +164,6 @@ const shouldLoadGtm =
 			title={siteConfig.title}
 			href={new URL("rss.xml", Astro.site ?? Astro.url).href}
 		/>
-
 		{shouldLoadGtm && (
 			<script is:inline define:vars={{ gtmId }}>
 				const injectGtm = () => {
@@ -354,10 +353,12 @@ const shouldLoadGtm =
 		{
 			panelId: "display-setting",
 			triggerIds: ["display-setting", "display-settings-switch"],
+			toggleId: "display-settings-switch",
 		},
 		{
 			panelId: "nav-menu-panel",
 			triggerIds: ["nav-menu-panel", "nav-menu-switch"],
+			toggleId: "nav-menu-switch",
 		},
 		{
 			panelId: "search-panel",
@@ -379,19 +380,36 @@ const shouldLoadGtm =
 	document.addEventListener("click", (event) => {
 		if (!(event.target instanceof Node)) return;
 
+		for (const { panelId, triggerIds, toggleId } of panelConfigs) {
+			const panel = document.getElementById(panelId);
+			if (!panel) continue;
+			if (toggleId && clickIsInside(event.target, [toggleId])) {
+				panel.classList.toggle("float-panel-closed");
+			} else if (!clickIsInside(event.target, triggerIds)) {
+				panel.classList.add("float-panel-closed");
+			}
+		}
+		syncPanelTriggerAria();
+	});
+
+	function syncPanelTriggerAria() {
 		for (const { panelId, triggerIds } of panelConfigs) {
 			const panel = document.getElementById(panelId);
-			if (!panel || clickIsInside(event.target, triggerIds)) {
-				continue;
+			const expanded = !!panel && !panel.classList.contains("float-panel-closed");
+			for (const id of triggerIds) {
+				const trigger = document.getElementById(id);
+				if (trigger instanceof HTMLElement && trigger.hasAttribute("aria-expanded")) {
+					trigger.setAttribute("aria-expanded", String(expanded));
+				}
 			}
-			panel.classList.add("float-panel-closed");
 		}
-	});
+	}
 
 	function closeFloatPanels() {
 		for (const { panelId } of panelConfigs) {
 			document.getElementById(panelId)?.classList.add("float-panel-closed");
 		}
+		syncPanelTriggerAria();
 	}
 
 	function updateBannerOffset() {
@@ -522,4 +540,67 @@ const shouldLoadGtm =
 		setHomeState(window.location.href);
 		completePageTransition();
 	});
+
+	// content-visibility: auto 的冷状态锚点会因高度估算漂移，滚动后重测并迭代修正。
+	function correctAnchorDrift() {
+		const rawHash = window.location.hash;
+		if (rawHash.length < 2) return;
+		let target = null;
+		try {
+			target = document.getElementById(decodeURIComponent(rawHash.slice(1)));
+		} catch {
+			return;
+		}
+		if (!target) return;
+		let previousOffset = Number.NaN;
+		for (let i = 0; i < 8; i++) {
+			const offset = target.getBoundingClientRect().top;
+			if (Math.abs(offset) < 2 || offset === previousOffset) break;
+			previousOffset = offset;
+			window.scrollBy(0, offset);
+		}
+	}
+
+	if (!window.__anchorDriftBound) {
+		window.__anchorDriftBound = true;
+		const runWithRetry = () => {
+			correctAnchorDrift();
+			window.setTimeout(correctAnchorDrift, 250);
+		};
+		window.addEventListener("hashchange", runWithRetry);
+		document.addEventListener("astro:page-load", runWithRetry);
+		// 同页锚点点击走 history.pushState，不触发 hashchange，捕获阶段补监听修正。
+		document.addEventListener(
+			"click",
+			(event) => {
+				if (
+					event.defaultPrevented ||
+					event.button !== 0 ||
+					event.metaKey ||
+					event.ctrlKey ||
+					event.shiftKey ||
+					event.altKey
+				) {
+					return;
+				}
+				const anchor = event
+					.composedPath()
+					.find(
+						(element) =>
+							element instanceof HTMLAnchorElement && element.hash.length > 1,
+					);
+				if (
+					!anchor ||
+					anchor.origin !== window.location.origin ||
+					anchor.pathname !== window.location.pathname
+				) {
+					return;
+				}
+				window.requestAnimationFrame(correctAnchorDrift);
+				window.setTimeout(correctAnchorDrift, 150);
+				window.setTimeout(correctAnchorDrift, 450);
+			},
+			true,
+		);
+	}
 </script>

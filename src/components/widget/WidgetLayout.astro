@@ -33,7 +33,7 @@ const {
         <slot></slot>
     </div>
     {isCollapsed && <div class="expand-btn px-4 -mb-2">
-        <button class="btn-plain rounded-lg w-full h-9">
+        <button type="button" aria-expanded="false" aria-controls={id} class="btn-plain rounded-lg w-full h-9">
             <div class="text-[var(--primary)] flex items-center justify-center gap-2 -translate-x-2">
                 <Icon name="material-symbols:more-horiz" class="text-[1.75rem]"></Icon> {i18n(I18nKey.more)}
             </div>
@@ -57,10 +57,17 @@ const {
 
             const id = this.dataset.id;
             const btn = this.querySelector('.expand-btn');
-            const wrapper = this.querySelector(`#${id}`)
-            btn!.addEventListener('click', () => {
-                wrapper!.classList.remove('collapsed');
-                btn!.classList.add('hidden');
+            const wrapper = id ? this.querySelector(`#${id}`) : null;
+
+            if (!(btn instanceof HTMLElement) || !(wrapper instanceof HTMLElement))
+                return;
+
+            const toggle = btn.querySelector('button');
+
+            btn.addEventListener('click', () => {
+                wrapper.classList.remove('collapsed');
+                btn.classList.add('hidden');
+                toggle?.setAttribute('aria-expanded', 'true');
             })
         }
     }

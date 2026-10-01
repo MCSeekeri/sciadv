@@ -3,6 +3,7 @@ type WalineClientOptions = Record<string, unknown> & {
 };
 
 const initializedRoots: WeakSet<HTMLElement> = new WeakSet<HTMLElement>();
+const observedRoots: WeakSet<HTMLElement> = new WeakSet<HTMLElement>();
 let walineModulePromise: Promise<typeof import("@waline/client")> | undefined;
 let walineStyleUrlPromise: Promise<string> | undefined;
 
@@ -85,9 +86,15 @@ async function initWaline(root: Element): Promise<void> {
 }
 
 function observeWaline(root: Element): void {
-	if (!(root instanceof HTMLElement) || initializedRoots.has(root)) {
+	if (
+		!(root instanceof HTMLElement) ||
+		initializedRoots.has(root) ||
+		observedRoots.has(root)
+	) {
 		return;
 	}
+
+	observedRoots.add(root);
 
 	const loadStrategy = root.dataset.loadStrategy ?? "click";
 	const trigger = root.querySelector<HTMLButtonElement>(
@@ -128,6 +135,19 @@ function observeWaline(root: Element): void {
 	observer.observe(root);
 }
 
-for (const root of document.querySelectorAll("[data-waline-root]")) {
-	observeWaline(root);
+export function scanWalineRoots(root: ParentNode = document): void {
+	for (const element of root.querySelectorAll("[data-waline-root]")) {
+		observeWaline(element);
+	}
+}
+
+const commentWindow = window as Window & { __walineScanBound?: boolean };
+
+scanWalineRoots();
+
+if (!commentWindow.__walineScanBound) {
+	commentWindow.__walineScanBound = true;
+	document.addEventListener("astro:page-load", () => {
+		scanWalineRoots();
+	});
 }

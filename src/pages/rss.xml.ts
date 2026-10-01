@@ -35,9 +35,9 @@ export async function GET(context: APIContext): Promise<Response> {
 			const cleanedHtml = stripInvalidXmlChars(html);
 			return {
 				title: post.data.title,
-				pubDate: post.data.date,
+				pubDate: post.data.updated ?? post.data.date,
 				description: post.data.description || "",
-				link: url(`/archives/${getEntrySlug(post)}/`),
+				link: new URL(url(`/archives/${getEntrySlug(post)}/`), site).href,
 				content: sanitizeHtml(cleanedHtml, {
 					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 				}),
