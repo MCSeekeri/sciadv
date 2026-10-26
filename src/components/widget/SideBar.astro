@@ -11,11 +11,11 @@ interface Props {
 
 const className = Astro.props.class;
 ---
-<div id="sidebar" class:list={[className, "w-full onload-animation"]}>
+<div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Announcement></Announcement>
     </div>
-    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 sticky top-4">
+    <div id="sidebar-sticky" class="flex flex-col w-full gap-4 sticky top-4">
         <Categories></Categories>
         <Tag></Tag>
     </div>

@@ -20,7 +20,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
 	},
 );
 ---
-<div id="navbar" class="z-50 onload-animation">
+<div id="navbar" class="z-50">
     <div class:list={[
         className,
         "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"]}>
@@ -141,11 +141,6 @@ function setupNavSubmenus() {
         if (!(event.target instanceof Node)) return;
         for (const item of document.querySelectorAll("[data-nav-item][data-open]")) {
             if (!item.contains(event.target)) setNavSubmenuOpen(item, false);
-        }
-    });
-    document.addEventListener("astro:page-load", () => {
-        for (const item of document.querySelectorAll("[data-nav-item][data-open]")) {
-            setNavSubmenuOpen(item, false);
         }
     });
 }

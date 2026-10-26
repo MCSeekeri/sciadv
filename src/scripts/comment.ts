@@ -141,13 +141,4 @@ export function scanWalineRoots(root: ParentNode = document): void {
 	}
 }
 
-const commentWindow = window as Window & { __walineScanBound?: boolean };
-
 scanWalineRoots();
-
-if (!commentWindow.__walineScanBound) {
-	commentWindow.__walineScanBound = true;
-	document.addEventListener("astro:page-load", () => {
-		scanWalineRoots();
-	});
-}

@@ -148,7 +148,7 @@ class TableOfContents extends HTMLElement {
         this.tocEl.scrollTo({
             top,
             left: 0,
-            behavior: "smooth",
+            behavior: "auto",
         });
     };
 
@@ -202,20 +202,28 @@ class TableOfContents extends HTMLElement {
     };
 
     connectedCallback() {
-        // wait for the onload animation to finish, which makes the `getBoundingClientRect` return correct values
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reducedMotion) {
+        // TOC 仅在 2xl+ 显示，小屏跳过测量。
+        if (!window.matchMedia("(min-width: 1536px)").matches) return;
+
+        const start = () => {
+            if (this.initialized) return;
             this.init();
-            return;
+        };
+        const startWhenIdle = () => {
+            if (typeof window.requestIdleCallback === "function") {
+                window.requestIdleCallback(start, { timeout: 3000 });
+            } else {
+                window.setTimeout(start, 1500);
+            }
+        };
+
+        if (document.readyState === "complete") {
+            startWhenIdle();
+        } else {
+            window.addEventListener("load", startWhenIdle, { once: true });
         }
-        const element = document.querySelector('.prose');
-        if (element) {
-            element.addEventListener('animationend', () => {
-                this.init();
-            }, { once: true });
-        }
-        // 兜底：动画事件因任何原因未触发时也初始化
-        window.setTimeout(() => this.init(), 1000);
+        window.addEventListener("scroll", start, { once: true, passive: true });
+        window.addEventListener("pointerdown", start, { once: true, passive: true });
     };
 
     init() {

@@ -2,8 +2,9 @@ import rss from "@astrojs/rss";
 import { getEntrySlug, getSortedPosts } from "@utils/content-utils";
 import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
-import sanitizeHtml from "sanitize-html";
 import { siteConfig } from "@/config";
+
+const RSS_ITEM_LIMIT = 20;
 
 function stripInvalidXmlChars(str: string): string {
 	return str.replace(
@@ -14,35 +15,43 @@ function stripInvalidXmlChars(str: string): string {
 }
 
 export async function GET(context: APIContext): Promise<Response> {
-	const blog = await getSortedPosts();
+	const blog = (await getSortedPosts()).slice(0, RSS_ITEM_LIMIT);
 	const fallbackSite = new URL("https://lib.sci-adv.org");
 	const site = context.site ?? fallbackSite;
+	const selfUrl = new URL("rss.xml", site).href;
 
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
 		site,
+		xmlns: {
+			atom: "http://www.w3.org/2005/Atom",
+		},
+		customData: [
+			`<language>${siteConfig.lang.replace("_", "-")}</language>`,
+			`<lastBuildDate>${(blog[0]?.data.date ?? new Date()).toUTCString()}</lastBuildDate>`,
+			"<ttl>60</ttl>",
+			`<atom:link href="${selfUrl}" rel="self" type="application/rss+xml" />`,
+		].join(""),
 		items: blog.map((post) => {
-			const html = (post.rendered?.html ?? "")
-				.replaceAll(
-					'src="/content-assets/',
-					`src="${new URL("/content-assets/", site).href}`,
-				)
-				.replaceAll(
-					'srcset="/content-assets/',
-					`srcset="${new URL("/content-assets/", site).href}`,
-				);
-			const cleanedHtml = stripInvalidXmlChars(html);
+			const frontmatter = post.rendered?.metadata?.frontmatter as
+				| { excerpt?: string }
+				| undefined;
+			const excerpt =
+				post.data.description?.trim() ||
+				frontmatter?.excerpt?.trim() ||
+				post.data.title;
+			const categories = [
+				...new Set([...post.data.categories, ...post.data.tags]),
+			];
+
 			return {
 				title: post.data.title,
 				pubDate: post.data.updated ?? post.data.date,
-				description: post.data.description || "",
+				description: stripInvalidXmlChars(excerpt),
 				link: new URL(url(`/archives/${getEntrySlug(post)}/`), site).href,
-				content: sanitizeHtml(cleanedHtml, {
-					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-				}),
+				categories,
 			};
 		}),
-		customData: `<language>${siteConfig.lang.replace("_", "-")}</language>`,
 	});
 }

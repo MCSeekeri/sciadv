@@ -1,14 +1,8 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import siteBannerOgUrl from "../assets/images/banner.jpg?url";
 import "../styles/variables.styl";
 import "../styles/main.css";
-import "../styles/markdown.css";
-import "../styles/markdown-extend.styl";
 import "../styles/scrollbar.css";
-import "../styles/expressive-code.css";
-import "../styles/photoswipe.css";
-import "../styles/transition.css";
 import {
 	aiSearchConfig,
 	analyticsConfig,
@@ -66,11 +60,13 @@ const bannerOffset =
 	bannerOffsetByPosition[siteConfig.banner.position || "center"];
 const gtmId = analyticsConfig.gtmId?.trim();
 const shouldLoadGtm =
-	import.meta.env.PROD && analyticsConfig.loadStrategy === "idle" && !!gtmId;
+	import.meta.env.PROD &&
+	analyticsConfig.loadStrategy === "interaction" &&
+	!!gtmId;
 ---
 
 <!DOCTYPE html>
-<html lang={siteLang} class="bg-[var(--page-bg)] transition text-[14px] md:text-[16px]">
+<html lang={siteLang} data-theme-mode={DEFAULT_THEME} class="bg-[var(--page-bg)] text-[14px] md:text-[16px]">
 	<head>
 		<title>{pageTitle}</title>
 
@@ -132,6 +128,7 @@ const shouldLoadGtm =
 						break;
 				}
 
+				document.documentElement.dataset.themeMode = theme;
 				const storedHue = Number(localStorage.getItem("hue"));
 				const hue = Number.isFinite(storedHue) ? storedHue : configHue;
 				document.documentElement.style.setProperty("--hue", hue);
@@ -146,7 +143,6 @@ const shouldLoadGtm =
 			}
 
 			applyRootAppearance();
-			document.addEventListener("astro:after-swap", applyRootAppearance);
 		</script>
 		<style
 			define:vars={{
@@ -189,36 +185,70 @@ const shouldLoadGtm =
 					document.head.appendChild(script);
 				};
 
-				const scheduleGtm = () => {
-					// 功能不砍、只推迟：弱网下 GTM 等主线程空闲再加载，不和 LCP 抢带宽
-					if (typeof window.requestIdleCallback === "function") {
-						window.requestIdleCallback(injectGtm, { timeout: 15000 });
-						return;
+				const interactionEvents = [
+					"pointerdown",
+					"keydown",
+					"touchstart",
+					"wheel",
+					"scroll",
+				];
+				let gtmLoaded = false;
+				const loadGtmOnInteraction = () => {
+					if (gtmLoaded) return;
+					gtmLoaded = true;
+					for (const eventName of interactionEvents) {
+						window.removeEventListener(eventName, loadGtmOnInteraction);
 					}
-					window.setTimeout(injectGtm, 10000);
+					injectGtm();
 				};
-
-				if (document.readyState === "complete") {
-					scheduleGtm();
-				} else {
-					window.addEventListener("load", scheduleGtm, { once: true });
+				for (const eventName of interactionEvents) {
+					window.addEventListener(eventName, loadGtmOnInteraction, {
+						passive: true,
+					});
 				}
 			</script>
 		)}
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="dns-prefetch" href="https://comments.sci-adv.org" />
-		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;700&display=optional"
-			rel="stylesheet"
-		/>
+		<script is:inline>
+			const fontEvents = [
+				"pointerdown",
+				"keydown",
+				"touchstart",
+				"wheel",
+				"scroll",
+			];
+			let fontsLoaded = false;
+			const loadWebFonts = () => {
+				if (fontsLoaded) return;
+				fontsLoaded = true;
+				for (const eventName of fontEvents) {
+					window.removeEventListener(eventName, loadWebFonts);
+				}
+				for (const [href, crossOrigin] of [
+					["https://fonts.googleapis.com", false],
+					["https://fonts.gstatic.com", true],
+				]) {
+					const preconnect = document.createElement("link");
+					preconnect.rel = "preconnect";
+					preconnect.href = href;
+					if (crossOrigin) preconnect.crossOrigin = "anonymous";
+					document.head.appendChild(preconnect);
+				}
+				const link = document.createElement("link");
+				link.rel = "stylesheet";
+				link.href =
+					"https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;700&display=optional";
+				link.dataset.webfonts = "true";
+				document.head.appendChild(link);
+			};
+			for (const eventName of fontEvents) {
+				window.addEventListener(eventName, loadWebFonts, { passive: true });
+			}
+		</script>
 	</head>
 	<body
-		class="min-h-screen transition"
+		class="min-h-screen"
 		class:list={[{ "is-home": isHomePage, "enable-banner": enableBanner }]}
 	>
-		<ClientRouter />
 		<slot />
 		<!-- AI Search Chat Bubble -->
 		{aiSearchConfig.enable && (
@@ -244,45 +274,6 @@ const shouldLoadGtm =
 				});
 			}
 		</script>
-		<script
-			is:inline
-			define:vars={{
-				commentOrigin: (() => {
-					try {
-						return new URL(walineConfig.serverURL || "").origin;
-					} catch {
-						return "";
-					}
-				})(),
-				aiOrigin: (() => {
-					try {
-						return new URL(aiSearchConfig.apiUrl || "").origin;
-					} catch {
-						return "";
-					}
-				})(),
-			}}
-		>
-			// 高延迟优化：空闲时只做 TCP+TLS 握手预热，不取任何内容；
-			// 用户点评论/唤 AI 时直接复用热连接，省 1~2 个 RTT，功能零裁剪
-			const warmOriginsIdle = () => {
-				for (const origin of [commentOrigin, aiOrigin]) {
-					if (!origin) continue;
-					if (document.querySelector(`link[data-warm="${origin}"]`)) continue;
-					const link = document.createElement("link");
-					link.rel = "preconnect";
-					link.href = origin;
-					link.dataset.warm = origin;
-					document.head.appendChild(link);
-				}
-			};
-			if (typeof window.requestIdleCallback === "function") {
-				window.requestIdleCallback(warmOriginsIdle, { timeout: 12000 });
-			} else {
-				window.setTimeout(warmOriginsIdle, 8000);
-			}
-		</script>
-		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
 </html>
 
@@ -303,6 +294,11 @@ const shouldLoadGtm =
 	height: var(--banner-height-home);
 }
 
+#banner-wrapper,
+#banner {
+	contain: layout paint;
+}
+
 .enable-banner.is-home #banner {
 	height: var(--banner-height-home);
 	transform: translateY(0);
@@ -319,7 +315,6 @@ const shouldLoadGtm =
 
 .enable-banner #top-row {
 	height: calc(var(--banner-height-home) - 4.5rem);
-	transition: all 300ms;
 }
 
 .enable-banner.is-home #sidebar-sticky {
@@ -405,16 +400,12 @@ const shouldLoadGtm =
 		}
 	}
 
-	function closeFloatPanels() {
-		for (const { panelId } of panelConfigs) {
-			document.getElementById(panelId)?.classList.add("float-panel-closed");
-		}
-		syncPanelTriggerAria();
-	}
-
+	let lastBannerOffset = -1;
 	function updateBannerOffset() {
 		let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
 		offset -= offset % 4;
+		if (offset === lastBannerOffset) return;
+		lastBannerOffset = offset;
 		document.documentElement.style.setProperty(
 			"--banner-height-extend",
 			`${offset}px`,
@@ -428,20 +419,6 @@ const shouldLoadGtm =
 				? BANNER_HEIGHT_HOME
 				: BANNER_HEIGHT;
 		return window.innerHeight * (bannerHeight / 100);
-	}
-
-	function setHomeState(pathname) {
-		const nextPathname = new URL(pathname, window.location.origin).pathname;
-		document.body.classList.toggle("is-home", nextPathname === "/");
-	}
-
-	function showBanner() {
-		if (!bannerEnabled) {
-			return;
-		}
-
-		const banner = document.getElementById("banner");
-		banner?.classList.remove("opacity-0", "scale-105");
 	}
 
 	const scrollRefs = {
@@ -484,44 +461,6 @@ const shouldLoadGtm =
 		});
 	}
 
-	function markTocTransitionState(isNavigating) {
-		const toc = document.getElementById("toc-wrapper");
-		if (!toc) {
-			return;
-		}
-		toc.classList.toggle("toc-not-ready", isNavigating);
-	}
-
-	function setPageHeightExtension(visible) {
-		const heightExtend = document.getElementById("page-height-extend");
-		if (!heightExtend) {
-			return;
-		}
-		heightExtend.classList.toggle("hidden", !visible);
-	}
-
-	function preparePageTransition(pathname) {
-		document.documentElement.style.setProperty("--content-delay", "0ms");
-		closeFloatPanels();
-		setHomeState(pathname);
-		markTocTransitionState(true);
-		setPageHeightExtension(true);
-		scheduleScrollUpdate();
-	}
-
-	function completePageTransition() {
-		showBanner();
-		scheduleScrollUpdate();
-		window.setTimeout(() => {
-			markTocTransitionState(false);
-			setPageHeightExtension(false);
-		}, 200);
-	}
-
-	updateBannerOffset();
-	showBanner();
-	updateScrollState();
-
 	window.addEventListener("scroll", scheduleScrollUpdate, { passive: true });
 	window.addEventListener(
 		"resize",
@@ -532,16 +471,6 @@ const shouldLoadGtm =
 		{ passive: true },
 	);
 
-	document.addEventListener("astro:before-preparation", (event) => {
-		preparePageTransition(event.to?.href || window.location.href);
-	});
-
-	document.addEventListener("astro:page-load", () => {
-		setHomeState(window.location.href);
-		completePageTransition();
-	});
-
-	// content-visibility: auto 的冷状态锚点会因高度估算漂移，滚动后重测并迭代修正。
 	function correctAnchorDrift() {
 		const rawHash = window.location.hash;
 		if (rawHash.length < 2) return;
@@ -568,7 +497,6 @@ const shouldLoadGtm =
 			window.setTimeout(correctAnchorDrift, 250);
 		};
 		window.addEventListener("hashchange", runWithRetry);
-		document.addEventListener("astro:page-load", runWithRetry);
 		// 同页锚点点击走 history.pushState，不触发 hashchange，捕获阶段补监听修正。
 		document.addEventListener(
 			"click",

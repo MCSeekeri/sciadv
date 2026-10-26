@@ -66,7 +66,7 @@ export type SourceNoticeConfig = {
 
 export type AnalyticsConfig = {
 	gtmId?: string;
-	loadStrategy?: "off" | "idle";
+	loadStrategy?: "off" | "idle" | "interaction";
 };
 
 export type WalineConfig = {

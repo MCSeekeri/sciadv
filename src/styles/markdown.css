@@ -1,11 +1,6 @@
 @reference "tailwindcss";
 
 .custom-md {
-    & > * {
-        content-visibility: auto;
-        contain-intrinsic-size: auto 400px;
-    }
-
     h1 {
         @apply text-3xl;
     }
@@ -206,12 +201,4 @@
             margin: 0;
         }
     }
-}
-
-/* 弱 CPU 优化：长文分节虚拟化渲染，屏外 section 跳过排版绘制。
-   内容零裁剪：滚动接近时自动渲染，锚点跳转/页内查找不受影响。
-   intrinsic 占位避免滚动条乱跳。 */
-.custom-md > section {
-	content-visibility: auto;
-	contain-intrinsic-size: auto 600px;
 }

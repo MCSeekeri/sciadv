@@ -12,6 +12,8 @@ import {
 	variantWidthsByKind,
 } from "@/plugins/content-image-manifest.ts";
 
+const CACHE_CONTROL = "public, max-age=604800, stale-while-revalidate=86400";
+
 function variantListFor(
 	descriptor: ContentImageDescriptor,
 ): { width: number; format: OutputFormat }[] {
@@ -27,18 +29,18 @@ function variantListFor(
 }
 
 function buildAssetParam(
-	assetKey: string,
+	descriptor: ContentImageDescriptor,
 	width: number,
 	format: OutputFormat,
 ): string {
-	return `${assetKey}@${width}.${format}`;
+	return `${descriptor.assetKey}@${width}.${format}`;
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
 	return contentImageManifest.flatMap((descriptor) =>
 		variantListFor(descriptor).map(({ width, format }) => ({
 			params: {
-				asset: buildAssetParam(descriptor.assetKey, width, format),
+				asset: buildAssetParam(descriptor, width, format),
 			},
 			props: {
 				descriptor,
@@ -61,7 +63,7 @@ export const GET: APIRoute = async ({ props }): Promise<Response> => {
 		return new Response(data, {
 			headers: {
 				"Content-Type": contentTypeForFormat(format),
-				"Cache-Control": "public, max-age=31536000, immutable",
+				"Cache-Control": CACHE_CONTROL,
 			},
 		});
 	}
@@ -85,7 +87,7 @@ export const GET: APIRoute = async ({ props }): Promise<Response> => {
 	return new Response(Uint8Array.from(output).buffer, {
 		headers: {
 			"Content-Type": contentTypeForFormat(format),
-			"Cache-Control": "public, max-age=31536000, immutable",
+			"Cache-Control": CACHE_CONTROL,
 		},
 	});
 };

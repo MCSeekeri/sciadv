@@ -24,6 +24,7 @@ import { ContentImageComponent, InlineAvatarComponent } from "./src/plugins/rehy
 import { ImageRowComponent } from "./src/plugins/rehype-component-image-row.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
+import { remarkHasMath } from "./src/plugins/remark-has-math.mjs";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
@@ -31,10 +32,6 @@ export default defineConfig({
 	site: "https://lib.sci-adv.org",
 	base: "/",
 	trailingSlash: "always",
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: "hover",
-	},
 	integrations: [
 		icon({
 			include: {
@@ -126,6 +123,7 @@ export default defineConfig({
 				remarkBreaks,
 				remarkMath,
 				remarkReadingTime,
+				remarkHasMath,
 				remarkExcerpt,
 				remarkGithubAdmonitionsToDirectives,
 				remarkDirective,
@@ -180,8 +178,6 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
-			minify: "esbuild",
-			cssMinify: true,
 			rollupOptions: {
 				onwarn(warning, warn) {
 					// temporarily suppress this warning

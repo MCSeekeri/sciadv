@@ -124,8 +124,18 @@ const defaultHue = siteConfig.themeColor.hue;
 	}
 
 	if (colorSlider instanceof HTMLInputElement) {
-		colorSlider.value = String(getStoredHue());
-		updateHue(colorSlider.value);
+		const initialHue = getStoredHue();
+		colorSlider.value = String(initialHue);
+		if (hueValue) {
+			hueValue.textContent = String(initialHue);
+		}
+		if (resetButton) {
+			resetButton.classList.toggle("opacity-0", initialHue === defaultHue);
+			resetButton.classList.toggle(
+				"pointer-events-none",
+				initialHue === defaultHue,
+			);
+		}
 		colorSlider.addEventListener("input", () => updateHue(colorSlider.value));
 	}
 

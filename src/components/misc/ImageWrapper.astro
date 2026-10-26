@@ -92,7 +92,7 @@ const resolvedFetchPriority = priority ? "high" : fetchpriority || "auto";
     {!singleSourceImage && isLocal && img && <Picture
         src={img}
         alt={alt || ""}
-        formats={['avif', 'webp', 'png']}
+        formats={['avif', 'webp']}
         fallbackFormat={fallbackFormat}
         class={imageClass}
         style={imageStyle}

@@ -84,13 +84,13 @@ const jsonLd = {
 ---
 <MainGridLayout title={entry.data.title} description={entry.data.description ?? undefined} lang={entry.data.lang} setOGTypeArticle={true} headings={headings} socialImage={socialImageUrl}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
-    <link rel="stylesheet" href={katexCssUrl} slot="head" />
+    {remarkPluginFrontmatter.hasMath && <link rel="stylesheet" href={katexCssUrl} slot="head" />}
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" data-photoswipe-style-url={photoswipeCssUrl} class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
             <!-- word count and reading time -->
-            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
+            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition">
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
@@ -108,7 +108,7 @@ const jsonLd = {
             </div>
 
             <!-- title -->
-            <div class="relative onload-animation">
+            <div class="relative">
                 <div
                     data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title"
                     class="transition w-full block font-bold mb-3
@@ -122,7 +122,7 @@ const jsonLd = {
             </div>
 
             <!-- metadata -->
-            <div class="onload-animation">
+            <div>
                 <PostMetadata
                         class="mb-5"
                         date={entry.data.date}
@@ -141,42 +141,50 @@ const jsonLd = {
                     id="post-cover"
                     src={entry.data.image}
                     basePath={path.join("content/archives/", getDir(entry.id))}
-                    class="mb-8 rounded-xl banner-container onload-animation"
+                    class="mb-8 rounded-xl banner-container"
                     priority={true}
                     sizes="100vw"
                 />
             }
 
 
-            <Markdown class="mb-6 markdown-content onload-animation">
+            <Markdown class="mb-6 markdown-content">
                 <Content />
             </Markdown>
 
-            {sourceNoticeConfig.enable && <SourceNotice authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl source-notice-container onload-animation"></SourceNotice>}
+            {sourceNoticeConfig.enable && <SourceNotice authorId={entry.data.author} references={entry.data.references} class="mb-6 rounded-xl source-notice-container"></SourceNotice>}
 
         </div>
     </div>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
-        <a href={entry.next ? getPostUrlBySlug(entry.next.slug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.next}]}>
-            {entry.next && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
-                <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.next.title}
+        {entry.next ? (
+            <a href={getPostUrlBySlug(entry.next.slug)} aria-label={`下一篇：${entry.next.title}`}
+               class="w-full font-bold overflow-hidden active:scale-95">
+                <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4">
+                    <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
+                    <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
+                        {entry.next.title}
+                    </div>
                 </div>
-            </div>}
-        </a>
+            </a>
+        ) : (
+            <div class="w-full" aria-hidden="true"></div>
+        )}
 
-        <a href={entry.prev ? getPostUrlBySlug(entry.prev.slug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.prev}]}>
-            {entry.prev && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.prev.title}
+        {entry.prev ? (
+            <a href={getPostUrlBySlug(entry.prev.slug)} aria-label={`上一篇：${entry.prev.title}`}
+               class="w-full font-bold overflow-hidden active:scale-95">
+                <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
+                    <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
+                        {entry.prev.title}
+                    </div>
+                    <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
                 </div>
-                <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
-            </div>}
-        </a>
+            </a>
+        ) : (
+            <div class="w-full" aria-hidden="true"></div>
+        )}
     </div>
 
     {walineConfig.enable && walineConfig.serverURL && (
@@ -213,7 +221,7 @@ function setupPostLightbox() {
 	const postContainer = document.getElementById("post-container");
 	const photoswipeCssUrl = postContainer?.getAttribute("data-photoswipe-style-url");
 
-	// 防同一容器初始化两次（脚本直接调用与 astro:page-load 都会触发）。
+	// 防同一容器初始化两次。
 	if (
 		!(postContainer instanceof HTMLElement) ||
 		postContainer.dataset.lightboxBound === "true"
@@ -302,11 +310,4 @@ function setupPostLightbox() {
 }
 
 setupPostLightbox();
-
-const lightboxWindow = window as Window & { __postLightboxBound?: boolean };
-
-if (!lightboxWindow.__postLightboxBound) {
-	lightboxWindow.__postLightboxBound = true;
-	document.addEventListener("astro:page-load", setupPostLightbox);
-}
 </script>

@@ -81,7 +81,7 @@ export const sourceNoticeConfig: SourceNoticeConfig = {
 
 export const analyticsConfig: AnalyticsConfig = {
 	gtmId: "GTM-W5FWDNPC",
-	loadStrategy: "idle",
+	loadStrategy: "interaction",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {

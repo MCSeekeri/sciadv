@@ -3,8 +3,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --font-family-sans: "Roboto", "Noto Serif SC", "Songti SC", "STSong", "SimSun", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-sans: "Roboto", "Noto Serif SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -12,9 +12,6 @@
 @layer components {
     .card-base {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
-    }
-    h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
-        @apply transition;
     }
     .card-shadow {
         @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
@@ -75,8 +72,7 @@
         hover:decoration-[var(--link-hover)] active:decoration-[var(--link-active)] underline-offset-[0.25rem]
     }
 
-    .toc-hide,
-    .toc-not-ready {
+    .toc-hide {
         @apply opacity-0 pointer-events-none;
         visibility: hidden;
     }
@@ -116,6 +112,15 @@
     .with-divider {
         @apply before:content-['/'] before:ml-1.5 before:mr-1.5 before:text-[var(--meta-divider)] before:text-sm
         before:font-medium before:first-of-type:hidden before:transition
+    }
+
+    #scheme-switch [data-theme-icon] {
+        opacity: 0;
+    }
+    html[data-theme-mode="light"] #scheme-switch [data-theme-icon="light"],
+    html[data-theme-mode="dark"] #scheme-switch [data-theme-icon="dark"],
+    html[data-theme-mode="auto"] #scheme-switch [data-theme-icon="auto"] {
+        opacity: 1;
     }
 
     .btn-regular-dark {

@@ -180,14 +180,5 @@ const emptyStateText = "No posts match the current filters.";
 		}
 	}
 
-	const archivePanelWindow = window as Window & {
-		__archivePanelBound?: boolean;
-	};
-
 	updateArchivePanel();
-
-	if (!archivePanelWindow.__archivePanelBound) {
-		archivePanelWindow.__archivePanelBound = true;
-		document.addEventListener("astro:page-load", updateArchivePanel);
-	}
 </script>
